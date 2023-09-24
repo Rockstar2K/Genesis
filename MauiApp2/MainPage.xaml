@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MainPage">
+
+    <ScrollView
+            BackgroundColor="#121B3F">
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="lyris_logo.png"
+                SemanticProperties.Description="El increible logogo de liris!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+            <!--
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+            -->
+            <Label
+                Text="¡Hola, soy Lyris!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Voy a ser tu nueva asistente"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+            <Entry
+                x:Name="InputBox"
+                Placeholder="¿Que quieres que haga?"
+                Completed="InputBox_Completed"/>
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Enviar al modelo"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+            <Label
+                x:Name="Output"
+                />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+
