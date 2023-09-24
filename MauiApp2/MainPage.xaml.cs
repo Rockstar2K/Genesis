@@ -14,10 +14,16 @@ namespace MauiApp2
         int count = 0;
         string prompt;
 
-        public MainPage()
+        //reads the crossplatform tts audio file (i think)
+        private readonly IAudioPlayer _audioPlayer;
+
+
+        public MainPage()// (IAudioPlayer audioPlayer) working on this
         {
+            //_audioPlayer = audioPlayer; //we initialize the audio code i think?
             InitializeComponent();
         }
+
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
@@ -74,11 +80,15 @@ namespace MauiApp2
                 },
                 audioConfig: new AudioConfig { AudioEncoding = AudioEncoding.Linear16 }
             );
-            //esta funciónn crea un audio file a partir de el audio de Google
+            //esta funciónn crea un audio file a partir de el audio de Google (hay que tener en cuenta que usa un path de nuestro computador)
             using (Stream output = File.Create("C:\\Users\\thega\\Documents\\output.wav"))
             {
                 response.AudioContent.WriteTo(output);
             }
+
+            //calls the audio player file with the response
+            //_audioPlayer.PlayAudio(response.AudioContent.ToByteArray());
+
         }
     }
 }
