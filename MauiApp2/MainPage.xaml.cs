@@ -58,6 +58,7 @@ namespace MauiApp2
 
         public async Task ConvertTextToSpeech(string text)
         {
+            // hard path file
             string credentialsPath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Credentials\\high-invest-4da5afee15f3.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsPath);
 
@@ -73,7 +74,7 @@ namespace MauiApp2
                 },
                 audioConfig: new AudioConfig { AudioEncoding = AudioEncoding.Linear16 }
             );
-
+            //esta funciónn crea un audio file a partir de el audio de Google
             using (Stream output = File.Create("C:\\Users\\thega\\Documents\\output.wav"))
             {
                 response.AudioContent.WriteTo(output);
