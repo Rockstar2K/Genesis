@@ -18,9 +18,9 @@ namespace MauiApp2
         private readonly IAudioPlayer _audioPlayer;
 
 
-        public MainPage()// (IAudioPlayer audioPlayer) working on this
+        public MainPage(IAudioPlayer audioPlayer)// (IAudioPlayer audioPlayer) working on this
         {
-            //_audioPlayer = audioPlayer; //we initialize the audio code i think?
+            _audioPlayer = audioPlayer; //we declare the variable we'll use coming from the audioplayer class
             InitializeComponent();
         }
 
@@ -39,7 +39,6 @@ namespace MauiApp2
 
             InputBox_Completed(sender, e);
 
-            Console.Write("sdfsdf");
         }
 
         private async void InputBox_Completed(System.Object sender, System.EventArgs e)
@@ -66,6 +65,7 @@ namespace MauiApp2
         {
             // hard path file
             string credentialsPath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Credentials\\high-invest-4da5afee15f3.json";
+            
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsPath);
 
             TextToSpeechClient client = TextToSpeechClient.Create();
@@ -80,14 +80,14 @@ namespace MauiApp2
                 },
                 audioConfig: new AudioConfig { AudioEncoding = AudioEncoding.Linear16 }
             );
-            //esta funciónn crea un audio file a partir de el audio de Google (hay que tener en cuenta que usa un path de nuestro computador)
+            //esta función crea un audio file a partir de el audio de Google (hay que tener en cuenta que usa un path de nuestro computador)
             using (Stream output = File.Create("C:\\Users\\thega\\Documents\\output.wav"))
             {
                 response.AudioContent.WriteTo(output);
             }
 
             //calls the audio player file with the response
-            //_audioPlayer.PlayAudio(response.AudioContent.ToByteArray());
+            _audioPlayer.PlayAudio(response.AudioContent.ToByteArray());
 
         }
     }

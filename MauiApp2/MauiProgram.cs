@@ -7,6 +7,9 @@ namespace MauiApp2
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
+            builder.Services.AddSingleton<IAudioPlayer, WindowsAudioPlayer>(); //  register service of audioplayer (just windows)
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -16,7 +19,7 @@ namespace MauiApp2
                 });
 
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

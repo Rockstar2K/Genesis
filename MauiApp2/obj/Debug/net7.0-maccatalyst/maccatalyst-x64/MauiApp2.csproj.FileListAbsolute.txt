@@ -35,3 +35,6 @@ C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-maccatalyst\macca
 C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\MauiApp2.AssemblyInfoInputs.cache
 C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\MauiApp2.AssemblyInfo.cs
 C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\MauiApp2.csproj.CoreCompileInputs.cache
+C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\lyris_logo.png
+C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\lyris_logo@2x.png
+C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\lyris_logo@3x.png
