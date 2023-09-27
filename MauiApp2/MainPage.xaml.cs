@@ -12,15 +12,15 @@ namespace MauiApp2
     public partial class MainPage : ContentPage
     {
         int count = 0;
-        string prompt;
+        string Userprompt;
 
         //reads the crossplatform tts audio file (i think)
-        private readonly IAudioPlayer _audioPlayer;
+        //private readonly IAudioPlayer _audioPlayer;
 
 
-        public MainPage(IAudioPlayer audioPlayer)// (IAudioPlayer audioPlayer) working on this
+        public MainPage()// (IAudioPlayer audioPlayer) working on this
         {
-            _audioPlayer = audioPlayer; //we declare the variable we'll use coming from the audioplayer class
+            //_audioPlayer = audioPlayer; //we declare the variable we'll use coming from the audioplayer class
             InitializeComponent();
         }
 
@@ -35,13 +35,13 @@ namespace MauiApp2
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
-            
+
 
             InputBox_Completed(sender, e);
 
         }
 
-        private async void InputBox_Completed(System.Object sender, System.EventArgs e)
+        private void InputBox_Completed(System.Object sender, System.EventArgs e)
         {
             count++;
 
@@ -52,15 +52,47 @@ namespace MauiApp2
 
             SemanticScreenReader.Announce(CounterBtn.Text);
 
-            prompt = InputBox.Text;
-            Output.Text = prompt;
+            Userprompt = InputBox.Text;
+            Output.Text = Userprompt;
 
-            await ConvertTextToSpeech(prompt);
+            //await ConvertTextToSpeech(Userprompt);
 
-            Console.Write(prompt);
+            RunCommands();
+
+            Console.Write(Userprompt);
 
         }
 
+        public void RunCommands()
+        {
+            // Capture the command from Userprompt
+            string command = Userprompt;
+
+            // Initialize a new Process
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                WindowStyle = ProcessWindowStyle.Hidden,
+                FileName = "cmd.exe",
+                Arguments = "/C " + command,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            process.StartInfo = startInfo;
+            process.Start();
+
+            // Capture the output
+            string output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+
+            // Display the output in your UI, for example, in a Label
+            Output.Text = output;
+        }
+
+
+
+        /*
         public async Task ConvertTextToSpeech(string text)
         {
             // hard path file
@@ -87,8 +119,10 @@ namespace MauiApp2
             }
 
             //calls the audio player file with the response
-            _audioPlayer.PlayAudio(response.AudioContent.ToByteArray());
+            //_audioPlayer.PlayAudio(response.AudioContent.ToByteArray());
 
         }
+        */
     }
+
 }

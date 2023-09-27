@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MauiApp2;
 
 namespace MauiApp2
 {
@@ -8,7 +9,9 @@ namespace MauiApp2
         {
             var builder = MauiApp.CreateBuilder();
 
-            builder.Services.AddSingleton<IAudioPlayer, WindowsAudioPlayer>(); //  register service of audioplayer (just windows)
+#if WINDOWS
+            builder.Services.AddSingleton<IAudioPlayer, WindowsAudioPlayer>();
+#endif
 
             builder
                 .UseMauiApp<App>()

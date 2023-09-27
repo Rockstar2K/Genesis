@@ -2,16 +2,19 @@
 using MauiApp2; 
 using System.IO;
 
-public class WindowsAudioPlayer : IAudioPlayer
+namespace MauiApp2
 {
-    public void PlayAudio(byte[] audioData)
+    public class WindowsAudioPlayer : IAudioPlayer
     {
-        using (var stream = new MemoryStream(audioData))
-        using (var waveStream = new WaveFileReader(stream))
-        using (var waveOut = new WaveOutEvent())
+        public void PlayAudio(byte[] audioData)
         {
-            waveOut.Init(waveStream);
-            waveOut.Play();
+            using (var stream = new MemoryStream(audioData))
+            using (var waveStream = new WaveFileReader(stream))
+            using (var waveOut = new WaveOutEvent())
+            {
+                waveOut.Init(waveStream);
+                waveOut.Play();
+            }
         }
     }
 }
