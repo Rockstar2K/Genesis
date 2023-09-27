@@ -57,13 +57,13 @@ namespace MauiApp2
 
             //await ConvertTextToSpeech(Userprompt);
 
-            RunCommands();
+            RunCommandsAsync();
 
             Console.Write(Userprompt);
 
         }
 
-        public void RunCommands()
+        public async Task RunCommandsAsync()
         {
             // Capture the command from Userprompt
             string command = Userprompt;
@@ -76,19 +76,24 @@ namespace MauiApp2
                 FileName = "cmd.exe",
                 Arguments = "/C " + command,
                 RedirectStandardOutput = true,
+                RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
             process.StartInfo = startInfo;
-            process.Start();
 
-            // Capture the output
-            string output = process.StandardOutput.ReadToEnd();
+            // Start the process and asynchronously read the output and error
+            process.Start();
+            string output = await process.StandardOutput.ReadToEndAsync();
+            string error = await process.StandardError.ReadToEndAsync();
+
+            // Wait for the process to exit
             process.WaitForExit();
 
-            // Display the output in your UI, for example, in a Label
-            Output.Text = output;
+            // Display the output and error in your UI
+            Output.Text = string.IsNullOrEmpty(error) ? output : error;
         }
+
 
 
 
