@@ -1,60 +1,4 @@
-﻿/*
-using System;
-using Microsoft.Maui.Controls;
-using System.Diagnostics;
-
-namespace MauiApp2
-{
-    public partial class MainPage : ContentPage
-    {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
-
-        private void OnPromptBtnClicked(object sender, EventArgs e)
-        {
-            TestPythonCode();
-        }
-
-        private void InputBox_Completed(System.Object sender, System.EventArgs e)
-        {
-            TestPythonCode();
-        }
-
-        private void TestPythonCode()
-        {
-            var result = RunPythonScript("What operating system are we on?");
-            Define_Output(result);
-        }
-
-        private void Define_Output(string output)
-        {
-            Output.Text = output;
-        }
-
-        private string RunPythonScript(string message)
-        {
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = @"C:\Program Files\Python311\python.exe",
-                    Arguments = $"\"C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\interpreter_wrapper.py\" \"{message}\"",
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                    //CreateNoWindow = true,
-                }
-            };
-
-            process.Start();
-            string result = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
-            return result;
-        }
-    }
-}
-*/
+﻿
 using System;
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
@@ -86,7 +30,7 @@ namespace MauiApp2
 
         private async void TestPythonCode(string userPrompt)
         {
-            var result = await RunPythonScriptAsync(userPrompt, apiKey);  // Replace "your-api-key-here" with your actual API key
+            var result = await RunPythonScriptAsync(userPrompt, apiKey);  
             Define_Output(result);
         }
 
@@ -107,7 +51,7 @@ namespace MauiApp2
                         Arguments = $"\"C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\interpreter_wrapper.py\" \"{message}\" \"{apiKey}\"",
                         RedirectStandardOutput = true,
                         UseShellExecute = false,
-                        //CreateNoWindow = true,
+                        CreateNoWindow = true, //opens (or not) a cmd window
                     }
                 };
 
