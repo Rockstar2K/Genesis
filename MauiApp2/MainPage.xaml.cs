@@ -5,13 +5,15 @@ using System.Threading.Tasks;
 using Google.Cloud.TextToSpeech.V1;
 using Google.Protobuf;
 using Microsoft.Maui.Controls; // Make sure to include the correct namespace for ContentPage
+using System.Text.Json;
+using System.Net.Http;
+
 
 namespace MauiApp2
 
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
         string Userprompt;
 
         //reads the crossplatform tts audio file (i think)
@@ -27,39 +29,17 @@ namespace MauiApp2
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-
-
+  
             InputBox_Completed(sender, e);
 
         }
 
-        private void InputBox_Completed(System.Object sender, System.EventArgs e)
+        private async void InputBox_Completed(System.Object sender, System.EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-
             Userprompt = InputBox.Text;
             Output.Text = Userprompt;
 
-            //await ConvertTextToSpeech(Userprompt);
-
-            RunCommandsAsync();
-
-            Console.Write(Userprompt);
+            await RunCommandsAsync();
 
         }
 
@@ -93,8 +73,6 @@ namespace MauiApp2
             // Display the output and error in your UI
             Output.Text = string.IsNullOrEmpty(error) ? output : error;
         }
-
-
 
 
         /*
