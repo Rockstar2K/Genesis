@@ -12,7 +12,7 @@
 
             <Image
                 Source="lyris_logo.png"
-                SemanticProperties.Description="El increible logogo de liris!"
+                SemanticProperties.Description="El increible logo de liris!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
             <!--
@@ -40,10 +40,10 @@
                 Completed="InputBox_Completed"/>
 
             <Button
-                x:Name="CounterBtn"
+                x:Name="PromptBtn"
                 Text="Enviar al modelo"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Clicked="OnPromptBtnClicked"
                 HorizontalOptions="Center" />
             <Label
                 x:Name="Output"

@@ -1,111 +1,122 @@
-﻿using System;
+﻿/*
+using System;
+using Microsoft.Maui.Controls;
 using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
-using Google.Cloud.TextToSpeech.V1;
-using Google.Protobuf;
-using Microsoft.Maui.Controls; // Make sure to include the correct namespace for ContentPage
-using System.Text.Json;
-using System.Net.Http;
-
 
 namespace MauiApp2
-
 {
     public partial class MainPage : ContentPage
     {
-        string Userprompt;
-
-        //reads the crossplatform tts audio file (i think)
-        //private readonly IAudioPlayer _audioPlayer;
-
-
-        public MainPage()// (IAudioPlayer audioPlayer) working on this
+        public MainPage()
         {
-            //_audioPlayer = audioPlayer; //we declare the variable we'll use coming from the audioplayer class
             InitializeComponent();
         }
 
-
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void OnPromptBtnClicked(object sender, EventArgs e)
         {
-  
-            InputBox_Completed(sender, e);
-
+            TestPythonCode();
         }
 
-        private async void InputBox_Completed(System.Object sender, System.EventArgs e)
+        private void InputBox_Completed(System.Object sender, System.EventArgs e)
         {
-            Userprompt = InputBox.Text;
-            Output.Text = Userprompt;
-
-            await RunCommandsAsync();
-
+            TestPythonCode();
         }
 
-        public async Task RunCommandsAsync()
+        private void TestPythonCode()
         {
-            // Capture the command from Userprompt
-            string command = Userprompt;
+            var result = RunPythonScript("What operating system are we on?");
+            Define_Output(result);
+        }
 
-            // Initialize a new Process
-            Process process = new Process();
-            ProcessStartInfo startInfo = new ProcessStartInfo
+        private void Define_Output(string output)
+        {
+            Output.Text = output;
+        }
+
+        private string RunPythonScript(string message)
+        {
+            var process = new Process
             {
-                WindowStyle = ProcessWindowStyle.Hidden,
-                FileName = "cmd.exe",
-                Arguments = "/C " + command,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-            process.StartInfo = startInfo;
-
-            // Start the process and asynchronously read the output and error
-            process.Start();
-            string output = await process.StandardOutput.ReadToEndAsync();
-            string error = await process.StandardError.ReadToEndAsync();
-
-            // Wait for the process to exit
-            process.WaitForExit();
-
-            // Display the output and error in your UI
-            Output.Text = string.IsNullOrEmpty(error) ? output : error;
-        }
-
-
-        /*
-        public async Task ConvertTextToSpeech(string text)
-        {
-            // hard path file
-            string credentialsPath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Credentials\\high-invest-4da5afee15f3.json";
-            
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsPath);
-
-            TextToSpeechClient client = TextToSpeechClient.Create();
-
-            SynthesizeSpeechResponse response = await client.SynthesizeSpeechAsync(
-                input: new SynthesisInput { Text = text },
-                voice: new VoiceSelectionParams
+                StartInfo = new ProcessStartInfo
                 {
-                    LanguageCode = "en-US",
-                    Name = "en-US-Wavenet-G",
-                    SsmlGender = SsmlVoiceGender.Neutral
-                },
-                audioConfig: new AudioConfig { AudioEncoding = AudioEncoding.Linear16 }
-            );
-            //esta función crea un audio file a partir de el audio de Google (hay que tener en cuenta que usa un path de nuestro computador)
-            using (Stream output = File.Create("C:\\Users\\thega\\Documents\\output.wav"))
-            {
-                response.AudioContent.WriteTo(output);
-            }
+                    FileName = @"C:\Program Files\Python311\python.exe",
+                    Arguments = $"\"C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\interpreter_wrapper.py\" \"{message}\"",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    //CreateNoWindow = true,
+                }
+            };
 
-            //calls the audio player file with the response
-            //_audioPlayer.PlayAudio(response.AudioContent.ToByteArray());
-
+            process.Start();
+            string result = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+            return result;
         }
-        */
     }
+}
+*/
+using System;
+using Microsoft.Maui.Controls;
+using System.Diagnostics;
 
+namespace MauiApp2
+{
+    public partial class MainPage : ContentPage
+    {
+
+        string userPrompt;
+        string apiKey = "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";
+
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+
+        private void OnPromptBtnClicked(object sender, EventArgs e)
+        {
+            var userPrompt = InputBox.Text;
+            TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
+        }
+
+        private void InputBox_Completed(System.Object sender, System.EventArgs e)
+        {
+            var userPrompt = InputBox.Text;
+            TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
+        }
+
+        private async void TestPythonCode(string userPrompt)
+        {
+            var result = await RunPythonScriptAsync(userPrompt, apiKey);  // Replace "your-api-key-here" with your actual API key
+            Define_Output(result);
+        }
+
+        private void Define_Output(string output)
+        {
+            Output.Text = output;
+        }
+
+        private async Task<string> RunPythonScriptAsync(string message, string apiKey)
+        {
+            return await Task.Run(() =>
+            {
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = @"C:\Program Files\Python311\python.exe",
+                        Arguments = $"\"C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\interpreter_wrapper.py\" \"{message}\" \"{apiKey}\"",
+                        RedirectStandardOutput = true,
+                        UseShellExecute = false,
+                        //CreateNoWindow = true,
+                    }
+                };
+
+                process.Start();
+                string result = process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
+                return result;
+            });
+        }
+
+    }
 }
