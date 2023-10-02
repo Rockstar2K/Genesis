@@ -1,9 +1,9 @@
 
-User Prompt: como estas vaina
+User Prompt: hola
 Response:                                                                                
-  Â¡Hola! Estoy bien, gracias. Â¿CÃ³mo puedo ayudarte hoy?                        
+  ¡Hola! ¿Cómo puedo ayudarte hoy?                                             
                                                                                
-User Prompt: como estas vaina
+User Prompt: hola
 Response:                                                                                
-  Â¡Hola! Estoy bien, gracias. Â¿CÃ³mo puedo ayudarte hoy?                        
+  ¡Hola! ¿Cómo puedo ayudarte hoy?                                             
                                                                                

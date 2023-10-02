@@ -48,29 +48,46 @@ namespace MauiApp2
         private async Task<string> RunPythonScriptAsync(string message, string apiKey)
         {
 
-            string result = null;
-
             if (OperatingSystem.IsMacCatalyst())
             {
+                //paths
+                string projectDirectory = "/Users/n/Desktop/Genesis Roco/Genesis/MauiApp2/";
+                string scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+                string pythonPath = "/Users/n/anaconda3/bin/python";
+
                 return await Task.Run(() =>
                 {
                     var process = new Process
                     {
                         StartInfo = new ProcessStartInfo
                         {
-                            FileName = @"/Users/n/anaconda3/python.app",
-                            Arguments = $@"""/Users/n/Desktop/Genesis Roco/Genesis/MauiApp2/interpreter_wrapper.py"" ""{message}"" ""{apiKey}""",
+                            FileName = $"{pythonPath}",
+                            Arguments = $"\"{scriptPath}\" \"{message}\" \"{apiKey}\"",
                             RedirectStandardOutput = true,
+                            RedirectStandardError = true,  // Re-enable error redirection
                             UseShellExecute = false,
-                            CreateNoWindow = true, //opens (or not) a cmd window
+                            CreateNoWindow = true,
+                            // weird characters are removed
+                            StandardOutputEncoding = Encoding.UTF8,
+                            StandardErrorEncoding = Encoding.UTF8
                         }
                     };
 
                     process.Start();
-                    result = process.StandardOutput.ReadToEnd();
+                    string result = process.StandardOutput.ReadToEnd();
+                    string error = process.StandardError.ReadToEnd();  // Re-enable error capture
                     process.WaitForExit();
-                    return result;
 
+                    RAMconversation(message, result);
+                    SSDconversation(message, result);
+
+
+                    if (!string.IsNullOrEmpty(error))
+                    {
+                        Debug.WriteLine("Error/Debug output: " + error);
+                    }
+
+                    return result + "\n" + error;  // Combine standard and error output
                 });
             }
 
@@ -93,6 +110,8 @@ namespace MauiApp2
                             RedirectStandardError = true,  // Re-enable error redirection
                             UseShellExecute = false,
                             CreateNoWindow = true,
+                            StandardOutputEncoding = Encoding.UTF8,
+                            StandardErrorEncoding = Encoding.UTF8
                         }
                     };
 

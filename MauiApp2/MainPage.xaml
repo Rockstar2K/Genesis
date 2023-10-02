@@ -3,55 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp2.MainPage">
 
-    <ScrollView
-            BackgroundColor="#121B3F">
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <Image
+        <ScrollView Grid.Row="0" BackgroundColor="#fff">
+            <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="FillAndExpand">
+            <!--
+                    <Image
                 Source="lyris_logo.png"
                 SemanticProperties.Description="El increible logo de liris!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
-            <!--
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-            -->
-            <Label
+
+                     <Label
                 Text="¡Hola, soy Lyris!"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <Label
+                     <Label
                 Text="Voy a ser tu nueva asistente"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
                 HorizontalOptions="Center" />
-            <Entry
-                x:Name="InputBox"
-                Placeholder="¿Que quieres que haga?"
-                Completed="InputBox_Completed"/>
+            -->
 
-            <Button
-                x:Name="PromptBtn"
-                Text="Enviar al modelo"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnPromptBtnClicked"
-                HorizontalOptions="Center" />
-            <Label
-                x:Name="Output"
-                />
+                <BoxView HeightRequest="0" VerticalOptions="FillAndExpand" />
+                <Label x:Name="Output" TextColor="#121B3F" />
 
+            </VerticalStackLayout>
+        </ScrollView>
 
-        </VerticalStackLayout>
-    </ScrollView>
+        <!-- Entry and Button at the bottom -->
+        <Grid Grid.Row="1" BackgroundColor="#121B3F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
+            <Entry x:Name="InputBox" Grid.Column="0" Placeholder="¿Que quieres que haga?" Completed="InputBox_Completed" PlaceholderColor="white"/>
+            <Button x:Name="PromptBtn" Grid.Column="1" Text="Enviar" Clicked="OnPromptBtnClicked" HorizontalOptions="End" TextColor="#121B3F" BackgroundColor="#fff" BorderWidth="1" CornerRadius="0"/>
+        </Grid>
+
+    </Grid>
 </ContentPage>
-
