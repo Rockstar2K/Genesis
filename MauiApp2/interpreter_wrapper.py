@@ -9,13 +9,23 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 def Set_API_Key(key):
     interpreter.api_key = "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"
 
+
+
+# ...
+
 def read_conversation_history():
-    # Specify the path to the conversation history file
-    file_path = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\user_prompts_and_responses.txt"
+    # Get the root directory of your project
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Construct the path to the conversation history file
+    file_path = os.path.join(root_dir, "user_prompts_and_responses.txt")
+    
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             return file.read()
     return ""
+
+# ...
 
 def OI_Python(message, api_key=None):
     if api_key:
@@ -33,6 +43,9 @@ def OI_Python(message, api_key=None):
                 return chunk    
     except Exception as e:
         return f"Error: {e}"
+    
+
+# ...
 
 if __name__ == "__main__":
     message = sys.argv[1]

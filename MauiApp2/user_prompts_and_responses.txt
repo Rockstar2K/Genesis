@@ -1,5 +1,9 @@
 
-User Prompt: todo bien?
+User Prompt: como estas vaina
 Response:                                                                                
-  Â¡Hola! SÃ­, todo estÃ¡ bien. Â¿CÃ³mo puedo ayudarte hoy?                         
+  Â¡Hola! Estoy bien, gracias. Â¿CÃ³mo puedo ayudarte hoy?                        
+                                                                               
+User Prompt: como estas vaina
+Response:                                                                                
+  Â¡Hola! Estoy bien, gracias. Â¿CÃ³mo puedo ayudarte hoy?                        
                                                                                

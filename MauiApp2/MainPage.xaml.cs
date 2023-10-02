@@ -124,11 +124,9 @@ namespace MauiApp2
         {
             if (System.OperatingSystem.IsWindows())
             {
-
+                //path
                 string ramDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
                 string ramFile = Path.Combine(ramDirectory, "user_prompts_and_responses.txt");
-
-                //string filePath = @"C:\Users\thega\source\repos\MauiApp2\MauiApp2\user_prompts_and_responses.txt";
 
                 string newContent = $"\nUser Prompt: {message}\nResponse: {result}\n";
                 File.WriteAllText(ramFile, newContent);  // This will overwrite the existing content with the new content
@@ -144,14 +142,15 @@ namespace MauiApp2
 
             if (System.OperatingSystem.IsWindows())
             {
-                string filePath = @"C:\Users\thega\source\repos\MauiApp2\MauiApp2\all_user_prompts_and_responses.txt";
+                //path
+                string ssdDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                string ssdFile = Path.Combine(ssdDirectory, "user_prompts_and_responses.txt");
+
                 // Append the new User Prompt and Response to the file
-                File.AppendAllText(filePath, $"User Prompt: {message}\nResponse: {result}\n");
-                Debug.WriteLine(filePath);
+                File.AppendAllText(ssdFile, $"User Prompt: {message}\nResponse: {result}\n");
+                Debug.WriteLine(ssdFile);
 
             }
-
-
         }
 
 
