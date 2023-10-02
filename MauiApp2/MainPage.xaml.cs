@@ -10,7 +10,7 @@ namespace MauiApp2
     {
 
         string userPrompt;
-        string apiKey = "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";
+        string apiKey = "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";
 
         public MainPage()
         {
@@ -65,6 +65,11 @@ namespace MauiApp2
                 string result = process.StandardOutput.ReadToEnd();
                 string error = process.StandardError.ReadToEnd();  // Re-enable error capture
                 process.WaitForExit();
+
+                // Guardar el mensaje del usuario y la respuesta en un archivo .txt
+                File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "user_prompts_and_responses.txt", $"User Prompt: {message}\nResponse: {result}\n");
+                Debug.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "user_prompts_and_responses.txt"); //escribe la ruta de acceso al txt (para cachar donde está)
+
 
                 if (!string.IsNullOrEmpty(error))
                 {
