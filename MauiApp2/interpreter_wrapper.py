@@ -27,11 +27,9 @@ def OI_Python(message, api_key=None):
         
         if conversation_history:
             for chunk in interpreter.chat(f"{message}context of our previous conversation: {conversation_history}"):
-                print(chunk)
                 return chunk
         else:
             for chunk in interpreter.chat(message):
-                print(chunk)
                 return chunk    
     except Exception as e:
         return f"Error: {e}"

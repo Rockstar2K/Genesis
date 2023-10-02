@@ -1,5 +1,5 @@
 
-User Prompt: como estas
+User Prompt: todo bien?
 Response:                                                                                
-  Â¡Hola! Estoy bien, gracias. Â¿CÃ³mo puedo ayudarte hoy?                        
+  Â¡Hola! SÃ­, todo estÃ¡ bien. Â¿CÃ³mo puedo ayudarte hoy?                         
                                                                                
