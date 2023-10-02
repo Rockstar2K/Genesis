@@ -1,9 +1,13 @@
 
-User Prompt: hola
+User Prompt: eres mi amigo?
 Response:                                                                                
-  ¡Hola! ¿Cómo puedo ayudarte hoy?                                             
+  Como un programa de inteligencia artificial, no tengo emociones ni la        
+  capacidad de formar relaciones personales. Sin embargo, estoy aquí para      
+  ayudarte en la medida de lo posible. ¿Cómo puedo asistirte hoy?              
                                                                                
-User Prompt: hola
+User Prompt: eres mi amigo?
 Response:                                                                                
-  ¡Hola! ¿Cómo puedo ayudarte hoy?                                             
+  Como un programa de inteligencia artificial, no tengo emociones ni la        
+  capacidad de formar relaciones personales. Sin embargo, estoy aquí para      
+  ayudarte en la medida de lo posible. ¿Cómo puedo asistirte hoy?              
                                                                                

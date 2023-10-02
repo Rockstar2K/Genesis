@@ -29,29 +29,29 @@
     <AppXManifest Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-10-02T19:02:20.666</Modified>
+      <Modified>2023-10-02T20:06:58.948</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-10-02T19:01:49.047</Modified>
+      <Modified>2023-10-02T20:06:57.724</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\MauiApp2.runtimeconfig.json">
       <PackagePath>MauiApp2.runtimeconfig.json</PackagePath>
-      <Modified>2023-10-02T18:31:34.823</Modified>
+      <Modified>2023-10-02T20:06:57.313</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\MauiApp2.dll">
       <PackagePath>MauiApp2.dll</PackagePath>
-      <Modified>2023-10-02T19:02:18.343</Modified>
+      <Modified>2023-10-02T20:06:55.020</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MauiApp2.exe</PackagePath>
-      <Modified>2023-10-02T19:02:18.364</Modified>
+      <Modified>2023-10-02T20:06:55.070</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\MauiApp2.deps.json">
       <PackagePath>MauiApp2.deps.json</PackagePath>
-      <Modified>2023-10-02T18:31:34.723</Modified>
+      <Modified>2023-10-02T20:06:57.136</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.11\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -2143,255 +2143,255 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.029</Modified>
+      <Modified>2023-10-02T20:06:15.085</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
       <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.042</Modified>
+      <Modified>2023-10-02T20:06:15.086</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
       <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.062</Modified>
+      <Modified>2023-10-02T20:06:15.087</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
       <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.096</Modified>
+      <Modified>2023-10-02T20:06:15.088</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.181</Modified>
+      <Modified>2023-10-02T20:06:15.089</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
-      <Modified>2023-09-24T14:54:03.321</Modified>
+      <Modified>2023-10-02T20:06:15.030</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf">
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
-      <Modified>2023-09-24T14:54:03.321</Modified>
+      <Modified>2023-10-02T20:06:15.032</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
-      <Modified>2023-10-02T18:31:33.227</Modified>
+      <Modified>2023-10-02T20:06:15.034</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.413</Modified>
+      <Modified>2023-10-02T20:06:15.035</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
       <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.422</Modified>
+      <Modified>2023-10-02T20:06:15.036</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
       <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.429</Modified>
+      <Modified>2023-10-02T20:06:15.037</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
       <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.441</Modified>
+      <Modified>2023-10-02T20:06:15.038</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.488</Modified>
+      <Modified>2023-10-02T20:06:15.039</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.284</Modified>
+      <Modified>2023-10-02T20:06:15.040</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.286</Modified>
+      <Modified>2023-10-02T20:06:15.040</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.297</Modified>
+      <Modified>2023-10-02T20:06:15.042</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.288</Modified>
+      <Modified>2023-10-02T20:06:15.042</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.291</Modified>
+      <Modified>2023-10-02T20:06:15.043</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.266</Modified>
+      <Modified>2023-10-02T20:06:15.044</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.269</Modified>
+      <Modified>2023-10-02T20:06:15.045</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.282</Modified>
+      <Modified>2023-10-02T20:06:15.045</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.271</Modified>
+      <Modified>2023-10-02T20:06:15.046</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.275</Modified>
+      <Modified>2023-10-02T20:06:15.047</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.235</Modified>
+      <Modified>2023-10-02T20:06:15.048</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
       <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.237</Modified>
+      <Modified>2023-10-02T20:06:15.049</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
       <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.240</Modified>
+      <Modified>2023-10-02T20:06:15.049</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
       <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.243</Modified>
+      <Modified>2023-10-02T20:06:15.050</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
       <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.247</Modified>
+      <Modified>2023-10-02T20:06:15.051</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
       <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.250</Modified>
+      <Modified>2023-10-02T20:06:15.052</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
       <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.253</Modified>
+      <Modified>2023-10-02T20:06:15.053</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
       <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.264</Modified>
+      <Modified>2023-10-02T20:06:15.053</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
       <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.255</Modified>
+      <Modified>2023-10-02T20:06:15.054</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
       <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.258</Modified>
+      <Modified>2023-10-02T20:06:15.055</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
       <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.335</Modified>
+      <Modified>2023-10-02T20:06:15.055</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
       <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.339</Modified>
+      <Modified>2023-10-02T20:06:15.056</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
       <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.344</Modified>
+      <Modified>2023-10-02T20:06:15.057</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
       <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.350</Modified>
+      <Modified>2023-10-02T20:06:15.058</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
       <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.361</Modified>
+      <Modified>2023-10-02T20:06:15.059</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
       <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.315</Modified>
+      <Modified>2023-10-02T20:06:15.060</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
       <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.318</Modified>
+      <Modified>2023-10-02T20:06:15.060</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
       <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.322</Modified>
+      <Modified>2023-10-02T20:06:15.061</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
       <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.326</Modified>
+      <Modified>2023-10-02T20:06:15.062</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
       <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.332</Modified>
+      <Modified>2023-10-02T20:06:15.063</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
       <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.300</Modified>
+      <Modified>2023-10-02T20:06:15.064</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
       <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.303</Modified>
+      <Modified>2023-10-02T20:06:15.065</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
       <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.306</Modified>
+      <Modified>2023-10-02T20:06:15.066</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
       <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.308</Modified>
+      <Modified>2023-10-02T20:06:15.067</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
       <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.313</Modified>
+      <Modified>2023-10-02T20:06:15.068</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
       <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.365</Modified>
+      <Modified>2023-10-02T20:06:15.068</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
       <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.370</Modified>
+      <Modified>2023-10-02T20:06:15.069</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
       <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.376</Modified>
+      <Modified>2023-10-02T20:06:15.070</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
       <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.385</Modified>
+      <Modified>2023-10-02T20:06:15.071</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.407</Modified>
+      <Modified>2023-10-02T20:06:15.072</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.259</Modified>
+      <Modified>2023-10-02T20:06:15.073</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.268</Modified>
+      <Modified>2023-10-02T20:06:15.073</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.280</Modified>
+      <Modified>2023-10-02T20:06:15.075</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.299</Modified>
+      <Modified>2023-10-02T20:06:15.076</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.341</Modified>
+      <Modified>2023-10-02T20:06:15.078</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\lyris_logo.scale-100.png">
       <PackagePath>lyris_logo.scale-100.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.258</Modified>
+      <Modified>2023-10-02T20:06:15.079</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\lyris_logo.scale-125.png">
       <PackagePath>lyris_logo.scale-125.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.267</Modified>
+      <Modified>2023-10-02T20:06:15.081</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\lyris_logo.scale-150.png">
       <PackagePath>lyris_logo.scale-150.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.280</Modified>
+      <Modified>2023-10-02T20:06:15.081</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\lyris_logo.scale-200.png">
       <PackagePath>lyris_logo.scale-200.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.299</Modified>
+      <Modified>2023-10-02T20:06:15.083</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\lyris_logo.scale-400.png">
       <PackagePath>lyris_logo.scale-400.png</PackagePath>
-      <Modified>2023-10-02T18:31:33.362</Modified>
+      <Modified>2023-10-02T20:06:15.084</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
