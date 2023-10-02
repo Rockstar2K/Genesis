@@ -3,6 +3,7 @@ using System;
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
 using System.Text;
+using System.Windows.Forms;
 
 namespace MauiApp2
 {
@@ -12,6 +13,7 @@ namespace MauiApp2
         string userPrompt;
         string apiKey = "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";
 
+
         public MainPage()
         {
             InitializeComponent();
@@ -19,7 +21,7 @@ namespace MauiApp2
 
         private void OnPromptBtnClicked(object sender, EventArgs e)
         {
-            var userPrompt = InputBox.Text;
+            userPrompt = InputBox.Text;
             Output.Text = "Waiting for response...";  // Set the text to "Waiting for response"
             TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
         }
@@ -66,9 +68,8 @@ namespace MauiApp2
                 string error = process.StandardError.ReadToEnd();  // Re-enable error capture
                 process.WaitForExit();
 
-                // Guardar el mensaje del usuario y la respuesta en un archivo .txt
-                File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "user_prompts_and_responses.txt", $"User Prompt: {message}\nResponse: {result}\n");
-                Debug.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "user_prompts_and_responses.txt"); //escribe la ruta de acceso al txt (para cachar donde está)
+                RAMconversation(message, result);
+                SSDconversation(message, result);
 
 
                 if (!string.IsNullOrEmpty(error))
@@ -79,6 +80,26 @@ namespace MauiApp2
                 return result + "\n" + error;  // Combine standard and error output
             });
         }
+
+        private void RAMconversation(string message, string result) //low memory for resend it with the prompt
+        {
+            string filePath = @"C:\Users\thega\source\repos\MauiApp2\MauiApp2\user_prompts_and_responses.txt";
+            string newContent = $"\nUser Prompt: {message}\nResponse: {result}\n";
+            File.WriteAllText(filePath, newContent);  // This will overwrite the existing content with the new content
+            Debug.WriteLine(filePath);
+        }
+
+
+        private void SSDconversation(string message, string result) //stores all the conversaton data
+        {
+
+            string filePath = @"C:\Users\thega\source\repos\MauiApp2\MauiApp2\all_user_prompts_and_responses.txt";
+            // Append the new User Prompt and Response to the file
+            File.AppendAllText(filePath, $"User Prompt: {message}\nResponse: {result}\n");
+            Debug.WriteLine(filePath);
+
+        }
+
 
 
     }
