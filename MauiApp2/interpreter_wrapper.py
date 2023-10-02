@@ -30,7 +30,7 @@ def OI_Python(message, api_key=None):
                 print(chunk)
                 return chunk
         else:
-            for chunk in interpreter.chat(message): #, stream=True, display=False for the chunks but doesnt works
+            for chunk in interpreter.chat(message):
                 print(chunk)
                 return chunk    
     except Exception as e:

@@ -75,9 +75,11 @@ namespace MauiApp2
             }
 
             else if (System.OperatingSystem.IsWindows())
-            {
+            {   
+                //paths
                 string projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
                 string scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+                string pythonPath = "C:\\Program Files\\Python311\\python.exe";
 
                 return await Task.Run(() =>
                 {
@@ -85,7 +87,7 @@ namespace MauiApp2
                     {
                         StartInfo = new ProcessStartInfo
                         {
-                            FileName = @"C:\Program Files\Python311\python.exe",
+                            FileName = $"{pythonPath}",
                             Arguments = $"\"{scriptPath}\" \"{message}\" \"{apiKey}\"",
                             RedirectStandardOutput = true,
                             RedirectStandardError = true,  // Re-enable error redirection

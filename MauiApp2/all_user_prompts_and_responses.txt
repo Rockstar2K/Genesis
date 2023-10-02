@@ -218,3 +218,11 @@ User Prompt: hola
 Response:                                                                                
   Â¡Hola! Â¿CÃ³mo puedo ayudarte hoy?                                             
                                                                                
+User Prompt: hola
+Response:                                                                                
+  Â¡Hola! Â¿CÃ³mo puedo ayudarte hoy?                                             
+                                                                               
+User Prompt: como estas
+Response:                                                                                
+  Â¡Hola! Estoy bien, gracias. Â¿CÃ³mo puedo ayudarte hoy?                        
+                                                                               

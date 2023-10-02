@@ -1,5 +1,5 @@
 
-User Prompt: hola
+User Prompt: como estas
 Response:                                                                                
-  Â¡Hola! Â¿CÃ³mo puedo ayudarte hoy?                                             
+  Â¡Hola! Estoy bien, gracias. Â¿CÃ³mo puedo ayudarte hoy?                        
                                                                                
