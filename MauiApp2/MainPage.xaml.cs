@@ -1,9 +1,10 @@
-﻿
-using System;
+﻿using System;
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace MauiApp2
 {
@@ -48,6 +49,9 @@ namespace MauiApp2
 
         private async Task<string> RunPythonScriptAsync(string message, string apiKey)
         {
+            string projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+            string scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+
             return await Task.Run(() =>
             {
                 var process = new Process
@@ -55,7 +59,7 @@ namespace MauiApp2
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = @"C:\Program Files\Python311\python.exe",
-                        Arguments = $"\"C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\interpreter_wrapper.py\" \"{message}\" \"{apiKey}\"",
+                        Arguments = $"\"{scriptPath}\" \"{message}\" \"{apiKey}\"",
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,  // Re-enable error redirection
                         UseShellExecute = false,
