@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default">
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/MainPage.xaml.cs">
+    <Files>
+      <File FileName="MauiApp2/IAudioPlayer.cs" />
+      <File FileName="MauiApp2/interpreter_wrapper.py" />
+      <File FileName="MauiApp2/MauiProgram.cs" />
+      <File FileName="MauiApp2/AppShell.xaml.cs" />
+      <File FileName="MauiApp2/MainPage.xaml.cs" Line="34" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MauiApp2">
+            <Node name="MauiApp2" expanded="True">
+              <Node name="MainPage.xaml" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

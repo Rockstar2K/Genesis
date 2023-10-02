@@ -12,7 +12,11 @@ namespace MauiApp2
     {
 
         string userPrompt;
+<<<<<<< Updated upstream
         string apiKey = "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";
+=======
+        string apiKey = "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";
+>>>>>>> Stashed changes
 
 
         public MainPage()
@@ -49,9 +53,13 @@ namespace MauiApp2
 
         private async Task<string> RunPythonScriptAsync(string message, string apiKey)
         {
+<<<<<<< HEAD
             string projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
             string scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> 057d8ea09943c379c15606ed750007ae675386ba
             return await Task.Run(() =>
             {
                 var process = new Process
@@ -83,6 +91,61 @@ namespace MauiApp2
 
                 return result + "\n" + error;  // Combine standard and error output
             });
+=======
+            string result = null;
+
+            if (OperatingSystem.IsMacCatalyst())
+            {
+                return await Task.Run(() =>
+                {
+                    var process = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = @"/Users/n/anaconda3/python.app",
+                            Arguments = $@"""/Users/n/Desktop/Genesis Roco/Genesis/MauiApp2/interpreter_wrapper.py"" ""{message}"" ""{apiKey}""",
+                            RedirectStandardOutput = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true, //opens (or not) a cmd window
+                        }
+                    };
+
+                    process.Start();
+                    result = process.StandardOutput.ReadToEnd();
+                    process.WaitForExit();
+                    return result;
+
+                });
+            }
+
+            else if (OperatingSystem.IsWindows())
+            {
+                return await Task.Run(() =>
+                {
+                    var process = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = @"C:\Program Files\Python311\python.exe",
+                            Arguments = $"\"C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\interpreter_wrapper.py\" \"{message}\" \"{apiKey}\"",
+                            RedirectStandardOutput = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true, //opens (or not) a cmd window
+                        }
+                    };
+
+                    process.Start();
+                    result = process.StandardOutput.ReadToEnd();
+                    process.WaitForExit();
+                    return result;
+
+                });
+
+            }
+            return result;
+
+
+>>>>>>> Stashed changes
         }
 
         private void RAMconversation(string message, string result) //low memory for resend it with the prompt
