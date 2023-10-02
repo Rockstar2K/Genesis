@@ -2,7 +2,6 @@
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
 using System.Text;
-using System.Windows.Forms;
 using System.IO;
 
 
@@ -12,31 +11,35 @@ namespace MauiApp2
     {
 
         string userPrompt;
-        string apiKey = "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";
+        readonly string apiKey = "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";
         public MainPage()
         {
             InitializeComponent();
         }
 
+        /*
         private void OnPromptBtnClicked(object sender, EventArgs e)
         {
             userPrompt = InputBox.Text;
             Output.Text = "Waiting for response...";  // Set the text to "Waiting for response"
             TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
         }
+        */
+
+
 
         private void InputBox_Completed(System.Object sender, System.EventArgs e)
         {
-            var userPrompt = InputBox.Text;
+            userPrompt = InputBox.Text;
             Output.Text = "Waiting for response...";  // Set the text to "Waiting for response"
             TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
         }
 
         private async void TestPythonCode(string userPrompt)
         {
-            var result = await RunPythonScriptAsync(userPrompt, apiKey);  
+            InputBox.Text = "...";
+            var result = await RunPythonScriptAsync(userPrompt, apiKey);
             Define_Output(result);
-            InputBox.Text = "";  // Clear the text in the Entry after the response has been received and displayed
 
         }
 
@@ -92,7 +95,7 @@ namespace MauiApp2
             }
 
             else if (System.OperatingSystem.IsWindows())
-            {   
+            {
                 //paths
                 string projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
                 string scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
@@ -110,6 +113,7 @@ namespace MauiApp2
                             RedirectStandardError = true,  // Re-enable error redirection
                             UseShellExecute = false,
                             CreateNoWindow = true,
+                            // weird characters are removed
                             StandardOutputEncoding = Encoding.UTF8,
                             StandardErrorEncoding = Encoding.UTF8
                         }
@@ -134,10 +138,10 @@ namespace MauiApp2
             }
             else
             {
-                   return string.Empty;
+                return string.Empty;
             }
 
-        }        
+        }
 
         private void RAMconversation(string message, string result) //low memory for resend it with the prompt
         {
@@ -152,18 +156,18 @@ namespace MauiApp2
                 Debug.WriteLine(ramFile);
             }
 
-            
+
         }
 
 
-        private void SSDconversation(string message, string result) //stores all the conversaton data
+        private void SSDconversation(string message, string result) //stores all the conversation data
         {
 
             if (System.OperatingSystem.IsWindows())
             {
                 //path
                 string ssdDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                string ssdFile = Path.Combine(ssdDirectory, "user_prompts_and_responses.txt");
+                string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
 
                 // Append the new User Prompt and Response to the file
                 File.AppendAllText(ssdFile, $"User Prompt: {message}\nResponse: {result}\n");

@@ -9,29 +9,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollView Grid.Row="0" BackgroundColor="#fff">
+        <ScrollView Grid.Row="0" BackgroundColor="#EAEAEA">
             <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="FillAndExpand">
-            <!--
-                    <Image
-                Source="lyris_logo.png"
-                SemanticProperties.Description="El increible logo de liris!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-                     <Label
-                Text="¡Hola, soy Lyris!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-                     <Label
-                Text="Voy a ser tu nueva asistente"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-            -->
-
+              
                 <BoxView HeightRequest="0" VerticalOptions="FillAndExpand" />
                 <Label x:Name="Output" TextColor="#121B3F" />
 
@@ -39,14 +19,23 @@
         </ScrollView>
 
         <!-- Entry and Button at the bottom -->
-        <Grid Grid.Row="1" BackgroundColor="#121B3F">
+        <Grid Grid.Row="1" BackgroundColor="#EAEAEA" Padding="15">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Entry x:Name="InputBox" Grid.Column="0" Placeholder="¿Que quieres que haga?" Completed="InputBox_Completed" PlaceholderColor="white"/>
-            <Button x:Name="PromptBtn" Grid.Column="1" Text="Enviar" Clicked="OnPromptBtnClicked" HorizontalOptions="End" TextColor="#121B3F" BackgroundColor="#fff" BorderWidth="1" CornerRadius="0"/>
+
+            <Frame Padding="0" BorderColor="#F2CFE2" CornerRadius="5" HasShadow="False" Grid.Column="1">
+                <Entry x:Name="InputBox" 
+               TextColor="#121B3F" 
+               Placeholder="¿Que quieres que haga?" 
+               Completed="InputBox_Completed" 
+               PlaceholderColor="#68667D" 
+               BackgroundColor="#EAEAEA"
+                />
+            </Frame>
+
         </Grid>
 
     </Grid>
