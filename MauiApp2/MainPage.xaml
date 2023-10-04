@@ -1,65 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp2.MainPage">
+<ContentPage
+    x:Class="MauiApp2.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Grid VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ScrollView Grid.Row="0"
-                    BackgroundColor="#EAEAEA">
+        <ScrollView Grid.Row="0" BackgroundColor="#EAEAEA">
 
-            <VerticalStackLayout Spacing="25"
-                                Padding="30,0"
-                                VerticalOptions="FillAndExpand">
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25"
+                VerticalOptions="FillAndExpand">
                 <AbsoluteLayout Margin="0,20">
                     <ImageButton
+                        x:Name="Settings"
                         AbsoluteLayout.LayoutBounds="1,0.5"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
-                        HorizontalOptions="End"    
-                        x:Name="Settings"
-                        Pressed="Settings_Pressed"
                         CornerRadius="15"
+                        HorizontalOptions="End"
+                        Pressed="Settings_Pressed"
                         Source="settings.png">
                         <ImageButton.Shadow>
                             <Shadow
-                            Brush="#121B3F"
-                            Offset="0,20"
-                            Radius="25"
-                            Opacity="0.2"/>
+                                Brush="#121B3F"
+                                Opacity="0.2"
+                                Radius="25"
+                                Offset="0,20" />
 
                         </ImageButton.Shadow>
 
                     </ImageButton>
-                    <HorizontalStackLayout
-                        AbsoluteLayout.LayoutBounds="0.5,0"
-                        AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="PositionProportional">
                         <ImageButton
                             x:Name="Chat_Option"
                             Pressed="Chat_Option_Pressed"
-                            Source="chat_option.png"/>
+                            Source="chat_option.png" />
                         <ImageButton
                             x:Name="Voice_Option"
                             Pressed="Voice_Option_Pressed"
-                            Source="voice_dialog_option.png"/>
+                            Source="voice_dialog_option.png" />
                         <HorizontalStackLayout.Shadow>
                             <Shadow
-                            Brush="#121B3F"
-                            Offset="0,20"
-                            Radius="25"
-                            Opacity="0.15"/>
+                                Brush="#121B3F"
+                                Opacity="0.15"
+                                Radius="25"
+                                Offset="0,20" />
                         </HorizontalStackLayout.Shadow>
                     </HorizontalStackLayout>
                 </AbsoluteLayout>
 
-                
-                <BoxView HeightRequest="0"
-                         VerticalOptions="FillAndExpand" />
 
-                <VerticalStackLayout x:Name="ChatLayout" Spacing="25" Padding="30,0" VerticalOptions="FillAndExpand">
+                <BoxView HeightRequest="0" VerticalOptions="FillAndExpand" />
+
+                <VerticalStackLayout
+                    x:Name="ChatLayout"
+                    Padding="30,0"
+                    Spacing="25"
+                    VerticalOptions="FillAndExpand">
                     <!--
                             <Frame
                             BackgroundColor="#F2CFE2"
@@ -73,39 +75,49 @@
                                     Offset="0,5"
                                     Radius="15"
                                     Opacity="0.1"/>
-                            </Frame.Shadow>      
+                            </Frame.Shadow>
                         <Label x:Name="Output"
                                TextColor="#121B3F"/>
                         </Frame>
                     -->
                 </VerticalStackLayout>
-                
-                
+
+
 
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- Entry and Button at the bottom -->
-        <Grid Grid.Row="1" BackgroundColor="#EAEAEA" Padding="15">
+        <!--  Entry and Button at the bottom  -->
+        <Grid
+            Grid.Row="1"
+            Padding="15"
+            BackgroundColor="#EAEAEA">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            
-            <Frame Padding="0" BorderColor="#F2CFE2" CornerRadius="5" Opacity="0.5" Grid.Column="1" Margin="20,0,20,20">
-                <Entry x:Name="InputBox" 
-                   TextColor="#121B3F" 
-                   Placeholder="¿Que quieres que haga?" 
-                   Completed="InputBox_Completed" 
-                   PlaceholderColor="#68667D"
-                   BackgroundColor="#EAEAEA">
+
+            <Frame
+                Grid.Column="1"
+                Margin="20,0,20,20"
+                Padding="0"
+                BorderColor="#F2CFE2"
+                CornerRadius="5"
+                Opacity="0.5">
+                <Entry
+                    x:Name="InputBox"
+                    BackgroundColor="#fff"
+                    Completed="InputBox_Completed"
+                    Placeholder="¿Que quieres que haga?"
+                    PlaceholderColor="#68667D"
+                    TextColor="#121B3F">
                     <Entry.Shadow>
                         <Shadow
                             Brush="#121B3F"
-                            Offset="0,20"
+                            Opacity="0.4"
                             Radius="30"
-                            Opacity="0.4"/>
+                            Offset="0,20" />
 
                     </Entry.Shadow>
 

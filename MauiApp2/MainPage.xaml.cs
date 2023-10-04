@@ -30,10 +30,10 @@ namespace MauiApp2
         private void InputBox_Completed(System.Object sender, System.EventArgs e)
         {
             userPrompt = InputBox.Text;
-            //Output.Text = "Waiting for response...";  // Set the text to "Waiting for response"
             TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
             //PlayUserPrompt(userPrompt);  // method to play the user prompt in TTS
             AddChatBoxToUI(userPrompt);
+            InputBox.Text = "";
 
         }
 
@@ -66,9 +66,7 @@ namespace MauiApp2
             stackLayout.Children.Add(frame);
         }
 
-
-
-        private async void PlayUserPrompt(string text)
+        private async void PlayAudioPrompt(string text)
         {
             byte[] audioData = await ttsPlayer.GetAudioData(text);  // Assuming you have this method set up
             ttsPlayer.PlayAudio(audioData);
@@ -76,7 +74,6 @@ namespace MauiApp2
 
         private async void TestPythonCode(string userPrompt)
         {
-            //InputBox.Text = "";
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
             Define_Output(result);
 
@@ -84,7 +81,6 @@ namespace MauiApp2
 
         private void Define_Output(string output)
         {
-            //Output.Text = output;
             AddChatBoxToUI(output);
 
         }
@@ -124,7 +120,6 @@ namespace MauiApp2
 
                     RAMconversation(message, result);
                     SSDconversation(message, result);
-
 
                     if (!string.IsNullOrEmpty(error))
                     {
