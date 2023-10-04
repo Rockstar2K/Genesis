@@ -56,25 +56,31 @@
                 </AbsoluteLayout>
 
                 
-
                 <BoxView HeightRequest="0"
                          VerticalOptions="FillAndExpand" />
-                <Frame
-                    BackgroundColor="#F2CFE2"
-                    BorderColor="Transparent"
-                    Margin="0,0,80,0"
-                    HasShadow="True"
-                    CornerRadius="25">
-                    <Frame.Shadow>
-                        <Shadow
-                            Brush="#121B3F"
-                            Offset="0,5"
-                            Radius="15"
-                            Opacity="0.1"/>
-                    </Frame.Shadow>      
-                <Label x:Name="Output"
-                       TextColor="#121B3F"/>
-                </Frame>
+
+                <VerticalStackLayout x:Name="ChatLayout" Spacing="25" Padding="30,0" VerticalOptions="FillAndExpand">
+                    <!--
+                            <Frame
+                            BackgroundColor="#F2CFE2"
+                            BorderColor="Transparent"
+                            Margin="0,0,80,0"
+                            HasShadow="True"
+                            CornerRadius="25">
+                            <Frame.Shadow>
+                                <Shadow
+                                    Brush="#121B3F"
+                                    Offset="0,5"
+                                    Radius="15"
+                                    Opacity="0.1"/>
+                            </Frame.Shadow>      
+                        <Label x:Name="Output"
+                               TextColor="#121B3F"/>
+                        </Frame>
+                    -->
+                </VerticalStackLayout>
+                
+                
 
             </VerticalStackLayout>
         </ScrollView>
@@ -86,7 +92,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-
+            
             <Frame Padding="0" BorderColor="#F2CFE2" CornerRadius="5" Opacity="0.5" Grid.Column="1" Margin="20,0,20,20">
                 <Entry x:Name="InputBox" 
                    TextColor="#121B3F" 

@@ -1,18 +1,67 @@
 
-User Prompt: como te llamas?
+User Prompt: cual es mi IP?
 Response: 
                                                                                
-  with                                                                         
-  open('C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt',      
-  'a') as f:                                                                   
-      f.write('- Hola, me llamo Roco y tu?\n')                                 
-      f.write('- Created a poem about The Vampire Diaries and saved it to the  
-  desktop as VampireDiariesPoem.txt\n')                                        
+  import socket                                                                
+                                                                               
+  hostname = socket.gethostname()                                              
+  IP = socket.gethostbyname(hostname)                                          
+                                                                               
+  with open('memory.txt', 'a') as f:                                           
+      f.write(f'• User IP: {IP}\n')                                            
+                                                                               
+  IP                                                                           
                                                                                
                                                                                
-  28                                                                           
-  97                                                                           
+  File "<stdin>", line 6, in <module>                                          
+  PermissionError: [Errno 13] Permission denied: 'memory.txt'                  
                                                                                                                                                               
-  I have updated the memory file with the important details of our             
-  conversation.                                                                
+  It seems like there was a permission error while trying to write to the      
+  file 'memory.txt'. Let's try to write to the file in your current working    
+  directory.                                                                   
+                                                                               
+                                                                               
+  import os                                                                    
+                                                                               
+  # Get the current working directory                                          
+  CWD = os.getcwd()                                                            
+                                                                               
+  # Define the path to the memory file                                         
+  memory_file = os.path.join(CWD, 'memory.txt')                                
+                                                                               
+  # Write the user's IP to the memory file                                     
+  with open(memory_file, 'a') as f:                                            
+      f.write(f'• User IP: {IP}\n')                                            
+                                                                               
+  IP                                                                           
+                                                                               
+                                                                               
+  File "<stdin>", line 6, in <module>                                          
+  PermissionError: [Errno 13] Permission denied:                               
+  'C:\\WINDOWS\\system32\\memory.txt'                                          
+                                                                                                                                                              
+  It seems like there is a permission issue with the current working           
+  directory. Let's try to write the memory file in the user's home directory   
+  instead.                                                                     
+                                                                               
+                                                                               
+  import os                                                                    
+                                                                               
+  # Get the user's home directory                                              
+  home_dir = os.path.expanduser('~')                                           
+                                                                               
+  # Define the path to the memory file                                         
+  memory_file = os.path.join(home_dir, 'memory.txt')                           
+                                                                               
+  # Write the user's IP to the memory file                                     
+  with open(memory_file, 'a') as f:                                            
+      f.write(f'• User IP: {IP}\n')                                            
+                                                                               
+  IP                                                                           
+                                                                               
+                                                                               
+  23                                                                           
+  '172.20.10.2'                                                                
+                                                                                                                                                              
+  Your IP address is 172.20.10.2.                                              
                                                                                

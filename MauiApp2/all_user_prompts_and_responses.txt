@@ -1,198 +1,265 @@
-User Prompt: Hola, me llamo Roco y tu?
-Response:                                                                                
-  Hola Roco, soy Open Interpreter, un programador de clase mundial. Estoy      
-  aquí para ayudarte con cualquier tarea de programación que necesites.        
-                                                                               
-  Para recordar nuestras conversaciones, voy a crear un archivo de texto en    
-  la ubicación que me has proporcionado y añadiré puntos de bala atómicos de   
-  nuestras conversaciones.                                                     
-                                                                               
-  Aquí está el plan:                                                           
-                                                                               
-   1 Crear un archivo de texto en la ubicación proporcionada si no existe.     
-   2 Añadir la conversación actual como un punto de bala atómico en el         
-     archivo.                                                                  
-                                                                               
-  Vamos a empezar con el primer paso. Voy a crear el archivo de texto si no    
-  existe.                                                                      
-                                                                               
-                                                                               
-  import os                                                                    
-                                                                               
-  # File path                                                                  
-  file_path =                                                                  
-  'C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt'            
-                                                                               
-  # Check if file exists                                                       
-  if not os.path.exists(file_path):                                            
-      # Create the file                                                        
-      with open(file_path, 'w') as f:                                          
-          pass                                                                 
-                                                                               
-  # Check if file was created                                                  
-  os.path.exists(file_path)                                                    
-                                                                               
-                                                                               
-  True                                                                         
-                                                                                                                                                              
-  El archivo ya existe en la ubicación proporcionada. Ahora, voy a añadir      
-  nuestra conversación actual como un punto de bala atómico en el archivo.     
-                                                                               
-  La conversación actual es: "Hola, me llamo Roco y tu? Your memory is in      
-  C:\Users\thega\source\repos\MauiApp2\MauiApp2\memory.txt, add atomic bullet  
-  points of our conversations so u can remember".                              
-                                                                               
-                                                                               
-  conversation = 'Hola, me llamo Roco y tu? Your memory is in                  
-  C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt, add atomic  
-  bullet points of our conversations so u can remember'                        
-                                                                               
-  # Add the conversation to the file                                           
-  with open(file_path, 'a') as f:                                              
-      f.write(f'- {conversation}\n')                                           
-                                                                               
-                                                                               
-  168                                                                          
-                                                                                                                                                              
-  He añadido con éxito nuestra conversación actual al archivo de memoria. Si   
-  tienes más tareas para mí, estaré encantado de ayudarte.                     
-                                                                               
+User Prompt: HOLA
+Response: 
+User Prompt: Hola me llamo Roco y tu?
+Response: 
+User Prompt: Como estás?
+Response: 
 User Prompt: cual es mi IP?
-Response:                                                                                
-  Para obtener tu dirección IP, necesitaremos ejecutar un código en Python     
-  que haga una solicitud a un servicio web que nos proporcionará esta          
-  información.                                                                 
-                                                                               
-  Plan:                                                                        
-                                                                               
-   1 Importar el módulo requests en Python.                                    
-   2 Hacer una solicitud GET al servicio web 'https://api.ipify.org'.          
-   3 Imprimir la respuesta, que será tu dirección IP.                          
-                                                                               
-  Vamos a ejecutar este plan.                                                  
-                                                                               
+Response: 
                                                                                
   import requests                                                              
                                                                                
-  response = requests.get('https://api.ipify.org')                             
-  response.text                                                                
+  ip = requests.get('https://api.ipify.org').text                              
+  with open('memory.txt', 'a') as f:                                           
+      f.write('* User IP: ' + ip + '\n')                                       
+  ip                                                                           
                                                                                
                                                                                
-  '45.232.94.83'                                                               
+  File "<stdin>", line 5, in <module>                                          
+  PermissionError: [Errno 13] Permission denied: 'memory.txt'                  
                                                                                                                                                               
-  Tu dirección IP es 45.232.94.83.                                             
+  It seems like there was a permission error while trying to write to the      
+  file 'memory.txt'. Let's try to write to the file in your current working    
+  directory (C:\WINDOWS\system32).                                             
                                                                                
-  Ahora, voy a actualizar tu archivo de memoria con los detalles de nuestra    
-  conversación.                                                                
-                                                                               
-  Plan:                                                                        
-                                                                               
-   1 Abrir el archivo de memoria en modo de escritura.                         
-   2 Añadir los detalles de nuestra conversación hasta ahora.                  
-   3 Cerrar el archivo.                                                        
-                                                                               
-  Vamos a ejecutar este plan.                                                  
-                                                                               
-
-User Prompt: Hola, me escribes un poema sobre the vampire diaries y lo guardas como un txt en mi escritorio?
-Response: 
                                                                                
   import os                                                                    
                                                                                
-  # Define the poem                                                            
-  poem = """                                                                   
-  In the town of Mystic Falls,                                                 
-  Where the night forever calls,                                               
-  Lives a tale of love and fright,                                             
-  Underneath the moon's soft light.                                            
+  # Get the current working directory                                          
+  cwd = os.getcwd()                                                            
                                                                                
-  Vampires, witches, werewolves roam,                                          
-  In this place they call their home.                                          
-  Secrets hidden, truths untold,                                               
-  A story of love, centuries old.                                              
+  # Create the path to the memory.txt file                                     
+  memory_file_path = os.path.join(cwd, 'memory.txt')                           
                                                                                
-  Elena, Stefan, Damon's plight,                                               
-  Their love story, a constant fight.                                          
-  A triangle of love and hate,                                                 
-  A destiny they cannot escape.                                                
+  # Write the user's IP to the memory.txt file                                 
+  with open(memory_file_path, 'a') as f:                                       
+      f.write('* User IP: ' + ip + '\n')                                       
                                                                                
-  In the shadows, danger lurks,                                                
-  As the power of darkness works.                                              
-  Yet in their hearts, love prevails,                                          
-  In the tale of Vampire Diaries' tales.                                       
-  """                                                                          
-                                                                               
-  # Define the path to the desktop                                             
-  path_to_desktop = os.path.join(os.path.expanduser('~'), 'Desktop')           
-                                                                               
-  # Define the filename                                                        
-  filename = 'VampireDiariesPoem.txt'                                          
-                                                                               
-  # Create the full path                                                       
-  full_path = os.path.join(path_to_desktop, filename)                          
-                                                                               
-  # Write the poem to the file                                                 
-  with open(full_path, 'w') as file:                                           
-      file.write(poem)                                                         
-                                                                               
-  # Update the memory file                                                     
-  memory_file =                                                                
-  'C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt'            
-  with open(memory_file, 'a') as file:                                         
-      file.write('- Created a poem about The Vampire Diaries and saved it to   
-  the desktop as VampireDiariesPoem.txt\n')                                    
-                                                                               
-  full_path                                                                    
+  ip                                                                           
                                                                                
                                                                                
-  529                                                                          
-  97                                                                           
-  'C:\\Users\\thega\\Desktop\\VampireDiariesPoem.txt'                          
+  File "<stdin>", line 6, in <module>                                          
+  PermissionError: [Errno 13] Permission denied:                               
+  'C:\\WINDOWS\\system32\\memory.txt'                                          
                                                                                                                                                               
+  It seems like there is a permission issue with the current working           
+  directory (C:\WINDOWS\system32). Let's try to write the file in the user's   
+  home directory instead.                                                      
                                                                                
-User Prompt: hola
+                                                                               
+  import os                                                                    
+                                                                               
+  # Get the user's home directory                                              
+  home_dir = os.path.expanduser('~')                                           
+                                                                               
+  # Create the path to the memory.txt file                                     
+  memory_file_path = os.path.join(home_dir, 'memory.txt')                      
+                                                                               
+  # Write the user's IP to the memory.txt file                                 
+  with open(memory_file_path, 'a') as f:                                       
+      f.write('* User IP: ' + ip + '\n')                                       
+                                                                               
+  ip                                                                           
+                                                                               
+                                                                               
+  24                                                                           
+  '45.232.94.86'                                                               
+                                                                                                                                                              
+  Your current IP address is 45.232.94.86.                                     
+                                                                               
+User Prompt: escríbeme un poema
 Response: 
                                                                                
-  with                                                                         
-  open('C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt',      
-  'a') as f:                                                                   
-      f.write('- Hola, me llamo Roco y tu?\n')                                 
-      f.write('- Created a poem about The Vampire Diaries and saved it to the  
-  desktop as VampireDiariesPoem.txt\n')                                        
+  import os                                                                    
+  import random                                                                
+                                                                               
+  # List of possible subjects                                                  
+  subjects = ['el sol', 'la luna', 'el viento', 'las estrellas', 'el mar',     
+  'la montaña', 'el río', 'la lluvia']                                         
+                                                                               
+  # List of possible actions                                                   
+  actions = ['brilla', 'baila', 'susurra', 'canta', 'llora', 'rie', 'sueña',   
+  'vuela']                                                                     
+                                                                               
+  # List of possible descriptions                                              
+  adjectives = ['brillante', 'silencioso', 'ruidoso', 'tranquilo', 'agitado',  
+  'sereno', 'misterioso', 'radiante']                                          
+                                                                               
+  # Select random elements from each list                                      
+  def generate_line():                                                         
+      subject = random.choice(subjects)                                        
+      action = random.choice(actions)                                          
+      adjective = random.choice(adjectives)                                    
+      return f'{subject} {action}, {adjective}.'                               
+                                                                               
+  # Generate a four-line poem                                                  
+  poem = '\n'.join(generate_line() for _ in range(4))                          
+                                                                               
+  # Write the poem to a text file                                              
+  with open('poem.txt', 'w') as f:                                             
+      f.write(poem)                                                            
+                                                                               
+  poem                                                                         
                                                                                
                                                                                
-  28                                                                           
-  97                                                                           
+  File "<stdin>", line 14, in <module>                                         
+  PermissionError: [Errno 13] Permission denied: 'poem.txt'                    
+                                                                               
+                                                                               
+  import os                                                                    
+                                                                               
+  # Check the current working directory                                        
+  cwd = os.getcwd()                                                            
+  cwd                                                                          
+                                                                               
+                                                                               
+  'C:\\WINDOWS\\system32'                                                      
+                                                                               
+                                                                               
+  import os                                                                    
+                                                                               
+  # Change the current working directory to the user's home directory          
+  os.chdir(os.path.expanduser('~'))                                            
+                                                                               
+  # Check the current working directory again                                  
+  cwd = os.getcwd()                                                            
+  cwd                                                                          
+                                                                               
+                                                                               
+  'C:\\Users\\thega'                                                           
+                                                                               
+                                                                               
+  import random                                                                
+                                                                               
+  # List of possible subjects                                                  
+  subjects = ['el sol', 'la luna', 'el viento', 'las estrellas', 'el mar',     
+  'la montaña', 'el río', 'la lluvia']                                         
+                                                                               
+  # List of possible actions                                                   
+  actions = ['brilla', 'baila', 'susurra', 'canta', 'llora', 'rie', 'sueña',   
+  'vuela']                                                                     
+                                                                               
+  # List of possible descriptions                                              
+  adjectives = ['brillante', 'silencioso', 'ruidoso', 'tranquilo', 'agitado',  
+  'sereno', 'misterioso', 'radiante']                                          
+                                                                               
+  # Select random elements from each list                                      
+  def generate_line():                                                         
+      subject = random.choice(subjects)                                        
+      action = random.choice(actions)                                          
+      adjective = random.choice(adjectives)                                    
+      return f'{subject} {action}, {adjective}.'                               
+                                                                               
+  # Generate a four-line poem                                                  
+  poem = '\n'.join(generate_line() for _ in range(4))                          
+                                                                               
+  # Write the poem to a text file                                              
+  with open('poem.txt', 'w') as f:                                             
+      f.write(poem)                                                            
+                                                                               
+  poem                                                                         
+                                                                               
+                                                                               
+  104                                                                          
+  'el sol susurra, radiante.\nel sol vuela, radiante.\nel viento baila,        
+  brillante.\nel viento llora, radiante.'                                      
                                                                                                                                                               
-  I have updated the memory file with the important details of our             
-  conversation.                                                                
+  He escrito un poema para ti:                                                 
                                                                                
-User Prompt: hola, me llamo roco y tu?
+                                                                               
+   el sol susurra, radiante.                                                   
+   el sol vuela, radiante.                                                     
+   el viento baila, brillante.                                                 
+   el viento llora, radiante.                                                  
+                                                                               
+                                                                               
+User Prompt: Me gusta the vampire diaries, me escribes un cuento?
+Response: 
+
+User Prompt: cual es mi IP?
 Response: 
                                                                                
-  with                                                                         
-  open('C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt',      
-  'a') as f:                                                                   
-      f.write('- Hola, me llamo Roco y tu?\n')                                 
+  import socket                                                                
+                                                                               
+  hostname = socket.gethostname()                                              
+  IP = socket.gethostbyname(hostname)                                          
+                                                                               
+  with open('memory.txt', 'a') as f:                                           
+      f.write(f'• User IP: {IP}\n')                                            
+                                                                               
+  IP                                                                           
                                                                                
                                                                                
-  28                                                                           
+  File "<stdin>", line 6, in <module>                                          
+  PermissionError: [Errno 13] Permission denied: 'memory.txt'                  
                                                                                                                                                               
+  It seems like there was a permission error while trying to write to the      
+  file 'memory.txt'. Let's try to write the IP address to a different file.    
                                                                                
-User Prompt: como te llamas?
+
+User Prompt: cual es mi IP?
 Response: 
                                                                                
-  with                                                                         
-  open('C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt',      
-  'a') as f:                                                                   
-      f.write('- Hola, me llamo Roco y tu?\n')                                 
-      f.write('- Created a poem about The Vampire Diaries and saved it to the  
-  desktop as VampireDiariesPoem.txt\n')                                        
+  import socket                                                                
+                                                                               
+  hostname = socket.gethostname()                                              
+  IP = socket.gethostbyname(hostname)                                          
+                                                                               
+  with open('memory.txt', 'a') as f:                                           
+      f.write(f'• User IP: {IP}\n')                                            
+                                                                               
+  IP                                                                           
                                                                                
                                                                                
-  28                                                                           
-  97                                                                           
+  File "<stdin>", line 6, in <module>                                          
+  PermissionError: [Errno 13] Permission denied: 'memory.txt'                  
                                                                                                                                                               
-  I have updated the memory file with the important details of our             
-  conversation.                                                                
+  It seems like there was a permission error while trying to write to the      
+  file 'memory.txt'. Let's try to write to the file in your current working    
+  directory.                                                                   
+                                                                               
+                                                                               
+  import os                                                                    
+                                                                               
+  # Get the current working directory                                          
+  CWD = os.getcwd()                                                            
+                                                                               
+  # Define the path to the memory file                                         
+  memory_file = os.path.join(CWD, 'memory.txt')                                
+                                                                               
+  # Write the user's IP to the memory file                                     
+  with open(memory_file, 'a') as f:                                            
+      f.write(f'• User IP: {IP}\n')                                            
+                                                                               
+  IP                                                                           
+                                                                               
+                                                                               
+  File "<stdin>", line 6, in <module>                                          
+  PermissionError: [Errno 13] Permission denied:                               
+  'C:\\WINDOWS\\system32\\memory.txt'                                          
+                                                                                                                                                              
+  It seems like there is a permission issue with the current working           
+  directory. Let's try to write the memory file in the user's home directory   
+  instead.                                                                     
+                                                                               
+                                                                               
+  import os                                                                    
+                                                                               
+  # Get the user's home directory                                              
+  home_dir = os.path.expanduser('~')                                           
+                                                                               
+  # Define the path to the memory file                                         
+  memory_file = os.path.join(home_dir, 'memory.txt')                           
+                                                                               
+  # Write the user's IP to the memory file                                     
+  with open(memory_file, 'a') as f:                                            
+      f.write(f'• User IP: {IP}\n')                                            
+                                                                               
+  IP                                                                           
+                                                                               
+                                                                               
+  23                                                                           
+  '172.20.10.2'                                                                
+                                                                                                                                                              
+  Your IP address is 172.20.10.2.                                              
                                                                                

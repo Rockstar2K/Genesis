@@ -11,7 +11,7 @@ namespace MauiApp2
     {
 
         string userPrompt;
-        readonly string apiKey = "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";
+        readonly string apiKey = "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";
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
         public MainPage()
         {
@@ -30,10 +30,43 @@ namespace MauiApp2
         private void InputBox_Completed(System.Object sender, System.EventArgs e)
         {
             userPrompt = InputBox.Text;
-            Output.Text = "Waiting for response...";  // Set the text to "Waiting for response"
+            //Output.Text = "Waiting for response...";  // Set the text to "Waiting for response"
             TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
             //PlayUserPrompt(userPrompt);  // method to play the user prompt in TTS
+            AddChatBoxToUI(userPrompt);
+
         }
+
+        private void AddChatBoxToUI(string input)
+        {
+            bool isUserMessage = input == userPrompt;
+
+            var frame = new Frame
+            {
+                BackgroundColor = isUserMessage ? Color.FromHex("#F2CFE2") : Color.FromHex("#B280B9"),
+                BorderColor = isUserMessage ? Color.FromHex("#F2CFE2") : Color.FromHex("#B280B9"),
+                Margin = isUserMessage ? new Thickness(80, 0, 0, 0) : new Thickness(0, 0, 80, 0), //left, top, right, bottom
+                HasShadow = true,
+                CornerRadius = 25,
+                Content = new Label
+                {
+                    Text = input,
+                    TextColor = isUserMessage ? Color.FromHex("#121B3F") : Color.FromHex("#fff"),
+                }
+            };
+            frame.Shadow = new Shadow
+            {
+                Brush = new SolidColorBrush(Color.FromHex("#121B3F")),
+                Offset = new Point(0, 5),
+                Radius = 15,
+                Opacity = 0.1f
+            };
+
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");  // VerticalStackLayout "ChatLayout" in xaml
+            stackLayout.Children.Add(frame);
+        }
+
+
 
         private async void PlayUserPrompt(string text)
         {
@@ -43,7 +76,7 @@ namespace MauiApp2
 
         private async void TestPythonCode(string userPrompt)
         {
-            InputBox.Text = "";
+            //InputBox.Text = "";
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
             Define_Output(result);
 
@@ -51,7 +84,9 @@ namespace MauiApp2
 
         private void Define_Output(string output)
         {
-            Output.Text = output;
+            //Output.Text = output;
+            AddChatBoxToUI(output);
+
         }
 
         private async Task<string> RunPythonScriptAsync(string message, string apiKey)
@@ -97,6 +132,8 @@ namespace MauiApp2
                     }
 
                     return result + "\n" + error;  // Combine standard and error output
+
+
                 });
             }
 

@@ -10,7 +10,7 @@ import traceback  # Import traceback module for error details
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def Set_API_Key(key):
-    interpreter.api_key = "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"
+    interpreter.api_key = "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"
 
 # ...
 
@@ -50,7 +50,7 @@ def OI_Python(message, api_key=None):
             for chunk in interpreter.chat(f"Current message:{message} Memory of our conversation:{conversation_history} Memory:{customPrompt}"):
                 return chunk
         else:
-            for chunk in interpreter.chat(f"{message} {customPrompt}"):
+            for chunk in interpreter.chat(f"Current message:{message} Memory:{customPrompt}"):
                 return chunk
            
            
