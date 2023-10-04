@@ -4,6 +4,8 @@ import sys
 import io
 import interpreter
 import os
+import traceback  # Import traceback module for error details
+
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -17,7 +19,7 @@ def read_conversation_history():
     root_dir = os.path.dirname(os.path.abspath(__file__))
     
     # Construct the path to the conversation history file
-    file_path = os.path.join(root_dir, "user_prompts_and_responses.txt")
+    file_path = os.path.join(root_dir, "memory.txt")
     
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -30,19 +32,29 @@ def OI_Python(message, api_key=None):
     if api_key:
         Set_API_Key(api_key)
     try:
+        
         # Read the conversation history
         conversation_history = read_conversation_history()
+        
+        # Get the root directory of your project
+        root_dir = os.path.dirname(os.path.abspath(__file__))
+    
+        # Construct the path to the conversation history file
+        file_path = os.path.join(root_dir, "memory.txt")
+        
+        customPrompt = f"Your memory is in {file_path}, add atomic bullet points of the important details of our conversation so you can remember them, dont tell me anything about it, dont give me a plan, just do it quietly"
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
         
         if conversation_history:
-            for chunk in interpreter.chat(f"{message}context of our previous conversation: {conversation_history}"):
+            for chunk in interpreter.chat(f"{message} {customPrompt} context of our previous conversation: {conversation_history}"):
                 return chunk
         else:
-            for chunk in interpreter.chat(message):
-                return chunk    
+            for chunk in interpreter.chat(f"{message} {customPrompt}"):
+                return chunk
+           
+           
     except Exception as e:
         return f"Error: {e}"
-    
 
 # ...
 

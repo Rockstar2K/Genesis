@@ -37,7 +37,7 @@ namespace MauiApp2
 
         private async void TestPythonCode(string userPrompt)
         {
-            InputBox.Text = "...";
+            InputBox.Text = "";
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
             Define_Output(result);
 

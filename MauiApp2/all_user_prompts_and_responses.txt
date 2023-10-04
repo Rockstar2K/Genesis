@@ -1,418 +1,152 @@
-User Prompt: can u read ur python code and tell me how i can improve u? C:\Users\thega\source\repos\MauiApp2\MauiApp2 interpreter_wrapper.py
+User Prompt: Hola, me llamo Roco y tu?
 Response:                                                                                
-  Sure, I can help you with that. However, I need to read the Python file      
-  first. Here's the plan:                                                      
+  Hola Roco, soy Open Interpreter, un programador de clase mundial. Estoy      
+  aquí para ayudarte con cualquier tarea de programación que necesites.        
                                                                                
-   1 Read the Python file.                                                     
-   2 Analyze the code.                                                         
-   3 Provide suggestions for improvement.                                      
+  Para recordar nuestras conversaciones, voy a crear un archivo de texto en    
+  la ubicación que me has proporcionado y añadiré puntos de bala atómicos de   
+  nuestras conversaciones.                                                     
                                                                                
-  Let's start with the first step: reading the Python file.                    
+  Aquí está el plan:                                                           
+                                                                               
+   1 Crear un archivo de texto en la ubicación proporcionada si no existe.     
+   2 Añadir la conversación actual como un punto de bala atómico en el         
+     archivo.                                                                  
+                                                                               
+  Vamos a empezar con el primer paso. Voy a crear el archivo de texto si no    
+  existe.                                                                      
+                                                                               
+                                                                               
+  import os                                                                    
+                                                                               
+  # File path                                                                  
+  file_path =                                                                  
+  'C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt'            
+                                                                               
+  # Check if file exists                                                       
+  if not os.path.exists(file_path):                                            
+      # Create the file                                                        
+      with open(file_path, 'w') as f:                                          
+          pass                                                                 
+                                                                               
+  # Check if file was created                                                  
+  os.path.exists(file_path)                                                    
+                                                                               
+                                                                               
+  True                                                                         
+                                                                                                                                                              
+  El archivo ya existe en la ubicación proporcionada. Ahora, voy a añadir      
+  nuestra conversación actual como un punto de bala atómico en el archivo.     
+                                                                               
+  La conversación actual es: "Hola, me llamo Roco y tu? Your memory is in      
+  C:\Users\thega\source\repos\MauiApp2\MauiApp2\memory.txt, add atomic bullet  
+  points of our conversations so u can remember".                              
+                                                                               
+                                                                               
+  conversation = 'Hola, me llamo Roco y tu? Your memory is in                  
+  C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt, add atomic  
+  bullet points of our conversations so u can remember'                        
+                                                                               
+  # Add the conversation to the file                                           
+  with open(file_path, 'a') as f:                                              
+      f.write(f'- {conversation}\n')                                           
+                                                                               
+                                                                               
+  168                                                                          
+                                                                                                                                                              
+  He añadido con éxito nuestra conversación actual al archivo de memoria. Si   
+  tienes más tareas para mí, estaré encantado de ayudarte.                     
+                                                                               
+User Prompt: cual es mi IP?
+Response:                                                                                
+  Para obtener tu dirección IP, necesitaremos ejecutar un código en Python     
+  que haga una solicitud a un servicio web que nos proporcionará esta          
+  información.                                                                 
+                                                                               
+  Plan:                                                                        
+                                                                               
+   1 Importar el módulo requests en Python.                                    
+   2 Hacer una solicitud GET al servicio web 'https://api.ipify.org'.          
+   3 Imprimir la respuesta, que será tu dirección IP.                          
+                                                                               
+  Vamos a ejecutar este plan.                                                  
+                                                                               
+                                                                               
+  import requests                                                              
+                                                                               
+  response = requests.get('https://api.ipify.org')                             
+  response.text                                                                
+                                                                               
+                                                                               
+  '45.232.94.83'                                                               
+                                                                                                                                                              
+  Tu dirección IP es 45.232.94.83.                                             
+                                                                               
+  Ahora, voy a actualizar tu archivo de memoria con los detalles de nuestra    
+  conversación.                                                                
+                                                                               
+  Plan:                                                                        
+                                                                               
+   1 Abrir el archivo de memoria en modo de escritura.                         
+   2 Añadir los detalles de nuestra conversación hasta ahora.                  
+   3 Cerrar el archivo.                                                        
+                                                                               
+  Vamos a ejecutar este plan.                                                  
                                                                                
 
-User Prompt: do it
+User Prompt: Hola, me escribes un poema sobre the vampire diaries y lo guardas como un txt en mi escritorio?
 Response: 
                                                                                
-  with                                                                         
-  open('C:/Users/thega/source/repos/MauiApp2/MauiApp2/interpreter_wrapper.pyâ€¦  
-  'r') as file:                                                                
-      data = file.read()                                                       
-  data                                                                         
+  import os                                                                    
+                                                                               
+  # Define the poem                                                            
+  poem = """                                                                   
+  In the town of Mystic Falls,                                                 
+  Where the night forever calls,                                               
+  Lives a tale of love and fright,                                             
+  Underneath the moon's soft light.                                            
+                                                                               
+  Vampires, witches, werewolves roam,                                          
+  In this place they call their home.                                          
+  Secrets hidden, truths untold,                                               
+  A story of love, centuries old.                                              
+                                                                               
+  Elena, Stefan, Damon's plight,                                               
+  Their love story, a constant fight.                                          
+  A triangle of love and hate,                                                 
+  A destiny they cannot escape.                                                
+                                                                               
+  In the shadows, danger lurks,                                                
+  As the power of darkness works.                                              
+  Yet in their hearts, love prevails,                                          
+  In the tale of Vampire Diaries' tales.                                       
+  """                                                                          
+                                                                               
+  # Define the path to the desktop                                             
+  path_to_desktop = os.path.join(os.path.expanduser('~'), 'Desktop')           
+                                                                               
+  # Define the filename                                                        
+  filename = 'VampireDiariesPoem.txt'                                          
+                                                                               
+  # Create the full path                                                       
+  full_path = os.path.join(path_to_desktop, filename)                          
+                                                                               
+  # Write the poem to the file                                                 
+  with open(full_path, 'w') as file:                                           
+      file.write(poem)                                                         
+                                                                               
+  # Update the memory file                                                     
+  memory_file =                                                                
+  'C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt'            
+  with open(memory_file, 'a') as file:                                         
+      file.write('- Created a poem about The Vampire Diaries and saved it to   
+  the desktop as VampireDiariesPoem.txt\n')                                    
+                                                                               
+  full_path                                                                    
                                                                                
                                                                                
-  Output truncated. Showing the last 2000 characters.                          
-                                                                               
-  ue  # Set auto_run to True to bypass user confirmation\n        for chunk    
-  in interpreter.chat(message + "context of our previous conversation: " +     
-  conversation_history): #, stream=True, display=False\n                       
-  print(chunk)\n            return chunk\n    except Exception as e:\n         
-  return f"Error: {e}"\n\nif __name__ == "__main__":\n    message =            
-  sys.argv[1]\n    api_key = sys.argv[2] if len(sys.argv) > 2 else None\n      
-  result = OI_Python(message, api_key)\n\'\'\'\n# coding=utf-8\nimport         
-  sys\nimport io\nimport interpreter\nimport os\n\nsys.stdout =                
-  io.TextIOWrapper(sys.stdout.buffer, encoding=\'utf-8\')\n\ndef               
-  Set_API_Key(key):\n    interpreter.api_key =                                 
-  "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"\n\ndef                 
-  read_conversation_history():\n    # Specify the path to the conversation     
-  history file\n    file_path =                                                
-  "C:\\\\Users\\\\thega\\\\source\\\\repos\\\\MauiApp2\\\\MauiApp2\\\\user_pr  
-  ompts_and_responses.txt"\n    if os.path.exists(file_path):\n        with    
-  open(file_path, \'r\', encoding=\'utf-8\') as file:\n            return      
-  file.read()\n    return ""\n\ndef OI_Python(message, api_key=None):\n    if  
-  api_key:\n        Set_API_Key(api_key)\n    try:\n        # Read the         
-  conversation history\n        conversation_history =                         
-  read_conversation_history()\n        interpreter.auto_run = True  # Set      
-  auto_run to True to bypass user confirmation\n        \n        if           
-  conversation_history:\n            for chunk in                              
-  interpreter.chat(f"{message}context of our previous conversation:            
-  {conversation_history}"):\n                print(chunk)\n                    
-  return chunk\n        else:\n            for chunk in                        
-  interpreter.chat(message): #, stream=True, display=False for the chunks but  
-  doesnt works\n                print(chunk)\n                return chunk     
-  \n    except Exception as e:\n        return f"Error: {e}"\n\nif __name__    
-  == "__main__":\n    message = sys.argv[1]\n    api_key = sys.argv[2] if      
-  len(sys.argv) > 2 else None\n    result = OI_Python(message, api_key)'       
+  529                                                                          
+  97                                                                           
+  'C:\\Users\\thega\\Desktop\\VampireDiariesPoem.txt'                          
                                                                                                                                                               
-  The Python code has been successfully read. Now, let's move on to the        
-  second step: analyzing the code.                                             
-                                                                               
-  The code seems to be a wrapper for an interpreter. It reads a conversation   
-  history from a text file, then passes a message and the conversation         
-  history to the interpreter. The interpreter's response is printed and        
-  returned. The interpreter's API key can be set with an optional argument.    
-                                                                               
-  Here are some initial observations:                                          
-                                                                               
-   1 The code is repeated twice in the file. This could be a mistake or a      
-     result of the way the file was read.                                      
-   2 The API key is hardcoded in the Set_API_Key function. This could be a     
-     security risk if the code is shared or published.                         
-   3 The file path to the conversation history is also hardcoded. This could   
-     limit the flexibility of the code.                                        
-   4 The OI_Python function seems to handle both the case where there is a     
-     conversation history and where there isn't. However, the code is almost   
-     identical in both cases, which could be simplified.                       
-   5 Error handling is done by catching all exceptions and returning an error  
-     message. This could be improved by handling specific exceptions.          
-                                                                               
-  Let's dive deeper into each of these points and provide suggestions for      
-  improvement. We'll start with the first point: the repeated code.            
-                                                                               
-                                                                               
-  data.count('# coding=utf-8')                                                 
-                                                                               
-                                                                               
-  3                                                                            
-                                                                                                                                                              
-  The code appears to be repeated three times in the file. This could be a     
-  mistake or a result of the way the file was read.                            
-                                                                               
-  Here are some suggestions to improve this:                                   
-                                                                               
-   1 Remove the repeated code: If the repetition is not intentional, simply    
-     remove the extra copies of the code. Each Python file should generally    
-     contain a single copy of the code.                                        
-   2 Use functions or classes to avoid repetition: If similar code needs to    
-     be run multiple times with slight variations, consider encapsulating the  
-     code in a function or class. This can make the code more readable and     
-     easier to maintain.                                                       
-                                                                               
-  Next, let's look at the second point: the hardcoded API key.                 
-                                                                               
-                                                                               
-  data.count('interpreter.api_key =                                            
-  "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"')                      
-                                                                               
-                                                                               
-  3                                                                            
-                                                                                                                                                              
-  The API key is hardcoded in the Set_API_Key function and appears three       
-  times in the code. This could be a security risk if the code is shared or    
-  published.                                                                   
-                                                                               
-  Here are some suggestions to improve this:                                   
-                                                                               
-   1 Remove the hardcoded API key: Instead of hardcoding the API key in the    
-     code, consider using environment variables or a configuration file to     
-     store sensitive information. This can help protect the API key from       
-     being exposed in the code.                                                
-   2 Use a placeholder for the API key: If the API key needs to be included    
-     in the code for testing or demonstration purposes, consider using a       
-     placeholder. This can help prevent the actual API key from being          
-     accidentally committed or shared.                                         
-                                                                               
-  Next, let's look at the third point: the hardcoded file path.                
-                                                                               
-                                                                               
-  data.count('file_path =                                                      
-  "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\user_prompts_and_resâ€¦  
-                                                                               
-                                                                               
-  0                                                                            
-                                                                                                                                                              
-  It seems there was a mistake in the previous analysis. The hardcoded file    
-  path does not appear in the code. This could be due to the way the file was  
-  read or an error in the analysis.                                            
-                                                                               
-  Let's correct this and move on to the fourth point: the OI_Python function.  
-  This function handles both the case where there is a conversation history    
-  and where there isn't. However, the code is almost identical in both cases,  
-  which could be simplified.                                                   
-                                                                               
-  Here are some suggestions to improve this:                                   
-                                                                               
-   1 Refactor the OI_Python function: Instead of repeating the code for        
-     handling the conversation history, consider refactoring the function to   
-     avoid repetition. This could involve extracting the common code into a    
-     separate function or reorganizing the code to reduce duplication.         
-   2 Use a default argument for the conversation history: If the conversation  
-     history is not provided, the function could use a default argument (such  
-     as an empty string) instead of handling this case separately. This could  
-     simplify the code and make it easier to understand.                       
-                                                                               
-  Finally, let's look at the fifth point: error handling. The code catches     
-  all exceptions and returns an error message. This could be improved by       
-  handling specific exceptions.                                                
-                                                                               
-  Here are some suggestions to improve this:                                   
-                                                                               
-   1 Catch specific exceptions: Instead of catching all exceptions, consider   
-     catching specific exceptions that you expect might occur. This can        
-     provide more informative error messages and make it easier to debug the   
-     code.                                                                     
-   2 Log the error information: When an exception is caught, consider logging  
-     the error information (such as the exception message and stack trace).    
-     This can help with debugging and understanding what went wrong.           
-                                                                               
-  These are just some suggestions based on the initial analysis of the code.   
-  The specific improvements would depend on the requirements and constraints   
-  of your project.                                                             
-                                                                               
-User Prompt: can u set my system to dark mode?
-Response:                                                                                
-  Sure, I can help you with that. However, the method to switch to dark mode   
-  varies depending on the operating system you are using. Since you are using  
-  Windows, I will provide the steps for that.                                  
-                                                                               
-  Here is the plan:                                                            
-                                                                               
-   1 Use a shell command to open the Windows settings app.                     
-   2 Navigate to the "Colors" settings.                                        
-   3 Change the "Choose your color" setting to "Dark".                         
-                                                                               
-  Let's start with the first step. I will open the Windows settings app using  
-  a shell command.                                                             
-                                                                               
-                                                                               
-  start ms-settings:colors                                                     
-                                                                               
-                                                                               
-  Microsoft Windows [Version 10.0.22621.2283]                                  
-  (c) Microsoft Corporation. All rights reserved.                              
-  C:\Windows\System32>start ms-settings:colors                                 
-  C:\Windows\System32>                                                         
-                                                                                                                                                              
-  I have opened the Windows settings app and navigated to the "Colors"         
-  settings. Now, you should see an option labeled "Choose your color". Please  
-  select "Dark" from the dropdown menu to switch your system to dark mode.     
-                                                                               
-  Unfortunately, I cannot perform this action for you as it requires manual    
-  interaction with the user interface. Please let me know once you've          
-  completed this step or if you need further assistance.                       
-                                                                               
-User Prompt: hello
-Response: 
-User Prompt: hello
-Response: 
-User Prompt: hola
-Response: 
-User Prompt: hola
-Response:                                                                                
-  Â¡Hola! Â¿CÃ³mo puedo ayudarte hoy?                                             
-                                                                               
-User Prompt: hola
-Response:                                                                                
-  Â¡Hola! Â¿CÃ³mo puedo ayudarte hoy?                                             
-                                                                               
-User Prompt: hola
-Response:                                                                                
-  Â¡Hola! Â¿CÃ³mo puedo ayudarte hoy?                                             
-                                                                               
-User Prompt: hola
-Response:                                                                                
-  Â¡Hola! Â¿CÃ³mo puedo ayudarte hoy?                                             
-                                                                               
-User Prompt: como estas
-Response:                                                                                
-  Â¡Hola! Estoy bien, gracias. Â¿CÃ³mo puedo ayudarte hoy?                        
-                                                                               
-User Prompt: hola
-Response:                                                                                
-  Â¡Hola! Â¿CÃ³mo puedo ayudarte hoy?                                             
-                                                                               
-User Prompt: todo bien?
-Response:                                                                                
-  Â¡Hola! SÃ­, todo estÃ¡ bien. Â¿CÃ³mo puedo ayudarte hoy?                         
-                                                                               
-User Prompt: dime qué cosas tengo en mi escritorio
-Response:                                                                                
-  Como un programa de inteligencia artificial, no tengo la capacidad de ver    
-  físicamente tu escritorio. Sin embargo, puedo ayudarte a ver los archivos y  
-  carpetas en tu escritorio virtual si eso es a lo que te refieres. ¿Te        
-  gustaría que haga eso?                                                       
-                                                                               
-User Prompt: si
-Response:                                                                                
-  Entiendo, parece que quieres ver los archivos y carpetas en tu escritorio    
-  virtual. Aquí está el plan:                                                  
-                                                                               
-   1 Usaré el comando de shell para listar todos los archivos y carpetas en    
-     tu escritorio.                                                            
-   2 Te mostraré los resultados.                                               
-                                                                               
-  Vamos a empezar con el primer paso.                                          
-                                                                               
-                                                                               
-  cd ~/Desktop && dir                                                          
-                                                                               
-                                                                               
-  Microsoft Windows [Version 10.0.22621.2283]                                  
-  (c) Microsoft Corporation. All rights reserved.                              
-  C:\Windows\System32>cd ~/Desktop && dir                                      
-  The system cannot find the path specified.                                   
-  C:\Windows\System32>                                                         
-                                                                                                                                                              
-  Parece que hubo un problema al intentar acceder a tu escritorio. Esto puede  
-  ser debido a que la ruta del escritorio puede variar dependiendo de la       
-  configuración de tu sistema. Intentemos con una ruta de escritorio más       
-  común en Windows.                                                            
-                                                                               
-  Vamos a intentarlo de nuevo.                                                 
-                                                                               
-                                                                               
-  cd %userprofile%\Desktop && dir                                              
-                                                                               
-                                                                               
-  C:\Windows\System32>cd %userprofile%\Desktop && dir                          
-  Volume in drive C is Windows                                                 
-  Volume Serial Number is 3A21-2E72                                            
-  Directory of C:\Users\thega\Desktop                                          
-  24-09-2023  13:57    <DIR>          .                                        
-  02-10-2023  09:45    <DIR>          ..                                       
-  30-05-2023  02:28    <DIR>          Adobe InDesign 2023 v18.3.0.50 (x64)     
-  Multilingual                                                                 
-  18-06-2023  15:24             6.192 Alpha.xlsx                               
-  06-09-2023  12:53    <DIR>          caba¤a                                   
-  18-09-2023  07:59             1.287 CapCut.lnk                               
-  11-09-2023  15:38    <DIR>          ETA                                      
-  23-09-2023  07:40    <DIR>          genesis                                  
-  17-03-2023  05:02    <DIR>          Gumroad                                  
-  02-09-2023  16:12           280.773 header voro.txt                          
-  07-03-2023  15:32    <DIR>          h bitos                                  
-  01-04-2023  23:53            18.067 Intrinsic valuation DCF.xlsx             
-  04-09-2023  16:39    <DIR>          LLC                                      
-  09-12-2022  18:55             1.166 MSI Afterburner.lnk                      
-  20-04-2023  07:49    <DIR>          New folder                               
-  05-09-2023  14:44    <DIR>          New folder (2)                           
-  11-09-2023  20:56            11.244 New Microsoft Excel Worksheet.xlsx       
-  17-02-2023  19:35               700 New Text Document (2).txt                
-  23-08-2023  16:18           151.858 New Text Document (3).txt                
-  24-09-2023  13:58                79 New Text Document (4).txt                
-  09-02-2023  19:31                78 New Text Document.txt                    
-  19-07-2023  20:02    <DIR>          nvm-setup                                
-  29-09-2023  22:18    <DIR>          Personal brand                           
-  13-09-2023  14:35    <DIR>          Profile photos                           
-  18-09-2023  08:25        22.737.304 PROJECT 1.mp4                            
-  15-09-2023  21:04    <DIR>          Project high invest                      
-  25-08-2023  14:01    <DIR>          Rocco Studio Stuff                       
-  16-12-2022  15:18     1.279.216.124 shockcul.tar.gz                          
-  22-04-2023  15:58                12 twitter.txt                              
-  20-05-2023  06:22             1.411 Visual Studio Code.lnk                   
-  05-09-2023  17:20    <DIR>          vulcano                                  
-  14 File(s)  1.302.426.295 bytes                                              
-  17 Dir(s)  267.254.132.736 bytes free                                        
-  C:\Users\thega\Desktop>                                                      
-                                                                                                                                                              
-  Aquí están los archivos y carpetas en tu escritorio:                         
-                                                                               
-   • Adobe InDesign 2023 v18.3.0.50 (x64) Multilingual (Carpeta)               
-   • Alpha.xlsx (Archivo)                                                      
-   • cabaña (Carpeta)                                                          
-   • CapCut.lnk (Acceso directo)                                               
-   • ETA (Carpeta)                                                             
-   • genesis (Carpeta)                                                         
-   • Gumroad (Carpeta)                                                         
-   • header voro.txt (Archivo)                                                 
-   • hábitos (Carpeta)                                                         
-   • Intrinsic valuation DCF.xlsx (Archivo)                                    
-   • LLC (Carpeta)                                                             
-   • MSI Afterburner.lnk (Acceso directo)                                      
-   • New folder (Carpeta)                                                      
-   • New folder (2) (Carpeta)                                                  
-   • New Microsoft Excel Worksheet.xlsx (Archivo)                              
-   • New Text Document (2).txt (Archivo)                                       
-   • New Text Document (3).txt (Archivo)                                       
-   • New Text Document (4).txt (Archivo)                                       
-   • New Text Document.txt (Archivo)                                           
-   • nvm-setup (Carpeta)                                                       
-   • Personal brand (Carpeta)                                                  
-   • Profile photos (Carpeta)                                                  
-   • PROJECT 1.mp4 (Archivo)                                                   
-   • Project high invest (Carpeta)                                             
-   • Rocco Studio Stuff (Carpeta)                                              
-   • shockcul.tar.gz (Archivo)                                                 
-   • twitter.txt (Archivo)                                                     
-   • Visual Studio Code.lnk (Acceso directo)                                   
-   • vulcano (Carpeta)                                                         
-                                                                               
-  Por favor, déjame saber si necesitas ayuda con algo más.                     
-                                                                               
-User Prompt: puedes decirme lo que hay dentro del archivo txt (2)
-Response:                                                                                
-  Sure, I can help you with that. Here's the plan:                             
-                                                                               
-   1 I will use the shell command to read the contents of the file "New Text   
-     Document (2).txt".                                                        
-   2 I will show you the results.                                              
-                                                                               
-  Let's start with the first step.                                             
-                                                                               
-                                                                               
-  type 'C:\Users\thega\Desktop\New Text Document (2).txt'                      
-                                                                               
-                                                                               
-  Microsoft Windows [Version 10.0.22621.2283]                                  
-  (c) Microsoft Corporation. All rights reserved.                              
-  C:\Windows\System32>type 'C:\Users\thega\Desktop\New Text Document (2).txt'  
-  The filename, directory name, or volume label syntax is incorrect.           
-  C:\Windows\System32>                                                         
-                                                                                                                                                              
-  It seems there was an issue with the command. The error message suggests     
-  that the filename, directory name, or volume label syntax is incorrect.      
-  This could be due to the special characters in the filename. Let's try       
-  again with a different approach. I will use Python to read the file as it    
-  can handle special characters in filenames more gracefully.                  
-                                                                               
-                                                                               
-  with open('C:\\Users\\thega\\Desktop\\New Text Document (2).txt', 'r') as    
-  file: print(file.read())                                                     
-                                                                               
-                                                                               
-  Me robaron mi vehÃ­culo.                                                     
-  Â¡Hola Roger!                                                                
-  Espero que estÃ©s teniendo un excelente dÃ­a.                                
-  Te hablo por que me seguÃ­as en mi cuenta anterior @rocco.creative.studio    
-  Â¿Por quÃ© estoy empezando una nueva?                                        
-  Bueno... no es que quiera, pero me hackearon esa cuenta.                     
-  Meses de trabajo, cientos de dÃ³lares en anuncios.                           
-  Mi vehÃ­culo de ventas.                                                      
-  EntenderÃ¡s que es una gran perdida pra mÃ­.                                 
-  Por eso, si sientes que mi contenido te aporta y quisieras ayudarme, te      
-  pido que me sigas en esta nueva cuenta.                                      
-  Ya si tu corazÃ³n lo quiere, podrÃ­as compartir el post que mÃ¡s te guste    
-  para alcanzar a mÃ¡s personas.                                               
-  Si no, puedes ignorar este mensaje.                                          
-  Gracias por leerme, ten un buen dÃ­a.                                        
-                                                                                                                                                              
-  Here are the contents of the file "New Text Document (2).txt":               
-                                                                               
-                                                                               
-   Me robaron mi vehículo.                                                     
-   ¡Hola Roger!                                                                
-   Espero que estés teniendo un excelente día.                                 
-   Te hablo por que me seguías en mi cuenta anterior @rocco.creative.studio    
-   ¿Por qué estoy empezando una nueva?                                         
-   Bueno... no es que quiera, pero me hackearon esa cuenta.                    
-   Meses de trabajo, cientos de dólares en anuncios.                           
-   Mi vehículo de ventas.                                                      
-   Entenderás que es una gran perdida pra mí.                                  
-   Por eso, si sientes que mi contenido te aporta y quisieras ayudarme, te     
-   pido que me sigas en esta nueva cuenta.                                     
-   Ya si tu corazón lo quiere, podrías compartir el post que más te guste pa   
-   alcanzar a más personas.                                                    
-   Si no, puedes ignorar este mensaje.                                         
-   Gracias por leerme, ten un buen día.                                        
-                                                                               
-                                                                               
-  Please let me know if you need help with anything else.                      
                                                                                

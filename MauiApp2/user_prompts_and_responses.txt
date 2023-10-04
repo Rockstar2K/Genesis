@@ -1,70 +1,57 @@
 
-User Prompt: puedes decirme lo que hay dentro del archivo txt (2)
-Response:                                                                                
-  Sure, I can help you with that. Here's the plan:                             
+User Prompt: Hola, me escribes un poema sobre the vampire diaries y lo guardas como un txt en mi escritorio?
+Response: 
                                                                                
-   1 I will use the shell command to read the contents of the file "New Text   
-     Document (2).txt".                                                        
-   2 I will show you the results.                                              
+  import os                                                                    
                                                                                
-  Let's start with the first step.                                             
+  # Define the poem                                                            
+  poem = """                                                                   
+  In the town of Mystic Falls,                                                 
+  Where the night forever calls,                                               
+  Lives a tale of love and fright,                                             
+  Underneath the moon's soft light.                                            
+                                                                               
+  Vampires, witches, werewolves roam,                                          
+  In this place they call their home.                                          
+  Secrets hidden, truths untold,                                               
+  A story of love, centuries old.                                              
+                                                                               
+  Elena, Stefan, Damon's plight,                                               
+  Their love story, a constant fight.                                          
+  A triangle of love and hate,                                                 
+  A destiny they cannot escape.                                                
+                                                                               
+  In the shadows, danger lurks,                                                
+  As the power of darkness works.                                              
+  Yet in their hearts, love prevails,                                          
+  In the tale of Vampire Diaries' tales.                                       
+  """                                                                          
+                                                                               
+  # Define the path to the desktop                                             
+  path_to_desktop = os.path.join(os.path.expanduser('~'), 'Desktop')           
+                                                                               
+  # Define the filename                                                        
+  filename = 'VampireDiariesPoem.txt'                                          
+                                                                               
+  # Create the full path                                                       
+  full_path = os.path.join(path_to_desktop, filename)                          
+                                                                               
+  # Write the poem to the file                                                 
+  with open(full_path, 'w') as file:                                           
+      file.write(poem)                                                         
+                                                                               
+  # Update the memory file                                                     
+  memory_file =                                                                
+  'C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt'            
+  with open(memory_file, 'a') as file:                                         
+      file.write('- Created a poem about The Vampire Diaries and saved it to   
+  the desktop as VampireDiariesPoem.txt\n')                                    
+                                                                               
+  full_path                                                                    
                                                                                
                                                                                
-  type 'C:\Users\thega\Desktop\New Text Document (2).txt'                      
-                                                                               
-                                                                               
-  Microsoft Windows [Version 10.0.22621.2283]                                  
-  (c) Microsoft Corporation. All rights reserved.                              
-  C:\Windows\System32>type 'C:\Users\thega\Desktop\New Text Document (2).txt'  
-  The filename, directory name, or volume label syntax is incorrect.           
-  C:\Windows\System32>                                                         
+  529                                                                          
+  97                                                                           
+  'C:\\Users\\thega\\Desktop\\VampireDiariesPoem.txt'                          
                                                                                                                                                               
-  It seems there was an issue with the command. The error message suggests     
-  that the filename, directory name, or volume label syntax is incorrect.      
-  This could be due to the special characters in the filename. Let's try       
-  again with a different approach. I will use Python to read the file as it    
-  can handle special characters in filenames more gracefully.                  
-                                                                               
-                                                                               
-  with open('C:\\Users\\thega\\Desktop\\New Text Document (2).txt', 'r') as    
-  file: print(file.read())                                                     
-                                                                               
-                                                                               
-  Me robaron mi vehÃ­culo.                                                     
-  Â¡Hola Roger!                                                                
-  Espero que estÃ©s teniendo un excelente dÃ­a.                                
-  Te hablo por que me seguÃ­as en mi cuenta anterior @rocco.creative.studio    
-  Â¿Por quÃ© estoy empezando una nueva?                                        
-  Bueno... no es que quiera, pero me hackearon esa cuenta.                     
-  Meses de trabajo, cientos de dÃ³lares en anuncios.                           
-  Mi vehÃ­culo de ventas.                                                      
-  EntenderÃ¡s que es una gran perdida pra mÃ­.                                 
-  Por eso, si sientes que mi contenido te aporta y quisieras ayudarme, te      
-  pido que me sigas en esta nueva cuenta.                                      
-  Ya si tu corazÃ³n lo quiere, podrÃ­as compartir el post que mÃ¡s te guste    
-  para alcanzar a mÃ¡s personas.                                               
-  Si no, puedes ignorar este mensaje.                                          
-  Gracias por leerme, ten un buen dÃ­a.                                        
-                                                                                                                                                              
-  Here are the contents of the file "New Text Document (2).txt":               
-                                                                               
-                                                                               
-   Me robaron mi vehículo.                                                     
-   ¡Hola Roger!                                                                
-   Espero que estés teniendo un excelente día.                                 
-   Te hablo por que me seguías en mi cuenta anterior @rocco.creative.studio    
-   ¿Por qué estoy empezando una nueva?                                         
-   Bueno... no es que quiera, pero me hackearon esa cuenta.                    
-   Meses de trabajo, cientos de dólares en anuncios.                           
-   Mi vehículo de ventas.                                                      
-   Entenderás que es una gran perdida pra mí.                                  
-   Por eso, si sientes que mi contenido te aporta y quisieras ayudarme, te     
-   pido que me sigas en esta nueva cuenta.                                     
-   Ya si tu corazón lo quiere, podrías compartir el post que más te guste pa   
-   alcanzar a más personas.                                                    
-   Si no, puedes ignorar este mensaje.                                         
-   Gracias por leerme, ten un buen día.                                        
-                                                                               
-                                                                               
-  Please let me know if you need help with anything else.                      
                                                                                
