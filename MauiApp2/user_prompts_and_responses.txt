@@ -1,57 +1,18 @@
 
-User Prompt: Hola, me escribes un poema sobre the vampire diaries y lo guardas como un txt en mi escritorio?
+User Prompt: como te llamas?
 Response: 
                                                                                
-  import os                                                                    
-                                                                               
-  # Define the poem                                                            
-  poem = """                                                                   
-  In the town of Mystic Falls,                                                 
-  Where the night forever calls,                                               
-  Lives a tale of love and fright,                                             
-  Underneath the moon's soft light.                                            
-                                                                               
-  Vampires, witches, werewolves roam,                                          
-  In this place they call their home.                                          
-  Secrets hidden, truths untold,                                               
-  A story of love, centuries old.                                              
-                                                                               
-  Elena, Stefan, Damon's plight,                                               
-  Their love story, a constant fight.                                          
-  A triangle of love and hate,                                                 
-  A destiny they cannot escape.                                                
-                                                                               
-  In the shadows, danger lurks,                                                
-  As the power of darkness works.                                              
-  Yet in their hearts, love prevails,                                          
-  In the tale of Vampire Diaries' tales.                                       
-  """                                                                          
-                                                                               
-  # Define the path to the desktop                                             
-  path_to_desktop = os.path.join(os.path.expanduser('~'), 'Desktop')           
-                                                                               
-  # Define the filename                                                        
-  filename = 'VampireDiariesPoem.txt'                                          
-                                                                               
-  # Create the full path                                                       
-  full_path = os.path.join(path_to_desktop, filename)                          
-                                                                               
-  # Write the poem to the file                                                 
-  with open(full_path, 'w') as file:                                           
-      file.write(poem)                                                         
-                                                                               
-  # Update the memory file                                                     
-  memory_file =                                                                
-  'C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt'            
-  with open(memory_file, 'a') as file:                                         
-      file.write('- Created a poem about The Vampire Diaries and saved it to   
-  the desktop as VampireDiariesPoem.txt\n')                                    
-                                                                               
-  full_path                                                                    
+  with                                                                         
+  open('C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\memory.txt',      
+  'a') as f:                                                                   
+      f.write('- Hola, me llamo Roco y tu?\n')                                 
+      f.write('- Created a poem about The Vampire Diaries and saved it to the  
+  desktop as VampireDiariesPoem.txt\n')                                        
                                                                                
                                                                                
-  529                                                                          
+  28                                                                           
   97                                                                           
-  'C:\\Users\\thega\\Desktop\\VampireDiariesPoem.txt'                          
                                                                                                                                                               
+  I have updated the memory file with the important details of our             
+  conversation.                                                                
                                                                                

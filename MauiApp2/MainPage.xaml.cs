@@ -12,6 +12,7 @@ namespace MauiApp2
 
         string userPrompt;
         readonly string apiKey = "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";
+        private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
         public MainPage()
         {
             InitializeComponent();
@@ -26,13 +27,18 @@ namespace MauiApp2
         }
         */
 
-
-
         private void InputBox_Completed(System.Object sender, System.EventArgs e)
         {
             userPrompt = InputBox.Text;
             Output.Text = "Waiting for response...";  // Set the text to "Waiting for response"
             TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
+            //PlayUserPrompt(userPrompt);  // method to play the user prompt in TTS
+        }
+
+        private async void PlayUserPrompt(string text)
+        {
+            byte[] audioData = await ttsPlayer.GetAudioData(text);  // Assuming you have this method set up
+            ttsPlayer.PlayAudio(audioData);
         }
 
         private async void TestPythonCode(string userPrompt)
