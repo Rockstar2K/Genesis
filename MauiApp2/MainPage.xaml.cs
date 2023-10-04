@@ -176,6 +176,10 @@ namespace MauiApp2
             }
         }
 
+        void Settings_Pressed(System.Object sender, System.EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Settings());
+        }
 
 
     }

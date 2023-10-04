@@ -9,11 +9,25 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollView Grid.Row="0" BackgroundColor="#EAEAEA">
-            <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="FillAndExpand">
-              
-                <BoxView HeightRequest="0" VerticalOptions="FillAndExpand" />
-                <Label x:Name="Output" TextColor="#121B3F" />
+        <ScrollView Grid.Row="0"
+                    BackgroundColor="#EAEAEA">
+
+            <VerticalStackLayout Spacing="25"
+                                Padding="30,0"
+                                VerticalOptions="FillAndExpand">
+                <Button
+                    x:Name="Settings"
+                    Pressed="Settings_Pressed"
+                    Text="Settings"
+                    HorizontalOptions="End"
+                    Margin="25"
+                    CornerRadius="15"/>
+
+                <BoxView HeightRequest="0"
+                         VerticalOptions="FillAndExpand" />
+                        
+                <Label x:Name="Output"
+                       TextColor="#121B3F" />
 
             </VerticalStackLayout>
         </ScrollView>
@@ -33,6 +47,7 @@
                Completed="InputBox_Completed" 
                PlaceholderColor="#68667D" 
                BackgroundColor="#EAEAEA"
+               
                 />
             </Frame>
 

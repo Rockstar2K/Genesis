@@ -42,11 +42,12 @@ def OI_Python(message, api_key=None):
         # Construct the path to the conversation history file
         file_path = os.path.join(root_dir, "memory.txt")
         
-        customPrompt = f"Your memory is in {file_path}, add atomic bullet points of the important details of our conversation so you can remember them, dont tell me anything about it, dont give me a plan, just do it quietly"
+        customPrompt = f"Your memory is in {file_path}, add atomic bullet points of the important details of our conversation to the file so you can remember them. Dont tell me anything about it, dont give me a plan, just do it quietly."
+        
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
         
         if conversation_history:
-            for chunk in interpreter.chat(f"{message} {customPrompt} context of our previous conversation: {conversation_history}"):
+            for chunk in interpreter.chat(f"Current message:{message} Memory of our conversation:{conversation_history} Memory:{customPrompt}"):
                 return chunk
         else:
             for chunk in interpreter.chat(f"{message} {customPrompt}"):
@@ -54,7 +55,7 @@ def OI_Python(message, api_key=None):
            
            
     except Exception as e:
-        return f"Error: {e}"
+         return f"Error: {e}\n{traceback.format_exc()}"
 
 # ...
 
