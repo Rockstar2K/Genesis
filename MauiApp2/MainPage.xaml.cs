@@ -187,6 +187,12 @@ namespace MauiApp2
             App.Current.MainPage = new NavigationPage(new Settings());
         }
 
+        void Voice_Option_Pressed(System.Object sender, System.EventArgs e)
+        {
+        }
 
+        void Chat_Option_Pressed(System.Object sender, System.EventArgs e)
+        {
+        }
     }
 }

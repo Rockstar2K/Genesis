@@ -15,19 +15,66 @@
             <VerticalStackLayout Spacing="25"
                                 Padding="30,0"
                                 VerticalOptions="FillAndExpand">
-                <Button
-                    x:Name="Settings"
-                    Pressed="Settings_Pressed"
-                    Text="Settings"
-                    HorizontalOptions="End"
-                    Margin="25"
-                    CornerRadius="15"/>
+                <AbsoluteLayout Margin="0,20">
+                    <ImageButton
+                        AbsoluteLayout.LayoutBounds="1,0.5"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        HorizontalOptions="End"    
+                        x:Name="Settings"
+                        Pressed="Settings_Pressed"
+                        CornerRadius="15"
+                        Source="settings.png">
+                        <ImageButton.Shadow>
+                            <Shadow
+                            Brush="#121B3F"
+                            Offset="0,20"
+                            Radius="25"
+                            Opacity="0.2"/>
+
+                        </ImageButton.Shadow>
+
+                    </ImageButton>
+                    <HorizontalStackLayout
+                        AbsoluteLayout.LayoutBounds="0.5,0"
+                        AbsoluteLayout.LayoutFlags="PositionProportional">
+                        <ImageButton
+                            x:Name="Chat_Option"
+                            Pressed="Chat_Option_Pressed"
+                            Source="chat_option.png"/>
+                        <ImageButton
+                            x:Name="Voice_Option"
+                            Pressed="Voice_Option_Pressed"
+                            Source="voice_dialog_option.png"/>
+                        <HorizontalStackLayout.Shadow>
+                            <Shadow
+                            Brush="#121B3F"
+                            Offset="0,20"
+                            Radius="25"
+                            Opacity="0.15"/>
+                        </HorizontalStackLayout.Shadow>
+                    </HorizontalStackLayout>
+                </AbsoluteLayout>
+
+                
 
                 <BoxView HeightRequest="0"
                          VerticalOptions="FillAndExpand" />
-                        
+                <Frame
+                    BackgroundColor="#F2CFE2"
+                    BorderColor="Transparent"
+                    Margin="0,0,80,0"
+                    HasShadow="True"
+                    CornerRadius="25">
+                    <Frame.Shadow>
+                        <Shadow
+                            Brush="#121B3F"
+                            Offset="0,5"
+                            Radius="15"
+                            Opacity="0.1"/>
+                    </Frame.Shadow>      
                 <Label x:Name="Output"
-                       TextColor="#121B3F" />
+                       TextColor="#121B3F"/>
+                </Frame>
 
             </VerticalStackLayout>
         </ScrollView>
@@ -40,15 +87,23 @@
             </Grid.ColumnDefinitions>
 
 
-            <Frame Padding="0" BorderColor="#F2CFE2" CornerRadius="5" HasShadow="False" Grid.Column="1">
+            <Frame Padding="0" BorderColor="#F2CFE2" CornerRadius="5" Opacity="0.5" Grid.Column="1" Margin="20,0,20,20">
                 <Entry x:Name="InputBox" 
-               TextColor="#121B3F" 
-               Placeholder="¿Que quieres que haga?" 
-               Completed="InputBox_Completed" 
-               PlaceholderColor="#68667D" 
-               BackgroundColor="#EAEAEA"
-               
-                />
+                   TextColor="#121B3F" 
+                   Placeholder="¿Que quieres que haga?" 
+                   Completed="InputBox_Completed" 
+                   PlaceholderColor="#68667D"
+                   BackgroundColor="#EAEAEA">
+                    <Entry.Shadow>
+                        <Shadow
+                            Brush="#121B3F"
+                            Offset="0,20"
+                            Radius="30"
+                            Opacity="0.4"/>
+
+                    </Entry.Shadow>
+
+                </Entry>
             </Frame>
 
         </Grid>

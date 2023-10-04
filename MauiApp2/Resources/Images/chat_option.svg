@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 73.55 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#Degradado_sin_nombre_8414-4);
+      }
+
+      .cls-3 {
+        fill: url(#Degradado_sin_nombre_8414-3);
+      }
+
+      .cls-4 {
+        fill: url(#Degradado_sin_nombre_8414-2);
+      }
+
+      .cls-5 {
+        fill: url(#Degradado_sin_nombre_8414);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="4.88" y1="55.64" x2="77.68" y2="6.07" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8f2f7"/>
+      <stop offset=".42" stop-color="#ead3e5"/>
+      <stop offset="1" stop-color="#d6a2c9"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_8414" data-name="Degradado sin nombre 8414" x1="16.45" y1="16.94" x2="55.16" y2="16.94" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b080b7"/>
+      <stop offset="1" stop-color="#efcde1"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_8414-2" data-name="Degradado sin nombre 8414" y1="34.35" y2="34.35" xlink:href="#Degradado_sin_nombre_8414"/>
+    <linearGradient id="Degradado_sin_nombre_8414-3" data-name="Degradado sin nombre 8414" y1="25.65" x2="46.45" y2="25.65" xlink:href="#Degradado_sin_nombre_8414"/>
+    <linearGradient id="Degradado_sin_nombre_8414-4" data-name="Degradado sin nombre 8414" y1="43.06" x2="37.74" y2="43.06" xlink:href="#Degradado_sin_nombre_8414"/>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-1" d="m73.55,60H16.64C7.47,60,0,52.53,0,43.36v-26.72C0,7.47,7.47,0,16.64,0h56.91v60ZM16.64,1.94C8.53,1.94,1.94,8.53,1.94,16.64v26.72c0,8.11,6.6,14.71,14.71,14.71h54.97V1.94H16.64Z"/>
+      <g>
+        <path class="cls-5" d="m53.23,18.87H18.39c-1.07,0-1.94-.87-1.94-1.94s.87-1.94,1.94-1.94h34.84c1.07,0,1.94.87,1.94,1.94s-.87,1.94-1.94,1.94Z"/>
+        <path class="cls-5" d="m53.23,18.87H18.39c-1.07,0-1.94-.87-1.94-1.94s.87-1.94,1.94-1.94h34.84c1.07,0,1.94.87,1.94,1.94s-.87,1.94-1.94,1.94Z"/>
+        <path class="cls-5" d="m53.23,18.87H18.39c-1.07,0-1.94-.87-1.94-1.94s.87-1.94,1.94-1.94h34.84c1.07,0,1.94.87,1.94,1.94s-.87,1.94-1.94,1.94Z"/>
+        <path class="cls-5" d="m53.23,18.87H18.39c-1.07,0-1.94-.87-1.94-1.94s.87-1.94,1.94-1.94h34.84c1.07,0,1.94.87,1.94,1.94s-.87,1.94-1.94,1.94Z"/>
+        <path class="cls-4" d="m53.23,36.29H18.39c-1.07,0-1.94-.87-1.94-1.94s.87-1.94,1.94-1.94h34.84c1.07,0,1.94.87,1.94,1.94s-.87,1.94-1.94,1.94Z"/>
+        <path class="cls-3" d="m44.52,27.58h-26.13c-1.07,0-1.94-.87-1.94-1.94s.87-1.94,1.94-1.94h26.13c1.07,0,1.94.87,1.94,1.94s-.87,1.94-1.94,1.94Z"/>
+        <path class="cls-2" d="m35.81,45h-17.42c-1.07,0-1.94-.87-1.94-1.94s.87-1.94,1.94-1.94h17.42c1.07,0,1.94.87,1.94,1.94s-.87,1.94-1.94,1.94Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

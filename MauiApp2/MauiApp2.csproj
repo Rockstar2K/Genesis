@@ -49,10 +49,29 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiImage Update="Resources\Images\voice_dialog_option.svg">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiImage>
+		<MauiImage Update="Resources\Images\settings.svg">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiImage>
+		<MauiImage Update="Resources\Images\chat_option.svg">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiImage>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\lyris_logo.svg" />
+	  <None Remove="Resources\Images\Settings.svg" />
+	  <None Remove="Resources\Images\VoiceDialogOption.svg" />
+	  <None Remove="Resources\Images\ChatOption.svg" />
+	  <None Remove="Resources\Images\chat_option.svg" />
+	  <None Remove="Resources\Images\voice_dialog_option.svg" />
+	  <None Remove="Resources\Images\settings.svg" />
+	  <None Remove="Resources\Images\BrandingAsset 2%402x.png" />
+	  <None Remove="Resources\Images\chat.png" />
+	  <None Remove="Resources\Images\microphone.png" />
+	  <None Remove="Resources\Images\settings.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -73,4 +92,8 @@
 	  <Folder Include="Resources\Credentials\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\chat.png" />
+	  <BundleResource Include="Resources\Images\microphone.png" />
+	</ItemGroup>
 </Project>
