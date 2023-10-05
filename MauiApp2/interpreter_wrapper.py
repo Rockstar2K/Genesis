@@ -47,10 +47,10 @@ def OI_Python(message, api_key=None):
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
         
         if conversation_history:
-            for chunk in interpreter.chat(f"Current message:{message} Memory of our conversation:{conversation_history} Memory:{customPrompt}", stream= True, display=False):
+            for chunk in interpreter.chat(f"Current message/task:{message} Memory of our previous conversations:{conversation_history} Memory instructions:{customPrompt}"):
                 return chunk
         else:
-            for chunk in interpreter.chat(f"Current message:{message} Memory:{customPrompt}", stream= True, display=False):
+            for chunk in interpreter.chat(f"Current message/task:{message} Memory Instructions:{customPrompt}"):
                 return chunk
            
            

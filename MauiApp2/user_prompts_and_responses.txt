@@ -1,88 +1,22 @@
 
-User Prompt: Quiero una foto de un perro en mi escritorio, consiguela
-Response: 
+User Prompt: Cual es mi IP?
+Response:                                                                                
+  Plan:                                                                        
                                                                                
-  import requests                                                              
-  import os                                                                    
-  from PIL import Image                                                        
-  from io import BytesIO                                                       
+   1 Use Python's requests library to send a request to a service that         
+     provides the public IP address.                                           
+   2 Extract the IP address from the response and return it to the user.       
                                                                                
-  # URL of a random dog image from the Dog CEO's Dog API                       
-  url = 'https://dog.ceo/api/breeds/image/random'                              
-                                                                               
-  # Send a GET request to the API                                              
-  response = requests.get(url)                                                 
-                                                                               
-  # Parse the JSON response                                                    
-  data = response.json()                                                       
-                                                                               
-  # Get the URL of the dog image                                               
-  image_url = data['message']                                                  
-                                                                               
-  # Send a GET request to the image URL                                        
-  response = requests.get(image_url)                                           
-                                                                               
-  # Open the image                                                             
-  image = Image.open(BytesIO(response.content))                                
-                                                                               
-  # Save the image to the user's desktop                                       
-  image_path = os.path.join(os.path.expanduser('~'), 'Desktop', 'dog.jpg')     
-  image.save(image_path)                                                       
-                                                                               
-                                                                               
-  File "<stdin>", line 5, in <module>                                          
-  ModuleNotFoundError: No module named 'PIL'                                   
-                                                                               
-                                                                               
-  import subprocess                                                            
-                                                                               
-  # Install the missing PIL package                                            
-  subprocess.check_call(['python', '-m', 'pip', 'install', 'pillow'])          
-                                                                               
-                                                                               
-  Defaulting to user installation because normal site-packages is not          
-  writeable                                                                    
-  Collecting pillow                                                            
-  Obtaining dependency information for pillow from                             
-  https://files.pythonhosted.org/packages/54/9b/debe992677af84859ec1e38777b1d  
-  5c0671918188324153ecbc1f16f6cb6/Pillow-10.0.1-cp311-cp311-win_amd64.whl.met  
-  adata                                                                        
-  Downloading Pillow-10.0.1-cp311-cp311-win_amd64.whl.metadata (9.6 kB)        
-  Downloading Pillow-10.0.1-cp311-cp311-win_amd64.whl (2.5 MB)                 
-  ---------------------------------------- 2.5/2.5 MB 2.1 MB/s eta 0:00:00     
-  Installing collected packages: pillow                                        
-  Successfully installed pillow-10.0.1                                         
-  0                                                                            
+  Let's start by executing the Python code to get your public IP address.      
                                                                                
                                                                                
   import requests                                                              
-  import os                                                                    
-  from PIL import Image                                                        
-  from io import BytesIO                                                       
                                                                                
-  # URL of a random dog image from the Dog CEO's Dog API                       
-  url = 'https://dog.ceo/api/breeds/image/random'                              
-                                                                               
-  # Send a GET request to the API                                              
-  response = requests.get(url)                                                 
-                                                                               
-  # Parse the JSON response                                                    
-  data = response.json()                                                       
-                                                                               
-  # Get the URL of the dog image                                               
-  image_url = data['message']                                                  
-                                                                               
-  # Send a GET request to the image URL                                        
-  response = requests.get(image_url)                                           
-                                                                               
-  # Open the image                                                             
-  image = Image.open(BytesIO(response.content))                                
-                                                                               
-  # Save the image to the user's desktop                                       
-  image_path = os.path.join(os.path.expanduser('~'), 'Desktop', 'dog.jpg')     
-  image.save(image_path)                                                       
+  response = requests.get('https://api.ipify.org')                             
+  response.text                                                                
                                                                                
                                                                                
-  He descargado una imagen aleatoria de un perro y la he guardado en tu        
-  escritorio con el nombre "dog.jpg".                                          
+  '45.232.94.146'                                                              
+                                                                                                                                                              
+  Your public IP address is 45.232.94.146.                                     
                                                                                

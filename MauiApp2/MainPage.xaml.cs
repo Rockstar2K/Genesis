@@ -27,44 +27,74 @@ namespace MauiApp2
         }
         */
 
-        private void InputBox_Completed(System.Object sender, System.EventArgs e)
+        private void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
         {
-            userPrompt = InputBox.Text;
-            TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
+            userPrompt = InputBox.Text; 
+            InputBox.Text = ""; //it deletes the text of the entry once sended
+
+            AddUserChatBoxToUI(userPrompt);
             //PlayUserPrompt(userPrompt);  // method to play the user prompt in TTS
-            AddChatBoxToUI(userPrompt);
-            InputBox.Text = "";
+            AddInterpreterChatBoxToUI(userPrompt);
 
         }
 
-        private void AddChatBoxToUI(string input)
+        private void AddUserChatBoxToUI(string input)
         {
-            bool isUserMessage = input == userPrompt;
-
             var frame = new Frame
             {
-                BackgroundColor = isUserMessage ? Color.FromHex("#F2CFE2") : Color.FromHex("#B280B9"),
-                BorderColor = isUserMessage ? Color.FromHex("#F2CFE2") : Color.FromHex("#B280B9"),
-                Margin = isUserMessage ? new Thickness(80, 0, 0, 0) : new Thickness(0, 0, 80, 0), //left, top, right, bottom
-                HasShadow = true,
-                CornerRadius = 25,
+                BackgroundColor = Color.FromHex("#F2CFE2"),
+                BorderColor = Color.FromHex("#F2CFE2"),
+                Margin = new Thickness(80, 0, 0, 0), //left, top, right, bottom
+                                                     // ... other styling ...
                 Content = new Label
                 {
                     Text = input,
-                    TextColor = isUserMessage ? Color.FromHex("#121B3F") : Color.FromHex("#fff"),
+                    TextColor = Color.FromHex("#121B3F"),
                 }
             };
-            frame.Shadow = new Shadow
-            {
-                Brush = new SolidColorBrush(Color.FromHex("#121B3F")),
-                Offset = new Point(0, 5),
-                Radius = 15,
-                Opacity = 0.1f
-            };
 
-            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");  // VerticalStackLayout "ChatLayout" in xaml
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
             stackLayout.Children.Add(frame);
+
+            // ... shadow styling ...
         }
+
+
+        private async void AddInterpreterChatBoxToUI(string userPrompt)
+        {
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+            var existingFrame = stackLayout.Children.FirstOrDefault(c => c.AutomationId == "responseFrame");
+
+            if (existingFrame != null)
+            {
+                ((Label)((Frame)existingFrame).Content).Text = "Waiting for response...";
+            }
+            else
+            {
+                var frame = new Frame
+                {
+                    BackgroundColor = Color.FromHex("#B280B9"),
+                    BorderColor = Color.FromHex("#B280B9"),
+                    Margin = new Thickness(0, 0, 80, 0), //left, top, right, bottom
+                    Content = new Label
+                    {
+                        Text = "Waiting for response...",
+                        TextColor = Color.FromHex("#fff"),
+                    }
+                };
+                frame.AutomationId = "responseFrame";  // for identification later
+                stackLayout.Children.Add(frame);
+                // ... shadow styling ...
+            }
+
+            var result = await RunPythonScriptAsync(userPrompt, apiKey);
+            var responseFrame = stackLayout.Children.FirstOrDefault(c => c.AutomationId == "responseFrame");
+            if (responseFrame != null)
+            {
+                ((Label)((Frame)responseFrame).Content).Text = result;
+            }
+        }
+
 
         private async void PlayAudioPrompt(string text)
         {
@@ -72,18 +102,6 @@ namespace MauiApp2
             ttsPlayer.PlayAudio(audioData);
         }
 
-        private async void TestPythonCode(string userPrompt)
-        {
-            var result = await RunPythonScriptAsync(userPrompt, apiKey);
-            Define_Output(result);
-
-        }
-
-        private void Define_Output(string output)
-        {
-            AddChatBoxToUI(output);
-
-        }
 
         private async Task<string> RunPythonScriptAsync(string message, string apiKey)
         {
