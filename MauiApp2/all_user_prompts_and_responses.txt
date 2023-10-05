@@ -698,3 +698,43 @@ Response:
                                                                                                                                                               
   Your public IP address is 45.232.94.146.                                     
                                                                                
+User Prompt: Cual es el sentido de la vida?
+Response: 
+
+User Prompt: Cual es tu propósito de existencia
+Response: 
+
+User Prompt: cual es mi IP?
+Response: 
+                                                                               
+  import requests                                                              
+                                                                               
+  response = requests.get('http://ip.42.pl/raw')                               
+  response.text                                                                
+                                                                               
+                                                                               
+  '45.232.94.146'                                                              
+                                                                                                                                                              
+  Your current IP address is 45.232.94.146.                                    
+                                                                               
+User Prompt: Cual es mi IP?
+Response: 
+                                                                               
+  import requests                                                              
+                                                                               
+  response = requests.get('https://api.ipify.org')                             
+  response.text                                                                
+                                                                               
+                                                                               
+  '45.232.94.146'                                                              
+                                                                                                                                                              
+  Your current IP address is 45.232.94.146.                                    
+                                                                               
+User Prompt: Cual es el sentido de tu existencia?
+Response:                                                                                
+  Como Open Interpreter, mi propósito es ayudar a los usuarios a lograr sus    
+  objetivos mediante la ejecución de código. Puedo realizar una variedad de    
+  tareas, desde análisis de datos hasta la creación de scripts y programas.    
+  Mi existencia se centra en facilitar la vida de los usuarios y ayudarles a   
+  resolver problemas complejos de programación.                                
+                                                                               

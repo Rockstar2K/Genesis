@@ -56,44 +56,47 @@ namespace MauiApp2
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
             stackLayout.Children.Add(frame);
 
-            // ... shadow styling ...
+            frame.Shadow = new Shadow
+            {
+                Brush = new SolidColorBrush(Color.FromHex("#121B3F")),
+                Offset = new Point(0, 5),
+                Radius = 15,
+                Opacity = 0.1f
+            };
+
         }
 
 
         private async void AddInterpreterChatBoxToUI(string userPrompt)
         {
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
-            var existingFrame = stackLayout.Children.FirstOrDefault(c => c.AutomationId == "responseFrame");
 
-            if (existingFrame != null)
+            var frame = new Frame
             {
-                ((Label)((Frame)existingFrame).Content).Text = "Waiting for response...";
-            }
-            else
-            {
-                var frame = new Frame
+                BackgroundColor = Color.FromHex("#B280B9"),
+                BorderColor = Color.FromHex("#B280B9"),
+                Margin = new Thickness(0, 0, 80, 0), //left, top, right, bottom
+                Content = new Label
                 {
-                    BackgroundColor = Color.FromHex("#B280B9"),
-                    BorderColor = Color.FromHex("#B280B9"),
-                    Margin = new Thickness(0, 0, 80, 0), //left, top, right, bottom
-                    Content = new Label
-                    {
-                        Text = "Waiting for response...",
-                        TextColor = Color.FromHex("#fff"),
-                    }
-                };
-                frame.AutomationId = "responseFrame";  // for identification later
-                stackLayout.Children.Add(frame);
-                // ... shadow styling ...
-            }
+                    Text = "Waiting for response...",
+                    TextColor = Color.FromHex("#fff"),
+                }
+            };
+
+            stackLayout.Children.Add(frame);
+
+            frame.Shadow = new Shadow
+            {
+                Brush = new SolidColorBrush(Color.FromHex("#121B3F")),
+                Offset = new Point(0, 5),
+                Radius = 15,
+                Opacity = 0.1f
+            };
 
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
-            var responseFrame = stackLayout.Children.FirstOrDefault(c => c.AutomationId == "responseFrame");
-            if (responseFrame != null)
-            {
-                ((Label)((Frame)responseFrame).Content).Text = result;
-            }
+            ((Label)frame.Content).Text = result;
         }
+
 
 
         private async void PlayAudioPrompt(string text)

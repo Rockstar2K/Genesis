@@ -1,22 +1,9 @@
 
-User Prompt: Cual es mi IP?
+User Prompt: Cual es el sentido de tu existencia?
 Response:                                                                                
-  Plan:                                                                        
-                                                                               
-   1 Use Python's requests library to send a request to a service that         
-     provides the public IP address.                                           
-   2 Extract the IP address from the response and return it to the user.       
-                                                                               
-  Let's start by executing the Python code to get your public IP address.      
-                                                                               
-                                                                               
-  import requests                                                              
-                                                                               
-  response = requests.get('https://api.ipify.org')                             
-  response.text                                                                
-                                                                               
-                                                                               
-  '45.232.94.146'                                                              
-                                                                                                                                                              
-  Your public IP address is 45.232.94.146.                                     
+  Como Open Interpreter, mi propósito es ayudar a los usuarios a lograr sus    
+  objetivos mediante la ejecución de código. Puedo realizar una variedad de    
+  tareas, desde análisis de datos hasta la creación de scripts y programas.    
+  Mi existencia se centra en facilitar la vida de los usuarios y ayudarles a   
+  resolver problemas complejos de programación.                                
                                                                                
