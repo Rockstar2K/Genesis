@@ -10,7 +10,7 @@ import traceback  # Import traceback module for error details
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def Set_API_Key(key):
-    interpreter.api_key = "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"
+    interpreter.api_key = key
 
 # ...
 

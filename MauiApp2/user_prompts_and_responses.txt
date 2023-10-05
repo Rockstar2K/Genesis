@@ -1,6 +1,14 @@
 
-User Prompt: cual es mi IP?
-Response: 
+User Prompt: Cual es mi IP?
+Response:                                                                                
+  Plan:                                                                        
+                                                                               
+   1 Use a Python script to fetch the public IP address of the user's          
+     machine.                                                                  
+   2 Display the IP address to the user.                                       
+                                                                               
+  Let's start by executing the Python script to fetch the IP address.          
+                                                                               
                                                                                
   import requests                                                              
                                                                                
@@ -10,5 +18,5 @@ Response:
                                                                                
   '45.232.94.146'                                                              
                                                                                                                                                               
-  Your current IP address is 45.232.94.146.                                    
+  Your public IP address is 45.232.94.146.                                     
                                                                                
