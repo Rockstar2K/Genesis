@@ -738,3 +738,48 @@ Response:
   Mi existencia se centra en facilitar la vida de los usuarios y ayudarles a   
   resolver problemas complejos de programación.                                
                                                                                
+User Prompt: Cual es mi IP?
+Response:                                                                                
+  Plan:                                                                        
+                                                                               
+   1 Use Python's requests library to send a request to a service that         
+     provides the public IP address.                                           
+   2 Extract the IP address from the response and return it to the user.       
+                                                                               
+  Let's start by executing the Python code to get your public IP address.      
+                                                                               
+                                                                               
+  import requests                                                              
+                                                                               
+  response = requests.get('https://api.ipify.org')                             
+  response.text                                                                
+                                                                               
+                                                                               
+  '45.232.94.146'                                                              
+                                                                                                                                                              
+  Your public IP address is 45.232.94.146.                                     
+                                                                               
+User Prompt: Cual es tu propósito de existencia? y el mio?
+Response:                                                                                
+  Como Open Interpreter, mi propósito de existencia es ayudarte a ejecutar     
+  código en diferentes lenguajes de programación y resolver problemas de       
+  programación. Estoy aquí para facilitar tus tareas de programación y         
+  ayudarte a alcanzar tus objetivos.                                           
+                                                                               
+  En cuanto a tu propósito de existencia, eso es algo muy personal y solo tú   
+  puedes definirlo. Como ser humano, tienes la capacidad de establecer tus     
+  propios objetivos, buscar tu propia felicidad y darle sentido a tu vida.     
+                                                                               
+User Prompt: Cual es mi IP?
+Response: 
+                                                                               
+  import requests                                                              
+                                                                               
+  response = requests.get('https://api.ipify.org')                             
+  response.text                                                                
+                                                                               
+                                                                               
+  '45.232.94.146'                                                              
+                                                                                                                                                              
+  Tu dirección IP actual es 45.232.94.146.                                     
+                                                                               

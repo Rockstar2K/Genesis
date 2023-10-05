@@ -18,14 +18,6 @@ namespace MauiApp2
             InitializeComponent();
         }
 
-        /*
-        private void OnPromptBtnClicked(object sender, EventArgs e)
-        {
-            userPrompt = InputBox.Text;
-            Output.Text = "Waiting for response...";  // Set the text to "Waiting for response"
-            TestPythonCode(userPrompt);  // Pass userPrompt to TestPythonCode
-        }
-        */
 
         private void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
         {
