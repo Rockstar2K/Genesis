@@ -783,3 +783,16 @@ Response:
                                                                                                                                                               
   Tu dirección IP actual es 45.232.94.146.                                     
                                                                                
+User Prompt: cual es mi IP?
+Response: 
+                                                                               
+  import requests                                                              
+                                                                               
+  response = requests.get('https://api.ipify.org')                             
+  response.text                                                                
+                                                                               
+                                                                               
+  '45.232.94.146'                                                              
+                                                                                                                                                              
+  Your current IP address is 45.232.94.146.                                    
+                                                                               

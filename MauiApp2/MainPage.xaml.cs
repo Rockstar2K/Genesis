@@ -34,14 +34,14 @@ namespace MauiApp2
         {
             var frame = new Frame
             {
-                BackgroundColor = Color.FromHex("#F2CFE2"),
-                BorderColor = Color.FromHex("#F2CFE2"),
+                BackgroundColor = Color.FromArgb("#F2CFE2"),
+                BorderColor = Color.FromArgb("#F2CFE2"),
                 Margin = new Thickness(80, 0, 0, 0), //left, top, right, bottom
                                                      // ... other styling ...
                 Content = new Label
                 {
                     Text = input,
-                    TextColor = Color.FromHex("#121B3F"),
+                    TextColor = Color.FromArgb("#121B3F"),
                 }
             };
 
@@ -50,7 +50,7 @@ namespace MauiApp2
 
             frame.Shadow = new Shadow
             {
-                Brush = new SolidColorBrush(Color.FromHex("#121B3F")),
+                Brush = new SolidColorBrush(Color.FromArgb("#121B3F")),
                 Offset = new Point(0, 5),
                 Radius = 15,
                 Opacity = 0.1f
@@ -65,13 +65,13 @@ namespace MauiApp2
 
             var frame = new Frame
             {
-                BackgroundColor = Color.FromHex("#B280B9"),
-                BorderColor = Color.FromHex("#B280B9"),
+                BackgroundColor = Color.FromArgb("#B280B9"),
+                BorderColor = Color.FromArgb("#B280B9"),
                 Margin = new Thickness(0, 0, 80, 0), //left, top, right, bottom
                 Content = new Label
                 {
                     Text = "Waiting for response...",
-                    TextColor = Color.FromHex("#fff"),
+                    TextColor = Color.FromArgb("#fff"),
                 }
             };
 
@@ -79,7 +79,7 @@ namespace MauiApp2
 
             frame.Shadow = new Shadow
             {
-                Brush = new SolidColorBrush(Color.FromHex("#121B3F")),
+                Brush = new SolidColorBrush(Color.FromArgb("#121B3F")),
                 Offset = new Point(0, 5),
                 Radius = 15,
                 Opacity = 0.1f
