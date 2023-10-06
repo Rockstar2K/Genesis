@@ -2,8 +2,9 @@
 <ContentPage
     x:Class="MauiApp2.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls.Converters;assembly=SkiaSharp.Extended.UI"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
+    
     <Grid VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -64,7 +65,16 @@
                     VerticalOptions="FillAndExpand">
                 </VerticalStackLayout>
 
+                <skia:SKLottieView x:Name="mySKLottie"
+                        x:Name="animatedPlusIcon"
+                        Source="WhiteCheck.json"
+                        HeightRequest="150"
+                        WidthRequest="150"
+                        RepeatCount="0"
+                        IsAnimationEnabled="True">
 
+                </skia:SKLottieView>
+                    
 
             </VerticalStackLayout>
         </ScrollView>

@@ -79,6 +79,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="NAudio" Version="2.2.1" />
 		<PackageReference Include="pythonnet" Version="3.0.2" />
+		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.86" />
 	</ItemGroup>
 
 	<ItemGroup>

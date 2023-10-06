@@ -3,6 +3,8 @@ using Microsoft.Maui.Controls;
 using System.Diagnostics;
 using System.Text;
 using System.IO;
+using SkiaSharp.Views.Maui.Controls.Hosting;
+
 
 
 namespace MauiApp2
@@ -63,16 +65,32 @@ namespace MauiApp2
         {
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
 
+            var a = new SKFileLottieImageSource();
+            a.File = "dotnetbot.json";
+
+            var lottieView = new SkiaSharp.Extended.UI.Controls.SKLottieView
+            {
+                Source = a,
+                HeightRequest = 250,
+                RepeatCount = 99
+            };
+
+
             var frame = new Frame
             {
                 BackgroundColor = Color.FromArgb("#B280B9"),
                 BorderColor = Color.FromArgb("#B280B9"),
                 Margin = new Thickness(0, 0, 80, 0), //left, top, right, bottom
+                Content = lottieView
+
+                /*
                 Content = new Label
                 {
                     Text = "Waiting for response...",
                     TextColor = Color.FromArgb("#fff"),
                 }
+                */
+
             };
 
             stackLayout.Children.Add(frame);

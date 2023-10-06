@@ -98,6 +98,10 @@
               "target": "Package",
               "version": "[2.2.1, )"
             },
+            "SkiaSharp.Extended.UI.Maui": {
+              "target": "Package",
+              "version": "[2.0.0-preview.86, )"
+            },
             "Xamarin.Android.Glide": {
               "target": "Package",
               "version": "[4.13.2.2, )",
@@ -228,6 +232,10 @@
               "target": "Package",
               "version": "[2.2.1, )"
             },
+            "SkiaSharp.Extended.UI.Maui": {
+              "target": "Package",
+              "version": "[2.0.0-preview.86, )"
+            },
             "pythonnet": {
               "target": "Package",
               "version": "[3.0.2, )"
@@ -302,6 +310,10 @@
             "NAudio": {
               "target": "Package",
               "version": "[2.2.1, )"
+            },
+            "SkiaSharp.Extended.UI.Maui": {
+              "target": "Package",
+              "version": "[2.0.0-preview.86, )"
             },
             "pythonnet": {
               "target": "Package",
@@ -388,6 +400,10 @@
             "NAudio": {
               "target": "Package",
               "version": "[2.2.1, )"
+            },
+            "SkiaSharp.Extended.UI.Maui": {
+              "target": "Package",
+              "version": "[2.0.0-preview.86, )"
             },
             "pythonnet": {
               "target": "Package",

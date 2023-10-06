@@ -1588,11 +1588,38 @@
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\pythonnet\3.0.2\lib\netstandard2.0\Python.Runtime.dll">
       <PackagePath>Python.Runtime.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp\2.88.6\lib\net6.0\SkiaSharp.dll">
+      <PackagePath>SkiaSharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.extended\2.0.0-preview.86\lib\netstandard2.0\SkiaSharp.Extended.dll">
+      <PackagePath>SkiaSharp.Extended.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.extended.ui.maui\2.0.0-preview.86\lib\net7.0-windows10.0.19041\SkiaSharp.Extended.UI.dll">
+      <PackagePath>SkiaSharp.Extended.UI.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.skottie\2.88.6\lib\net6.0\SkiaSharp.SceneGraph.dll">
+      <PackagePath>SkiaSharp.SceneGraph.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.skottie\2.88.6\lib\net6.0\SkiaSharp.Skottie.dll">
+      <PackagePath>SkiaSharp.Skottie.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.views.maui.controls\2.88.6\lib\net6.0-windows10.0.18362.0\SkiaSharp.Views.Maui.Controls.dll">
+      <PackagePath>SkiaSharp.Views.Maui.Controls.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.views.maui.core\2.88.6\lib\net6.0-windows10.0.18362.0\SkiaSharp.Views.Maui.Core.dll">
+      <PackagePath>SkiaSharp.Views.Maui.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.views.winui\2.88.6\lib\net6.0-windows10.0.19041.0\SkiaSharp.Views.Windows.dll">
+      <PackagePath>SkiaSharp.Views.Windows.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\microsoft.graphics.win2d\1.0.5.1\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\microsoft.windowsappsdk\1.2.221209.1\runtimes\win10-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.nativeassets.win32\2.88.6\runtimes\win-x64\native\libSkiaSharp.dll">
+      <PackagePath>libSkiaSharp.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.92\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>
