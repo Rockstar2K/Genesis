@@ -1,3 +1,6 @@
 
-User Prompt: cual es mi IP?
-Response: 
+User Prompt: quiero que hagas un poema con nuestros nombres
+Response:                                                                                
+  Claro, puedo hacer eso. ¿Podrías proporcionarme los nombres que debo         
+  incluir en el poema?                                                         
+                                                                               

@@ -832,3 +832,13 @@ Response:
                                                                                
 User Prompt: cual es mi IP?
 Response: 
+User Prompt: hola, me llamo Roco y tu?
+Response:                                                                                
+  ¡Hola, Roco! Soy Open Interpreter, un asistente de programación. ¿Cómo       
+  puedo ayudarte hoy?                                                          
+                                                                               
+User Prompt: quiero que hagas un poema con nuestros nombres
+Response:                                                                                
+  Claro, puedo hacer eso. ¿Podrías proporcionarme los nombres que debo         
+  incluir en el poema?                                                         
+                                                                               

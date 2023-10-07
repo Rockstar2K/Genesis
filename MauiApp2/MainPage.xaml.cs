@@ -3,6 +3,7 @@ using Microsoft.Maui.Controls;
 using System.Diagnostics;
 using System.Text;
 using System.IO;
+using System.IO.Pipes;
 
 
 
@@ -163,7 +164,7 @@ namespace MauiApp2
 
                 });
             }
-
+            /*
             else if (System.OperatingSystem.IsWindows())
             {
                 //paths
@@ -206,11 +207,90 @@ namespace MauiApp2
                     return result + "\n" + error;  // Combine standard and error output
                 });
             }
+            */
+
+            else if (System.OperatingSystem.IsWindows())
+            {
+                //paths
+                string projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                string scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+                string pythonPath = "C:\\Program Files\\Python311\\python.exe";
+
+                var pipeServer = new PipeServer();
+                pipeServer.Start();
+
+                return await Task.Run(async () =>
+                {
+                    var process = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = $"{pythonPath}",
+                            Arguments = $"\"{scriptPath}\" \"{message}\" \"{apiKey}\"",
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,  // Re-enable error redirection
+                            UseShellExecute = false,
+                            CreateNoWindow = true,
+                            // weird characters are removed
+                            StandardOutputEncoding = Encoding.UTF8,
+                            StandardErrorEncoding = Encoding.UTF8
+                        }
+                    };
+
+                    process.Start();
+
+                    string error = process.StandardError.ReadToEnd();  // Re-enable error capture
+                    process.WaitForExit();
+
+                    // Wait for a message from the Python script
+                    string result = await pipeServer.WaitForMessageAsync();
+
+                    RAMconversation(message, result);
+                    SSDconversation(message, result);
+
+                    if (!string.IsNullOrEmpty(error))
+                    {
+                        Debug.WriteLine("Error/Debug output: " + error);
+                    }
+
+                    return result + "\n" + error;  // Combine standard and error output
+                });
+            }
+
+
             else
             {
                 return string.Empty;
             }
 
+        }
+
+        static void Main(string[] args)
+        {
+            using (var server = new NamedPipeServerStream("MyPipe"))
+            {
+                Debug.WriteLine("Waiting for connection...");
+                server.WaitForConnection();
+
+                Debug.WriteLine("Connected!");
+
+                using (var reader = new StreamReader(server))
+                using (var writer = new StreamWriter(server))
+                {
+                    writer.AutoFlush = true;
+
+                    while (true)
+                    {
+                        var messageFromClient = reader.ReadLine();
+                        if (messageFromClient == null) break;  // Client has disconnected
+
+                        Debug.WriteLine("Received: " + messageFromClient);
+
+                        // Send a response
+                        Debug.WriteLine("Response from server");
+                    }
+                }
+            }
         }
 
         private void RAMconversation(string message, string result) //low memory for resend it with the prompt

@@ -14,6 +14,7 @@ def Set_API_Key(key):
 
 # ...
 
+
 def read_conversation_history():
     # Get the root directory of your project
     root_dir = os.path.dirname(os.path.abspath(__file__))
@@ -27,7 +28,7 @@ def read_conversation_history():
     return ""
 
 # ...
-
+'''
 def OI_Python(message, api_key=None):
     if api_key:
         Set_API_Key(api_key)
@@ -52,12 +53,28 @@ def OI_Python(message, api_key=None):
         else:
             for chunk in interpreter.chat(f"Current message/task:{message} Memory Instructions:{customPrompt}"):
                 return chunk
-           
+         
+
            
     except Exception as e:
          return f"Error: {e}\n{traceback.format_exc()}"
-
+'''
 # ...
+
+def OI_Python(message, api_key=None):
+    if api_key:
+        Set_API_Key(api_key)
+    try:
+        
+        interpreter.conversation_history = True
+        interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
+        
+        for chunk in interpreter.chat(message):
+            return chunk
+        
+            
+    except Exception as e:
+         return f"Error: {e}\n{traceback.format_exc()}"
 
 if __name__ == "__main__":
     message = sys.argv[1]
