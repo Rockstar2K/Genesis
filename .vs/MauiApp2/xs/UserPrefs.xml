@@ -1,32 +1,27 @@
-﻿<Properties StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default">
+﻿<Properties NuGet.AddPackagesDialog.IncludePrerelease="True" StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/MainPage.xaml">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/interpreter_wrapper.py">
     <Files>
-      <File FileName="MauiApp2/interpreter_wrapper.py" />
-      <File FileName="MauiApp2/MauiProgram.cs" />
-      <File FileName="MauiApp2/AppShell.xaml.cs" />
-      <File FileName="MauiApp2/MainPage.xaml.cs" />
-      <File FileName="MauiApp2/MainPage.xaml" Line="76" Column="43" />
-      <File FileName="MauiApp2/Settings.xaml" />
-      <File FileName="MauiApp2/Settings.xaml.cs" Line="8" Column="9" />
+      <File FileName="MauiApp2/MauiProgram.cs" Line="1" Column="1" />
+      <File FileName="MauiApp2/AppShell.xaml.cs" Line="1" Column="1" />
+      <File FileName="MauiApp2/MainPage.xaml.cs" Line="185" Column="1" />
+      <File FileName="MauiApp2/MainPage.xaml" Line="121" Column="15" />
+      <File FileName="MauiApp2/interpreter_wrapper.py" Line="55" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MauiApp2">
+          <Node name="MauiApp2" expanded="True">
             <Node name="MauiApp2">
               <Node name="Resources" expanded="True">
-                <Node name="Images" expanded="True">
-                  <Node name="settings.png" selected="True" />
-                </Node>
+                <Node name="Animations" expanded="True" />
               </Node>
-              <Node name="Settings.xaml" expanded="True" />
+              <Node name="interpreter_wrapper.py" selected="True" />
+              <Node name="MainPage.xaml" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -34,4 +29,6 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

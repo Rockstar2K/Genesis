@@ -13,6 +13,8 @@ namespace MauiApp2
 
         string userPrompt;
         readonly string apiKey = "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";
+        Frame outputFrame;
+
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
         public MainPage()
         {
@@ -63,49 +65,23 @@ namespace MauiApp2
         private async void AddInterpreterChatBoxToUI(string userPrompt)
         {
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
-                
-            /*
-                var a = new SKFileLottieImageSource();
-                a.File = "dotnetbot.json";
 
-                var lottieView = new SkiaSharp.Extended.UI.Controls.SKLottieView
-                {
-                    Source = a,
-                    HeightRequest = 250,
-                    RepeatCount = 99
-                };
-            */
-
-
-            var frame = new Frame
+            outputFrame = new Frame
             {
                 BackgroundColor = Color.FromArgb("#B280B9"),
                 BorderColor = Color.FromArgb("#B280B9"),
-                Margin = new Thickness(0, 0, 80, 0), //left, top, right, bottom
-                //Content = lottieView
-
-                
+                Margin = new Thickness(0, 0, 80, 0),
                 Content = new Label
                 {
                     Text = "Waiting for response...",
                     TextColor = Color.FromArgb("#fff"),
                 }
-                
-
             };
 
-            stackLayout.Children.Add(frame);
-
-            frame.Shadow = new Shadow
-            {
-                Brush = new SolidColorBrush(Color.FromArgb("#121B3F")),
-                Offset = new Point(0, 5),
-                Radius = 15,
-                Opacity = 0.1f
-            };
+            stackLayout.Children.Add(outputFrame);
 
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
-            ((Label)frame.Content).Text = result;
+            UpdateUI(result);  // this will replace "Waiting for response..." with the result
         }
 
 
@@ -119,99 +95,98 @@ namespace MauiApp2
 
         private async Task<string> RunPythonScriptAsync(string message, string apiKey)
         {
+            string pythonPath;
+            string scriptPath;
+            string projectDirectory;
 
             if (OperatingSystem.IsMacCatalyst())
             {
-                //paths
-                string projectDirectory = "/Users/n/Desktop/Genesis Roco/Genesis/MauiApp2/";
-                string scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
-                string pythonPath = "/Users/n/anaconda3/bin/python";
-
-                return await Task.Run(() =>
-                {
-                    var process = new Process
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = $"{pythonPath}",
-                            Arguments = $"\"{scriptPath}\" \"{message}\" \"{apiKey}\"",
-                            RedirectStandardOutput = true,
-                            RedirectStandardError = true,  // Re-enable error redirection
-                            UseShellExecute = false,
-                            CreateNoWindow = true,
-                            // weird characters are removed
-                            StandardOutputEncoding = Encoding.UTF8,
-                            StandardErrorEncoding = Encoding.UTF8
-                        }
-                    };
-
-                    process.Start();
-                    string result = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();  // Re-enable error capture
-                    process.WaitForExit();
-
-                    RAMconversation(message, result);
-                    SSDconversation(message, result);
-
-                    if (!string.IsNullOrEmpty(error))
-                    {
-                        Debug.WriteLine("Error/Debug output: " + error);
-                    }
-
-                    return result + "\n" + error;  // Combine standard and error output
-
-
-                });
+                //paths for MacOS
+                projectDirectory = "/Users/n/Desktop/AGI/MauiApp2/";
+                scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+                pythonPath = "/Users/n/anaconda3/bin/python";
             }
-
             else if (System.OperatingSystem.IsWindows())
             {
-                //paths
-                string projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                string scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
-                string pythonPath = "C:\\Program Files\\Python311\\python.exe";
-
-                return await Task.Run(() =>
-                {
-                    var process = new Process
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = $"{pythonPath}",
-                            Arguments = $"\"{scriptPath}\" \"{message}\" \"{apiKey}\"",
-                            RedirectStandardOutput = true,
-                            RedirectStandardError = true,  // Re-enable error redirection
-                            UseShellExecute = false,
-                            CreateNoWindow = true,
-                            // weird characters are removed
-                            StandardOutputEncoding = Encoding.UTF8,
-                            StandardErrorEncoding = Encoding.UTF8
-                        }
-                    };
-
-                    process.Start();
-                    string result = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();  // Re-enable error capture
-                    process.WaitForExit();
-
-                    RAMconversation(message, result);
-                    SSDconversation(message, result);
-
-
-                    if (!string.IsNullOrEmpty(error))
-                    {
-                        Debug.WriteLine("Error/Debug output: " + error);
-                    }
-
-                    return result + "\n" + error;  // Combine standard and error output
-                });
+                //paths for Windows
+                projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+                pythonPath = "C:\\Program Files\\Python311\\python.exe";
             }
             else
             {
+                // Unsupported OS
                 return string.Empty;
             }
 
+            return await ExecuteScriptAsync(pythonPath, scriptPath, message, apiKey);
         }
+
+
+        private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string message, string apiKey)
+        {
+            var outputBuilder = new StringBuilder();
+
+            await Task.Run(async () =>
+            {
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = $"{pythonPath}",
+                        Arguments = $"\"{scriptPath}\" \"{message}\" \"{apiKey}\"",
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        StandardOutputEncoding = Encoding.UTF8,
+                        StandardErrorEncoding = Encoding.UTF8
+                    }
+                };
+
+                process.Start();
+
+                using (var reader = process.StandardOutput)
+                {
+                    char[] buffer = new char[256];  // Adjust buffer size as needed
+                    int charsRead;
+                    while ((charsRead = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    {
+                        var chunk = new string(buffer, 0, charsRead);
+                        UpdateUI(chunk);
+                        outputBuilder.Append(chunk);
+                    }
+                }
+
+
+                string error = await process.StandardError.ReadToEndAsync();
+                process.WaitForExit();
+
+                if (!string.IsNullOrEmpty(error))
+                {
+                    Debug.WriteLine("Error/Debug output: " + error);
+                }
+            });
+
+            return outputBuilder.ToString();
+        }
+
+        private void UpdateUI(string text)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var label = outputFrame.Content as Label;
+                if (label != null)
+                {
+                    label.Text += text;
+                }
+            });
+        }
+
+
+
+
+
 
         private void RAMconversation(string message, string result) //low memory for resend it with the prompt
         {

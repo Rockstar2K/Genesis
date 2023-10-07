@@ -72,6 +72,10 @@
 	  <None Remove="Resources\Images\chat.png" />
 	  <None Remove="Resources\Images\microphone.png" />
 	  <None Remove="Resources\Images\settings.png" />
+	  <None Remove="Resources\Animations\" />
+	  <None Remove="Resources\Animations\animation.json" />
+	  <None Remove="Resources\animation.json" />
+	  <None Remove="animation.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -91,10 +95,16 @@
 
 	<ItemGroup>
 	  <Folder Include="Resources\Credentials\" />
+	  <Folder Include="Resources\Animations\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\chat.png" />
 	  <BundleResource Include="Resources\Images\microphone.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Animations\animation.json" />
+	  <EmbeddedResource Include="Resources\animation.json" />
+	  <EmbeddedResource Include="animation.json" />
 	</ItemGroup>
 </Project>

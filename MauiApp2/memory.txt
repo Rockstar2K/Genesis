@@ -1,1 +1,19 @@
 2023-10-04 18:59:36.908474: thega requested Write a sonnet
+- Tell me a short story
+echo "## active_line 2 ##"
+- Memory of our previous conversations:2023-10-04 18:59:36.908474: thega requested Write a sonnet
+- Tell me a short story
+- Tell me a short story
+- Tell me a short story
+- Tell me a short story
+- Memory of our previous conversations:2023-10-04 18:59:36.908474: thega requested Write a sonnet
+echo "## active_line 2 ##"
+- Tell me a short story
+echo "## active_line 3 ##"
+- Tell me a short story
+echo "## active_line 4 ##"
+- Tell me a short story
+echo "## active_line 5 ##"
+- Tell me a short story
+- Write a sonnet
+- Write a sonnet
