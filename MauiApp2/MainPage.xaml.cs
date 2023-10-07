@@ -3,8 +3,8 @@ using Microsoft.Maui.Controls;
 using System.Diagnostics;
 using System.Text;
 using System.IO;
-
-
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace MauiApp2
 {
@@ -14,6 +14,7 @@ namespace MauiApp2
         string userPrompt;
         readonly string apiKey = "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";
         Frame outputFrame;
+        private bool isFirstUpdate = true;
 
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
         public MainPage()
@@ -171,6 +172,7 @@ namespace MauiApp2
             return outputBuilder.ToString();
         }
 
+        [Obsolete]
         private void UpdateUI(string text)
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -178,10 +180,32 @@ namespace MauiApp2
                 var label = outputFrame.Content as Label;
                 if (label != null)
                 {
-                    label.Text += text;
+                    try
+                    {
+                        var json = JObject.Parse(text);
+                        var message = json["message"]?.ToString();
+                        if (message != null)
+                        {
+                            if (isFirstUpdate)
+                            {
+                                label.Text = message;  // Set the text to the first message received
+                                isFirstUpdate = false;
+                            }
+                            else
+                            {
+                                label.Text += message;  // Append subsequent messages
+                            }
+                        }
+                    }
+                    catch (JsonReaderException)
+                    {
+                        Debug.WriteLine("Json parser exception");
+                        // You may want to handle or log JSON parsing errors here
+                    }
                 }
             });
         }
+
 
 
 
