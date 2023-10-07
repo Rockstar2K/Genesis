@@ -18,3 +18,43 @@ echo "## active_line 5 ##"
 - Write a sonnet
 - Write a sonnet
 - Write a sonnet
+- Memory of our previous conversations:2023-10-04 18:59:36.908474: thega requested Write a sonnet
+echo "## active_line 2 ##"
+- Tell me a short story
+echo "## active_line 3 ##"
+echo "## active_line 2 ##"
+echo "## active_line 4 ##"
+- Memory of our previous conversations:2023-10-04 18:59:36.908474: thega requested Write a sonnet
+echo "## active_line 5 ##"
+- Tell me a short story
+echo "## active_line 6 ##"
+- Tell me a short story
+echo "## active_line 7 ##"
+- Tell me a short story
+echo "## active_line 8 ##"
+- Tell me a short story
+echo "## active_line 9 ##"
+- Memory of our previous conversations:2023-10-04 18:59:36.908474: thega requested Write a sonnet
+echo "## active_line 10 ##"
+echo "## active_line 2 ##"
+echo "## active_line 11 ##"
+- Tell me a short story
+echo "## active_line 12 ##"
+echo "## active_line 3 ##"
+echo "## active_line 13 ##"
+- Tell me a short story
+echo "## active_line 14 ##"
+echo "## active_line 4 ##"
+echo "## active_line 15 ##"
+- Tell me a short story
+echo "## active_line 16 ##"
+echo "## active_line 5 ##"
+echo "## active_line 17 ##"
+- Tell me a short story
+echo "## active_line 18 ##"
+- Write a sonnet
+echo "## active_line 19 ##"
+- Write a sonnet
+echo "## active_line 20 ##"
+- Write a sonnet
+- Write a poem about Natalia

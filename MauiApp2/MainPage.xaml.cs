@@ -57,7 +57,7 @@ namespace MauiApp2
                 Brush = new SolidColorBrush(Color.FromArgb("#121B3F")),
                 Offset = new Point(0, 5),
                 Radius = 15,
-                Opacity = 0.1f
+                Opacity = 0.6f
             };
 
         }
@@ -66,10 +66,28 @@ namespace MauiApp2
         private async void AddInterpreterChatBoxToUI(string userPrompt)
         {
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+            var gradientBrush = new LinearGradientBrush
+            {
+                StartPoint = new Point(0, 0.5),
+                EndPoint = new Point(1, 0.5)
+            };
+            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 0.0f });  // #B080B7
+            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 0.25f });  // #EFCDE1
+
+            var customShadow = new Shadow
+            {
+                Radius = 10,
+                Opacity = 0.6f,
+                Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),  // #EFCDE1
+                Offset = new Point(5, 5)  // Offset of 5 pixels to the right and down
+            };
+
 
             outputFrame = new Frame
             {
-                BackgroundColor = Color.FromArgb("#B280B9"),
+                HasShadow = true,
+                Shadow = customShadow,
+                Background = gradientBrush,
                 BorderColor = Color.FromArgb("#B280B9"),
                 Margin = new Thickness(0, 0, 80, 0),
                 Content = new Label
