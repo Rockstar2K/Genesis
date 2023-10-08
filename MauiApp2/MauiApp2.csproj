@@ -74,8 +74,30 @@
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Resources\Animations\" />
 	  <None Remove="Resources\Animations\animation.json" />
-	  <None Remove="Resources\animation.json" />
 	  <None Remove="animation.json" />
+	  <None Remove="Resources\Images\GenesisAnim.gif" />
+	  <None Remove="Resources\Images\genesis_loading.gif" />
+	  <None Remove="Resources\Raw\animation.json" />
+	  <None Remove="Resources\Images\animation.json" />
+	  <None Remove="Resources\animation.json" />
+	  <None Remove="Resources\Fonts\Montserrat-Black.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-BlackItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-BoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-ExtraBold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-ExtraBoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-ExtraLight.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-ExtraLightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-Italic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-Light.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-LightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-MediumItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-SemiBold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-SemiBoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-Thin.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat-ThinItalic.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -104,7 +126,11 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Include="Resources\Animations\animation.json" />
-	  <EmbeddedResource Include="Resources\animation.json" />
 	  <EmbeddedResource Include="animation.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Resources\Raw\animation.json" />
+	  <Content Include="Resources\Images\animation.json" />
+	  <Content Include="Resources\animation.json" />
 	</ItemGroup>
 </Project>

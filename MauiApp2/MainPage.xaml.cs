@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using SkiaSharp.Extended.UI.Controls;
 
 namespace MauiApp2
 {
@@ -15,6 +16,9 @@ namespace MauiApp2
         readonly string apiKey = "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";
         Frame outputFrame;
         private bool isFirstUpdate = true;
+        Image loadingGif;
+        Label resultLabel;
+        SKLottieView lottieView;
 
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
         public MainPage()
@@ -45,6 +49,7 @@ namespace MauiApp2
                 Content = new Label
                 {
                     Text = input,
+                    FontFamily = "Montserrat-Light",
                     TextColor = Color.FromArgb("#121B3F"),
                 }
             };
@@ -81,6 +86,44 @@ namespace MauiApp2
                 Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),  // #EFCDE1
                 Offset = new Point(5, 5)  // Offset of 5 pixels to the right and down
             };
+            //Gif Animation
+            loadingGif = new Image
+            {
+
+                Source = new FileImageSource
+                {
+                    File = "genesis_loading.gif"
+                },
+                WidthRequest = 400,
+                HeightRequest = 400,
+                IsAnimationPlaying = true,
+                HorizontalOptions = LayoutOptions.Start
+                
+            };
+
+            //lottie Animation
+            var source = new SKFileLottieImageSource
+            {
+                File = "animation.json"  // specify the path to your Lottie animation file
+            };
+
+            lottieView = new SKLottieView
+            {
+                Source = source,
+                WidthRequest = 300,
+                HeightRequest = 300,
+                RepeatCount = -1,  // Set to -1 to repeat the animation indefinitely
+                RepeatMode = SKLottieRepeatMode.Restart  // Restart the animation after it completes
+            };
+
+
+            resultLabel = new Label
+            {
+                Text = "Waiting for response...",
+                TextColor = Color.FromArgb("#fff"),
+                FontFamily = "Montserrat-Light",
+                IsVisible = false  // Hide the label initially
+            };
 
 
             outputFrame = new Frame
@@ -90,11 +133,21 @@ namespace MauiApp2
                 Background = gradientBrush,
                 BorderColor = Color.FromArgb("#B280B9"),
                 Margin = new Thickness(0, 0, 80, 0),
-                Content = new Label
-                {
-                    Text = "Waiting for response...",
-                    TextColor = Color.FromArgb("#fff"),
-                }
+                //  Content = new Label
+                // {
+                //     Text = "Waiting for response...",
+                //    TextColor = Color.FromArgb("#fff"),
+                // }
+
+
+            };
+            loadingGif.IsVisible = true;
+            loadingGif.IsAnimationPlaying = true;
+            lottieView.IsAnimationEnabled = true;
+            outputFrame.Content = new HorizontalStackLayout
+            {
+                //Por ahora usamos loading gif, pero cuando logremos resolver lo de lottie, solo hay que cambiarlo por lottieView
+                Children = { loadingGif, resultLabel }
             };
 
             stackLayout.Children.Add(outputFrame);
@@ -195,9 +248,11 @@ namespace MauiApp2
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                var label = outputFrame.Content as Label;
-                if (label != null)
-                {
+                loadingGif.IsVisible = false;
+                lottieView.IsVisible = false;  // Hide the loading image
+                resultLabel.IsVisible = true;  // Show the label
+                
+
                     try
                     {
                         var json = JObject.Parse(text);
@@ -206,12 +261,12 @@ namespace MauiApp2
                         {
                             if (isFirstUpdate)
                             {
-                                label.Text = message;  // Set the text to the first message received
+                                resultLabel.Text = message;  // Set the text to the first message received
                                 isFirstUpdate = false;
                             }
                             else
                             {
-                                label.Text += message;  // Append subsequent messages
+                                resultLabel.Text += message;  // Append subsequent messages
                             }
                         }
                     }
@@ -220,7 +275,7 @@ namespace MauiApp2
                         Debug.WriteLine("Json parser exception");
                         // You may want to handle or log JSON parsing errors here
                     }
-                }
+                
             });
         }
 

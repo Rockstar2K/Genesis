@@ -102,6 +102,7 @@
                     Completed="InputBox_Completed"
                     Placeholder="¿Que quieres que haga?"
                     PlaceholderColor="#68667D"
+                    FontFamily="Montserrat-Light"
                     TextColor="#121B3F">
                     <Entry.Shadow>
                         <Shadow
