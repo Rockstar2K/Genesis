@@ -102,11 +102,14 @@ namespace MauiApp2
                 HorizontalOptions = LayoutOptions.Start
                 
             };
-            
+
+            loadingGif.IsVisible = true;
+            loadingGif.IsAnimationPlaying = true;
+
             //lottie Animation
             var source = new SKFileLottieImageSource
             {
-                File = "animation.json"  // specify the path to your Lottie animation file
+                File = "https://lottie.host/440bfe79-8145-4324-9976-29d4d0830194/p57JQzlc3e.json"  // specify the path to your Lottie animation file
             };
 
             lottieView = new SKLottieView
@@ -118,6 +121,7 @@ namespace MauiApp2
                 RepeatMode = SKLottieRepeatMode.Restart  // Restart the animation after it completes
             };
 
+            lottieView.IsAnimationEnabled = true;
 
             resultLabel = new Label
             {
@@ -135,27 +139,19 @@ namespace MauiApp2
                 Background = gradientBrush,
                 BorderColor = Color.FromArgb("#B280B9"),
                 Margin = new Thickness(0, 0, 80, 0),
-                //  Content = new Label
-                // {
-                //     Text = "Waiting for response...",
-                //    TextColor = Color.FromArgb("#fff"),
-                // }
-
-
+                //  Content 
+ 
             };
-            loadingGif.IsVisible = true;
-            loadingGif.IsAnimationPlaying = true;
-            lottieView.IsAnimationEnabled = true;
+
             outputFrame.Content = new HorizontalStackLayout
             {
-                //Por ahora usamos loading gif, pero cuando logremos resolver lo de lottie, solo hay que cambiarlo por lottieView
-                Children = { loadingGif, resultLabel }
+                Children = { loadingGif, resultLabel } //USING GIF FOR NOW
             };
 
             stackLayout.Children.Add(outputFrame);
 
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
-            UpdateUI(result);  // this will replace "Waiting for response..." with the result
+            UpdateUI(result);  
         }
 
 
@@ -185,7 +181,7 @@ namespace MauiApp2
             else if (System.OperatingSystem.IsWindows())
             {
                 //paths for Windows
-                projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                projectDirectory = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2"; // Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
                 pythonPath = "C:\\Program Files\\Python311\\python.exe";
             }
@@ -253,18 +249,30 @@ namespace MauiApp2
         [Obsolete]
         private void UpdateUI(string text)
         {
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 loadingGif.IsVisible = false;
                 lottieView.IsVisible = false;  // Hide the loading image
                 resultLabel.IsVisible = true;  // Show the label
 
+                Debug.WriteLine("Received text: " + text);
+
+                if (string.IsNullOrEmpty(text))
+                {
+                    Debug.WriteLine("Text is null or empty updateUI");
+                    return;
+                }
 
                 try
                 {
-                        var json = JObject.Parse(text);
-                        var message = json["message"]?.ToString();
-                        Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
+
+                    var json = JObject.Parse(text);
+
+                    Debug.WriteLine("json: " + json);
+
+                    var message = json["message"]?.ToString();
+                    Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
 
                         if (message != null)
                         {
@@ -279,11 +287,10 @@ namespace MauiApp2
                             }
                         }
                     }
-                    catch (JsonReaderException)
-                    {
-                        Debug.WriteLine("Json parser exception");
-                        // You may want to handle or log JSON parsing errors here
-                    }
+                catch (JsonReaderException ex)
+                {
+                    Debug.WriteLine("Json parser exception" + ex.Message); //JSON ERRORS HERE
+                }
                 
             });
         }

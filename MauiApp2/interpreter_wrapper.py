@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# -- coding: utf-8 --
 import sys
 import io
 import interpreter
@@ -14,51 +14,17 @@ def Set_API_Key(key):
 
 # ...
 
-def read_conversation_history():
-    # Get the root directory of your project
-    root_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    # Construct the path to the conversation history file
-    file_path = os.path.join(root_dir, "memory.txt")
-    
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as file:
-            return file.read()
-    return ""
-
-# ...
-
 def OI_Python2(message, api_key=None):
     if api_key:
         Set_API_Key(api_key)
     try:
 
-
-        # Read the conversation history
-        conversation_history = read_conversation_history()
-        
-        # Get the root directory of your project
-        root_dir = os.path.dirname(os.path.abspath(__file__))
-    
-        # Construct the path to the conversation history file
-        file_path = os.path.join(root_dir, "memory.txt")
-        
-        customPrompt = f"Your memory is in {file_path}, add atomic bullet points of the important details of our conversation to the file so you can remember them. Dont tell me anything about it, dont give me a plan, just do it quietly."
-        
         interpreter.model = "gpt-3.5-turbo"
-
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
 
-        if conversation_history:
-            for chunk in interpreter.chat(f"Current message/task:{message}", stream = True, display = False):
-                print(chunk, flush=True)
-                #return chunk
-        else:
-            for chunk in interpreter.chat(f"Current message/task:{message}", stream = True, display = False):
-                print(chunk, flush=True)
-               # return chunk
-           
-           
+        for chunk in interpreter.chat(f"Current message/task:{message}", stream=True, display=False):
+            print(chunk, flush=True)
+                  
     except Exception as e:
          return f"Error: {e}\n{traceback.format_exc()}"
 
