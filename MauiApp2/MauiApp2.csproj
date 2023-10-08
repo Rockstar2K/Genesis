@@ -98,6 +98,7 @@
 	  <None Remove="Resources\Fonts\Montserrat-SemiBoldItalic.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-Thin.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-ThinItalic.ttf" />
+	  <None Remove="Resources\Images\Comp 1.gif" />
 	</ItemGroup>
 
 	<ItemGroup>

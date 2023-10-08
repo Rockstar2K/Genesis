@@ -8,25 +8,22 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/MainPage.xaml.cs">
     <Files>
-      <File FileName="MauiApp2/MauiProgram.cs" Line="44" Column="21" />
-      <File FileName="MauiApp2/MainPage.xaml" Line="105" Column="49" />
-      <File FileName="MauiApp2/interpreter_wrapper.py" Line="1" Column="1" />
-      <File FileName="MauiApp2/MainPage.xaml.cs" Line="100" Column="1" />
-      <File FileName="MauiApp2/App.xaml" Line="1" Column="1" />
+      <File FileName="MauiApp2/MauiProgram.cs" />
+      <File FileName="MauiApp2/MainPage.xaml" />
+      <File FileName="MauiApp2/interpreter_wrapper.py" />
+      <File FileName="MauiApp2/MainPage.xaml.cs" Line="94" Column="18" />
+      <File FileName="MauiApp2/App.xaml" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MauiApp2" expanded="True">
+          <Node name="MauiApp2">
             <Node name="MauiApp2">
-              <Node name="Resources" expanded="True">
-                <Node name="Fonts" expanded="True" />
-                <Node name="Images" expanded="True" />
+              <Node name="Resources">
+                <Node name="Images" expanded="True" selected="True" />
                 <Node name="Raw" expanded="True" />
               </Node>
-              <Node name="MainPage.xaml">
-                <Node name="MainPage.xaml.cs" selected="True" />
-              </Node>
+              <Node name="MainPage.xaml" expanded="True" />
             </Node>
           </Node>
         </State>

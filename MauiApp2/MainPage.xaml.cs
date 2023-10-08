@@ -94,13 +94,13 @@ namespace MauiApp2
                 {
                     File = "genesis_loading.gif"
                 },
-                WidthRequest = 400,
-                HeightRequest = 400,
+                WidthRequest = 200,
+                HeightRequest = 200,
                 IsAnimationPlaying = true,
                 HorizontalOptions = LayoutOptions.Start
                 
             };
-
+            
             //lottie Animation
             var source = new SKFileLottieImageSource
             {
