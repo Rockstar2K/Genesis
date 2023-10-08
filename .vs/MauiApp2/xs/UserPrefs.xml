@@ -1,17 +1,17 @@
-﻿<Properties NuGet.AddPackagesDialog.IncludePrerelease="True" StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default">
+﻿<Properties StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/MainPage.xaml.cs">
     <Files>
       <File FileName="MauiApp2/MauiProgram.cs" />
       <File FileName="MauiApp2/MainPage.xaml" />
       <File FileName="MauiApp2/interpreter_wrapper.py" />
-      <File FileName="MauiApp2/MainPage.xaml.cs" Line="94" Column="18" />
+      <File FileName="MauiApp2/MainPage.xaml.cs" Line="302" Column="18" />
       <File FileName="MauiApp2/App.xaml" />
     </Files>
     <Pads>
@@ -19,8 +19,7 @@
         <State name="__root__">
           <Node name="MauiApp2">
             <Node name="MauiApp2">
-              <Node name="Resources">
-                <Node name="Images" expanded="True" selected="True" />
+              <Node name="Resources" expanded="True">
                 <Node name="Raw" expanded="True" />
               </Node>
               <Node name="MainPage.xaml" expanded="True" />

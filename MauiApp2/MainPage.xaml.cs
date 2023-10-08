@@ -70,6 +70,8 @@ namespace MauiApp2
 
         private async void AddInterpreterChatBoxToUI(string userPrompt)
         {
+            Debug.WriteLine($"AddInterpreterChatBoxToUI called with userPrompt: {userPrompt}");  // Monitoring line
+
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
             var gradientBrush = new LinearGradientBrush
             {
@@ -167,6 +169,8 @@ namespace MauiApp2
 
         private async Task<string> RunPythonScriptAsync(string message, string apiKey)
         {
+            Debug.WriteLine($"RunPythonScriptAsync called with message: {message}, apiKey: {apiKey}");  // Monitoring line
+
             string pythonPath;
             string scriptPath;
             string projectDirectory;
@@ -197,6 +201,8 @@ namespace MauiApp2
 
         private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string message, string apiKey)
         {
+            Debug.WriteLine($"ExecuteScriptAsync called with pythonPath: {pythonPath}, scriptPath: {scriptPath}, message: {message}, apiKey: {apiKey}");  // Monitoring line
+
             var outputBuilder = new StringBuilder();
 
             await Task.Run(async () =>
@@ -225,6 +231,7 @@ namespace MauiApp2
                     while ((charsRead = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
                         var chunk = new string(buffer, 0, charsRead);
+                        Debug.WriteLine($"The model returned: {chunk}");  // Monitoring line
                         UpdateUI(chunk);
                         outputBuilder.Append(chunk);
                     }
@@ -251,12 +258,14 @@ namespace MauiApp2
                 loadingGif.IsVisible = false;
                 lottieView.IsVisible = false;  // Hide the loading image
                 resultLabel.IsVisible = true;  // Show the label
-                
 
-                    try
-                    {
+
+                try
+                {
                         var json = JObject.Parse(text);
                         var message = json["message"]?.ToString();
+                        Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
+
                         if (message != null)
                         {
                             if (isFirstUpdate)
