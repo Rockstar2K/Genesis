@@ -151,6 +151,7 @@ namespace MauiApp2
             stackLayout.Children.Add(outputFrame);
 
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
+            SSDconversation(userPrompt, result);
             UpdateUI(result);  
         }
 
@@ -247,7 +248,7 @@ namespace MauiApp2
         }
 
         [Obsolete]
-        private void UpdateUI(string text)
+        private void UpdateUI(string text) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             Device.BeginInvokeOnMainThread(() =>
@@ -256,7 +257,7 @@ namespace MauiApp2
                 lottieView.IsVisible = false;  // Hide the loading image
                 resultLabel.IsVisible = true;  // Show the label
 
-                Debug.WriteLine("Received text: " + text);
+                //Debug.WriteLine("Received text: " + text);
 
                 if (string.IsNullOrEmpty(text))
                 {
@@ -269,10 +270,10 @@ namespace MauiApp2
 
                     var json = JObject.Parse(text);
 
-                    Debug.WriteLine("json: " + json);
+                    //Debug.WriteLine("json: " + json);
 
                     var message = json["message"]?.ToString();
-                    Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
+                    //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
 
                         if (message != null)
                         {
@@ -295,10 +296,21 @@ namespace MauiApp2
             });
         }
 
+        private void SSDconversation(string message, string result) //stores all the conversation data
+        {
 
+            if (System.OperatingSystem.IsWindows())
+            {
+                //path
+                string ssdDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
 
+                // Append the new User Prompt and Response to the file
+                File.AppendAllText(ssdFile, $"User Prompt: {message}\nResponse: {result}\n");
+                Debug.WriteLine(ssdFile);
 
-
+            }
+        }
 
 
         private void RAMconversation(string message, string result) //low memory for resend it with the prompt
@@ -318,21 +330,6 @@ namespace MauiApp2
         }
 
 
-        private void SSDconversation(string message, string result) //stores all the conversation data
-        {
-
-            if (System.OperatingSystem.IsWindows())
-            {
-                //path
-                string ssdDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
-
-                // Append the new User Prompt and Response to the file
-                File.AppendAllText(ssdFile, $"User Prompt: {message}\nResponse: {result}\n");
-                Debug.WriteLine(ssdFile);
-
-            }
-        }
 
         void Settings_Pressed(System.Object sender, System.EventArgs e)
         {

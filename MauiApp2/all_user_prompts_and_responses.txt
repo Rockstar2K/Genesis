@@ -1,0 +1,21 @@
+User Prompt: hola como estás
+Response: {'message': '¡'}
+{'message': 'Hola'}
+{'message': '!'}
+{'message': ' Est'}
+{'message': 'oy'}
+{'message': ' bien'}
+{'message': ','}
+{'message': ' ¿'}
+{'message': 'y'}
+{'message': ' tú'}
+{'message': '?'}
+{'message': ' ¿'}
+{'message': 'En'}
+{'message': ' qué'}
+{'message': ' puedo'}
+{'message': ' ayud'}
+{'message': 'arte'}
+{'message': ' hoy'}
+{'message': '?'}
+
