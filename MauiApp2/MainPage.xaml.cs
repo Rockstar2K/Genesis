@@ -20,7 +20,7 @@ namespace MauiApp2
         Label resultLabel;
         SKLottieView lottieView;
 
-        private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
+        //private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
         public MainPage()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace MauiApp2
 
         }
 
-        private void AddUserChatBoxToUI(string input)
+        private void AddUserChatBoxToUI(string userPrompt)
         {
             var frame = new Frame
             {
@@ -48,7 +48,7 @@ namespace MauiApp2
                                                      // ... other styling ...
                 Content = new Label
                 {
-                    Text = input,
+                    Text = userPrompt,
                     FontFamily = "Montserrat-Light",
                     TextColor = Color.FromArgb("#121B3F"),
                 }
@@ -151,22 +151,22 @@ namespace MauiApp2
             stackLayout.Children.Add(outputFrame);
 
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
-            SSDconversation(userPrompt, result);
-            UpdateUI(result);  
+            //SSDconversation(userPrompt, result);
+            //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
         }
 
 
-
+        /*
         private async void PlayAudioPrompt(string text)
         {
             byte[] audioData = await ttsPlayer.GetAudioData(text);  // Assuming you have this method set up
             ttsPlayer.PlayAudio(audioData);
         }
+        */
 
-
-        private async Task<string> RunPythonScriptAsync(string message, string apiKey)
+        private async Task<string> RunPythonScriptAsync(string userPrompt, string apiKey)
         {
-            Debug.WriteLine($"RunPythonScriptAsync called with message: {message}, apiKey: {apiKey}");  // Monitoring line
+            Debug.WriteLine($"RunPythonScriptAsync called with message: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
 
             string pythonPath;
             string scriptPath;
@@ -192,13 +192,13 @@ namespace MauiApp2
                 return string.Empty;
             }
 
-            return await ExecuteScriptAsync(pythonPath, scriptPath, message, apiKey);
+            return await ExecuteScriptAsync(pythonPath, scriptPath, userPrompt, apiKey);
         }
 
 
-        private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string message, string apiKey)
+        private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string userPrompt, string apiKey)
         {
-            Debug.WriteLine($"ExecuteScriptAsync called with pythonPath: {pythonPath}, scriptPath: {scriptPath}, message: {message}, apiKey: {apiKey}");  // Monitoring line
+            Debug.WriteLine($"ExecuteScriptAsync called with pythonPath: {pythonPath}, scriptPath: {scriptPath}, userPrompt: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
 
             var outputBuilder = new StringBuilder();
 
@@ -209,7 +209,7 @@ namespace MauiApp2
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = $"{pythonPath}",
-                        Arguments = $"\"{scriptPath}\" \"{message}\" \"{apiKey}\"",
+                        Arguments = $"\"{scriptPath}\" \"{userPrompt}\" \"{apiKey}\"",
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         UseShellExecute = false,
@@ -225,6 +225,7 @@ namespace MauiApp2
                 {
                     char[] buffer = new char[256];  // Adjust buffer size as needed
                     int charsRead;
+
                     while ((charsRead = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
                         var chunk = new string(buffer, 0, charsRead);
@@ -232,6 +233,7 @@ namespace MauiApp2
                         UpdateUI(chunk);
                         outputBuilder.Append(chunk);
                     }
+
                 }
 
 
@@ -244,11 +246,16 @@ namespace MauiApp2
                 }
             });
 
+            // call to SSDconversation
+            string SSDMessage = outputBuilder.ToString();
+            SSDconversation(SSDMessage, userPrompt);
+            // call to SSDconversation
+
             return outputBuilder.ToString();
         }
 
         [Obsolete]
-        private void UpdateUI(string text) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
+        private void UpdateUI(string chunks) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             Device.BeginInvokeOnMainThread(() =>
@@ -259,7 +266,7 @@ namespace MauiApp2
 
                 //Debug.WriteLine("Received text: " + text);
 
-                if (string.IsNullOrEmpty(text))
+                if (string.IsNullOrEmpty(chunks))
                 {
                     Debug.WriteLine("Text is null or empty updateUI");
                     return;
@@ -268,23 +275,23 @@ namespace MauiApp2
                 try
                 {
 
-                    var json = JObject.Parse(text);
+                    var json = JObject.Parse(chunks);
 
                     //Debug.WriteLine("json: " + json);
 
-                    var message = json["message"]?.ToString();
+                    var imessage = json["message"]?.ToString();
                     //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
 
-                        if (message != null)
+                        if (imessage != null)
                         {
                             if (isFirstUpdate)
                             {
-                                resultLabel.Text = message;  // Set the text to the first message received
+                                resultLabel.Text = imessage;  // Set the text to the first message received
                                 isFirstUpdate = false;
                             }
                             else
                             {
-                                resultLabel.Text += message;  // Append subsequent messages
+                                resultLabel.Text += imessage;  // Append subsequent messages
                             }
                         }
                     }
