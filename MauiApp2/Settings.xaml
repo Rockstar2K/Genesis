@@ -28,7 +28,8 @@
             Placeholder="   Place here your OpenAI Key"
             Margin="40,20,40,10"
             PlaceholderColor="Gray"
-            BackgroundColor="LightGrey"/>
+            BackgroundColor="LightGrey"
+            Completed="API_Input_Box_Completed"/>
 
          <Label
             TextColor="DarkBlue"

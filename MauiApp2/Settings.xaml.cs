@@ -1,4 +1,6 @@
-﻿namespace MauiApp2;
+﻿using System.Diagnostics;
+
+namespace MauiApp2;
 
 public partial class Settings : ContentPage
 {
@@ -17,4 +19,9 @@ public partial class Settings : ContentPage
         App.Current.MainPage = new NavigationPage(new MainPage());
     }
 
+    private void API_Input_Box_Completed(object sender, EventArgs e)
+    {
+        MainPage.apiKey = API_Input_Box.Text;
+        Debug.WriteLine("API_Input_Box.Text" + API_Input_Box.Text);
+    }
 }

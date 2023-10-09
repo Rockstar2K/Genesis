@@ -13,7 +13,8 @@ namespace MauiApp2
     {
 
         string userPrompt;
-        readonly string apiKey = "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";
+        public static string apiKey { get; set; } = "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";
+
         Frame outputFrame;
         private bool isFirstUpdate = true;
         Image loadingGif;
@@ -151,7 +152,6 @@ namespace MauiApp2
             stackLayout.Children.Add(outputFrame);
 
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
-            //SSDconversation(userPrompt, result);
             //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
         }
 
@@ -247,7 +247,7 @@ namespace MauiApp2
             });
 
             string concatenatedChunks = outputBuilder.ToString();
-            decodeFinalJSON(userPrompt, concatenatedChunks);
+            decodeConcatenatedJSON(userPrompt, concatenatedChunks); //we decode the final json message to store it in SSDconversation
 
             return outputBuilder.ToString();
         }
@@ -277,19 +277,19 @@ namespace MauiApp2
 
                     //Debug.WriteLine("json: " + json);
 
-                    var imessage = json["message"]?.ToString();
+                    var message = json["message"]?.ToString();
                     //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
 
-                        if (imessage != null)
+                        if (message != null)
                         {
                             if (isFirstUpdate)
                             {
-                                resultLabel.Text = imessage;  // Set the text to the first message received
+                                resultLabel.Text = message;  // Set the text to the first message received
                                 isFirstUpdate = false;
                             }
                             else
                             {
-                                resultLabel.Text += imessage;  // Append subsequent messages
+                                resultLabel.Text += message;  // Append subsequent messages
                             }
                         }
                     }
@@ -302,7 +302,7 @@ namespace MauiApp2
         }
 
         
-        private void decodeFinalJSON(string userPrompt, string concatenatedChunks)
+        private void decodeConcatenatedJSON(string userPrompt, string concatenatedChunks)
         {
             Debug.WriteLine("decodeJSON initialized with concatenatedChunks: " + concatenatedChunks);
 
@@ -341,7 +341,7 @@ namespace MauiApp2
         }
 
 
-        private void SSDconversation(string userPrompt, string result) //stores all the conversation data
+        private void SSDconversation(string userPrompt, string interpreterResponse) //stores all the conversation data
         {
 
             if (System.OperatingSystem.IsWindows())
@@ -351,13 +351,13 @@ namespace MauiApp2
                 string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
 
                 // Append the new User Prompt and Response to the file
-                File.AppendAllText(ssdFile, $"User Prompt: {userPrompt}\nResponse: {result}\n");
+                File.AppendAllText(ssdFile, $"User Prompt: {userPrompt}\nResponse: {interpreterResponse}\n");
                 Debug.WriteLine(ssdFile);
 
             }
         }
 
-
+        /*
         private void RAMconversation(string message, string result) //low memory for resend it with the prompt
         {
             if (System.OperatingSystem.IsWindows())
@@ -371,9 +371,8 @@ namespace MauiApp2
                 Debug.WriteLine(ramFile);
             }
 
-
         }
-
+        */
 
 
         void Settings_Pressed(System.Object sender, System.EventArgs e)
