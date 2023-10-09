@@ -1,11 +1,2 @@
-User Prompt: {'message': 'Hello'}
-{'message': '!'}
-{'message': ' How'}
-{'message': ' can'}
-{'message': ' I'}
-{'message': ' assist'}
-{'message': ' you'}
-{'message': ' today'}
-{'message': '?'}
-
-Response: Hola
+User Prompt: Hola como estás
+Response: ¡Hola! Estoy aquí para ayudarte. ¿En qué puedo ayudarte hoy?

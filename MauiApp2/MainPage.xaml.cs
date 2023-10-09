@@ -246,10 +246,8 @@ namespace MauiApp2
                 }
             });
 
-            // call to SSDconversation
-            string SSDMessage = outputBuilder.ToString();
-            SSDconversation(SSDMessage, userPrompt);
-            // call to SSDconversation
+            string concatenatedChunks = outputBuilder.ToString();
+            decodeFinalJSON(userPrompt, concatenatedChunks);
 
             return outputBuilder.ToString();
         }
@@ -303,7 +301,47 @@ namespace MauiApp2
             });
         }
 
-        private void SSDconversation(string message, string result) //stores all the conversation data
+        
+        private void decodeFinalJSON(string userPrompt, string concatenatedChunks)
+        {
+            Debug.WriteLine("decodeJSON initialized with concatenatedChunks: " + concatenatedChunks);
+
+            var fullMessage = new StringBuilder();  // Use StringBuilder for efficient string concatenation
+
+            try
+            {
+                // Split concatenatedChunks into individual JSON strings
+                var chunks = concatenatedChunks.Split(new string[] { "}" }, StringSplitOptions.None);
+
+                foreach (var chunk in chunks)
+                {
+                    if (string.IsNullOrEmpty(chunk))
+                        continue;
+
+                    var validJson = chunk + "}";  // Add closing brace to make it valid JSON
+                    var json = JObject.Parse(validJson);
+                    var imessage = json["message"]?.ToString();
+
+                    if (imessage != null)
+                    {
+                        fullMessage.Append(imessage);  // Append message to fullMessage
+                    }
+                }
+            }
+            catch (JsonReaderException ex)
+            {
+                Debug.WriteLine("Json parser exception" + ex.Message);
+            }
+
+            Debug.WriteLine("decodeJSON: " + fullMessage.ToString());
+
+
+
+            SSDconversation(userPrompt, fullMessage.ToString());
+        }
+
+
+        private void SSDconversation(string userPrompt, string result) //stores all the conversation data
         {
 
             if (System.OperatingSystem.IsWindows())
@@ -313,7 +351,7 @@ namespace MauiApp2
                 string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
 
                 // Append the new User Prompt and Response to the file
-                File.AppendAllText(ssdFile, $"User Prompt: {message}\nResponse: {result}\n");
+                File.AppendAllText(ssdFile, $"User Prompt: {userPrompt}\nResponse: {result}\n");
                 Debug.WriteLine(ssdFile);
 
             }
