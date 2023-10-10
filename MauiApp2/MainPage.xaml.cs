@@ -129,7 +129,9 @@ namespace MauiApp2
                 Text = "Waiting for response...",
                 TextColor = Color.FromArgb("#fff"),
                 FontFamily = "Montserrat-Light",
-                IsVisible = false  // Hide the label initially
+                IsVisible = false,  // Hide the label initially
+                LineBreakMode = LineBreakMode.WordWrap  // Add this line to wrap text
+
             };
 
 
@@ -144,15 +146,28 @@ namespace MauiApp2
  
             };
 
-            outputFrame.Content = new HorizontalStackLayout
+            outputFrame.Content = new StackLayout
             {
                 Children = { loadingGif, resultLabel } //USING GIF FOR NOW
             };
 
             stackLayout.Children.Add(outputFrame);
 
+
+
+            var grid = new Grid
+            {
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },  // For the Label
+                    new ColumnDefinition { Width = GridLength.Auto }  // For the GIF
+                }
+            };
+
+
+
+
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
-            //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
         }
 
 
@@ -174,11 +189,12 @@ namespace MauiApp2
 
             if (OperatingSystem.IsMacCatalyst())
             {
-                //paths for MacOS
-                projectDirectory = "/Users/n/Desktop/AGI/MauiApp2/";
+                //Paths for MacOs
+                projectDirectory = Environment.CurrentDirectory;
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
-                pythonPath = "/Users/n/anaconda3/bin/python";
+                pythonPath = "/usr/local/bin/python";  // Assumes python is installed in a standard location
             }
+
             else if (System.OperatingSystem.IsWindows())
             {
                 //paths for Windows
