@@ -1,2 +1,8 @@
 User Prompt: Hola como estás
 Response: ¡Hola! Estoy aquí para ayudarte. ¿En qué puedo ayudarte hoy?
+User Prompt: Hola soy roco y tu?
+Response: ¡Hola Roco! Soy Open Interpreter, un programador experto. Estoy aquí para ayudarte en lo que necesites. ¿En qué puedo ayudarte hoy?
+User Prompt: quiero un poema
+Response: ¡Claro! Voy a escribir un poema para ti. ¿Hay algún tema en particular o algún tipo de poema que te gustaría?
+User Prompt: mejor, haz un poema con nuestros nombres
+Response: Claro, puedo hacer un poema con nuestros nombres. Por favor, dime nuestros nombres para que pueda comenzar.
