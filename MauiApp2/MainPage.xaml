@@ -5,13 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI">
     
-    <Grid VerticalOptions="FillAndExpand">
+    <Grid VerticalOptions="FillAndExpand" BackgroundColor="#EAEAEA">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ScrollView Grid.Row="0" BackgroundColor="#EAEAEA">
+        <ScrollView Grid.Row="0">
 
             <VerticalStackLayout
                 Padding="30,0"
@@ -82,7 +82,7 @@
 <Grid
     Grid.Row="1"
     Padding="15"
-    BackgroundColor="#EAEAEA">
+    BackgroundColor="Transparent">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="*" />
@@ -90,7 +90,7 @@
 
     <Frame
         Grid.Column="1"
-        BackgroundColor="#EAEAEA"
+        BackgroundColor="Transparent"
         Margin="20,0,20,20"
         Padding="0"
         BorderColor="#F2CFE2"

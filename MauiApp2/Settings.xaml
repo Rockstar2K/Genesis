@@ -1,53 +1,178 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
              x:Class="MauiApp2.Settings"
              Title="Settings"
-             BackgroundColor="#EAEAEA">
+             BackgroundColor="#E2E4E4">
     <VerticalStackLayout>
 
-        <StackLayout Orientation="Horizontal">
+        <AbsoluteLayout>
             <Button
-                Text="Go Back"
+                Text="←"
+                FontFamily="Montserrat-Light"
+                FontSize="50"
+                BackgroundColor="Transparent"
+                TextColor="#B080B7"
                 HorizontalOptions="Start"
                 VerticalOptions="Start"
-                Margin="40,20,40,10"
+                Margin="30,20,40,0"
                 Pressed="Button_Pressed"/>
-    
+        <skia:SKLottieView 
+            Source="https://lottie.host/05574c52-f528-4a74-8361-79ef8cf077ec/zxnTUUAKh7.json"
+            RepeatCount="-1"
+            AbsoluteLayout.LayoutBounds="1,0"
+            AbsoluteLayout.LayoutFlags="PositionProportional">
+        </skia:SKLottieView>
+        </AbsoluteLayout>
 
-        </StackLayout>
-        
         <Label
-            TextColor="DarkBlue"
+            Text="Settings"
+            FontSize="Title"
+            TextColor="#B080B7"
+            FontFamily="Montserrat-Light"
+            Margin="40,20,0,10"/>
+        <Label
+            TextColor="#B080B7"
             Text="OpenAI API Key"
-            FontAttributes="Bold"
             FontSize="Header"
+            FontFamily="Montserrat-Light"
             Margin="40,40,0,10"/>
-        <Entry
-            x:Name="API_Input_Box"
-            Placeholder="   Place here your OpenAI Key"
-            Margin="40,20,40,10"
-            PlaceholderColor="Gray"
-            BackgroundColor="LightGrey"
-            Completed="API_Input_Box_Completed"/>
-
-         <Label
-            TextColor="DarkBlue"
-            Text="Budget"
-            FontAttributes="Bold"
-            FontSize="Header"
-            Margin="40,40,0,10"/>
-        <Entry
-            Placeholder=" How much would like to spen (max) per session?"
-            Margin="40,20,40,10"
-            PlaceholderColor="Gray"
-            BackgroundColor="LightGrey"/>
-
+        <Frame
+            Margin="40,10,40,0"
+            Padding="0"
+            BorderColor="#F2CFE2"
+            BackgroundColor="White"
+            CornerRadius="25"
+            Opacity="0.5">
+            <Entry
+                x:Name="API_Input_Box"
+                BackgroundColor="Transparent"
+                Placeholder="   API Key"
+                PlaceholderColor="#68667D"
+                FontFamily="Montserrat-Light"
+                TextColor="#121B3F"
+                Completed="API_Input_Box_Completed"
+                HorizontalOptions="FillAndExpand">
+                <Entry.Shadow>
+                    <Shadow
+                        Brush="#121B3F"
+                        Opacity="0.4"
+                        Radius="30"
+                        Offset="0,20" />
+                </Entry.Shadow>
+            </Entry>
+        </Frame>
         <Button
-             x:Name="Save_Button"
-             Text="Save"
-             Margin="40,20,40,10"
-             HorizontalOptions="End"
-            Pressed="Save_Button_Pressed"/>
+            Text="Where can I find my API key?"
+            HorizontalOptions="Start"
+            Margin="40,0,0,5"
+            BackgroundColor="Transparent"
+            TextColor="#B080B7"
+            FontFamily="Montserrat-ExtraLightItalic"/>
+
+        <!--Choose Model Buttons-->
+        <AbsoluteLayout
+            Margin="0,40">
+            <VerticalStackLayout
+                Margin="40,0,0,0">
+                <Label
+                    TextColor="#B080B7"
+                    Text="See Generated Code"
+                    FontSize="Header"
+                    FontFamily="Montserrat-Medium"
+                    AbsoluteLayout.LayoutBounds="0,0"
+                    Margin="0,0,0,15"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    HorizontalOptions="Center"/>
+
+                <Switch
+                    Toggled="Switch_Toggled" 
+                    ThumbColor="#B080B7"
+                    OnColor="#EFCDE1"
+                    HorizontalOptions="Center"/>
+
+
+            </VerticalStackLayout>
+
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="1,0"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Margin="40,0">
+            <Label
+                TextColor="#B080B7"
+                Text="Choose Model"
+                FontSize="Header"
+                Margin="0,0,0,15"
+                HorizontalOptions="Center"
+               
+                FontFamily="Montserrat-Medium"/>
+            <HorizontalStackLayout>
+                <VerticalStackLayout  Margin="10,0">
+                    <Button
+                        Text="GPT-3"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#B080B7"
+                        CornerRadius="22"
+                        MinimumWidthRequest="130"
+                        TextColor="White"
+                        Margin="0,0,0,5"
+                        FontFamily="Montserrat-ExtraLight"/>
+                    <Label
+                        Text="Cheaper - Faster"
+                        FontFamily="Montserrat-Light"
+                        TextColor="#B080B7"
+                        HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Button
+                        Text="GPT-4"
+                        BorderWidth="1"
+                        CornerRadius="22"
+                        MinimumWidthRequest="130"
+                        HorizontalOptions="End"
+                        Margin="0,0,0,5"
+                        BackgroundColor="White"
+                        BorderColor="#B080B7"
+                        TextColor="#B080B7"
+                        FontFamily="Montserrat-Light"/>
+
+                    <Label
+                        Text="Best Performance"
+                        FontFamily="Montserrat-Light"
+                        TextColor="#B080B7"
+                        HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </StackLayout>
+        </AbsoluteLayout>
+        
+
+        <!--Save Button-->
+        <HorizontalStackLayout>
+            <Button
+                 x:Name="Save_Button"
+                 Text="Save"
+                 FontFamily="Montserrat-Medium"
+                 CornerRadius="23"
+                 MinimumWidthRequest="100"
+                 BackgroundColor="#B080B7"
+                 TextColor="White"
+                 Margin="40,0,10,10"
+                 HorizontalOptions="Start"
+                Pressed="Save_Button_Pressed"/>
+             <Button
+                Text="Advanced Settings"
+                HorizontalOptions="Start"
+                Margin="10,0,0,5"
+                BackgroundColor="Transparent"
+                TextColor="#B080B7"
+                FontFamily="Montserrat-ExtraLightItalic"/>
+        </HorizontalStackLayout>
+
     </VerticalStackLayout>
+
+
+
 </ContentPage>
