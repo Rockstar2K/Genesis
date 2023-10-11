@@ -234,16 +234,16 @@ namespace MauiApp2
 
                     while ((charsRead = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
-                        var chunk = new string(buffer, 0, charsRead);
-                        Debug.WriteLine($"The model returned: {chunk}");  // Monitoring line
-                        UpdateUI(chunk);
-                        outputBuilder.Append(chunk);
+                        var interpreterChunk = new string(buffer, 0, charsRead);
+                        Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
+                        UpdateUI(interpreterChunk);
+                        outputBuilder.Append(interpreterChunk);
                     }
 
                 }
 
-                string concatenatedChunks = outputBuilder.ToString();
-                decodeConcatenatedJSON(userPrompt, concatenatedChunks); //we decode the final json message to use it in SSDconversation and the TTS
+                string interpreterConcatenatedChunks = outputBuilder.ToString();
+                decodeConcatenatedJSON(userPrompt, interpreterConcatenatedChunks); //we decode the final json message to use it in SSDconversation and the TTS
 
 
                 string error = await process.StandardError.ReadToEndAsync();
@@ -259,7 +259,7 @@ namespace MauiApp2
         }
 
         [Obsolete]
-        private void UpdateUI(string chunks) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
+        private void UpdateUI(string intepreterChunk) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             Device.BeginInvokeOnMainThread(() =>
@@ -270,7 +270,7 @@ namespace MauiApp2
 
                 //Debug.WriteLine("Received text: " + text);
 
-                if (string.IsNullOrEmpty(chunks))
+                if (string.IsNullOrEmpty(intepreterChunk))
                 {
                     Debug.WriteLine("Text is null or empty updateUI");
                     return;
@@ -279,7 +279,7 @@ namespace MauiApp2
                 try
                 {
 
-                    var json = JObject.Parse(chunks);
+                    var json = JObject.Parse(intepreterChunk);
                     var message = json["message"]?.ToString();
                     //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
 
