@@ -65,13 +65,13 @@ namespace MauiApp2
 
         public async Task<byte[]> GetAudioData(string text)
         {
-            string credentialsPath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            "MauiApp2", 
-            "Resources",
-            "Credentials",
-            "high-invest-4da5afee15f3.json"
-            );
+            string credentialsPath = "";
+
+            if (System.OperatingSystem.IsWindows())
+            {
+                //credentialsPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../Credentials/high-invest-4da5afee15f3.json"));
+                credentialsPath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Credentials\\high-invest-4da5afee15f3.json";
+            }
 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsPath);
 

@@ -154,9 +154,8 @@ namespace MauiApp2
             };
 
             stackLayout.Children.Add(outputFrame);
-            var result = await RunPythonScriptAsync(userPrompt, apiKey);
+            var interpreterResponse = await RunPythonScriptAsync(userPrompt, apiKey);
 
-            //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
         }
 
         private async void PlayAudioFromText(string text)
@@ -243,6 +242,9 @@ namespace MauiApp2
 
                 }
 
+                string concatenatedChunks = outputBuilder.ToString();
+                decodeConcatenatedJSON(userPrompt, concatenatedChunks); //we decode the final json message to use it in SSDconversation and the TTS
+
 
                 string error = await process.StandardError.ReadToEndAsync();
                 process.WaitForExit();
@@ -252,9 +254,6 @@ namespace MauiApp2
                     Debug.WriteLine("Error/Debug output: " + error);
                 }
             });
-
-            string concatenatedChunks = outputBuilder.ToString();
-            decodeConcatenatedJSON(userPrompt, concatenatedChunks); //we decode the final json message to store it in SSDconversation
 
             return outputBuilder.ToString();
         }
@@ -281,9 +280,6 @@ namespace MauiApp2
                 {
 
                     var json = JObject.Parse(chunks);
-
-                    //Debug.WriteLine("json: " + json);
-
                     var message = json["message"]?.ToString();
                     //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
 

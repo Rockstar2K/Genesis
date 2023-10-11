@@ -1,2 +1,2 @@
 User Prompt: Hola
-Response: ¡Hola! ¿En qué puedo ayudarte hoy?
+Response: ¡Hola de nuevo! ¿En qué puedo ayudarte hoy?
