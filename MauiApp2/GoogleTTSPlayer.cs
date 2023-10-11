@@ -1,8 +1,14 @@
-﻿using System;
+﻿using NAudio.Midi;
+using System;
+using System.IO;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
+using System.Threading.Tasks;
+using NAudio.Wave;
+using System.Diagnostics;
+
+
 
 
 namespace MauiApp2
@@ -10,6 +16,12 @@ namespace MauiApp2
     public class GoogleTTSPlayer : IAudioPlayer
     {
         private readonly HttpClient httpClient = new HttpClient();
+
+        public async Task PlayAudioFromText(string text)
+        {
+            byte[] audioData = await GetAudioData(text);
+            PlayAudio(audioData);
+        }
 
         public void PlayAudio(byte[] audioData)
         {
@@ -21,18 +33,44 @@ namespace MauiApp2
         {
             var filePath = Path.Combine(FileSystem.CacheDirectory, "audio.wav");
             File.WriteAllBytes(filePath, audioData);
+
+            Debug.WriteLine("filepath: " + filePath);
+
             return filePath;
         }
 
         private void PlayAudioFile(string filePath)
         {
-            // Code to play the audio file goes here
+        #if ANDROID
+            // Code for Android
+        #elif IOS
+            // Code for iOS
+        #elif WINDOWS
+            using (var audioOutput = new WaveOutEvent())
+            {
+                using (var audioFile = new AudioFileReader(filePath))
+                {
+                    audioOutput.Init(audioFile);
+                    audioOutput.Play();
+                    while (audioOutput.PlaybackState == PlaybackState.Playing)
+                    {
+                         Task.Delay(1000).Wait();
+                    }
+                }
+            }
+        #elif MACCATALYST
+             // Code for macOS
+        #endif
         }
+
+
 
         public async Task<byte[]> GetAudioData(string text)
         {
             string url = "https://texttospeech.googleapis.com/v1/text:synthesize";
-            string apiKey = "YOUR_API_KEY_HERE";  // Replace with your actual API key
+
+            Environment.SetEnvironmentVariable("GOOGLE_TTS_API_KEY", "AIzaSyDHAoi9HfDlf5HHO-EmoUfyO-e1GNL2ZOE");
+            string apiKey = Environment.GetEnvironmentVariable("GOOGLE_TTS_API_KEY"); 
 
             var payload = new
             {
@@ -49,24 +87,46 @@ namespace MauiApp2
                 Content = content
             };
 
+            Debug.WriteLine("Request: " + request);
+
             HttpResponseMessage response = await httpClient.SendAsync(request);
+
             if (response.IsSuccessStatusCode)
             {
-                byte[] audioData = await response.Content.ReadAsByteArrayAsync();
-                return audioData;
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine("API Response: " + jsonResponse);
+
+                try
+                {
+                    var parsedResponse = JsonSerializer.Deserialize<GoogleTTSResponse>(jsonResponse);
+
+                    if (string.IsNullOrEmpty(parsedResponse.AudioContent))
+                    {
+                        throw new ArgumentNullException("Audio content is null or empty.");
+                    }
+
+                    byte[] audioData = Convert.FromBase64String(parsedResponse.AudioContent);
+                    return audioData;
+                }
+                catch (JsonException je)
+                {
+                    throw new JsonException("Failed to deserialize JSON.", je);
+                }
+                catch (FormatException fe)
+                {
+                    throw new FormatException("Failed to convert from Base64.", fe);
+                }
             }
             else
             {
-                throw new Exception($"Failed to get audio data: {response.ReasonPhrase}");
+                throw new HttpRequestException($"Failed to get audio data: {response.ReasonPhrase}");
             }
         }
 
 
-        private string GetGoogleTTSUrl(string text)
+        private class GoogleTTSResponse
         {
-            // Construct the URL for Google's TTS service based on the text input.
-            // This is a simplified example and may not reflect the actual URL or parameters you need.
-            return $"https://texttospeech.googleapis.com/v1/text:synthesize?text={Uri.EscapeDataString(text)}";
+            public string AudioContent { get; set; }
         }
     }
 }

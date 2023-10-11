@@ -21,7 +21,8 @@ namespace MauiApp2
         Label resultLabel;
         SKLottieView lottieView;
 
-        //private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
+        private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
+
         public MainPage()
         {
             InitializeComponent();
@@ -152,16 +153,23 @@ namespace MauiApp2
             stackLayout.Children.Add(outputFrame);
 
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
-            //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
+
         }
 
-        /*
-        private async void PlayAudioPrompt(string text)
+        private async void PlayAudioFromText(string text)
         {
-            byte[] audioData = await ttsPlayer.GetAudioData(text);  // Assuming you have this method set up
-            ttsPlayer.PlayAudio(audioData);
+            try
+            {
+                Debug.WriteLine("PlayAudioFromText is called, now it should play: " + text);
+                await ttsPlayer.PlayAudioFromText(text);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("An error occurred: " + ex.Message);
+            }
         }
-        */
+
+
 
         private async Task<string> RunPythonScriptAsync(string userPrompt, string apiKey)
         {
@@ -227,7 +235,7 @@ namespace MauiApp2
                     while ((charsRead = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
                         var chunk = new string(buffer, 0, charsRead);
-                        Debug.WriteLine($"The model returned: {chunk}");  // Monitoring line
+                        //Debug.WriteLine($"The model returned: {chunk}");  // Monitoring line
                         UpdateUI(chunk);
                         outputBuilder.Append(chunk);
                     }
@@ -336,6 +344,9 @@ namespace MauiApp2
 
 
             SSDconversation(userPrompt, fullMessage.ToString());
+            PlayAudioFromText(fullMessage.ToString());
+
+
         }
 
         /*
@@ -364,7 +375,7 @@ namespace MauiApp2
             if (System.OperatingSystem.IsWindows())
             {
                 // Record
-                string newRecord = $"User Prompt: {userPrompt}\nResponse: {interpreterResponse}\n";
+                string newRecord = $"User : {userPrompt}\n Assistant: {interpreterResponse}\n";
 
                 // Add to queue
                 if (lastRecords.Count >= maxRecords) //change this for more/less records
@@ -382,24 +393,6 @@ namespace MauiApp2
                 Debug.WriteLine(ssdFile);
             }
         }
-
-
-        /*
-        private void RAMconversation(string message, string result) //low memory for resend it with the prompt
-        {
-            if (System.OperatingSystem.IsWindows())
-            {
-                //path
-                string ramDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                string ramFile = Path.Combine(ramDirectory, "user_prompts_and_responses.txt");
-
-                string newContent = $"\nUser Prompt: {message}\nResponse: {result}\n";
-                File.WriteAllText(ramFile, newContent);  // This will overwrite the existing content with the new content
-                Debug.WriteLine(ramFile);
-            }
-
-        }
-        */
 
 
         void Settings_Pressed(System.Object sender, System.EventArgs e)

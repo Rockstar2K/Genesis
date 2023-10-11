@@ -1,6 +1,2 @@
-User Prompt: quiero un poema
-Response: Claro, puedo ayudarte con eso. ¿Hay algún tema en particular sobre el que te gustaría que fuera el poema?
-User Prompt: haz un poema con nuestros nombres
-Response: Claro, puedo crear un poema utilizando vuestros nombres. Por favor, dime los nombres que deseas que incluya en el poema.
-User Prompt: los nuestros
-Response: ¡Hola Roco! ¿En qué puedo ayudarte hoy?
+User : Hola
+ Assistant: ¡Hola de nuevo! ¿En qué puedo ayudarte hoy?
