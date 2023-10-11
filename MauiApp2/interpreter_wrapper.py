@@ -44,7 +44,7 @@ def OI_Python2(message, api_key=None):
         interpreter.model = "gpt-3.5-turbo"
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
 
-        for chunk in interpreter.chat(f"{message} #PREVIOUS CONVERSATION: {conversation_history}", stream=True, display=False):
+        for chunk in interpreter.chat(f"{message}\n\n #PREVIOUS CONVERSATION \n\n{conversation_history}", stream=True, display=False):
             print(chunk, flush=True)
                   
     except Exception as e:

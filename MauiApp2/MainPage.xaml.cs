@@ -356,7 +356,8 @@ namespace MauiApp2
         }
         */
 
-        Queue<string> lastRecords = new Queue<string>(2); // //change this for more/less records
+        Queue<string> lastRecords = new Queue<string>();
+        int maxRecords = 3; // Set the number of records here
 
         private void SSDconversation(string userPrompt, string interpreterResponse)
         {
@@ -366,7 +367,7 @@ namespace MauiApp2
                 string newRecord = $"User Prompt: {userPrompt}\nResponse: {interpreterResponse}\n";
 
                 // Add to queue
-                if (lastRecords.Count >= 3) //change this for more/less records
+                if (lastRecords.Count >= maxRecords) //change this for more/less records
                 {
                     lastRecords.Dequeue(); // Remove oldest if more than lastRecords
                 }
