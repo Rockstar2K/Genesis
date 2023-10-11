@@ -27,5 +27,6 @@ public partial class Settings : ContentPage
 
     void Switch_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
     {
+        bool isToggled = e.Value;
     }
 }

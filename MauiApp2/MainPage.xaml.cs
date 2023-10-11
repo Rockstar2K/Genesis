@@ -6,6 +6,8 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using SkiaSharp.Extended.UI.Controls;
+using Microsoft.Maui.Graphics;
+
 
 namespace MauiApp2
 {
@@ -79,8 +81,8 @@ namespace MauiApp2
                 StartPoint = new Point(0, 0.5),
                 EndPoint = new Point(1, 0.5)
             };
-            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 0.0f });  // #B080B7
-            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 0.25f });  // #EFCDE1
+            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 0});
+            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.937f, 0.804f, 0.882f), Offset = 1});
 
             var customShadow = new Shadow
             {
@@ -97,8 +99,8 @@ namespace MauiApp2
                 {
                     File = "genesis_loading.gif"
                 },
-                WidthRequest = 200,
-                HeightRequest = 200,
+                WidthRequest = 100,
+                HeightRequest = 100,
                 IsAnimationPlaying = true,
                 HorizontalOptions = LayoutOptions.Start
                 
@@ -135,14 +137,16 @@ namespace MauiApp2
 
             outputFrame = new Frame
             {
+                HorizontalOptions = LayoutOptions.Start,
                 HasShadow = true,
                 Shadow = customShadow,
                 Background = gradientBrush,
-                BorderColor = Color.FromArgb("#B280B9"),
                 Margin = new Thickness(0, 0, 80, 0),
-                //  Content 
- 
-            };
+                BorderColor = Color.FromRgba(255, 255, 255, 0),
+
+            //  Content 
+
+        };
 
             outputFrame.Content = new StackLayout
             {
@@ -150,8 +154,8 @@ namespace MauiApp2
             };
 
             stackLayout.Children.Add(outputFrame);
-
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
+
             //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
         }
 
