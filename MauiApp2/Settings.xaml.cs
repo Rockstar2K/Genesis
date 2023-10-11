@@ -24,4 +24,8 @@ public partial class Settings : ContentPage
         MainPage.apiKey = API_Input_Box.Text;
         Debug.WriteLine("API_Input_Box.Text" + API_Input_Box.Text);
     }
+
+    void Switch_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
+    {
+    }
 }

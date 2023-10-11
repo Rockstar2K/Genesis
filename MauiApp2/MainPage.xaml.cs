@@ -357,30 +357,29 @@ namespace MauiApp2
         */
 
         Queue<string> lastRecords = new Queue<string>();
-        int maxRecords = 3; // Set the number of records here
+        int maxRecords = 30; // Set the number of records here
 
         private void SSDconversation(string userPrompt, string interpreterResponse)
         {
-            if (System.OperatingSystem.IsWindows())
+
+            // Record
+            string newRecord = $"User Prompt: {userPrompt}\nResponse: {interpreterResponse}\n";
+
+            // Add to queue
+            if (lastRecords.Count >= maxRecords) //change this for more/less records
             {
-                // Record
-                string newRecord = $"User Prompt: {userPrompt}\nResponse: {interpreterResponse}\n";
-
-                // Add to queue
-                if (lastRecords.Count >= maxRecords) //change this for more/less records
-                {
-                    lastRecords.Dequeue(); // Remove oldest if more than lastRecords
-                }
-                lastRecords.Enqueue(newRecord); // Add new record
-
-                // Path
-                string ssdDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
-
-                // Write last records to file
-                File.WriteAllText(ssdFile, string.Join("", lastRecords));
-                Debug.WriteLine(ssdFile);
+                lastRecords.Dequeue(); // Remove oldest if more than lastRecords
             }
+            lastRecords.Enqueue(newRecord); // Add new record
+
+            // Path
+            string ssdDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../.."));
+            string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
+
+            // Write last records to file
+            File.WriteAllText(ssdFile, string.Join("", lastRecords));
+            Debug.WriteLine(ssdFile);
+            
         }
 
 

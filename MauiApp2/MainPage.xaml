@@ -90,15 +90,15 @@
 
     <Frame
         Grid.Column="1"
+        BackgroundColor="#EAEAEA"
         Margin="20,0,20,20"
         Padding="0"
         BorderColor="#F2CFE2"
-        CornerRadius="5"
-        Opacity="0.5">
+        CornerRadius="30">
         <Grid>
             <Entry
                 x:Name="InputBox"
-                BackgroundColor="#fff"
+                BackgroundColor="Transparent"
                 Completed="InputBox_Completed"
                 Placeholder="¿Que quieres que haga?"
                 PlaceholderColor="#68667D"
