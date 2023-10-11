@@ -23,7 +23,7 @@ namespace MauiApp2
         Label resultLabel;
         SKLottieView lottieView;
 
-        //private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
+        private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
         public MainPage()
         {
             InitializeComponent();
@@ -154,18 +154,22 @@ namespace MauiApp2
             };
 
             stackLayout.Children.Add(outputFrame);
-            var result = await RunPythonScriptAsync(userPrompt, apiKey);
+            var interpreterResponse = await RunPythonScriptAsync(userPrompt, apiKey);
 
-            //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
         }
 
-        /*
-        private async void PlayAudioPrompt(string text)
+        private async void PlayAudioFromText(string text)
         {
-            byte[] audioData = await ttsPlayer.GetAudioData(text);  // Assuming you have this method set up
-            ttsPlayer.PlayAudio(audioData);
+            try
+            {
+                Debug.WriteLine("PlayAudioFromText is called, now it should play: " + text);
+                await ttsPlayer.PlayAudioFromText(text);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("An error occurred: " + ex.Message);
+            }
         }
-        */
 
         private async Task<string> RunPythonScriptAsync(string userPrompt, string apiKey)
         {
@@ -230,13 +234,16 @@ namespace MauiApp2
 
                     while ((charsRead = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
-                        var chunk = new string(buffer, 0, charsRead);
-                        Debug.WriteLine($"The model returned: {chunk}");  // Monitoring line
-                        UpdateUI(chunk);
-                        outputBuilder.Append(chunk);
+                        var interpreterChunk = new string(buffer, 0, charsRead);
+                        Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
+                        UpdateUI(interpreterChunk);
+                        outputBuilder.Append(interpreterChunk);
                     }
 
                 }
+
+                string interpreterConcatenatedChunks = outputBuilder.ToString();
+                decodeConcatenatedJSON(userPrompt, interpreterConcatenatedChunks); //we decode the final json message to use it in SSDconversation and the TTS
 
 
                 string error = await process.StandardError.ReadToEndAsync();
@@ -248,14 +255,11 @@ namespace MauiApp2
                 }
             });
 
-            string concatenatedChunks = outputBuilder.ToString();
-            decodeConcatenatedJSON(userPrompt, concatenatedChunks); //we decode the final json message to store it in SSDconversation
-
             return outputBuilder.ToString();
         }
 
         [Obsolete]
-        private void UpdateUI(string chunks) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
+        private void UpdateUI(string intepreterChunk) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             Device.BeginInvokeOnMainThread(() =>
@@ -266,7 +270,7 @@ namespace MauiApp2
 
                 //Debug.WriteLine("Received text: " + text);
 
-                if (string.IsNullOrEmpty(chunks))
+                if (string.IsNullOrEmpty(intepreterChunk))
                 {
                     Debug.WriteLine("Text is null or empty updateUI");
                     return;
@@ -275,10 +279,7 @@ namespace MauiApp2
                 try
                 {
 
-                    var json = JObject.Parse(chunks);
-
-                    //Debug.WriteLine("json: " + json);
-
+                    var json = JObject.Parse(intepreterChunk);
                     var message = json["message"]?.ToString();
                     //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
 
@@ -340,25 +341,10 @@ namespace MauiApp2
 
 
             SSDconversation(userPrompt, fullMessage.ToString());
+            //PlayAudioFromText(fullMessage.ToString());
         }
 
-        /*
-        private void SSDconversation(string userPrompt, string interpreterResponse) //stores all the conversation data
-        {
-
-            if (System.OperatingSystem.IsWindows())
-            {
-                //path
-                string ssdDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
-
-                // Append the new User Prompt and Response to the file
-                File.AppendAllText(ssdFile, $"User: {userPrompt}\n Assistant: {interpreterResponse}\n");
-                Debug.WriteLine(ssdFile);
-
-            }
-        }
-        */
+       
 
         Queue<string> lastRecords = new Queue<string>();
         int maxRecords = 30; // Set the number of records here
@@ -385,25 +371,6 @@ namespace MauiApp2
             Debug.WriteLine(ssdFile);
             
         }
-
-
-        /*
-        private void RAMconversation(string message, string result) //low memory for resend it with the prompt
-        {
-            if (System.OperatingSystem.IsWindows())
-            {
-                //path
-                string ramDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                string ramFile = Path.Combine(ramDirectory, "user_prompts_and_responses.txt");
-
-                string newContent = $"\nUser Prompt: {message}\nResponse: {result}\n";
-                File.WriteAllText(ramFile, newContent);  // This will overwrite the existing content with the new content
-                Debug.WriteLine(ramFile);
-            }
-
-        }
-        */
-
 
         void Settings_Pressed(System.Object sender, System.EventArgs e)
         {
