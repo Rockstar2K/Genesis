@@ -155,7 +155,6 @@ namespace MauiApp2
             //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
         }
 
-
         /*
         private async void PlayAudioPrompt(string text)
         {
@@ -174,7 +173,6 @@ namespace MauiApp2
 
             if (OperatingSystem.IsMacCatalyst())
             {
-
                 projectDirectory = "/Users/n/Desktop/AGI/MauiApp2/";
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
                 pythonPath = "/Users/n/anaconda3/bin/python";
@@ -340,7 +338,7 @@ namespace MauiApp2
             SSDconversation(userPrompt, fullMessage.ToString());
         }
 
-
+        /*
         private void SSDconversation(string userPrompt, string interpreterResponse) //stores all the conversation data
         {
 
@@ -351,11 +349,39 @@ namespace MauiApp2
                 string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
 
                 // Append the new User Prompt and Response to the file
-                File.AppendAllText(ssdFile, $"User Prompt: {userPrompt}\nResponse: {interpreterResponse}\n");
+                File.AppendAllText(ssdFile, $"User: {userPrompt}\n Assistant: {interpreterResponse}\n");
                 Debug.WriteLine(ssdFile);
 
             }
         }
+        */
+
+        Queue<string> lastRecords = new Queue<string>(2); // //change this for more/less records
+
+        private void SSDconversation(string userPrompt, string interpreterResponse)
+        {
+            if (System.OperatingSystem.IsWindows())
+            {
+                // Record
+                string newRecord = $"User Prompt: {userPrompt}\nResponse: {interpreterResponse}\n";
+
+                // Add to queue
+                if (lastRecords.Count >= 3) //change this for more/less records
+                {
+                    lastRecords.Dequeue(); // Remove oldest if more than lastRecords
+                }
+                lastRecords.Enqueue(newRecord); // Add new record
+
+                // Path
+                string ssdDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                string ssdFile = Path.Combine(ssdDirectory, "all_user_prompts_and_responses.txt");
+
+                // Write last records to file
+                File.WriteAllText(ssdFile, string.Join("", lastRecords));
+                Debug.WriteLine(ssdFile);
+            }
+        }
+
 
         /*
         private void RAMconversation(string message, string result) //low memory for resend it with the prompt

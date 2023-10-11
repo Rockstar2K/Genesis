@@ -36,6 +36,7 @@ def OI_Python2(message, api_key=None):
         
         # Read the conversation history
         conversation_history = read_conversation_history()
+        
         if conversation_history is None:
             conversation_history = "NONE"
 
