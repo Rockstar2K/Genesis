@@ -341,7 +341,7 @@ namespace MauiApp2
 
 
             SSDconversation(userPrompt, fullMessage.ToString());
-            PlayAudioFromText(fullMessage.ToString());
+            //PlayAudioFromText(fullMessage.ToString());
         }
 
        

@@ -37,13 +37,13 @@ namespace MauiApp2
             return filePath;
         }
 
-        private void PlayAudioFile(string filePath)
+        private async Task PlayAudioFile(string filePath)
         {
-#if ANDROID
-            // Code for Android
-#elif IOS
-            // Code for iOS
-#elif WINDOWS
+        #if ANDROID
+        // Code for Android
+        #elif IOS
+        // Code for iOS
+        #elif WINDOWS
             using (var audioOutput = new WaveOutEvent())
             {
                 using (var audioFile = new AudioFileReader(filePath))
@@ -52,15 +52,27 @@ namespace MauiApp2
                     audioOutput.Play();
                     while (audioOutput.PlaybackState == PlaybackState.Playing)
                     {
-                        Task.Delay(1000).Wait();
+                        await Task.Delay(100); // Use await with Task.Delay
                     }
                 }
             }
-#elif MACCATALYST
-            // Code for macOS
-#endif
-        }
+        #elif MACCATALYST
+            using (var audioOutput = new AudioFileReader(filePath))
+            {
+                using (var outputDevice = new WaveOutEvent())
+                {
+                    outputDevice.Init(audioOutput);
+                    outputDevice.Play();
 
+                    // Block the thread until playback finishes
+                    while (outputDevice.PlaybackState == PlaybackState.Playing)
+                    {
+                        await Task.Delay(100); // Use await with Task.Delay
+                    }
+                }
+            }
+        #endif
+        }
 
 
         public async Task<byte[]> GetAudioData(string text)
