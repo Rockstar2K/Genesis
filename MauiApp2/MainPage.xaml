@@ -78,45 +78,54 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <!--  Entry and Button at the bottom  -->
-        <Grid
-            Grid.Row="1"
-            Padding="15"
-            BackgroundColor="#EAEAEA">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <!-- Entry and Button at the bottom -->
+<Grid
+    Grid.Row="1"
+    Padding="15"
+    BackgroundColor="#EAEAEA">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
 
-
-            <Frame
-                Grid.Column="1"
-                Margin="20,0,20,20"
-                Padding="0"
-                BorderColor="#F2CFE2"
-                CornerRadius="5"
-                Opacity="0.5">
-                <Entry
-                    x:Name="InputBox"
-                    BackgroundColor="#fff"
-                    Completed="InputBox_Completed"
-                    Placeholder="¿Que quieres que haga?"
-                    PlaceholderColor="#68667D"
-                    FontFamily="Montserrat-Light"
-                    TextColor="#121B3F">
-                    <Entry.Shadow>
-                        <Shadow
-                            Brush="#121B3F"
-                            Opacity="0.4"
-                            Radius="30"
-                            Offset="0,20" />
-
-                    </Entry.Shadow>
-
-                </Entry>
-            </Frame>
-
+    <Frame
+        Grid.Column="1"
+        Margin="20,0,20,20"
+        Padding="0"
+        BorderColor="#F2CFE2"
+        CornerRadius="5"
+        Opacity="0.5">
+        <Grid>
+            <Entry
+                x:Name="InputBox"
+                BackgroundColor="#fff"
+                Completed="InputBox_Completed"
+                Placeholder="¿Que quieres que haga?"
+                PlaceholderColor="#68667D"
+                FontFamily="Montserrat-Light"
+                TextColor="#121B3F"
+                HorizontalOptions="FillAndExpand">
+                <Entry.Shadow>
+                    <Shadow
+                        Brush="#121B3F"
+                        Opacity="0.4"
+                        Radius="30"
+                        Offset="0,20" />
+                </Entry.Shadow>
+            </Entry>
+                <ImageButton
+                    Source="avioncito.png"
+                    HeightRequest="30"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Margin="10,10"
+                    Padding="9"
+                    Clicked="InputBox_Completed"/>
         </Grid>
+    </Frame>
+</Grid>
+
 
     </Grid>
 </ContentPage>

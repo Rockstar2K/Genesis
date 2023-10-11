@@ -98,6 +98,7 @@
 	  <None Remove="Resources\Fonts\Montserrat-Thin.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-ThinItalic.ttf" />
 	  <None Remove="Resources\Images\Comp 1.gif" />
+	  <None Remove="Resources\Images\avioncito.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -127,6 +128,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Include="Resources\Animations\animation.json" />
+	  <EmbeddedResource Include="Resources\Images\avioncito.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Include="Resources\Raw\animation.json" />

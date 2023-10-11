@@ -13,7 +13,7 @@ namespace MauiApp2
     {
 
         string userPrompt;
-        public static string apiKey { get; set; } = "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";
+        public static string apiKey { get; set; } = "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";
 
         Frame outputFrame;
         private bool isFirstUpdate = true;
@@ -129,9 +129,7 @@ namespace MauiApp2
                 Text = "Waiting for response...",
                 TextColor = Color.FromArgb("#fff"),
                 FontFamily = "Montserrat-Light",
-                IsVisible = false,  // Hide the label initially
-                LineBreakMode = LineBreakMode.WordWrap  // Add this line to wrap text
-
+                IsVisible = false  // Hide the label initially
             };
 
 
@@ -146,28 +144,15 @@ namespace MauiApp2
  
             };
 
-            outputFrame.Content = new StackLayout
+            outputFrame.Content = new HorizontalStackLayout
             {
                 Children = { loadingGif, resultLabel } //USING GIF FOR NOW
             };
 
             stackLayout.Children.Add(outputFrame);
 
-
-
-            var grid = new Grid
-            {
-                ColumnDefinitions =
-                {
-                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },  // For the Label
-                    new ColumnDefinition { Width = GridLength.Auto }  // For the GIF
-                }
-            };
-
-
-
-
             var result = await RunPythonScriptAsync(userPrompt, apiKey);
+            //UpdateUI(result);  interpreter seems to work without this line, i dont know why it is in the first place
         }
 
 
@@ -189,12 +174,10 @@ namespace MauiApp2
 
             if (OperatingSystem.IsMacCatalyst())
             {
-                //Paths for MacOs
-                projectDirectory = Environment.CurrentDirectory;
+                projectDirectory = "/Users/n/Desktop/AGI/MauiApp2/";
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
-                pythonPath = "/usr/local/bin/python";  // Assumes python is installed in a standard location
+                pythonPath = "/Users/n/anaconda3/bin/python";
             }
-
             else if (System.OperatingSystem.IsWindows())
             {
                 //paths for Windows
