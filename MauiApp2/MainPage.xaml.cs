@@ -126,7 +126,7 @@ namespace MauiApp2
 
             resultLabel = new Label
             {
-                Text = "Waiting for response...",
+                Text = "",
                 TextColor = Color.FromArgb("#fff"),
                 FontFamily = "Montserrat-Light",
                 IsVisible = false  // Hide the label initially
@@ -144,7 +144,7 @@ namespace MauiApp2
  
             };
 
-            outputFrame.Content = new HorizontalStackLayout
+            outputFrame.Content = new StackLayout
             {
                 Children = { loadingGif, resultLabel } //USING GIF FOR NOW
             };
@@ -174,6 +174,7 @@ namespace MauiApp2
 
             if (OperatingSystem.IsMacCatalyst())
             {
+
                 projectDirectory = "/Users/n/Desktop/AGI/MauiApp2/";
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
                 pythonPath = "/Users/n/anaconda3/bin/python";

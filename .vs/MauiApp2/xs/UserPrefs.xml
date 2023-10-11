@@ -4,12 +4,12 @@
   <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/MainPage.xaml.cs">
     <Files>
-      <File FileName="MauiApp2/MainPage.xaml.cs" Line="176" Column="14" />
+      <File FileName="MauiApp2/MainPage.xaml.cs" Line="311" Column="16" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MauiApp2" expanded="True">
+          <Node name="MauiApp2">
             <Node name="MauiApp2">
               <Node name="MainPage.xaml" expanded="True">
                 <Node name="MainPage.xaml.cs" selected="True" />
