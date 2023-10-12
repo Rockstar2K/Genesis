@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using SkiaSharp.Extended.UI.Controls;
 using Microsoft.Maui.Graphics;
+using System.Reflection.Metadata;
 
 
 namespace MauiApp2
@@ -15,9 +16,13 @@ namespace MauiApp2
     {
 
         string userPrompt;
-        public static string apiKey { get; set; } = "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";
+        public static string apiKey { get; set; } = Preferences.Get("api_key", "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");
+        public bool is_night_mode_on { get; set; } = Preferences.Get("night_mode", false);
+        public bool is_code_visible { get; set; } = Preferences.Get("see_code", false);
+        public string llm_model { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
+        public bool is_executing_code = false;
 
-        Frame outputFrame;
+            Frame outputFrame;
         private bool isFirstUpdate = true;
         Image loadingGif;
         Label resultLabel;
@@ -27,6 +32,8 @@ namespace MauiApp2
         public MainPage()
         {
             InitializeComponent();
+
+
         }
 
 
@@ -154,7 +161,22 @@ namespace MauiApp2
             };
 
             stackLayout.Children.Add(outputFrame);
-            var interpreterResponse = await RunPythonScriptAsync(userPrompt, apiKey);
+
+            if (is_executing_code)
+            {
+                while (true)
+                {
+                    if (is_executing_code == false)
+                    {
+                        outputFrame.IsVisible = false;
+                    }
+                    Thread.Sleep(500);
+                }    
+            }
+            else
+            {
+                await RunPythonScriptAsync(userPrompt, apiKey);
+            }
 
         }
 
@@ -257,12 +279,10 @@ namespace MauiApp2
 
             return outputBuilder.ToString();
         }
-
-        [Obsolete]
         private void UpdateUI(string intepreterChunk) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
-            Device.BeginInvokeOnMainThread(() =>
+            this.Dispatcher.Dispatch(() =>
             {
                 loadingGif.IsVisible = false;
                 lottieView.IsVisible = false;  // Hide the loading image
@@ -279,23 +299,59 @@ namespace MauiApp2
                 try
                 {
 
-                    var json = JObject.Parse(intepreterChunk);
-                    var message = json["message"]?.ToString();
-                    //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
+                    var json        = JObject.Parse(intepreterChunk);
+                    var message     = json["message"]?.ToString();
+                    var language    = json["language"]?.ToString();
+                    var code        = json["code"]?.ToString();
+                    var executing   = json["executing"]?.ToString();
+                    var active_line = json["active_line"]?.ToString();
+                    var output      = json["output"]?.ToString();
+                    var end_of_execution = json["end_of_execution"]?.ToString();
+                    var start_of_message = json["start_of_message"]?.ToString();
+                    var start_of_code = json["start_of_code"]?.ToString();
 
-                        if (message != null)
+                    //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
+                    else if (start_of_message != null)
+                    {
+                    }
+                    else if (start_of_code != null)
+                    {
+                    }
+                    if (message != null)
+                    {
+                        if (isFirstUpdate)
                         {
-                            if (isFirstUpdate)
-                            {
-                                resultLabel.Text = message;  // Set the text to the first message received
-                                isFirstUpdate = false;
-                            }
-                            else
-                            {
-                                resultLabel.Text += message;  // Append subsequent messages
-                            }
+                            resultLabel.Text = message;  // Set the text to the first message received
+                            isFirstUpdate = false;
+                        }
+                        else
+                        {
+                            resultLabel.Text += message;  // Append subsequent messages
                         }
                     }
+
+                    else if (language != null)
+                    { }
+                    else if (code != null)
+                    { }
+                    else if (executing != null)
+                    {
+                        Console.WriteLine("Code is being executed");
+                        is_executing_code = true;
+                        //AddInterpreterChatBoxToUI("");
+                        //Create a new message frame to show the loading animation and then the final message
+
+                    }
+                    else if (active_line != null)
+                    { }
+                    else if (output != null)
+                    { }
+                    else if (end_of_execution != null)
+                    {
+                        is_executing_code = false;
+                    }
+
+                }
                 catch (JsonReaderException ex)
                 {
                     Debug.WriteLine("Json parser exception" + ex.Message); //JSON ERRORS HERE
@@ -341,7 +397,7 @@ namespace MauiApp2
 
 
             SSDconversation(userPrompt, fullMessage.ToString());
-            //PlayAudioFromText(fullMessage.ToString());
+            PlayAudioFromText(fullMessage.ToString());
         }
 
        
