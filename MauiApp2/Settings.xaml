@@ -27,14 +27,14 @@
 
         <Label
             Text="Settings"
-            FontSize="Title"
+            FontSize="40"
             TextColor="#B080B7"
             FontFamily="Montserrat-Light"
             Margin="40,20,0,10"/>
         <Label
             TextColor="#B080B7"
             Text="OpenAI API Key"
-            FontSize="Header"
+            FontSize="20"
             FontFamily="Montserrat-Light"
             Margin="40,40,0,10"/>
         <Frame
@@ -78,7 +78,7 @@
                 <Label
                     TextColor="#B080B7"
                     Text="See Generated Code"
-                    FontSize="Header"
+                    FontSize="20"
                     FontFamily="Montserrat-Medium"
                     AbsoluteLayout.LayoutBounds="0,0"
                     Margin="0,0,0,15"
@@ -86,14 +86,34 @@
                     HorizontalOptions="Center"/>
 
                 <Switch
-                    Toggled="Switch_Toggled" 
+                    Toggled="Code_Switch_Toggled" 
                     ThumbColor="#B080B7"
                     OnColor="#EFCDE1"
                     HorizontalOptions="Center"/>
 
 
             </VerticalStackLayout>
+            <VerticalStackLayout
+                AbsoluteLayout.LayoutBounds="0.3, 0"
+                AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Label
+                    TextColor="#B080B7"
+                    Text="Night Mode"
+                    FontSize="20"
+                    FontFamily="Montserrat-Medium"
+                    AbsoluteLayout.LayoutBounds="0,0"
+                    Margin="0,0,0,15"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    HorizontalOptions="Center"/>
 
+                <Switch
+                    Toggled="Night_Mode_Toggled" 
+                    ThumbColor="#B080B7"
+                    OnColor="#121A3F"
+                    HorizontalOptions="Center"/>
+
+
+            </VerticalStackLayout>
             <StackLayout
                 AbsoluteLayout.LayoutBounds="1,0"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
@@ -110,6 +130,7 @@
                 <VerticalStackLayout  Margin="10,0">
                     <Button
                         Text="GPT-3"
+                        Pressed="GPT3_Pressed"
                         HorizontalOptions="Center"
                         BackgroundColor="#B080B7"
                         CornerRadius="22"
@@ -127,6 +148,7 @@
                 <VerticalStackLayout Margin="10,0">
                     <Button
                         Text="GPT-4"
+                        Pressed="GPT4_Pressed"
                         BorderWidth="1"
                         CornerRadius="22"
                         MinimumWidthRequest="130"

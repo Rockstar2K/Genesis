@@ -17,6 +17,7 @@ namespace MauiApp2
 
         public async Task PlayAudioFromText(string text)
         {
+            Console.WriteLine("Awaiting Audio Data");
             byte[] audioData = await GetAudioData(text);
             PlayAudio(audioData);
         }
@@ -78,7 +79,10 @@ namespace MauiApp2
         public async Task<byte[]> GetAudioData(string text)
         {
             string credentialsPath = "";
-
+            if (OperatingSystem.IsMacCatalyst())
+            {
+                credentialsPath = "/Users/n/Desktop/AGI/MauiApp2/Resources/Credentials/high-invest-4da5afee15f3.json";
+            }
             if (System.OperatingSystem.IsWindows())
             {
                 //credentialsPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../Credentials/high-invest-4da5afee15f3.json"));
