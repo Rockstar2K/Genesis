@@ -1,0 +1,122 @@
+[
+    {
+        "role": "user",
+        "message": "Remember the colour yellow"
+    },
+    {
+        "role": "assistant",
+        "message": "Sure, I will remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "Remember the colour yellow"
+    },
+    {
+        "role": "assistant",
+        "message": "Sure, I will remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "What colour did I ask you to rememer?"
+    },
+    {
+        "role": "assistant",
+        "message": "You asked me to remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "Remember the colour yellow"
+    },
+    {
+        "role": "assistant",
+        "message": "Sure, I will remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "Remember the colour yellow"
+    },
+    {
+        "role": "assistant",
+        "message": "Sure, I will remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "What colour did I ask you to rememer?"
+    },
+    {
+        "role": "assistant",
+        "message": "You asked me to remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "Hello"
+    },
+    {
+        "role": "assistant",
+        "message": "Hello! How can I assist you today?"
+    },
+    {
+        "role": "user",
+        "message": "Remember the colour yellow"
+    },
+    {
+        "role": "assistant",
+        "message": "Sure, I will remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "Remember the colour yellow"
+    },
+    {
+        "role": "assistant",
+        "message": "Sure, I will remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "What colour did I ask you to rememer?"
+    },
+    {
+        "role": "assistant",
+        "message": "You asked me to remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "Remember the colour yellow"
+    },
+    {
+        "role": "assistant",
+        "message": "Sure, I will remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "Remember the colour yellow"
+    },
+    {
+        "role": "assistant",
+        "message": "Sure, I will remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "What colour did I ask you to rememer?"
+    },
+    {
+        "role": "assistant",
+        "message": "You asked me to remember the color yellow."
+    },
+    {
+        "role": "user",
+        "message": "Hello"
+    },
+    {
+        "role": "assistant",
+        "message": "Hello! How can I assist you today?"
+    },
+    {
+        "role": "user",
+        "message": "Hello"
+    },
+    {
+        "role": "assistant",
+        "message": "Hello! How can I assist you today?"
+    }
+]

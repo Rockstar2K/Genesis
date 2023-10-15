@@ -16,13 +16,13 @@ namespace MauiApp2
     {
 
         string userPrompt;
-        public static string apiKey { get; set; } = Preferences.Get("api_key", "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");
-        public bool is_night_mode_on { get; set; } = Preferences.Get("night_mode", false);
-        public bool is_code_visible { get; set; } = Preferences.Get("see_code", false);
-        public string llm_model { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
+        public static string apiKey     { get; set; } = Preferences.Get("api_key", "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");
+        public bool is_night_mode_on    { get; set; } = Preferences.Get("night_mode", false);
+        public bool is_code_visible     { get; set; } = Preferences.Get("see_code", false);
+        public string llm_model         { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
         public bool is_executing_code = false;
 
-            Frame outputFrame;
+        Frame outputFrame;
         private bool isFirstUpdate = true;
         Image loadingGif;
         Label resultLabel;
@@ -32,8 +32,6 @@ namespace MauiApp2
         public MainPage()
         {
             InitializeComponent();
-
-
         }
 
 
@@ -45,7 +43,6 @@ namespace MauiApp2
             AddUserChatBoxToUI(userPrompt);
             //PlayUserPrompt(userPrompt);  // method to play the user prompt in TTS
             AddInterpreterChatBoxToUI(userPrompt);
-
         }
 
         private void AddUserChatBoxToUI(string userPrompt)
@@ -298,26 +295,25 @@ namespace MauiApp2
 
                 try
                 {
-
-                    var json        = JObject.Parse(intepreterChunk);
-                    var message     = json["message"]?.ToString();
-                    var language    = json["language"]?.ToString();
-                    var code        = json["code"]?.ToString();
-                    var executing   = json["executing"]?.ToString();
-                    var active_line = json["active_line"]?.ToString();
-                    var output      = json["output"]?.ToString();
+                    var json = JObject.Parse(intepreterChunk);
+                    var message = json["message"]?.ToString();
+                    var language = json["language"]?.ToString();
+                    var code = json["code"]?.ToString();
+                    var executing = json["executing"];
+                    var active_line = json["active_line"];
+                    var output = json["output"]?.ToString();
                     var end_of_execution = json["end_of_execution"]?.ToString();
-                    var start_of_message = json["start_of_message"]?.ToString();
-                    var start_of_code = json["start_of_code"]?.ToString();
-
+                    var start_of_message = json["start_of_message"];
+                    var start_of_code = json["start_of_code"];
+                
                     //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
-                    else if (start_of_message != null)
+                    if (start_of_message != null)
                     {
                     }
                     else if (start_of_code != null)
                     {
                     }
-                    if (message != null)
+                    else if (message != null)
                     {
                         if (isFirstUpdate)
                         {
@@ -329,7 +325,6 @@ namespace MauiApp2
                             resultLabel.Text += message;  // Append subsequent messages
                         }
                     }
-
                     else if (language != null)
                     { }
                     else if (code != null)
@@ -350,7 +345,9 @@ namespace MauiApp2
                     {
                         is_executing_code = false;
                     }
-
+                    else
+                    {
+                    }
                 }
                 catch (JsonReaderException ex)
                 {

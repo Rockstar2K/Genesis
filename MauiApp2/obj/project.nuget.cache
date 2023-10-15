@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZG9FPRLLl+Z8Ytxk+fIr/6fX42ccyFc8rOcPJd/zBygS00f7AOsTfFwsxLblfMocvaCaZMWZLtUnkAGAolmDPw==",
+  "dgSpecHash": "Co0dvQLcbh8qL8Y945hZG64KazC5Sp3hs55rxOJA5i6T6M/SC6Ebzi51DmVkJMg69ns3cFlbrr09Dw1S8ucJwA==",
   "success": true,
   "projectFilePath": "/Users/n/Desktop/AGI/MauiApp2/MauiApp2.csproj",
   "expectedPackageFiles": [
@@ -29,7 +29,7 @@
     "/Users/n/.nuget/packages/microsoft.extensions.logging.debug/7.0.0/microsoft.extensions.logging.debug.7.0.0.nupkg.sha512",
     "/Users/n/.nuget/packages/microsoft.extensions.options/7.0.0/microsoft.extensions.options.7.0.0.nupkg.sha512",
     "/Users/n/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
-    "/Users/n/.nuget/packages/microsoft.maui.graphics/7.0.92/microsoft.maui.graphics.7.0.92.nupkg.sha512",
+    "/Users/n/.nuget/packages/microsoft.maui.graphics/7.0.96/microsoft.maui.graphics.7.0.96.nupkg.sha512",
     "/Users/n/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "/Users/n/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/n/.nuget/packages/microsoft.win32.registry/4.7.0/microsoft.win32.registry.4.7.0.nupkg.sha512",

@@ -99,6 +99,7 @@
 	  <None Remove="Resources\Fonts\Montserrat-ThinItalic.ttf" />
 	  <None Remove="Resources\Images\Comp 1.gif" />
 	  <None Remove="Resources\Images\avioncito.png" />
+	  <None Remove="lyris_Prompt.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -134,5 +135,6 @@
 	  <Content Include="Resources\Raw\animation.json" />
 	  <Content Include="Resources\Images\animation.json" />
 	  <Content Include="Resources\animation.json" />
+	  <Content Include="lyris_Prompt.txt" />
 	</ItemGroup>
 </Project>
