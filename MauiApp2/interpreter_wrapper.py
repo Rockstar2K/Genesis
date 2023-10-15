@@ -67,7 +67,7 @@ def OI_Python2(prompt, api_key=None):
     if api_key:
         Set_API_Key(api_key)
     try:
-        print("\n The conversation data saved is: ", load_chat_history())
+        #print("\n The conversation data saved is: ", load_chat_history())
 
         interpreter.messages += load_chat_history()
 
@@ -78,13 +78,13 @@ def OI_Python2(prompt, api_key=None):
 
         # Load the conversation history as a list
         #interpreter.messages = list(load_chat_history())
-        output = interpreter.chat(f"{prompt}", stream=True, display=True)
+        output = interpreter.chat(f"{prompt}", stream=True, display=False)
         for chunk in output:
             print(chunk, flush=True)
 
         interpreter.messages += output
         save_chat_history(interpreter.messages)
-        print("\n The conversation data saved is: ", load_chat_history())
+        #print("\n The conversation data saved is: ", load_chat_history())
     except Exception as e:
          return f"Error: {e}\n{traceback.format_exc()}"
 

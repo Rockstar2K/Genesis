@@ -150,7 +150,7 @@ namespace MauiApp2
 
             //  Content 
 
-        };
+            };
 
             outputFrame.Content = new StackLayout
             {
@@ -357,47 +357,56 @@ namespace MauiApp2
             });
         }
 
-        
+
         private void decodeConcatenatedJSON(string userPrompt, string concatenatedChunks)
         {
             Debug.WriteLine("decodeJSON initialized with concatenatedChunks: " + concatenatedChunks);
 
-            var fullMessage = new StringBuilder();  // Use StringBuilder for efficient string concatenation
+            var fullMessage = new StringBuilder();
 
             try
             {
-                // Split concatenatedChunks into individual JSON strings
-                var chunks = concatenatedChunks.Split(new string[] { "}" }, StringSplitOptions.None);
+                // Split the concatenatedChunks by line
+                var chunks = concatenatedChunks.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (var chunk in chunks)
                 {
-                    if (string.IsNullOrEmpty(chunk))
-                        continue;
-
-                    var validJson = chunk + "}";  // Add closing brace to make it valid JSON
-                    var json = JObject.Parse(validJson);
-                    var imessage = json["message"]?.ToString();
-
-                    if (imessage != null)
+                    try
                     {
-                        fullMessage.Append(imessage);  // Append message to fullMessage
+                        var json = JObject.Parse(chunk);
+                        var imessage = json["message"]?.ToString();
+                        var start_of_message = json["start_of_message"]?.ToString();
+
+                        if (start_of_message != null)
+                        {
+                            // Handle start_of_message if needed
+                        }
+
+                        if (imessage != null)
+                        {
+                            fullMessage.Append(imessage);
+                        }
+                    }
+                    catch (JsonReaderException ex)
+                    {
+                        Debug.WriteLine("Json parser exception: " + ex.Message);
                     }
                 }
             }
-            catch (JsonReaderException ex)
+            catch (Exception ex)
             {
-                Debug.WriteLine("Json parser exception" + ex.Message);
+                Debug.WriteLine("Error while processing concatenatedChunks: " + ex.Message);
             }
 
             Debug.WriteLine("decodeJSON: " + fullMessage.ToString());
-
-
 
             SSDconversation(userPrompt, fullMessage.ToString());
             PlayAudioFromText(fullMessage.ToString());
         }
 
-       
+
+
+
 
         Queue<string> lastRecords = new Queue<string>();
         int maxRecords = 30; // Set the number of records here

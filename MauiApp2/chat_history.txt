@@ -1,122 +1,506 @@
 [
     {
         "role": "user",
-        "message": "Remember the colour yellow"
+        "message": "Quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Sure, I will remember the color yellow."
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Remember the colour yellow"
+        "message": "Quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Sure, I will remember the color yellow."
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "What colour did I ask you to rememer?"
+        "message": "Hola, quien eres?"
     },
     {
         "role": "assistant",
-        "message": "You asked me to remember the color yellow."
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Remember the colour yellow"
+        "message": "Quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Sure, I will remember the color yellow."
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Remember the colour yellow"
+        "message": "Quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Sure, I will remember the color yellow."
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "What colour did I ask you to rememer?"
+        "message": "Hola, quien eres?"
     },
     {
         "role": "assistant",
-        "message": "You asked me to remember the color yellow."
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Hello"
+        "message": "Hola, quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Hello! How can I assist you today?"
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Remember the colour yellow"
+        "message": "Quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Sure, I will remember the color yellow."
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Remember the colour yellow"
+        "message": "Quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Sure, I will remember the color yellow."
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "What colour did I ask you to rememer?"
+        "message": "Hola, quien eres?"
     },
     {
         "role": "assistant",
-        "message": "You asked me to remember the color yellow."
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Remember the colour yellow"
+        "message": "Quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Sure, I will remember the color yellow."
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Remember the colour yellow"
+        "message": "Quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Sure, I will remember the color yellow."
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "What colour did I ask you to rememer?"
+        "message": "Hola, quien eres?"
     },
     {
         "role": "assistant",
-        "message": "You asked me to remember the color yellow."
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Hello"
+        "message": "Hola, quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Hello! How can I assist you today?"
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "Hello"
+        "message": "Hola, quien eres?"
     },
     {
         "role": "assistant",
-        "message": "Hello! How can I assist you today?"
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede ayudarte a completar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede ayudarte a completar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede ayudarte a completar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede realizar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial que puede ayudarte a completar cualquier tarea ejecutando código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy Lyris, un programador de clase mundial especializado en completar cualquier tarea mediante la ejecución de código. ¿En qué puedo ayudarte hoy?"
     }
 ]
