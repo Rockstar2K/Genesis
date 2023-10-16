@@ -76,7 +76,7 @@
 	  <None Remove="Resources\Animations\animation.json" />
 	  <None Remove="Resources\Images\GenesisAnim.gif" />
 	  <None Remove="Resources\Images\genesis_loading.gif" />
-	  <None Remove="Resources\pPrompts\lyris_Prompt.txt" />
+	  <None Remove="Resources\pPROMPTS\lyris_Prompt.txt" />
 	  <None Remove="Resources\Raw\animation.json" />
 	  <None Remove="Resources\Images\animation.json" />
 	  <None Remove="Resources\animation.json" />
@@ -134,7 +134,7 @@
 	  <EmbeddedResource Include="Resources\Images\avioncito.png" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Content Include="Resources\pPrompts\lyris_Prompt.txt" />
+	  <Content Include="Resources\pPROMPTS\lyris_Prompt.txt" />
 	  <Content Include="Resources\Raw\animation.json" />
 	  <Content Include="Resources\Images\animation.json" />
 	  <Content Include="Resources\animation.json" />
