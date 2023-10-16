@@ -8,6 +8,8 @@ using Newtonsoft.Json;
 using SkiaSharp.Extended.UI.Controls;
 using Microsoft.Maui.Graphics;
 using System.Reflection.Metadata;
+using Plugin.Maui.Audio;
+
 
 
 namespace MauiApp2
@@ -29,11 +31,54 @@ namespace MauiApp2
         SKLottieView lottieView;
 
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
+
+        //STT
+        private GoogleSTTPlayer sttPlayer = new GoogleSTTPlayer(); // Initializing STT
+        private AudioRecorder audioRecorder;
         public MainPage()
         {
             InitializeComponent();
+            InitializeAudioRecorder();
+
         }
 
+        private void InitializeAudioRecorder()
+        {
+            var audioManager = new AudioManager();
+            audioRecorder = new AudioRecorder(audioManager);  // Initializing audio recorder
+        }
+
+
+        //STT CODE
+
+        string recordedAudioFilePath = "";
+
+
+        private async void OnStartRecordingClicked(object sender, EventArgs e)
+        {
+
+            if (OperatingSystem.IsWindows())
+            {
+                recordedAudioFilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Audio\\recording.wav";
+            }
+
+            await audioRecorder.StartRecordingAsync(recordedAudioFilePath);
+
+        }
+
+        private async void OnStopRecordingClicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("OnStopRecordingClicked, recordedAudioFilePath: " + recordedAudioFilePath);
+            var audioSource = await audioRecorder.StopRecordingAsync();
+
+            string convertedAudioFilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Audio\\Converted\\recording.wav";
+
+            await audioRecorder.ConvertAudio(recordedAudioFilePath, convertedAudioFilePath);
+
+            var transcription = await sttPlayer.ConvertSpeechToTextAsync(recordedAudioFilePath);
+            Debug.WriteLine("transcription: " + transcription);
+
+        }
 
         private void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
         {
@@ -41,7 +86,6 @@ namespace MauiApp2
             InputBox.Text = ""; //it deletes the text of the entry once sended
 
             AddUserChatBoxToUI(userPrompt);
-            //PlayUserPrompt(userPrompt);  // method to play the user prompt in TTS
             AddInterpreterChatBoxToUI(userPrompt);
         }
 
@@ -220,6 +264,7 @@ namespace MauiApp2
             return await ExecuteScriptAsync(pythonPath, scriptPath, userPrompt, apiKey);
         }
 
+        bool isGIFEnabled = false; // Inicializa la variable fuera del bucle
 
         private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string userPrompt, string apiKey)
         {
@@ -257,7 +302,12 @@ namespace MauiApp2
                         Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
                         UpdateUI(interpreterChunk);
                         outputBuilder.Append(interpreterChunk);
+
+                        isGIFEnabled = true; // Establece la bandera para que no se llame nuevamente
+                        
                     }
+
+                    isGIFEnabled = false;
 
                 }
 
@@ -276,15 +326,22 @@ namespace MauiApp2
 
             return outputBuilder.ToString();
         }
+
+        
         private void UpdateUI(string intepreterChunk) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             this.Dispatcher.Dispatch(() =>
             {
-                loadingGif.IsVisible = false;
-                lottieView.IsVisible = false;  // Hide the loading image
-                resultLabel.IsVisible = true;  // Show the label
-
+                
+                if (isGIFEnabled)
+                {
+                    loadingGif.IsVisible = false;
+                    lottieView.IsVisible = false;  // Hide the loading image
+                    resultLabel.IsVisible = true;  // Show the label
+                }
+                
+                
                 //Debug.WriteLine("Received text: " + text);
 
                 if (string.IsNullOrEmpty(intepreterChunk))
@@ -401,10 +458,8 @@ namespace MauiApp2
             Debug.WriteLine("decodeJSON: " + fullMessage.ToString());
 
             SSDconversation(userPrompt, fullMessage.ToString());
-            PlayAudioFromText(fullMessage.ToString());
+            //PlayAudioFromText(fullMessage.ToString());
         }
-
-
 
 
 

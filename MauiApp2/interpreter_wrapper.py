@@ -7,8 +7,6 @@ import os
 import json
 import traceback  # Import traceback module for error details
 
-
-
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 root_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -28,8 +26,6 @@ def read_prompt():
     return ""
 
 # ...
-
-
 
 root_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -71,7 +67,6 @@ def OI_Python2(prompt, api_key=None):
 
         interpreter.messages += load_chat_history()
 
-           
         interpreter.system_message = read_prompt()
         interpreter.model = "gpt-3.5-turbo"
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
@@ -92,7 +87,6 @@ def OI_Python(message, api_key=None):
     if api_key:
         Set_API_Key(api_key)
     OI_Python2(message, api_key)
-
 
 if __name__ == "__main__":
     message = sys.argv[1]

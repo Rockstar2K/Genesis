@@ -118,8 +118,6 @@ namespace MauiApp2
             return audioData;
         }
 
-
-
         private class GoogleTTSResponse
         {
             public string AudioContent { get; set; }

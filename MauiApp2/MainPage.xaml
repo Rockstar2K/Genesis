@@ -75,7 +75,16 @@
                     
                 </skia:SKLottieView>
                 -->
-                    
+                <!-- new code -->
+                <StackLayout>
+                    <!-- Record Button -->
+                    <Button Text="Start Recording" Clicked="OnStartRecordingClicked" />
+                    <!-- Stop Recording Button -->
+                    <Button Text="Stop Recording" Clicked="OnStopRecordingClicked" />
+                </StackLayout>
+                <!-- new code -->
+
+
             </VerticalStackLayout>
         </ScrollView>
 

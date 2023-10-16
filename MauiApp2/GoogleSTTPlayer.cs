@@ -25,28 +25,28 @@ namespace MauiApp2
 
             if (OperatingSystem.IsMacCatalyst())
             {
-                credentialsPath = "/Users/n/Desktop/AGI/MauiApp2/Resources/Credentials/high-invest-4da5afee15f3.json";  // Update with your path
+                credentialsPath = "/Users/n/Desktop/AGI/MauiApp2/Resources/Credentials/high-invest-4da5afee15f3.json";  
             }
             else if (System.OperatingSystem.IsWindows())
             {
-                credentialsPath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Credentials\\high-invest-4da5afee15f3.json";  // Update with your path
+                credentialsPath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Credentials\\high-invest-4da5afee15f3.json";  
             }
 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsPath);
         }
         
 
-        public async Task<string> ConvertSpeechToTextAsync(string recordedAudioFilePath)
+        public async Task<string> ConvertSpeechToTextAsync(string convertedAudioFilePath)
         {
 
-            if (string.IsNullOrEmpty(recordedAudioFilePath))
+            if (string.IsNullOrEmpty(convertedAudioFilePath))
             {
                 Debug.WriteLine("recordedAudioFilePath is null or empty.");
                 return null;
             }
-            if (!File.Exists(recordedAudioFilePath))
+            if (!File.Exists(convertedAudioFilePath))
             {
-                Debug.WriteLine("File does not exist: " + recordedAudioFilePath);
+                Debug.WriteLine("File does not exist: " + convertedAudioFilePath);
                 return null;
             }
 
@@ -54,14 +54,13 @@ namespace MauiApp2
             {
                 var response = await speechClient.RecognizeAsync(
 
-
                     new RecognitionConfig
                     {
                         Encoding = RecognitionConfig.Types.AudioEncoding.Linear16,
                         SampleRateHertz = 48000,
                         LanguageCode = "en-US",
                     },
-                    RecognitionAudio.FromFile(recordedAudioFilePath)
+                    RecognitionAudio.FromFile(convertedAudioFilePath)
                 );
 
                 var result = response.Results.FirstOrDefault();
@@ -78,6 +77,7 @@ namespace MauiApp2
                 Console.WriteLine($"Error: {ex.Message}");
                 return null;
             }
+
         }
     }
 }

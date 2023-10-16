@@ -121,8 +121,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Credentials\" />
 	  <Folder Include="Resources\Animations\" />
+	  <Folder Include="Resources\Audio\Converted\" />
 	</ItemGroup>
 
 	<ItemGroup>
