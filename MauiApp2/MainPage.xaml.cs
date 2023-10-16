@@ -9,6 +9,7 @@ using SkiaSharp.Extended.UI.Controls;
 using Microsoft.Maui.Graphics;
 using System.Reflection.Metadata;
 using Plugin.Maui.Audio;
+using MauiApp2.SCRIPTS;
 
 
 
@@ -83,11 +84,14 @@ namespace MauiApp2
             userPrompt = InputBox.Text; 
             InputBox.Text = ""; //it deletes the text of the entry once sended
 
-            AddUserChatBoxToUI(userPrompt);
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+            UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt);
             AddInterpreterChatBoxToUI(userPrompt);
         }
 
         //USER CHAT UI
+
+        /*
         private void AddUserChatBoxToUI(string userPrompt)
         {
             var frame = new Frame
@@ -116,6 +120,7 @@ namespace MauiApp2
             };
 
         }
+        */
 
         //INTERPRETER CHAT UI
         private async void AddInterpreterChatBoxToUI(string userPrompt)

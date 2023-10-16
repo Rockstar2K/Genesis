@@ -6,5 +6,53 @@
     {
         "role": "assistant",
         "message": "Hola! Mi nombre es Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola! Mi nombre es Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola"
+    },
+    {
+        "role": "assistant",
+        "message": "¡Hola! ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola! Mi nombre es Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola! Mi nombre es Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola"
+    },
+    {
+        "role": "assistant",
+        "message": "¡Hola! ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola"
+    },
+    {
+        "role": "assistant",
+        "message": "¡Hola! ¿Cómo puedo ayudarte hoy?"
     }
 ]
