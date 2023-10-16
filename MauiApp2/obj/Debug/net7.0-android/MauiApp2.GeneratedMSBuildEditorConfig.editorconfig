@@ -44,8 +44,8 @@ build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.Resources.Styles.
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/Settings.xaml]
+[C:/Users/thega/source/repos/MauiApp2/MauiApp2/SETTINGS/Settings.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.Settings.xaml
-build_metadata.AdditionalFiles.TargetPath = Settings.xaml
-build_metadata.AdditionalFiles.RelativePath = Settings.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.SETTINGS.Settings.xaml
+build_metadata.AdditionalFiles.TargetPath = SETTINGS\Settings.xaml
+build_metadata.AdditionalFiles.RelativePath = SETTINGS\Settings.xaml

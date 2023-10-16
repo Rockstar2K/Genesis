@@ -16,10 +16,11 @@ def Set_API_Key(key):
 
 # ...
 
-def read_prompt():
+def read_prompt(filename='lyris_Prompt.txt'):
     
-    file_path = os.path.join(root_dir, "lyris_Prompt.txt")
-    
+    # Construct the full file path
+    file_path = os.path.join(root_dir, "Resources", "Prompts", filename)
+
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             return file.read()
@@ -27,9 +28,8 @@ def read_prompt():
 
 # ...
 
-root_dir = os.path.dirname(os.path.abspath(__file__))
-
 def save_chat_history(messages, filename='chat_history.txt'):
+    
     file_path = os.path.join(root_dir, filename)
     
     # Step 1: Load existing messages
@@ -41,6 +41,8 @@ def save_chat_history(messages, filename='chat_history.txt'):
     # Step 3: Save all messages back to the file
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(existing_messages, file, ensure_ascii=False, indent=4)
+        
+# ...
 
 def load_chat_history(filename='chat_history.txt'):
     file_path = os.path.join(root_dir, filename)
@@ -56,8 +58,7 @@ def load_chat_history(filename='chat_history.txt'):
     
     return messages  
 
-
-
+# ...
 
 def OI_Python2(prompt, api_key=None):
     if api_key:

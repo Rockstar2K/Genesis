@@ -1,19 +1,11 @@
 [
     {
         "role": "user",
-        "message": "who are you?"
+        "message": "Hola, quien eres?"
     },
     {
         "role": "assistant",
-        "message": "I am Lyris, a world-class programmer. I can help you with any programming task by executing code on your machine. How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "message": "who are you?"
-    },
-    {
-        "role": "assistant",
-        "message": "I am Lyris, a world-class programmer. I can help you with any programming task by executing code on your machine. How can I assist you today?"
+        "message": "Hola, soy un asistente virtual. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
@@ -21,23 +13,15 @@
     },
     {
         "role": "assistant",
-        "message": "Hola, soy Lyris, una programadora experta. ¿En qué puedo ayudarte hoy?"
+        "message": "Hola, soy un asistente virtual. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "who are you?"
+        "message": "como te llamas?"
     },
     {
         "role": "assistant",
-        "message": "I am Lyris, a world-class programmer. I can help you with any programming task by executing code on your machine. How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "message": "who are you?"
-    },
-    {
-        "role": "assistant",
-        "message": "I am Lyris, a world-class programmer. I can help you with any programming task by executing code on your machine. How can I assist you today?"
+        "message": "Me llamo Lyris. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
@@ -45,7 +29,7 @@
     },
     {
         "role": "assistant",
-        "message": "Hola, soy Lyris, una programadora experta. ¿En qué puedo ayudarte hoy?"
+        "message": "Hola, soy un asistente virtual. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
@@ -53,6 +37,86 @@
     },
     {
         "role": "assistant",
-        "message": "Hola, soy Lyris, una programadora experta. ¿En qué puedo ayudarte hoy?"
+        "message": "Hola, soy un asistente virtual. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Me llamo Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como estás"
+    },
+    {
+        "role": "assistant",
+        "message": "¡Hola! Como soy un programa de inteligencia artificial, no tengo emociones, pero estoy aquí para ayudarte en lo que necesites. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy un asistente virtual. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy un asistente virtual. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Me llamo Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy un asistente virtual. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, quien eres?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola, soy un asistente virtual. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Me llamo Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como estás"
+    },
+    {
+        "role": "assistant",
+        "message": "¡Hola! Como soy un programa de inteligencia artificial, no tengo emociones, pero estoy aquí para ayudarte en lo que necesites. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Me llamo Lyris. ¿En qué puedo ayudarte hoy?"
     }
 ]

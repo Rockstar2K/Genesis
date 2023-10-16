@@ -32,7 +32,7 @@ namespace MauiApp2
 
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
 
-        //STT
+        
         private GoogleSTTPlayer sttPlayer = new GoogleSTTPlayer(); // Initializing STT
         private AudioRecorder audioRecorder;
         public MainPage()
@@ -41,18 +41,14 @@ namespace MauiApp2
             InitializeAudioRecorder();
 
         }
-
+        //STT
         private void InitializeAudioRecorder()
         {
             var audioManager = new AudioManager();
             audioRecorder = new AudioRecorder(audioManager);  // Initializing audio recorder
         }
 
-
-        //STT CODE
-
         string recordedAudioFilePath = "";
-
 
         private async void OnStartRecordingClicked(object sender, EventArgs e)
         {
@@ -79,7 +75,9 @@ namespace MauiApp2
             Debug.WriteLine("transcription: " + transcription);
 
         }
+        //STT
 
+        //USER PROMPT INPUT
         private void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
         {
             userPrompt = InputBox.Text; 
@@ -89,6 +87,7 @@ namespace MauiApp2
             AddInterpreterChatBoxToUI(userPrompt);
         }
 
+        //USER CHAT UI
         private void AddUserChatBoxToUI(string userPrompt)
         {
             var frame = new Frame
@@ -118,7 +117,7 @@ namespace MauiApp2
 
         }
 
-
+        //INTERPRETER CHAT UI
         private async void AddInterpreterChatBoxToUI(string userPrompt)
         {
             Debug.WriteLine($"AddInterpreterChatBoxToUI called with userPrompt: {userPrompt}");  // Monitoring line
@@ -221,6 +220,7 @@ namespace MauiApp2
 
         }
 
+        //TTS
         private async void PlayAudioFromText(string text)
         {
             try
@@ -233,6 +233,8 @@ namespace MauiApp2
                 Debug.WriteLine("An error occurred: " + ex.Message);
             }
         }
+
+        //INITIALIZES PYTHON
 
         private async Task<string> RunPythonScriptAsync(string userPrompt, string apiKey)
         {
@@ -264,7 +266,9 @@ namespace MauiApp2
             return await ExecuteScriptAsync(pythonPath, scriptPath, userPrompt, apiKey);
         }
 
-        bool isGIFEnabled = false; // Inicializa la variable fuera del bucle
+        //EXECUTES PYTHON
+
+        bool isGIFEnabled = false; // Inicializa la variable 
 
         private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string userPrompt, string apiKey)
         {
@@ -299,7 +303,7 @@ namespace MauiApp2
                     while ((charsRead = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
                         var interpreterChunk = new string(buffer, 0, charsRead);
-                        Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
+                        //Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
                         UpdateUI(interpreterChunk);
                         outputBuilder.Append(interpreterChunk);
 
@@ -327,7 +331,8 @@ namespace MauiApp2
             return outputBuilder.ToString();
         }
 
-        
+        //UPDATES INTERPRETER UI
+
         private void UpdateUI(string intepreterChunk) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
@@ -342,8 +347,6 @@ namespace MauiApp2
                 }
                 
                 
-                //Debug.WriteLine("Received text: " + text);
-
                 if (string.IsNullOrEmpty(intepreterChunk))
                 {
                     Debug.WriteLine("Text is null or empty updateUI");
@@ -414,7 +417,7 @@ namespace MauiApp2
             });
         }
 
-
+        //DECODES ENTIRE INTERPRETER MESSAGE
         private void decodeConcatenatedJSON(string userPrompt, string concatenatedChunks)
         {
             Debug.WriteLine("decodeJSON initialized with concatenatedChunks: " + concatenatedChunks);
@@ -461,7 +464,7 @@ namespace MauiApp2
             //PlayAudioFromText(fullMessage.ToString());
         }
 
-
+        //MEMORY
 
         Queue<string> lastRecords = new Queue<string>();
         int maxRecords = 30; // Set the number of records here
