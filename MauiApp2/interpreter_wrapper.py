@@ -19,7 +19,7 @@ def Set_API_Key(key):
 def read_prompt(filename='lyris_Prompt.txt'):
     
     # Construct the full file path
-    file_path = os.path.join(root_dir, "Resources", "Prompts", filename)
+    file_path = os.path.join(root_dir, "Resources", "pPROMPTS", filename)
 
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -30,7 +30,7 @@ def read_prompt(filename='lyris_Prompt.txt'):
 
 def save_chat_history(messages, filename='chat_history.txt'):
     
-    file_path = os.path.join(root_dir, filename)
+    file_path = os.path.join(root_dir, "pMEMORY", filename)
     
     # Step 1: Load existing messages
     existing_messages = load_chat_history(filename)
@@ -45,7 +45,7 @@ def save_chat_history(messages, filename='chat_history.txt'):
 # ...
 
 def load_chat_history(filename='chat_history.txt'):
-    file_path = os.path.join(root_dir, filename)
+    file_path = os.path.join(root_dir, "pMEMORY", filename)
     messages = []
     
     try:
