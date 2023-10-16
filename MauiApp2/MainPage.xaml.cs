@@ -85,42 +85,12 @@ namespace MauiApp2
             InputBox.Text = ""; //it deletes the text of the entry once sended
 
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
-            UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt);
+            UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt); // ADD USER CHAT
             AddInterpreterChatBoxToUI(userPrompt);
         }
 
-        //USER CHAT UI
 
-        /*
-        private void AddUserChatBoxToUI(string userPrompt)
-        {
-            var frame = new Frame
-            {
-                BackgroundColor = Color.FromArgb("#F2CFE2"),
-                BorderColor = Color.FromArgb("#F2CFE2"),
-                Margin = new Thickness(80, 0, 0, 0), //left, top, right, bottom
-                                                     // ... other styling ...
-                Content = new Label
-                {
-                    Text = userPrompt,
-                    FontFamily = "Montserrat-Light",
-                    TextColor = Color.FromArgb("#121B3F"),
-                }
-            };
-
-            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
-            stackLayout.Children.Add(frame);
-
-            frame.Shadow = new Shadow
-            {
-                Brush = new SolidColorBrush(Color.FromArgb("#121B3F")),
-                Offset = new Point(0, 5),
-                Radius = 15,
-                Opacity = 0.6f
-            };
-
-        }
-        */
+       
 
         //INTERPRETER CHAT UI
         private async void AddInterpreterChatBoxToUI(string userPrompt)
@@ -226,7 +196,7 @@ namespace MauiApp2
         }
 
         //TTS
-        private async void PlayAudioFromText(string text)
+        public async void PlayAudioFromText(string text)
         {
             try
             {
@@ -320,10 +290,7 @@ namespace MauiApp2
 
                 }
 
-                string interpreterConcatenatedChunks = outputBuilder.ToString();
-                decodeConcatenatedJSON(userPrompt, interpreterConcatenatedChunks); //we decode the final json message to use it in SSDconversation and the TTS
-
-
+                
                 string error = await process.StandardError.ReadToEndAsync();
                 process.WaitForExit();
 
@@ -332,6 +299,11 @@ namespace MauiApp2
                     Debug.WriteLine("Error/Debug output: " + error);
                 }
             });
+
+            string IConcatenatedChunks = outputBuilder.ToString();
+            var decodedJson = JsonDecoder.DecodeConcatenatedJSON(IConcatenatedChunks);  // DECODES ENTIRE INTERPRETER MESSAGE
+
+            PlayAudioFromText(decodedJson);
 
             return outputBuilder.ToString();
         }
@@ -422,52 +394,6 @@ namespace MauiApp2
             });
         }
 
-        //DECODES ENTIRE INTERPRETER MESSAGE
-        private void decodeConcatenatedJSON(string userPrompt, string concatenatedChunks)
-        {
-            Debug.WriteLine("decodeJSON initialized with concatenatedChunks: " + concatenatedChunks);
-
-            var fullMessage = new StringBuilder();
-
-            try
-            {
-                // Split the concatenatedChunks by line
-                var chunks = concatenatedChunks.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                foreach (var chunk in chunks)
-                {
-                    try
-                    {
-                        var json = JObject.Parse(chunk);
-                        var imessage = json["message"]?.ToString();
-                        var start_of_message = json["start_of_message"]?.ToString();
-
-                        if (start_of_message != null)
-                        {
-                            // Handle start_of_message if needed
-                        }
-
-                        if (imessage != null)
-                        {
-                            fullMessage.Append(imessage);
-                        }
-                    }
-                    catch (JsonReaderException ex)
-                    {
-                        Debug.WriteLine("Json parser exception: " + ex.Message);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Error while processing concatenatedChunks: " + ex.Message);
-            }
-
-            Debug.WriteLine("decodeJSON: " + fullMessage.ToString());
-
-            //SSDconversation(userPrompt, fullMessage.ToString());
-            //PlayAudioFromText(fullMessage.ToString());
-        }
 
         
         void Settings_Pressed(System.Object sender, System.EventArgs e)

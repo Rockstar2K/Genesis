@@ -54,5 +54,69 @@
     {
         "role": "assistant",
         "message": "¡Hola! ¿Cómo puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola! Mi nombre es Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola! Mi nombre es Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola"
+    },
+    {
+        "role": "assistant",
+        "message": "¡Hola! ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola! Mi nombre es Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola, como te llamas?"
+    },
+    {
+        "role": "assistant",
+        "message": "Hola! Mi nombre es Lyris. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola"
+    },
+    {
+        "role": "assistant",
+        "message": "¡Hola! ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "Hola"
+    },
+    {
+        "role": "assistant",
+        "message": "¡Hola! ¿Cómo puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "How are u?"
+    },
+    {
+        "role": "assistant",
+        "message": "Thank you for asking! As an AI, I don't have feelings, but I'm here and ready to assist you. How can I help you today?"
     }
 ]
