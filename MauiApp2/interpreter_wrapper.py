@@ -73,7 +73,7 @@ def OI_Python2(prompt, api_key=None):
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
 
         # Load the conversation history as a list
-        #interpreter.messages = list(load_chat_history())
+        #interpreter.messages += list(load_chat_history())
         output = interpreter.chat(f"{prompt}", stream=True, display=False)
         for chunk in output:
             print(chunk, flush=True)

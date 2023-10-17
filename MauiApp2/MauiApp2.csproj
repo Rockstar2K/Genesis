@@ -100,6 +100,7 @@
 	  <None Remove="Resources\Fonts\Montserrat-ThinItalic.ttf" />
 	  <None Remove="Resources\Images\Comp 1.gif" />
 	  <None Remove="Resources\Images\avioncito.png" />
+	  <None Remove="Resources\Images\wave1.png" />
 	</ItemGroup>
 
 	<ItemGroup>

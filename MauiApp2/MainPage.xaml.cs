@@ -279,7 +279,7 @@ namespace MauiApp2
                     {
                         var interpreterChunk = new string(buffer, 0, charsRead);
                         //Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
-                        UpdateUI(interpreterChunk);
+                        ProcessChunk(interpreterChunk);
                         outputBuilder.Append(interpreterChunk);
 
                         isGIFEnabled = true; // Establece la bandera para que no se llame nuevamente
@@ -287,7 +287,6 @@ namespace MauiApp2
                     }
 
                     isGIFEnabled = false;
-
                 }
 
                 
@@ -301,6 +300,7 @@ namespace MauiApp2
             });
 
             string IConcatenatedChunks = outputBuilder.ToString();
+            Debug.WriteLine($"Concatenated Chunks: {IConcatenatedChunks}");  // Debug line
             var decodedJson = JsonDecoder.DecodeConcatenatedJSON(IConcatenatedChunks);  // DECODES ENTIRE INTERPRETER MESSAGE
 
             PlayAudioFromText(decodedJson);
@@ -310,7 +310,36 @@ namespace MauiApp2
 
         //UPDATES INTERPRETER UI
 
-        private void UpdateUI(string intepreterChunk) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
+        private StringBuilder jsonBuffer = new StringBuilder();
+
+        private void ProcessChunk(string chunk)
+        {
+            jsonBuffer.Append(chunk);
+            ExtractAndProcessJsonObjects();
+        }
+
+        private void ExtractAndProcessJsonObjects()
+        {
+            string bufferContent = jsonBuffer.ToString();
+            int lastObjectEndIndex = bufferContent.LastIndexOf('}');
+            if (lastObjectEndIndex < 0) return;  // No complete object found
+
+            string objectsString = bufferContent.Substring(0, lastObjectEndIndex + 1);
+            jsonBuffer = new StringBuilder(bufferContent.Substring(lastObjectEndIndex + 1));  // Keep remaining content
+
+            // Split based on '}' to get individual objects, then add '}' back to each object
+            string[] jsonObjects = objectsString.Split(new[] { '}' }, StringSplitOptions.RemoveEmptyEntries)
+                                                 .Select(objStr => objStr + "}").ToArray();
+            foreach (string jsonObject in jsonObjects)
+            {
+                UpdateUI(jsonObject);
+            }
+            Debug.WriteLine($"Remaining Buffer Content: {jsonBuffer.ToString()}");  // Debug line
+        }
+
+
+
+        private void UpdateUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             this.Dispatcher.Dispatch(() =>
@@ -324,7 +353,7 @@ namespace MauiApp2
                 }
                 
                 
-                if (string.IsNullOrEmpty(intepreterChunk))
+                if (string.IsNullOrEmpty(jsonObject))
                 {
                     Debug.WriteLine("Text is null or empty updateUI");
                     return;
@@ -332,7 +361,8 @@ namespace MauiApp2
 
                 try
                 {
-                    var json = JObject.Parse(intepreterChunk);
+                    var json = JObject.Parse(jsonObject);
+
                     var message = json["message"]?.ToString();
                     var language = json["language"]?.ToString();
                     var code = json["code"]?.ToString();
@@ -388,9 +418,11 @@ namespace MauiApp2
                 }
                 catch (JsonReaderException ex)
                 {
-                    Debug.WriteLine("Json parser exception" + ex.Message); //JSON ERRORS HERE
+                    Debug.WriteLine("Json parser exception" + ex.Message);
+                    Debug.WriteLine("JSON object: " + jsonObject);
+
                 }
-                
+
             });
         }
 
@@ -407,6 +439,12 @@ namespace MauiApp2
 
         void Chat_Option_Pressed(System.Object sender, System.EventArgs e)
         {
+        }
+
+        void Welcome_Button_Clicked(System.Object sender, System.EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Welcome_Page());
+
         }
     }
 }

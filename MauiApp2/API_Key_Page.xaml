@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="MauiApp2.API_Key_Page"
+             NavigationPage.HasNavigationBar="False"
+             Title="API_Key_Page">
+    <AbsoluteLayout BackgroundColor="#E2E4E4">
+            <skia:SKLottieView 
+                Source="https://lottie.host/1bc5c802-b494-4edc-aad4-9c382ec0bf76/K5DJcz5pNn.json"
+                HeightRequest="130"
+                WidthRequest="130"
+                RepeatCount="-1"
+                HorizontalOptions="Start"
+                Margin="100,60">
+            </skia:SKLottieView>
+        <VerticalStackLayout
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+             AbsoluteLayout.LayoutBounds="0,0.4"
+            Margin="80,0">
+
+            <Label 
+                Text="Insert your OpenAI API Key"
+                VerticalOptions="Center"
+                FontSize="60"
+                FontFamily="Montserrat-Light"
+                HorizontalOptions="Start"
+                TextColor="#B080B7"
+                Margin="40,100,10,10"/>
+            <Label
+                Text="Don’t worry, it won’t leave your device."
+                Margin="40,10,0,30"
+                FontSize="25"
+                TextColor="#B080B7"
+                FontFamily="Montserrat-extralight"/>
+            <Frame
+                Margin="40,20,40,20"
+                Padding="0"
+                BorderColor="#F2CFE2"
+                BackgroundColor="White"
+                CornerRadius="25"
+                Opacity="0.5">
+                <Entry
+                    x:Name="API_Input_Box"
+                    BackgroundColor="Transparent"
+                    Placeholder="   API Key"
+                    PlaceholderColor="#68667D"
+                    FontFamily="Montserrat-Light"
+                    TextColor="#121B3F"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry.Shadow>
+                        <Shadow
+                            Brush="#121B3F"
+                            Opacity="0.4"
+                            Radius="30"
+                            Offset="0,20" />
+                    </Entry.Shadow>
+                </Entry>
+            </Frame>
+            <HorizontalStackLayout>
+            <Button
+                Text="Continue"
+                MaximumWidthRequest="100"
+                HorizontalOptions="Start"
+                Margin="40,50,0,0"
+                BackgroundColor="#B080B7"
+                MinimumWidthRequest="150"
+                MinimumHeightRequest="50"
+                CornerRadius="22"
+                FontSize="20"
+                FontFamily="Montserrat-ExtraLight"/>
+            <Button
+                Text="Where can I find API Key"
+                Margin="0,50,0,0"
+                FontSize="20"
+                TextColor="#B080B7"
+                BackgroundColor="Transparent"
+                FontFamily="Montserrat-ExtraLightItalic"
+                VerticalOptions="FillAndExpand"
+                Clicked="Button_Clicked"/>
+            </HorizontalStackLayout>
+
+
+        </VerticalStackLayout>
+        <Line
+            AbsoluteLayout.LayoutBounds="0.5,0.5,10,400"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            X1="0"
+            Y1="0"
+            X2="0"
+            Y2="300"
+            Stroke="#B3B3B3" />
+        
+        <StackLayout
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+             AbsoluteLayout.LayoutBounds="1,0.4"
+                 Margin="120,300">
+            <Label
+                Text="Soon"
+                Margin="0,10"
+                FontSize="25"
+                TextColor="#B3B3B3"
+                FontFamily="Montserrat-Light"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="Download a local model"
+                Margin="0,10"
+                FontSize="60"
+                TextColor="#B3B3B3"
+                FontFamily="Montserrat-Light"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="It’s completly free and private but requires good hardware"
+                FontSize="25"
+                Margin="0,20"
+                TextColor="#B3B3B3"
+                FontFamily="Montserrat-Light"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

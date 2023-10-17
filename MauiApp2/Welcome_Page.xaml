@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="MauiApp2.Welcome_Page"
+            NavigationPage.HasNavigationBar="False"
+             Title="Welcome_Page">
+    <AbsoluteLayout BackgroundColor="#E2E4E4">
+        <Image
+            Source="wave1.png"
+            AbsoluteLayout.LayoutBounds="1,0,800,600"
+            AbsoluteLayout.LayoutFlags="PositionProportional">
+        </Image>
+        <StackLayout
+            AbsoluteLayout.LayoutBounds="0,0.5"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Margin="40,0">
+            <skia:SKLottieView 
+                Source="https://lottie.host/1bc5c802-b494-4edc-aad4-9c382ec0bf76/K5DJcz5pNn.json"
+                HeightRequest="150"
+                WidthRequest="150"
+                RepeatCount="-1"
+                HorizontalOptions="Start"
+                Margin="40,20">
+            </skia:SKLottieView>
+            <Label 
+                Text="Welcome"
+                VerticalOptions="Center"
+                FontSize="60"
+                FontFamily="Montserrat-Light"
+                HorizontalOptions="Start"
+                TextColor="#B080B7"
+                Margin="40,0"/>
+            <Label
+                Text="We're setting up everything"
+                Margin="40,10"
+                FontSize="30"
+                TextColor="#B080B7"
+                FontFamily="Montserrat-extralight"/>
+            <Button
+                Text="Next Page"
+                MaximumWidthRequest="100"
+                HorizontalOptions="Start"
+                Margin="40,20"
+                Clicked="Next_Page_Clicked"
+                BackgroundColor="#B080B7"/>
+
+        </StackLayout>
+    </AbsoluteLayout>
+
+</ContentPage>

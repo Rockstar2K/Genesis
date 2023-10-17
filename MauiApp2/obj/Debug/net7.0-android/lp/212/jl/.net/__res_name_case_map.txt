@@ -1,1 +1,0 @@
-Platforms/Android/Resources/values/string.xml;values/string.xml

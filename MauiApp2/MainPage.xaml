@@ -4,6 +4,7 @@
     Title=""
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False"
     xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI">
     
     <Grid VerticalOptions="FillAndExpand" BackgroundColor="#EAEAEA">
@@ -19,6 +20,10 @@
                 Spacing="25"
                 VerticalOptions="FillAndExpand">
                 <AbsoluteLayout Margin="0,20">
+                    <Button
+                        Text="Welcome Page"
+                        Clicked="Welcome_Button_Clicked"
+                        BackgroundColor="LightPink"/>
                     <ImageButton
                         x:Name="Settings"
                         AbsoluteLayout.LayoutBounds="1,0.5"
@@ -76,14 +81,14 @@
                 </skia:SKLottieView>
                 -->
 
+                <!--
 
-                <!-- new code -->
+ 
                 <StackLayout>
                     <Button Text="Start Recording" Clicked="OnStartRecordingClicked" />
                     <Button Text="Stop Recording" Clicked="OnStopRecordingClicked" />
                 </StackLayout>
-                <!-- new code -->
-
+                -->
             </VerticalStackLayout>
         </ScrollView>
 
