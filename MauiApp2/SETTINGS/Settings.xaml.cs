@@ -29,9 +29,9 @@ public partial class Settings : ContentPage
         }
     }
 
-    void Back_Pressed(System.Object sender, System.EventArgs e)
+    async void Back_Pressed(System.Object sender, System.EventArgs e)
     {
-        App.Current.MainPage = new NavigationPage(new MainPage());
+        await Shell.Current.Navigation.PopAsync();
     }
 
 

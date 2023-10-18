@@ -14,9 +14,40 @@
                 HorizontalOptions="Start"
                 Margin="100,60">
             </skia:SKLottieView>
+        
+        <VerticalStackLayout
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+             AbsoluteLayout.LayoutBounds="1,0.4"
+                 Margin="120,300">
+            <Label
+                Text="Soon"
+                Margin="0,10"
+                FontSize="25"
+                TextColor="#B3B3B3"
+                FontFamily="Montserrat-Light"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="Download a local model"
+                Margin="0,10"
+                FontSize="60"
+                TextColor="#B3B3B3"
+                FontFamily="Montserrat-Light"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="It’s completly free and private but requires good hardware"
+                FontSize="25"
+                Margin="0,20"
+                TextColor="#B3B3B3"
+                FontFamily="Montserrat-Light"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
         <VerticalStackLayout
             AbsoluteLayout.LayoutFlags="PositionProportional"
              AbsoluteLayout.LayoutBounds="0,0.4"
+            BackgroundColor="#E2E4E4"
             Margin="80,0">
 
             <Label 
@@ -82,43 +113,6 @@
 
 
         </VerticalStackLayout>
-        <Line
-            AbsoluteLayout.LayoutBounds="0.5,0.5,10,400"
-            AbsoluteLayout.LayoutFlags="PositionProportional"
-            X1="0"
-            Y1="0"
-            X2="0"
-            Y2="300"
-            Stroke="#B3B3B3" />
-        
-        <StackLayout
-            AbsoluteLayout.LayoutFlags="PositionProportional"
-             AbsoluteLayout.LayoutBounds="1,0.4"
-                 Margin="120,300">
-            <Label
-                Text="Soon"
-                Margin="0,10"
-                FontSize="25"
-                TextColor="#B3B3B3"
-                FontFamily="Montserrat-Light"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
-            <Label
-                Text="Download a local model"
-                Margin="0,10"
-                FontSize="60"
-                TextColor="#B3B3B3"
-                FontFamily="Montserrat-Light"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
-            <Label
-                Text="It’s completly free and private but requires good hardware"
-                FontSize="25"
-                Margin="0,20"
-                TextColor="#B3B3B3"
-                FontFamily="Montserrat-Light"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
-        </StackLayout>
+
     </AbsoluteLayout>
 </ContentPage>

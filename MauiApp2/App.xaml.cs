@@ -11,5 +11,6 @@ public partial class App : Application
     {
         InitializeComponent();
         MainPage = new AppShell();
+        Routing.RegisterRoute("Settings", typeof(Settings));
     }
 }

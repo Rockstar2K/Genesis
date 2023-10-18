@@ -428,9 +428,13 @@ namespace MauiApp2
 
 
         
-        void Settings_Pressed(System.Object sender, System.EventArgs e)
+        private async void Settings_Pressed(System.Object sender, System.EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new Settings());
+
+            await Shell.Current.GoToAsync("Settings");
+            var currentLocation = Shell.Current.CurrentState.Location;
+            Console.WriteLine(currentLocation);
+
         }
 
         void Voice_Option_Pressed(System.Object sender, System.EventArgs e)
