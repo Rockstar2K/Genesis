@@ -131,13 +131,15 @@
                 <HorizontalStackLayout>
                     <VerticalStackLayout  Margin="10,0">
                         <Button
+                            x:Name="GPT3btn"
                             Text="GPT-3"
                             Pressed="GPT3_Pressed"
                             HorizontalOptions="Center"
-                            BackgroundColor="#B080B7"
+                            BackgroundColor="#fff"
                             CornerRadius="22"
                             MinimumWidthRequest="130"
-                            TextColor="White"
+                            TextColor="#B080B7"
+                            BorderColor="#B080B7"
                             Margin="0,0,0,5"
                             FontFamily="Montserrat-ExtraLight"/>
                         <Label
@@ -149,6 +151,7 @@
                     </VerticalStackLayout>
                     <VerticalStackLayout Margin="10,0">
                         <Button
+                            x:Name="GPT4btn"
                             Text="GPT-4"
                             Pressed="GPT4_Pressed"
                             BorderWidth="1"

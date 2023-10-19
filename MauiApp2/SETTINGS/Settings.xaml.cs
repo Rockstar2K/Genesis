@@ -53,12 +53,34 @@ public partial class Settings : ContentPage
     {
 
         Preferences.Set("interpreter_model", "gpt-3.5-turbo");
+        Debug.WriteLine("interpreter_model" + interpreter_model);
+
+        //change GPT 3
+        GPT3btn.BackgroundColor = Color.FromArgb("#B080B7");
+        GPT3btn.TextColor = Color.FromArgb("#fff");
+
+        //change GPT 4
+        GPT4btn.BackgroundColor = Color.FromArgb("#fff");
+        GPT4btn.TextColor = Color.FromArgb("#B080B7");
+
+
+
 
     }
     void GPT4_Pressed(System.Object sender, System.EventArgs e)
     {
 
         Preferences.Set("interpreter_model", "gpt-4");
+        Debug.WriteLine("interpreter_model" + interpreter_model);
+
+        //change GPT 4
+        GPT4btn.BackgroundColor = Color.FromArgb("#B080B7");
+        GPT4btn.TextColor = Color.FromArgb("#fff");
+
+        //change GPT 4
+        GPT3btn.BackgroundColor = Color.FromArgb("#fff");
+        GPT3btn.TextColor = Color.FromArgb("#B080B7");
+
 
     }
 }

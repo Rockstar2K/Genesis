@@ -427,15 +427,32 @@ namespace MauiApp2
         }
 
 
-        
+
         private async void Settings_Pressed(System.Object sender, System.EventArgs e)
         {
-
-            await Shell.Current.GoToAsync("Settings");
-            var currentLocation = Shell.Current.CurrentState.Location;
-            Console.WriteLine(currentLocation);
-
+            try
+            {
+                if (Shell.Current != null)
+                {
+                    await Shell.Current.GoToAsync("Settings");
+                    var currentLocation = Shell.Current.CurrentState.Location;
+                    Console.WriteLine(currentLocation);
+                }
+                else
+                {
+                    Console.WriteLine("Shell.Current is null.");
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine("Null reference exception: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An unexpected error occurred: " + ex.Message);
+            }
         }
+
 
         void Voice_Option_Pressed(System.Object sender, System.EventArgs e)
         {
