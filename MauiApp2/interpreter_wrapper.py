@@ -60,7 +60,7 @@ def load_chat_history(filename='chat_history.txt'):
 
 # ...
 
-def OI_Python2(prompt, api_key=None):
+def OI_Python2(message, api_key=None, interpreter_model=None):
     if api_key:
         Set_API_Key(api_key)
     try:
@@ -69,12 +69,14 @@ def OI_Python2(prompt, api_key=None):
         interpreter.messages += load_chat_history()
 
         interpreter.system_message = read_prompt()
-        interpreter.model = "gpt-3.5-turbo"
+        
+        interpreter.model = interpreter_model # Set the interpreter model from the variable in c# / settings
+        
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
 
         # Load the conversation history as a list
         #interpreter.messages += list(load_chat_history())
-        output = interpreter.chat(f"{prompt}", stream=True, display=False)
+        output = interpreter.chat(f"{message}", stream=True, display=False)
         for chunk in output:
             print(chunk, flush=True)
 
@@ -87,9 +89,10 @@ def OI_Python2(prompt, api_key=None):
 def OI_Python(message, api_key=None):
     if api_key:
         Set_API_Key(api_key)
-    OI_Python2(message, api_key)
+    OI_Python2(message, api_key, interpreter_model)
 
 if __name__ == "__main__":
     message = sys.argv[1]
     api_key = sys.argv[2] if len(sys.argv) > 2 else None
-    result = OI_Python(message, api_key)
+    interpreter_model = sys.argv[3] if len(sys.argv) > 3 else None
+    result = OI_Python(message, api_key, interpreter_model)

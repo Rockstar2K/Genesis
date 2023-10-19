@@ -22,7 +22,8 @@ namespace MauiApp2
         public static string apiKey     { get; set; } = Preferences.Get("api_key", "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");
         public bool is_night_mode_on    { get; set; } = Preferences.Get("night_mode", false);
         public bool is_code_visible     { get; set; } = Preferences.Get("see_code", false);
-        public string llm_model         { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
+        public string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
+
         public bool is_executing_code = false;
 
         Frame outputFrame;
@@ -238,14 +239,14 @@ namespace MauiApp2
                 return string.Empty;
             }
 
-            return await ExecuteScriptAsync(pythonPath, scriptPath, userPrompt, apiKey);
+            return await ExecuteScriptAsync(pythonPath, scriptPath, userPrompt, apiKey, interpreter_model);
         }
 
         //EXECUTES PYTHON
 
         bool isGIFEnabled = false; // Inicializa la variable 
 
-        private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string userPrompt, string apiKey)
+        private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string userPrompt, string apiKey, string interpreter_model)
         {
             Debug.WriteLine($"ExecuteScriptAsync called with pythonPath: {pythonPath}, scriptPath: {scriptPath}, userPrompt: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
 
@@ -258,7 +259,7 @@ namespace MauiApp2
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = $"{pythonPath}",
-                        Arguments = $"\"{scriptPath}\" \"{userPrompt}\" \"{apiKey}\"",
+                        Arguments = $"\"{scriptPath}\" \"{userPrompt}\" \"{apiKey}\" \"{interpreter_model}\"",
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         UseShellExecute = false,
