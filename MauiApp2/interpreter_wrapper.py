@@ -86,7 +86,7 @@ def OI_Python2(message, api_key=None, interpreter_model=None):
     except Exception as e:
          return f"Error: {e}\n{traceback.format_exc()}"
 
-def OI_Python(message, api_key=None):
+def OI_Python(message, api_key=None, interpreter_model=None):
     if api_key:
         Set_API_Key(api_key)
     OI_Python2(message, api_key, interpreter_model)

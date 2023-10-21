@@ -12,6 +12,9 @@ public partial class Settings : ContentPage
     public Settings()
     {
         InitializeComponent();
+        Shell.SetNavBarIsVisible(this, false);
+        LanguagePicker.ItemsSource = new List<string> { "English", "Spanish" };
+
     }
 
     void Save_Button_Pressed(System.Object sender, System.EventArgs e)
@@ -80,5 +83,12 @@ public partial class Settings : ContentPage
         GPT3btn.TextColor = Color.FromArgb("#B080B7");
 
         Debug.WriteLine("Interpreter model set to GPT-4");
+    }
+
+    private void OnLanguagePickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = sender as Picker;
+        var selectedValue = (string)picker.SelectedItem;
+        Preferences.Set("Language", selectedValue);
     }
 }

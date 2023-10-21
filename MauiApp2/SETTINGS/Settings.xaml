@@ -27,6 +27,13 @@
                 AbsoluteLayout.LayoutBounds="1,0"
                 AbsoluteLayout.LayoutFlags="PositionProportional">
             </skia:SKLottieView>
+            <Picker
+                 x:Name="LanguagePicker"
+                 Title="Select Language"
+                 Margin="40,0"
+                 AbsoluteLayout.LayoutBounds="1,0.9"
+                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                 WidthRequest="200"/>
             </AbsoluteLayout>
 
             <Label

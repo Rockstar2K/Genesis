@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default">
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/pMEMORY/chat_history.txt">
     <Files>
-      <File FileName="MauiApp2/interpreter_wrapper.py" Line="69" Column="9" />
-      <File FileName="MauiApp2/Welcome_Page.xaml" Line="6" Column="13" />
-      <File FileName="MauiApp2/MainPage.xaml.cs" Line="434" Column="44" />
-      <File FileName="MauiApp2/App.xaml.cs" Line="14" Column="61" />
-      <File FileName="MauiApp2/App.xaml" Line="1" Column="1" />
-      <File FileName="MauiApp2/AppShell.xaml" Line="14" Column="1" />
-      <File FileName="MauiApp2/SETTINGS/Settings.xaml.cs" Line="35" Column="1" />
-      <File FileName="MauiApp2/MainPage.xaml" Line="7" Column="41" />
-      <File FileName="MauiApp2/SETTINGS/Settings.xaml" Line="1" Column="1" />
-      <File FileName="MauiApp2/API_Key_Page.xaml" Line="50" Column="37" />
+      <File FileName="MauiApp2/interpreter_wrapper.py" />
+      <File FileName="MauiApp2/MainPage.xaml.cs" />
+      <File FileName="MauiApp2/App.xaml.cs" />
+      <File FileName="MauiApp2/App.xaml" />
+      <File FileName="MauiApp2/AppShell.xaml" />
+      <File FileName="MauiApp2/MainPage.xaml" />
+      <File FileName="MauiApp2/API_Key_Page.xaml" />
+      <File FileName="MauiApp2/API_Key_Page.xaml.cs" />
+      <File FileName="MauiApp2/SETTINGS/Settings.xaml.cs" />
+      <File FileName="MauiApp2/SETTINGS/Settings.xaml" Line="35" Column="52" />
       <File FileName="MauiApp2/pMEMORY/chat_history.txt" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -25,10 +25,7 @@
               <Node name="pMEMORY">
                 <Node name="chat_history.txt" selected="True" />
               </Node>
-              <Node name="SETTINGS" expanded="True">
-                <Node name="Settings.xaml" expanded="True" />
-              </Node>
-              <Node name="App.xaml" expanded="True" />
+              <Node name="API_Key_Page.xaml" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -40,5 +37,5 @@
       <Breakpoint file="/Users/n/Desktop/AGI/MauiApp2/GoogleTTSPlayer.cs" relfile="MauiApp2/GoogleTTSPlayer.cs" line="70" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
 </Properties>

@@ -13,6 +13,23 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Frame
+            x:Name="NoInternetFrame"
+            IsVisible="False" 
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            BackgroundColor="White"
+            BorderColor="Transparent">
+            <Frame.Shadow>
+                <Shadow Brush="Gray"
+                Radius="0.5"/>
+            </Frame.Shadow>
+            <Label
+                Text="You have no internet connection"
+                FontFamily="Montserrat"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"/>
+        </Frame>
 
         <ScrollView Grid.Row="0">
 
@@ -60,6 +77,7 @@
                                 Offset="0,20" />
                         </HorizontalStackLayout.Shadow>
                     </HorizontalStackLayout>
+
                 </AbsoluteLayout>
 
 

@@ -41,6 +41,8 @@ namespace MauiApp2
         {
             InitializeComponent();
             InitializeAudioRecorder();
+            Shell.SetNavBarIsVisible(this, false);
+            Connectivity.ConnectivityChanged += OnConnectivityChanged;
 
         }
         //STT
@@ -80,14 +82,26 @@ namespace MauiApp2
         //STT
 
         //USER PROMPT INPUT
-        private void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
+        private async void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
         {
+            var current = Connectivity.NetworkAccess;
+            // Connection to internet is available
+            if (current == NetworkAccess.Internet)
+            {
             userPrompt = InputBox.Text; 
             InputBox.Text = ""; //it deletes the text of the entry once sended
 
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
             UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt); // ADD USER CHAT
             AddInterpreterChatBoxToUI(userPrompt);
+            }
+            else
+            {
+                // Connection to internet is not available
+                NoInternetFrame.IsVisible = true;
+                await Task.Delay(3000);  // Wait for 3 seconds
+                NoInternetFrame.IsVisible = false;
+            }
         }
 
 
@@ -467,6 +481,20 @@ namespace MauiApp2
         {
             App.Current.MainPage = new NavigationPage(new Welcome_Page());
 
+        }
+
+        private void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            if (e.NetworkAccess == NetworkAccess.Internet)
+            {
+                // Connection to internet is available
+                NoInternetFrame.IsVisible = false;
+            }
+            else
+            {
+                // Connection to internet is not available
+                NoInternetFrame.IsVisible = true;
+            }
         }
     }
 }
