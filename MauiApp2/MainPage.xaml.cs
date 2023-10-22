@@ -196,13 +196,8 @@ namespace MauiApp2
             };
 
             stackLayout.Children.Add(interpreterOutputFrame);
-
-            
        
             await RunPythonScriptAsync(userPrompt, apiKey);
-
-        
-           
 
         }
 
@@ -426,6 +421,8 @@ namespace MauiApp2
                     {
                         Debug.WriteLine("START OF CODE is true");
 
+                        is_executing_code = true;
+
                         AddInterpreterCodeBoxToUI();
                     }
 
@@ -480,8 +477,10 @@ namespace MauiApp2
                 StartPoint = new Point(0, 0.5),
                 EndPoint = new Point(1, 0.5)
             };
-            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 1 });
-            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.937f, 0.804f, 0.882f), Offset = 0 });
+
+            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#121B3F"), Offset = 1 });
+            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#B180B8"), Offset = 0 });
+
 
             var customShadow = new Shadow
             {
