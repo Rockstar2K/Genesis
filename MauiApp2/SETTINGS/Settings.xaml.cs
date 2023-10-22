@@ -14,6 +14,21 @@ public partial class Settings : ContentPage
         InitializeComponent();
         Shell.SetNavBarIsVisible(this, false);
         LanguagePicker.ItemsSource = new List<string> { "English", "Spanish" };
+        InitializeBtnModel();
+    }
+
+    void InitializeBtnModel()
+    {
+        Debug.WriteLine(interpreter_model);
+
+        if (interpreter_model == "gpt-3.5-turbo")
+        {
+            GPT3btn.BackgroundColor = Color.FromArgb("#B080B7");
+
+        } else if (interpreter_model == "gpt-4")
+        {
+            GPT4btn.BackgroundColor = Color.FromArgb("#B080B7");
+        }
 
     }
 
@@ -21,11 +36,7 @@ public partial class Settings : ContentPage
     {
         if (API_Input_Box.Text != string.Empty && api_Key != string.Empty)
         {
-            /*
-            MainPage.apiKey = API_Input_Box.Text;
-            Debug.WriteLine("API_Input_Box.Text" + API_Input_Box.Text);
-            api_Key = API_Input_Box.Text;
-            */
+            
             Preferences.Set("api_key", API_Input_Box.Text);
             Debug.WriteLine("api_key" + API_Input_Box.Text);
 

@@ -11,7 +11,7 @@ namespace MauiApp2.SCRIPTS
     {
         public static string DecodeConcatenatedJSON(string concatenatedChunks)
         {
-            Debug.WriteLine("decodeJSON initialized with concatenatedChunks: " + concatenatedChunks);
+            //Debug.WriteLine("decodeJSON initialized with concatenatedChunks: " + concatenatedChunks);
 
             var fullMessage = new StringBuilder();
 
@@ -40,16 +40,16 @@ namespace MauiApp2.SCRIPTS
                     }
                     catch (JsonReaderException ex)
                     {
-                        Debug.WriteLine("Json parser exception: " + ex.Message);
+                        //Debug.WriteLine("Json parser exception: " + ex.Message);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Error while processing concatenatedChunks: " + ex.Message);
+               // Debug.WriteLine("Error while processing concatenatedChunks: " + ex.Message);
             }
 
-            Debug.WriteLine("decodeJSON: " + fullMessage.ToString());
+            //Debug.WriteLine("decodeJSON: " + fullMessage.ToString());
 
             return fullMessage.ToString();
         }
