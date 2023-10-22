@@ -3,9 +3,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/interpreter_wrapper.py">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/MainPage.xaml.cs">
     <Files>
-      <File FileName="MauiApp2/interpreter_wrapper.py" Line="1" Column="1" />
       <File FileName="MauiApp2/MainPage.xaml.cs" Line="167" Column="1" />
       <File FileName="MauiApp2/CustomControls/AnimatedGIF.cs" Line="46" Column="87" />
     </Files>
@@ -15,15 +14,6 @@
           <Node name="MauiApp2" expanded="True">
             <Node name="MauiApp2">
               <Node name="CustomControls" expanded="True" />
-              <Node name="Resources">
-                <Node name="Images" expanded="True" />
-              </Node>
-              <Node name="SETTINGS" expanded="True">
-                <Node name="Settings.xaml" expanded="True" />
-              </Node>
-              <Node name="API_Key_Page.xaml" expanded="True" />
-              <Node name="App.xaml" expanded="True" />
-              <Node name="interpreter_wrapper.py" selected="True" />
               <Node name="MainPage.xaml" expanded="True" />
             </Node>
           </Node>
