@@ -1,34 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="MauiApp2.MainPage"
-    Title=""
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiApp2"
-    NavigationPage.HasNavigationBar="False"
-    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI">
-    
-    <Grid VerticalOptions="FillAndExpand" BackgroundColor="#EAEAEA">
+    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+    Title=""
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        BackgroundColor="#EAEAEA"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+
         <Frame
             x:Name="NoInternetFrame"
-            IsVisible="False" 
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
             BackgroundColor="White"
-            BorderColor="Transparent">
+            BorderColor="Transparent"
+            HorizontalOptions="Center"
+            IsVisible="False"
+            VerticalOptions="Center">
             <Frame.Shadow>
-                <Shadow Brush="Gray"
-                Radius="0.5"/>
+                <Shadow Brush="Gray" Radius="0.5" />
             </Frame.Shadow>
             <Label
-                Text="You have no internet connection"
                 FontFamily="Montserrat"
-                HorizontalOptions="Center" 
-                VerticalOptions="Center"/>
+                HorizontalOptions="Center"
+                Text="You have no internet connection"
+                VerticalOptions="Center" />
         </Frame>
 
         <ScrollView x:Name="ChatScrollView" Grid.Row="0">
@@ -39,9 +43,9 @@
                 VerticalOptions="FillAndExpand">
                 <AbsoluteLayout Margin="0,20">
                     <Button
-                        Text="Welcome Page"
+                        BackgroundColor="LightPink"
                         Clicked="Welcome_Button_Clicked"
-                        BackgroundColor="LightPink"/>
+                        Text="Welcome Page" />
                     <ImageButton
                         x:Name="Settings"
                         AbsoluteLayout.LayoutBounds="1,0.5"
@@ -61,6 +65,7 @@
 
                     </ImageButton>
                     <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="PositionProportional">
+                        <!--
                         <ImageButton
                             x:Name="Chat_Option"
                             Pressed="Chat_Option_Pressed"
@@ -69,6 +74,7 @@
                             x:Name="Voice_Option"
                             Pressed="Voice_Option_Pressed"
                             Source="voice_dialog_option.png" />
+                        -->
                         <HorizontalStackLayout.Shadow>
                             <Shadow
                                 Brush="#121B3F"
@@ -87,79 +93,77 @@
                     x:Name="ChatLayout"
                     Padding="30,0"
                     Spacing="25"
-                    VerticalOptions="FillAndExpand">
-                </VerticalStackLayout>
+                    VerticalOptions="FillAndExpand" />
 
-                <!--
-                <skia:SKLottieView 
-                        Source="https://lottie.host/440bfe79-8145-4324-9976-29d4d0830194/p57JQzlc3e.json"
-                        HeightRequest="150"
-                        WidthRequest="150"
-                        RepeatCount="-1">
-                    
-                </skia:SKLottieView>
-                -->
-
-                <!--
-
- 
+                <!-- STT
                 <StackLayout>
                     <Button Text="Start Recording" Clicked="OnStartRecordingClicked" />
                     <Button Text="Stop Recording" Clicked="OnStopRecordingClicked" />
                 </StackLayout>
                 -->
+
             </VerticalStackLayout>
         </ScrollView>
 
 
-        <!-- Entry and Button at the bottom -->
-<Grid
-    Grid.Row="1"
-    Padding="15"
-    BackgroundColor="Transparent">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
+        <!--  Entry and Button at the bottom  -->
 
-    <Frame
-        Grid.Column="1"
-        BackgroundColor="Transparent"
-        Margin="20,0,20,20"
-        Padding="0"
-        BorderColor="#F2CFE2"
-        CornerRadius="30">
-        <Grid>
-            <Entry
-                x:Name="InputBox"
+        <Grid
+            Grid.Row="1"
+            Padding="15"
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame
+                Grid.Column="0"
+                Margin="20,0,20,20"
+                Padding="0"
                 BackgroundColor="Transparent"
-                Completed="InputBox_Completed"
-                Placeholder="¿Que quieres que haga?"
-                PlaceholderColor="#68667D"
-                FontFamily="Montserrat-Light"
-                TextColor="#121B3F"
+                BorderColor="#F2CFE2"
+                CornerRadius="30"
                 HorizontalOptions="FillAndExpand">
-                <Entry.Shadow>
-                    <Shadow
-                        Brush="#121B3F"
-                        Opacity="0.4"
-                        Radius="30"
-                        Offset="0,20" />
-                </Entry.Shadow>
-            </Entry>
-                <ImageButton
-                    Source="avioncito.png"
-                    HeightRequest="30"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    Margin="10,10"
-                    Padding="9"
-                    Clicked="InputBox_Completed"/>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Entry
+                        x:Name="InputBox"
+                        Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        Completed="InputBox_Completed"
+                        FontFamily="Montserrat-Light"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="True"
+                        Placeholder="¿Que quieres que haga?"
+                        PlaceholderColor="#68667D"
+                        TextColor="#121B3F">
+                        <Entry.Shadow>
+                            <Shadow
+                                Brush="#121B3F"
+                                Opacity="0.4"
+                                Radius="30"
+                                Offset="0,20" />
+                        </Entry.Shadow>
+                    </Entry>
+
+                    <ImageButton
+                        Grid.Column="1"
+                        Margin="10,10"
+                        Padding="9"
+                        BackgroundColor="Transparent"
+                        Clicked="InputBox_Completed"
+                        HeightRequest="30"
+                        HorizontalOptions="End"
+                        Source="avioncito.png"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
         </Grid>
-    </Frame>
-</Grid>
-
-
     </Grid>
 </ContentPage>
