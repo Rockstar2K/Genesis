@@ -4,10 +4,7 @@ using Microsoft.Maui.Controls;
 using System;
 using SkiaSharp.Views.Maui.Controls;
 using SkiaSharp.Views.Maui;
-using SkiaSharp;
-using System;
-using System.IO;
-using System.Threading.Tasks;
+
 
 public class AnimatedGif : SKCanvasView
 {
@@ -48,7 +45,7 @@ public class AnimatedGif : SKCanvasView
 
         for (int i = 0; i < frames.Length; i++)
         {
-            var resizedFrame = frames[i].Resize(new SKImageInfo(desiredWidth, desiredHeight), SKFilterQuality.Medium);
+            var resizedFrame = frames[i].Resize(new SKImageInfo(desiredWidth, desiredHeight), SKFilterQuality.Low);
             frames[i] = resizedFrame;
         }
     }
@@ -58,7 +55,7 @@ public class AnimatedGif : SKCanvasView
         if (isAnimating) return;
         isAnimating = true;
 
-        Dispatcher.StartTimer(TimeSpan.FromMilliseconds(50), () =>
+        Dispatcher.StartTimer(TimeSpan.FromMilliseconds(35), () =>
         {
             currentFrame = (currentFrame + 1) % frames.Length;
             InvalidateSurface();  // Triggers a call to OnPaintSurface

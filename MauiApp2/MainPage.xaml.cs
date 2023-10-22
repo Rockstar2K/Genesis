@@ -368,6 +368,7 @@ namespace MauiApp2
 
             Debug.WriteLine("UpdateUI: " + jsonObject);
 
+
             this.Dispatcher.Dispatch(() =>
             {
 
@@ -409,6 +410,7 @@ namespace MauiApp2
                         Debug.WriteLine("START OF CODE is true");
 
                         is_executing_code = true;
+                        resultLabel.Text = "coding...";
 
                         AddInterpreterCodeBoxToUI();
                     }
@@ -501,16 +503,7 @@ namespace MauiApp2
             animatedGif2.WidthRequest = 80;
             animatedGif2.HeightRequest = 80;
 
-            var codingLabel = new Label //label for "coding..."
-            {
-                Text = "coding...",
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Start,
-                TextColor = Color.FromArgb("#fff"),
-                FontSize = 12, // Smaller text size
-                Opacity = 0.5 // 50% transparency
-            };
-
+            
             interpreterCodeFrame = new Frame
             {
                 HorizontalOptions = LayoutOptions.Start,
@@ -524,8 +517,8 @@ namespace MauiApp2
             };
 
             interpreterCodeFrame.Content = new StackLayout
-            {
-                Children = { animatedGif2, codingLabel }
+            { 
+                Children = { animatedGif2 }
             };
 
             stackLayout.Children.Add(interpreterCodeFrame);

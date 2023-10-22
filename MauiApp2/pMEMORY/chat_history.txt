@@ -4,38 +4,52 @@
         "message": "cual es mi IP?"
     },
     {
-        "role": "assistant",
-        "language": "shell",
-        "code": "ipconfig",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>ipconfig\nWindows IP Configuration\nEthernet adapter Ethernet:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nEthernet adapter Ethernet 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nUnknown adapter Local Area Connection:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 1:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Wi-Fi:\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d7f3:ff8c:19bb:53f%16\n   IPv4 Address. . . . . . . . . . . : 172.20.10.2\n   Subnet Mask . . . . . . . . . . . : 255.255.255.240\n   Default Gateway . . . . . . . . . : 172.20.10.1"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 172.20.10.2."
+        "role": "assistant"
     },
     {
         "role": "user",
         "message": "cual es mi IP?"
     },
     {
-        "role": "assistant",
-        "language": "shell",
-        "code": "ipconfig",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>ipconfig\nWindows IP Configuration\nEthernet adapter Ethernet:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nEthernet adapter Ethernet 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nUnknown adapter Local Area Connection:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 1:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Wi-Fi:\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d7f3:ff8c:19bb:53f%16\n   IPv4 Address. . . . . . . . . . . : 172.20.10.2\n   Subnet Mask . . . . . . . . . . . : 255.255.255.240\n   Default Gateway . . . . . . . . . : 172.20.10.1"
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "Cual es mi IP??"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 172.20.10.2."
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 45.232.94.196."
     },
     {
         "role": "user",
         "message": "cual es mi IP?"
     },
     {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "Cual es mi IP??"
+    },
+    {
         "role": "assistant",
-        "language": "python",
-        "code": "import requests\nresponse = requests.get('https://api.ipify.org?format=json')\ndata = response.json()\nip_address = data['ip']\nip_address",
-        "output": "'45.232.94.196'"
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
     },
     {
         "role": "assistant",
@@ -48,36 +62,8 @@
     {
         "role": "assistant",
         "language": "shell",
-        "code": "ipconfig",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>ipconfig\nWindows IP Configuration\nEthernet adapter Ethernet:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nEthernet adapter Ethernet 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nUnknown adapter Local Area Connection:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 1:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Wi-Fi:\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d7f3:ff8c:19bb:53f%16\n   IPv4 Address. . . . . . . . . . . : 172.20.10.2\n   Subnet Mask . . . . . . . . . . . : 255.255.255.240\n   Default Gateway . . . . . . . . . : 172.20.10.1"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 172.20.10.2."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant",
-        "language": "shell",
-        "code": "ipconfig",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>ipconfig\nWindows IP Configuration\nEthernet adapter Ethernet:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nEthernet adapter Ethernet 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nUnknown adapter Local Area Connection:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 1:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Wi-Fi:\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d7f3:ff8c:19bb:53f%16\n   IPv4 Address. . . . . . . . . . . : 172.20.10.2\n   Subnet Mask . . . . . . . . . . . : 255.255.255.240\n   Default Gateway . . . . . . . . . : 172.20.10.1"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 172.20.10.2."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant",
-        "language": "python",
-        "code": "import requests\nresponse = requests.get('https://api.ipify.org?format=json')\ndata = response.json()\nip_address = data['ip']\nip_address",
-        "output": "'45.232.94.196'"
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.196"
     },
     {
         "role": "assistant",
@@ -88,10 +74,24 @@
         "message": "cual es mi IP?"
     },
     {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "Cual es mi IP??"
+    },
+    {
         "role": "assistant",
-        "language": "python",
-        "code": "import requests\nresponse = requests.get('https://api.ipify.org?format=json')\ndata = response.json()\nip_address = data['ip']\nip_address",
-        "output": "'45.232.94.196'"
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
     },
     {
         "role": "assistant",
@@ -102,38 +102,24 @@
         "message": "cual es mi IP?"
     },
     {
-        "role": "assistant",
-        "language": "shell",
-        "code": "ipconfig",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>ipconfig\nWindows IP Configuration\nEthernet adapter Ethernet:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nEthernet adapter Ethernet 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nUnknown adapter Local Area Connection:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 1:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Wi-Fi:\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d7f3:ff8c:19bb:53f%16\n   IPv4 Address. . . . . . . . . . . : 172.20.10.2\n   Subnet Mask . . . . . . . . . . . : 255.255.255.240\n   Default Gateway . . . . . . . . . : 172.20.10.1"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 172.20.10.2."
+        "role": "assistant"
     },
     {
         "role": "user",
         "message": "cual es mi IP?"
     },
     {
-        "role": "assistant",
-        "language": "shell",
-        "code": "ipconfig",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>ipconfig\nWindows IP Configuration\nEthernet adapter Ethernet:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nEthernet adapter Ethernet 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nUnknown adapter Local Area Connection:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 1:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Wi-Fi:\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d7f3:ff8c:19bb:53f%16\n   IPv4 Address. . . . . . . . . . . : 172.20.10.2\n   Subnet Mask . . . . . . . . . . . : 255.255.255.240\n   Default Gateway . . . . . . . . . : 172.20.10.1"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 172.20.10.2."
+        "role": "assistant"
     },
     {
         "role": "user",
-        "message": "cual es mi IP?"
+        "message": "Cual es mi IP??"
     },
     {
         "role": "assistant",
-        "language": "python",
-        "code": "import requests\nresponse = requests.get('https://api.ipify.org?format=json')\ndata = response.json()\nip_address = data['ip']\nip_address",
-        "output": "'45.232.94.196'"
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
     },
     {
         "role": "assistant",
@@ -146,12 +132,12 @@
     {
         "role": "assistant",
         "language": "shell",
-        "code": "ipconfig",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>ipconfig\nWindows IP Configuration\nEthernet adapter Ethernet:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nEthernet adapter Ethernet 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nUnknown adapter Local Area Connection:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 1:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Wi-Fi:\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d7f3:ff8c:19bb:53f%16\n   IPv4 Address. . . . . . . . . . . : 172.20.10.2\n   Subnet Mask . . . . . . . . . . . : 255.255.255.240\n   Default Gateway . . . . . . . . . : 172.20.10.1"
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.196"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 172.20.10.2."
+        "message": "Tu dirección IP es 45.232.94.196."
     },
     {
         "role": "user",
@@ -160,22 +146,64 @@
     {
         "role": "assistant",
         "language": "shell",
-        "code": "ipconfig",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>ipconfig\nWindows IP Configuration\nEthernet adapter Ethernet:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nEthernet adapter Ethernet 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nUnknown adapter Local Area Connection:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 1:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Local Area Connection* 2:\n   Media State . . . . . . . . . . . : Media disconnected\n   Connection-specific DNS Suffix  . :\nWireless LAN adapter Wi-Fi:\n   Connection-specific DNS Suffix  . :\n   Link-local IPv6 Address . . . . . : fe80::d7f3:ff8c:19bb:53f%16\n   IPv4 Address. . . . . . . . . . . : 172.20.10.2\n   Subnet Mask . . . . . . . . . . . : 255.255.255.240\n   Default Gateway . . . . . . . . . : 172.20.10.1"
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     47      0 --:--:-- --:--:-- --:--:--    47\n45.232.94.196"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 172.20.10.2."
+        "message": "Tu dirección IP es 45.232.94.196."
     },
     {
         "role": "user",
         "message": "cual es mi IP?"
     },
     {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "Cual es mi IP??"
+    },
+    {
         "role": "assistant",
-        "language": "python",
-        "code": "import requests\nresponse = requests.get('https://api.ipify.org?format=json')\ndata = response.json()\nip_address = data['ip']\nip_address",
-        "output": "'45.232.94.196'"
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 45.232.94.196."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "Cual es mi IP??"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
     },
     {
         "role": "assistant",
@@ -187,9 +215,65 @@
     },
     {
         "role": "assistant",
-        "language": "python",
-        "code": "import requests\nresponse = requests.get('https://api.ipify.org?format=json')\ndata = response.json()\nip_address = data['ip']\nip_address",
-        "output": "'45.232.94.196'"
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.196"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 45.232.94.196."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "Cual es mi IP??"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 45.232.94.196."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant"
+    },
+    {
+        "role": "user",
+        "message": "Cual es mi IP??"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
     },
     {
         "role": "assistant",
@@ -201,9 +285,37 @@
     },
     {
         "role": "assistant",
-        "language": "python",
-        "code": "import requests\nresponse = requests.get('https://api.ipify.org?format=json')\ndata = response.json()\nip_address = data['ip']\nip_address",
-        "output": "'45.232.94.196'"
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.196"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 45.232.94.196."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     47      0 --:--:-- --:--:-- --:--:--    47\n45.232.94.196"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 45.232.94.196."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     34      0 --:--:-- --:--:-- --:--:--    34\n45.232.94.196"
     },
     {
         "role": "assistant",
