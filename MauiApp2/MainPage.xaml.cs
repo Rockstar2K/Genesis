@@ -28,9 +28,6 @@ namespace MauiApp2
 
         Frame interpreterOutputFrame;
 
-        Frame interpreterCodeFrame;
-
-
 
         private bool isFirstUpdate = true;
         Image loadingGif;
@@ -360,6 +357,9 @@ namespace MauiApp2
             {
                 // Replace 'True' with 'true' for the "start_of_code" key
                 jsonObject = jsonObject.Replace("'start_of_code': True", "'start_of_code': true");
+
+                // Replace 'True' with 'true' for the "end_of_execution" key
+                jsonObject = jsonObject.Replace("'end_of_execution': True", "'end_of_execution': true");
             }
             catch (Newtonsoft.Json.JsonException ex)
             {
@@ -405,17 +405,14 @@ namespace MauiApp2
                     var executing = json["executing"];
                     var active_line = json["active_line"];
                     var output = json["output"]?.ToString();
-                    var end_of_execution = json["end_of_execution"]?.ToString();
 
                     var start_of_message = json["start_of_message"]?.ToString();
 
+                    //code
+                    var end_of_execution = json["end_of_execution"]?.ToObject<bool>();
                     var start_of_code = json["start_of_code"]?.ToObject<bool>();
 
-                    if (start_of_message != null)
-                    {
-                    }
-
-
+                    
                     // start code
                     if (start_of_code == true)
                     {
@@ -428,10 +425,10 @@ namespace MauiApp2
 
 
                     // end code
-                    if (end_of_execution != null)
+                    if (end_of_execution == true)
                     {
 
-                        //AddInterpreterCodeBoxToUI();
+                        DeactivateInterpreterCodeBox();
 
                     }
                     //ends the UI
@@ -467,6 +464,8 @@ namespace MauiApp2
             });
         }
 
+        private Frame interpreterCodeFrame; // Declare a class-level variable to hold the frame
+
         private void AddInterpreterCodeBoxToUI()
         {
             Debug.WriteLine("AddInterpreterCodeBoxToUI has been called");
@@ -489,6 +488,7 @@ namespace MauiApp2
                 Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),  // #EFCDE1
                 Offset = new Point(5, 5)  // Offset of 5 pixels to the right and down
             };
+
             //Gif Animation
             var CodeGif = new Image
             {
@@ -508,7 +508,7 @@ namespace MauiApp2
             CodeGif.IsAnimationPlaying = true;
 
 
-            var interpreterCodeFrame = new Frame
+            interpreterCodeFrame = new Frame
             {
                 HorizontalOptions = LayoutOptions.Start,
                 HasShadow = true,
@@ -529,6 +529,18 @@ namespace MauiApp2
 
 
         }
+
+        private void DeactivateInterpreterCodeBox()
+        {
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+
+            if (interpreterCodeFrame != null)
+            {
+                stackLayout.Children.Remove(interpreterCodeFrame);
+                interpreterCodeFrame = null; // Release the reference
+            }
+        }
+
 
 
 
