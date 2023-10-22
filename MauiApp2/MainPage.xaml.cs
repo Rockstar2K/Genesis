@@ -200,7 +200,7 @@ namespace MauiApp2
             stackLayout.Children.Add(interpreterOutputFrame);
 
             await RunPythonScriptAsync(userPrompt, apiKey);
-
+            await ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
         }
 
 

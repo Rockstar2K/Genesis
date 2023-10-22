@@ -31,7 +31,7 @@
                 VerticalOptions="Center"/>
         </Frame>
 
-        <ScrollView Grid.Row="0">
+        <ScrollView x:Name="ChatScrollView" Grid.Row="0">
 
             <VerticalStackLayout
                 Padding="30,0"
