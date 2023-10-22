@@ -6,10 +6,22 @@ import interpreter
 import os
 import json
 import traceback  # Import traceback module for error details
+import subprocess
+
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 root_dir = os.path.dirname(os.path.abspath(__file__))
 
+#...
+
+def update_interpreter_package(): #in the future this should update the interpreter library
+    try:
+        subprocess.run(["pip", "install", "--upgrade", "open-interpreter"])
+        
+    except Exception as e:
+        return
+        
+#...
 
 def Set_API_Key(key):
     interpreter.api_key = key
@@ -64,7 +76,6 @@ def OI_Python2(message, api_key=None, interpreter_model=None):
     if api_key:
         Set_API_Key(api_key)
     try:
-        #print("\n The conversation data saved is: ", load_chat_history())
 
         interpreter.messages += load_chat_history()
 
@@ -74,22 +85,24 @@ def OI_Python2(message, api_key=None, interpreter_model=None):
         
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
 
-        # Load the conversation history as a list
-        #interpreter.messages += list(load_chat_history())
         output = interpreter.chat(f"{message}", stream=True, display=False)
         for chunk in output:
             print(chunk, flush=True)
 
         interpreter.messages += output
         save_chat_history(interpreter.messages)
-        #print("\n The conversation data saved is: ", load_chat_history())
+        
     except Exception as e:
          return f"Error: {e}\n{traceback.format_exc()}"
+    
+#...
 
 def OI_Python(message, api_key=None, interpreter_model=None):
     if api_key:
         Set_API_Key(api_key)
     OI_Python2(message, api_key, interpreter_model)
+    
+#...
 
 if __name__ == "__main__":
     message = sys.argv[1]

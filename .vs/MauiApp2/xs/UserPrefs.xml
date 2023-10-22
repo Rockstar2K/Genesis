@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default">
-  <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/MainPage.xaml.cs">
     <Files>
-      <File FileName="MauiApp2/MainPage.xaml.cs" Line="167" Column="1" />
-      <File FileName="MauiApp2/CustomControls/AnimatedGIF.cs" Line="46" Column="87" />
+      <File FileName="MauiApp2/MainPage.xaml.cs" Line="514" Column="47" />
+      <File FileName="MauiApp2/CustomControls/AnimatedGIF.cs" />
+      <File FileName="MauiApp2/interpreter_wrapper.py" Line="82" Column="33" />
+      <File FileName="MauiApp2/pMEMORY/chat_history.txt" Line="507" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,13 +15,17 @@
           <Node name="MauiApp2" expanded="True">
             <Node name="MauiApp2">
               <Node name="CustomControls" expanded="True" />
-              <Node name="MainPage.xaml" expanded="True" />
+              <Node name="pMEMORY" expanded="True" />
+              <Node name="MainPage.xaml" expanded="True">
+                <Node name="MainPage.xaml.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/n/Desktop/AGI/MauiApp2/GoogleTTSPlayer.cs" relfile="MauiApp2/GoogleTTSPlayer.cs" line="70" column="1" />

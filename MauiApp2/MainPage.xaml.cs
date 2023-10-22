@@ -18,23 +18,25 @@ namespace MauiApp2
     {
 
         string userPrompt;
-        public static string apiKey     { get; set; } = Preferences.Get("api_key", "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");
-        public bool is_night_mode_on    { get; set; } = Preferences.Get("night_mode", false);
-        public bool is_code_visible     { get; set; } = Preferences.Get("see_code", false);
+        public static string apiKey { get; set; } = Preferences.Get("api_key", "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");
+        public bool is_night_mode_on { get; set; } = Preferences.Get("night_mode", false);
+        public bool is_code_visible { get; set; } = Preferences.Get("see_code", false);
         public string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
+        AnimatedGif animatedGif;
 
         public bool is_executing_code = false;
 
-        Frame outputFrame;
+        Frame interpreterOutputFrame;
+
+
         private bool isFirstUpdate = true;
         Image loadingGif;
-        AnimatedGif animatedGif;
         Label resultLabel;
         SKLottieView lottieView;
 
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
 
-        
+
         private GoogleSTTPlayer sttPlayer = new GoogleSTTPlayer(); // Initializing STT
         private AudioRecorder audioRecorder;
         public MainPage()
@@ -88,12 +90,12 @@ namespace MauiApp2
             // Connection to internet is available
             if (current == NetworkAccess.Internet)
             {
-            userPrompt = InputBox.Text; 
-            InputBox.Text = ""; //it deletes the text of the entry once sended
+                userPrompt = InputBox.Text;
+                InputBox.Text = ""; //it deletes the text of the entry once sended
 
-            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
-            UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt); // ADD USER CHAT
-            AddInterpreterChatBoxToUI(userPrompt);
+                var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+                UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt); // ADD USER CHAT
+                AddInterpreterChatBoxToUI(userPrompt);
             }
             else
             {
@@ -105,7 +107,7 @@ namespace MauiApp2
         }
 
 
-       
+
 
         //INTERPRETER CHAT UI
         private async void AddInterpreterChatBoxToUI(string userPrompt)
@@ -118,8 +120,8 @@ namespace MauiApp2
                 StartPoint = new Point(0, 0.5),
                 EndPoint = new Point(1, 0.5)
             };
-            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 0});
-            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.937f, 0.804f, 0.882f), Offset = 1});
+            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 0 });
+            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.937f, 0.804f, 0.882f), Offset = 1 });
 
             var customShadow = new Shadow
             {
@@ -140,11 +142,16 @@ namespace MauiApp2
                 HeightRequest = 100,
                 IsAnimationPlaying = true,
                 HorizontalOptions = LayoutOptions.Start
-                
+
             };
 
             loadingGif.IsVisible = true;
             loadingGif.IsAnimationPlaying = true;
+
+
+            animatedGif = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
+            animatedGif.WidthRequest = 100;
+            animatedGif.HeightRequest = 100;
 
             //lottie Animation
             var source = new SKFileLottieImageSource
@@ -155,18 +162,13 @@ namespace MauiApp2
             lottieView = new SKLottieView
             {
                 Source = source,
-                WidthRequest = 200,
-                HeightRequest = 200,
+                WidthRequest = 300,
+                HeightRequest = 300,
                 RepeatCount = -1,  // Set to -1 to repeat the animation indefinitely
                 RepeatMode = SKLottieRepeatMode.Restart  // Restart the animation after it completes
             };
 
             lottieView.IsAnimationEnabled = true;
-            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string resourcePath = Path.Combine(appDirectory, "Contents", "Resources", "genesis_loading.gif");
-            animatedGif = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
-            animatedGif.WidthRequest = 100;
-            animatedGif.HeightRequest = 100;
 
             resultLabel = new Label
             {
@@ -177,7 +179,7 @@ namespace MauiApp2
             };
 
 
-            outputFrame = new Frame
+            interpreterOutputFrame = new Frame
             {
                 HorizontalOptions = LayoutOptions.Start,
                 HasShadow = true,
@@ -186,35 +188,22 @@ namespace MauiApp2
                 Margin = new Thickness(0, 0, 80, 0),
                 BorderColor = Color.FromRgba(255, 255, 255, 0),
 
-            //  Content 
+                //  Content 
 
             };
 
-
-            outputFrame.Content = new StackLayout
+            interpreterOutputFrame.Content = new StackLayout
             {
                 Children = { animatedGif , resultLabel } //USING GIF FOR NOW
             };
 
-            stackLayout.Children.Add(outputFrame);
+            stackLayout.Children.Add(interpreterOutputFrame);
 
-            if (is_executing_code)
-            {
-                while (true)
-                {
-                    if (is_executing_code == false)
-                    {
-                        outputFrame.IsVisible = false;
-                    }
-                    Thread.Sleep(500);
-                }    
-            }
-            else
-            {
-                await RunPythonScriptAsync(userPrompt, apiKey);
-            }
+            await RunPythonScriptAsync(userPrompt, apiKey);
 
         }
+
+
 
         //TTS
         public async void PlayAudioFromText(string text)
@@ -304,13 +293,13 @@ namespace MauiApp2
                         outputBuilder.Append(interpreterChunk);
 
                         isGIFEnabled = true; // Establece la bandera para que no se llame nuevamente
-                        
+
                     }
 
                     isGIFEnabled = false;
                 }
 
-                
+
                 string error = await process.StandardError.ReadToEndAsync();
                 process.WaitForExit();
 
@@ -321,10 +310,10 @@ namespace MauiApp2
             });
 
             string IConcatenatedChunks = outputBuilder.ToString();
-            Debug.WriteLine($"Concatenated Chunks: {IConcatenatedChunks}");  // Debug line
+            //Debug.WriteLine($"Concatenated Chunks: {IConcatenatedChunks}");  // Debug line
             var decodedJson = JsonDecoder.DecodeConcatenatedJSON(IConcatenatedChunks);  // DECODES ENTIRE INTERPRETER MESSAGE
 
-            PlayAudioFromText(decodedJson);
+            //PlayAudioFromText(decodedJson);
 
             return outputBuilder.ToString();
         }
@@ -353,28 +342,59 @@ namespace MauiApp2
                                                  .Select(objStr => objStr + "}").ToArray();
             foreach (string jsonObject in jsonObjects)
             {
-                UpdateUI(jsonObject);
+                try
+                {
+                    var validJson = MakeValidJson(jsonObject);
+                    UpdateUI(validJson);
+                }
+                catch (JsonReaderException ex)
+                {
+                    Debug.WriteLine($"JSON parsing error: {ex.Message}");
+                    Debug.WriteLine($"Problematic JSON: {jsonObject}");
+                }
             }
-            Debug.WriteLine($"Remaining Buffer Content: {jsonBuffer.ToString()}");  // Debug line
+            //Debug.WriteLine($"Remaining Buffer Content: {jsonBuffer}");  // Debug line
         }
 
+        private string MakeValidJson(string jsonObject)
+        {
+            try
+            {
+                // Replace 'True' with 'true' for the "start_of_code" key
+                jsonObject = jsonObject.Replace("'start_of_code': True", "'start_of_code': true");
+
+                // Replace 'True' with 'true' for the "end_of_execution" key
+                jsonObject = jsonObject.Replace("'end_of_execution': True", "'end_of_execution': true");
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                Debug.WriteLine($"JSON parsing error: {ex.Message}");
+                Debug.WriteLine($"Problematic JSON: {jsonObject}");
+            }
+
+            // Debug.WriteLine("MakeValidJson: " + jsonObject);
+
+            return jsonObject;
+        }
 
 
         private void UpdateUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
+            Debug.WriteLine("UpdateUI: " + jsonObject);
+
             this.Dispatcher.Dispatch(() =>
             {
-                
+
                 if (isGIFEnabled)
                 {
-                    loadingGif.IsVisible    = false;
-                    animatedGif.IsVisible   = false;
-                    lottieView.IsVisible    = false;  // Hide the loading image
-                    resultLabel.IsVisible   = true;  // Show the label
+                    loadingGif.IsVisible = false;
+                    lottieView.IsVisible = false;  // Hide the loading image
+                    resultLabel.IsVisible = true;  // Show the label
+                    animatedGif.IsVisible = false;
                 }
-                
-                
+
+
                 if (string.IsNullOrEmpty(jsonObject))
                 {
                     Debug.WriteLine("Text is null or empty updateUI");
@@ -391,18 +411,36 @@ namespace MauiApp2
                     var executing = json["executing"];
                     var active_line = json["active_line"];
                     var output = json["output"]?.ToString();
-                    var end_of_execution = json["end_of_execution"]?.ToString();
-                    var start_of_message = json["start_of_message"];
-                    var start_of_code = json["start_of_code"];
-                
-                    //Debug.WriteLine($"Updating UI with: {message}");  // Monitoring line
-                    if (start_of_message != null)
+
+                    var start_of_message = json["start_of_message"]?.ToString();
+
+                    //code
+                    var end_of_execution = json["end_of_execution"]?.ToObject<bool>();
+                    var start_of_code = json["start_of_code"]?.ToObject<bool>();
+
+
+                    // start code
+                    if (start_of_code == true)
                     {
+                        Debug.WriteLine("START OF CODE is true");
+
+                        is_executing_code = true;
+
+                        AddInterpreterCodeBoxToUI();
                     }
-                    else if (start_of_code != null)
+
+
+                    // end code
+                    if (end_of_execution == true)
                     {
+
+                        DeactivateInterpreterCodeBox();
+
                     }
-                    else if (message != null)
+                    //ends the UI
+
+
+                    if (message != null)
                     {
                         if (isFirstUpdate)
                         {
@@ -414,29 +452,13 @@ namespace MauiApp2
                             resultLabel.Text += message;  // Append subsequent messages
                         }
                     }
-                    else if (language != null)
-                    { }
-                    else if (code != null)
-                    { }
-                    else if (executing != null)
-                    {
-                        Console.WriteLine("Code is being executed");
-                        is_executing_code = true;
-                        //AddInterpreterChatBoxToUI("");
-                        //Create a new message frame to show the loading animation and then the final message
 
-                    }
-                    else if (active_line != null)
-                    { }
-                    else if (output != null)
-                    { }
-                    else if (end_of_execution != null)
+                    if (start_of_message != null)
                     {
-                        is_executing_code = false;
+                        resultLabel.Text += start_of_message;  // Append subsequent messages
                     }
-                    else
-                    {
-                    }
+
+
                 }
                 catch (JsonReaderException ex)
                 {
@@ -447,6 +469,87 @@ namespace MauiApp2
 
             });
         }
+
+        private Frame interpreterCodeFrame; // Declare a class-level variable to hold the frame
+
+        private void AddInterpreterCodeBoxToUI()
+        {
+            Debug.WriteLine("AddInterpreterCodeBoxToUI has been called");
+
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+            var gradientBrush = new LinearGradientBrush
+            {
+                StartPoint = new Point(0, 0.5),
+                EndPoint = new Point(1, 0.5)
+            };
+
+            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#121B3F"), Offset = 1 });
+            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#B180B8"), Offset = 0 });
+
+
+            var customShadow = new Shadow
+            {
+                Radius = 10,
+                Opacity = 0.6f,
+                Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),  // #EFCDE1
+                Offset = new Point(5, 5)  // Offset of 5 pixels to the right and down
+            };
+
+            //Gif Animation
+            var CodeGif = new Image
+            {
+
+                Source = new FileImageSource
+                {
+                    File = "genesis_loading.gif"
+                },
+                WidthRequest = 100,
+                HeightRequest = 100,
+                IsAnimationPlaying = true,
+                HorizontalOptions = LayoutOptions.Start
+
+            };
+
+            CodeGif.IsVisible = true;
+            CodeGif.IsAnimationPlaying = true;
+
+            var animatedGif2 = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
+            animatedGif2.WidthRequest = 100;
+            animatedGif2.HeightRequest = 100;
+
+            interpreterCodeFrame = new Frame
+            {
+                HorizontalOptions = LayoutOptions.Start,
+                HasShadow = true,
+                Shadow = customShadow,
+                Background = gradientBrush,
+                Margin = new Thickness(0, 0, 80, 0),
+                BorderColor = Color.FromRgba(255, 255, 255, 0),
+
+
+            };
+
+            interpreterCodeFrame.Content = new StackLayout
+            {
+                Children = { animatedGif2 }
+            };
+
+            stackLayout.Children.Add(interpreterCodeFrame);
+
+
+        }
+
+        private void DeactivateInterpreterCodeBox()
+        {
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+
+            if (interpreterCodeFrame != null)
+            {
+                stackLayout.Children.Remove(interpreterCodeFrame);
+                interpreterCodeFrame = null; // Release the reference
+            }
+        }
+
 
 
 
