@@ -42,12 +42,13 @@ namespace MauiApp2
         public MainPage()
         {
             InitializeComponent();
-            InitializeAudioRecorder();
+            // InitializeAudioRecorder();
             Shell.SetNavBarIsVisible(this, false);
             Connectivity.ConnectivityChanged += OnConnectivityChanged;
 
         }
         //STT
+        /*
         private void InitializeAudioRecorder()
         {
             var audioManager = new AudioManager();
@@ -82,6 +83,7 @@ namespace MauiApp2
 
         }
         //STT
+        */
 
         //USER PROMPT INPUT
         private async void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
@@ -138,8 +140,8 @@ namespace MauiApp2
                 {
                     File = "genesis_loading.gif"
                 },
-                WidthRequest = 100,
-                HeightRequest = 100,
+                WidthRequest = 80,
+                HeightRequest = 80,
                 IsAnimationPlaying = true,
                 HorizontalOptions = LayoutOptions.Start
 
@@ -150,26 +152,9 @@ namespace MauiApp2
 
 
             animatedGif = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
-            animatedGif.WidthRequest = 100;
-            animatedGif.HeightRequest = 100;
-
-            //lottie Animation
-            var source = new SKFileLottieImageSource
-            {
-                File = "https://lottie.host/440bfe79-8145-4324-9976-29d4d0830194/p57JQzlc3e.json"  // specify the path to your Lottie animation file
-            };
-
-            lottieView = new SKLottieView
-            {
-                Source = source,
-                WidthRequest = 300,
-                HeightRequest = 300,
-                RepeatCount = -1,  // Set to -1 to repeat the animation indefinitely
-                RepeatMode = SKLottieRepeatMode.Restart  // Restart the animation after it completes
-            };
-
-            lottieView.IsAnimationEnabled = true;
-
+            animatedGif.WidthRequest = 80;
+            animatedGif.HeightRequest = 80;
+          
             resultLabel = new Label
             {
                 Text = "",
@@ -389,7 +374,6 @@ namespace MauiApp2
                 if (isGIFEnabled)
                 {
                     loadingGif.IsVisible = false;
-                    lottieView.IsVisible = false;  // Hide the loading image
                     resultLabel.IsVisible = true;  // Show the label
                     animatedGif.IsVisible = false;
                 }
@@ -503,8 +487,8 @@ namespace MauiApp2
                 {
                     File = "genesis_loading.gif"
                 },
-                WidthRequest = 100,
-                HeightRequest = 100,
+                WidthRequest = 80,
+                HeightRequest = 80,
                 IsAnimationPlaying = true,
                 HorizontalOptions = LayoutOptions.Start
 
@@ -514,8 +498,18 @@ namespace MauiApp2
             CodeGif.IsAnimationPlaying = true;
 
             var animatedGif2 = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
-            animatedGif2.WidthRequest = 100;
-            animatedGif2.HeightRequest = 100;
+            animatedGif2.WidthRequest = 80;
+            animatedGif2.HeightRequest = 80;
+
+            var codingLabel = new Label //label for "coding..."
+            {
+                Text = "coding...",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Start,
+                TextColor = Color.FromArgb("#fff"),
+                FontSize = 12, // Smaller text size
+                Opacity = 0.5 // 50% transparency
+            };
 
             interpreterCodeFrame = new Frame
             {
@@ -531,7 +525,7 @@ namespace MauiApp2
 
             interpreterCodeFrame.Content = new StackLayout
             {
-                Children = { animatedGif2 }
+                Children = { animatedGif2, codingLabel }
             };
 
             stackLayout.Children.Add(interpreterCodeFrame);
