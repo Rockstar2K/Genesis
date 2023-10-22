@@ -42,12 +42,13 @@ namespace MauiApp2
         public MainPage()
         {
             InitializeComponent();
-            InitializeAudioRecorder();
+            //InitializeAudioRecorder();
             Shell.SetNavBarIsVisible(this, false);
             Connectivity.ConnectivityChanged += OnConnectivityChanged;
 
         }
         //STT
+        /*
         private void InitializeAudioRecorder()
         {
             var audioManager = new AudioManager();
@@ -82,6 +83,7 @@ namespace MauiApp2
 
         }
         //STT
+        */
 
         //USER PROMPT INPUT
         private async void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
@@ -199,7 +201,6 @@ namespace MauiApp2
         }
 
         
-
         //TTS
         public async void PlayAudioFromText(string text)
         {
@@ -230,11 +231,13 @@ namespace MauiApp2
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
                 pythonPath = "/Users/n/anaconda3/bin/python";
             }
-            else if (System.OperatingSystem.IsWindows())
+            else if (OperatingSystem.IsWindows())
             {
-                //paths for Windows
-                projectDirectory = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2"; // Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                //projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @\"..\\..\\..\\..\\..\\\")";  
+                projectDirectory = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2";
+
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+
                 pythonPath = "C:\\Program Files\\Python311\\python.exe";
             }
             else
@@ -340,7 +343,7 @@ namespace MauiApp2
                 try
                 {
                     var validJson = MakeValidJson(jsonObject);
-                    UpdateUI(validJson);
+                    UpdateInterpreterUI(validJson);
                 }
                 catch (JsonReaderException ex)
                 {
@@ -373,10 +376,10 @@ namespace MauiApp2
         }
 
 
-        private void UpdateUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
+        private void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
-            Debug.WriteLine("UpdateUI: " + jsonObject);
+            //Debug.WriteLine("UpdateInterpreterUI: " + jsonObject);
 
             this.Dispatcher.Dispatch(() =>
             {
@@ -412,8 +415,7 @@ namespace MauiApp2
                     var end_of_execution = json["end_of_execution"]?.ToObject<bool>();
                     var start_of_code = json["start_of_code"]?.ToObject<bool>();
 
-                    
-                    // start code
+                     // start code
                     if (start_of_code == true)
                     {
                         Debug.WriteLine("START OF CODE is true");
@@ -423,7 +425,6 @@ namespace MauiApp2
                         AddInterpreterCodeBoxToUI();
                     }
 
-
                     // end code
                     if (end_of_execution == true)
                     {
@@ -431,7 +432,6 @@ namespace MauiApp2
                         DeactivateInterpreterCodeBox();
 
                     }
-                    //ends the UI
 
                     
                     if (message != null)
