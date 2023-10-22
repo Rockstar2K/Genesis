@@ -111,6 +111,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
+
         <!-- Entry and Button at the bottom -->
 <Grid
     Grid.Row="1"

@@ -34,6 +34,9 @@
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\genesis_loading.gif" />
+	</ItemGroup>
+	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
@@ -58,6 +61,7 @@
 		<MauiImage Update="Resources\Images\chat_option.svg">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</MauiImage>
+		<MauiImage Include="Resources\genesis_loading.gif" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -101,6 +105,9 @@
 	  <None Remove="Resources\Images\Comp 1.gif" />
 	  <None Remove="Resources\Images\avioncito.png" />
 	  <None Remove="Resources\Images\wave1.png" />
+	  <None Remove="Resources\Images\test.gif" />
+	  <None Remove="CustomControls\" />
+	  <None Remove="Resources\genesis_loading.gif" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -124,15 +131,18 @@
 	<ItemGroup>
 	  <Folder Include="Resources\Animations\" />
 	  <Folder Include="Resources\Audio\Converted\" />
+	  <Folder Include="CustomControls\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\chat.png" />
 	  <BundleResource Include="Resources\Images\microphone.png" />
+	  <BundleResource Include="Resources\Images\test.gif" />
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Include="Resources\Animations\animation.json" />
 	  <EmbeddedResource Include="Resources\Images\avioncito.png" />
+	  <EmbeddedResource Include="Resources\Images\genesis_loading.gif" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Include="Resources\pPROMPTS\lyris_Prompt.txt" />

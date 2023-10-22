@@ -10,8 +10,7 @@ using Microsoft.Maui.Graphics;
 using System.Reflection.Metadata;
 using Plugin.Maui.Audio;
 using MauiApp2.SCRIPTS;
-
-
+using MauiApp2.CustomControls;
 
 namespace MauiApp2
 {
@@ -29,6 +28,7 @@ namespace MauiApp2
         Frame outputFrame;
         private bool isFirstUpdate = true;
         Image loadingGif;
+        AnimatedGif animatedGif;
         Label resultLabel;
         SKLottieView lottieView;
 
@@ -155,13 +155,18 @@ namespace MauiApp2
             lottieView = new SKLottieView
             {
                 Source = source,
-                WidthRequest = 300,
-                HeightRequest = 300,
+                WidthRequest = 200,
+                HeightRequest = 200,
                 RepeatCount = -1,  // Set to -1 to repeat the animation indefinitely
                 RepeatMode = SKLottieRepeatMode.Restart  // Restart the animation after it completes
             };
 
             lottieView.IsAnimationEnabled = true;
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string resourcePath = Path.Combine(appDirectory, "Contents", "Resources", "genesis_loading.gif");
+            animatedGif = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
+            animatedGif.WidthRequest = 100;
+            animatedGif.HeightRequest = 100;
 
             resultLabel = new Label
             {
@@ -185,9 +190,10 @@ namespace MauiApp2
 
             };
 
+
             outputFrame.Content = new StackLayout
             {
-                Children = { loadingGif, resultLabel } //USING GIF FOR NOW
+                Children = { animatedGif , resultLabel } //USING GIF FOR NOW
             };
 
             stackLayout.Children.Add(outputFrame);
@@ -362,9 +368,10 @@ namespace MauiApp2
                 
                 if (isGIFEnabled)
                 {
-                    loadingGif.IsVisible = false;
-                    lottieView.IsVisible = false;  // Hide the loading image
-                    resultLabel.IsVisible = true;  // Show the label
+                    loadingGif.IsVisible    = false;
+                    animatedGif.IsVisible   = false;
+                    lottieView.IsVisible    = false;  // Hide the loading image
+                    resultLabel.IsVisible   = true;  // Show the label
                 }
                 
                 
