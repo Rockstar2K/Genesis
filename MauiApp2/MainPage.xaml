@@ -35,12 +35,18 @@
                 VerticalOptions="Center" />
         </Frame>
 
-        <ScrollView x:Name="ChatScrollView" Grid.Row="0">
+        <ScrollView
+            x:Name="ChatScrollView"
+            Grid.Row="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
 
             <VerticalStackLayout
                 Padding="30,0"
+                HorizontalOptions="FillAndExpand"
                 Spacing="25"
                 VerticalOptions="FillAndExpand">
+
                 <AbsoluteLayout Margin="0,20">
                     <Button
                         BackgroundColor="LightPink"
@@ -64,7 +70,11 @@
                         </ImageButton.Shadow>
 
                     </ImageButton>
+
                     <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="PositionProportional">
+
+                        <!--<Image x:Name="imageFromComputer" WidthRequest="200" HeightRequest="200" Aspect="AspectFill"/> -->
+
                         <!--
                         <ImageButton
                             x:Name="Chat_Option"
@@ -75,6 +85,7 @@
                             Pressed="Voice_Option_Pressed"
                             Source="voice_dialog_option.png" />
                         -->
+
                         <HorizontalStackLayout.Shadow>
                             <Shadow
                                 Brush="#121B3F"
@@ -87,11 +98,13 @@
                 </AbsoluteLayout>
 
 
-                <BoxView HeightRequest="0" VerticalOptions="FillAndExpand" />
+                <BoxView HeightRequest="0" VerticalOptions="FillAndExpand" /> 
+                <!--  what is this??  -->
 
                 <VerticalStackLayout
                     x:Name="ChatLayout"
                     Padding="30,0"
+                    HorizontalOptions="FillAndExpand"
                     Spacing="25"
                     VerticalOptions="FillAndExpand" />
 
@@ -104,6 +117,8 @@
 
             </VerticalStackLayout>
         </ScrollView>
+
+
 
 
         <!--  Entry and Button at the bottom  -->
@@ -132,10 +147,10 @@
                     </Grid.ColumnDefinitions>
 
                     <Entry
-                        x:Name="InputBox"
+                        x:Name="UserInput"
                         Grid.Column="0"
                         BackgroundColor="Transparent"
-                        Completed="InputBox_Completed"
+                        Completed="UserInputBox_Completed"
                         FontFamily="Montserrat-Light"
                         HorizontalOptions="FillAndExpand"
                         IsVisible="True"
@@ -156,8 +171,8 @@
                         Margin="10,10"
                         Padding="9"
                         BackgroundColor="Transparent"
-                        Clicked="InputBox_Completed"
-                        HeightRequest="30"
+                        Clicked="UserInputBox_Completed"
+                        HeightRequest="20"
                         HorizontalOptions="End"
                         Source="avioncito.png"
                         VerticalOptions="Center" />

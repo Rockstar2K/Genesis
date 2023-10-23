@@ -45,6 +45,9 @@ namespace MauiApp2
             Connectivity.ConnectivityChanged += OnConnectivityChanged;
 
         }
+
+       
+
         //STT
         /*
         private void InitializeAudioRecorder()
@@ -83,22 +86,28 @@ namespace MauiApp2
         //STT
         */
 
-        //USER PROMPT INPUT
-        private async void InputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
+//USER PROMPT INPUT
+        private async void UserInputBox_Completed(System.Object sender, System.EventArgs e) //when the input is sended
         {
             var current = Connectivity.NetworkAccess;
             // Connection to internet is available
             if (current == NetworkAccess.Internet)
             {
-                userPrompt = InputBox.Text;
-                InputBox.Text = ""; //it deletes the text of the entry once sended
+                
+                userPrompt = UserInput.Text;
+                UserInput.Text = ""; //it deletes the text of the entry once sended
 
-                var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
-                UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt); // ADD USER CHAT
+                if (!string.IsNullOrEmpty(userPrompt)) //no se pueden enviar mensajes vacios
+                {
+                    var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+                    UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt); // ADD USER CHAT
 
-                AddInterpreterChatBoxToUI(userPrompt);
+                    AddInterpreterChatBoxToUI(userPrompt);
 
-                await TrimMemoryCS.TrimMemoryFile();
+                    await TrimMemoryCS.TrimMemoryFile();
+
+                }
+
 
             }
             else
