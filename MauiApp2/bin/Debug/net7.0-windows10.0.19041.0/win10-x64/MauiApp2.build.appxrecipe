@@ -1639,9 +1639,6 @@
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\Resources\Raw\animation.json">
-      <PackagePath>animation.json</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
     </AppxPackagedFile>
@@ -1894,6 +1891,12 @@
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\genee.scale-100.gif">
+      <PackagePath>genee.scale-100.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\genesis_code.scale-100.gif">
+      <PackagePath>genesis_code.scale-100.gif</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\genesis_loading.scale-100.gif">
       <PackagePath>genesis_loading.scale-100.gif</PackagePath>
     </AppxPackagedFile>
@@ -1954,14 +1957,8 @@
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\Resources\pPROMPTS\lyris_Prompt.txt">
       <PackagePath>Resources\pPROMPTS\lyris_Prompt.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\Resources\Raw\animation.json">
-      <PackagePath>Resources\Raw\animation.json</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\Resources\Images\animation.json">
       <PackagePath>Resources\Images\animation.json</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\thega\source\repos\MauiApp2\MauiApp2\Resources\animation.json">
-      <PackagePath>Resources\animation.json</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

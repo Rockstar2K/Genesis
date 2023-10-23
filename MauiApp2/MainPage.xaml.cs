@@ -26,13 +26,11 @@ namespace MauiApp2
 
         public bool is_executing_code = false;
 
+        //interper
         Frame interpreterOutputFrame;
-
-
         private bool isFirstUpdate = true;
         Image loadingGif;
         Label resultLabel;
-        SKLottieView lottieView;
 
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
 
@@ -97,7 +95,11 @@ namespace MauiApp2
 
                 var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
                 UserChatBoxUI.AddUserChatBoxToUI(stackLayout, userPrompt); // ADD USER CHAT
+
                 AddInterpreterChatBoxToUI(userPrompt);
+
+                await TrimMemoryCS.TrimMemoryFile();
+
             }
             else
             {
@@ -330,7 +332,7 @@ namespace MauiApp2
                 try
                 {
                     var validJson = MakeValidJson(jsonObject);
-                    UpdateUI(validJson);
+                    UpdateInterpreterUI(validJson);
                 }
                 catch (JsonReaderException ex)
                 {
@@ -345,11 +347,13 @@ namespace MauiApp2
         {
             try
             {
-                // Replace 'True' with 'true' for the "start_of_code" key
+                // Replace 'True' with 'true' 
                 jsonObject = jsonObject.Replace("'start_of_code': True", "'start_of_code': true");
 
-                // Replace 'True' with 'true' for the "end_of_execution" key
                 jsonObject = jsonObject.Replace("'end_of_execution': True", "'end_of_execution': true");
+
+                jsonObject = jsonObject.Replace("'start_of_message': True", "'start_of_message': true");
+
             }
             catch (Newtonsoft.Json.JsonException ex)
             {
@@ -363,10 +367,10 @@ namespace MauiApp2
         }
 
 
-        private void UpdateUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
+        private void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
-            Debug.WriteLine("UpdateUI: " + jsonObject);
+            Debug.WriteLine(jsonObject);
 
 
             this.Dispatcher.Dispatch(() =>
@@ -397,7 +401,7 @@ namespace MauiApp2
                     var active_line = json["active_line"];
                     var output = json["output"]?.ToString();
 
-                    var start_of_message = json["start_of_message"]?.ToString();
+                    var start_of_message = json["start_of_message"]?.ToObject<bool>();
 
                     //code
                     var end_of_execution = json["end_of_execution"]?.ToObject<bool>();
@@ -439,9 +443,14 @@ namespace MauiApp2
                         }
                     }
 
-                    if (start_of_message != null)
+                    if (start_of_message == true)
                     {
-                        resultLabel.Text += start_of_message;  // Append subsequent messages
+
+                    }
+
+                    if (output != null)
+                    {
+                        //write the output in the code box?
                     }
 
 
@@ -487,7 +496,7 @@ namespace MauiApp2
 
                 Source = new FileImageSource
                 {
-                    File = "genesis_loading.gif"
+                    File = "genesis_code.gif"
                 },
                 WidthRequest = 80,
                 HeightRequest = 80,

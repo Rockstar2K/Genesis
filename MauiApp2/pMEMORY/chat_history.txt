@@ -4,56 +4,14 @@
         "message": "cual es mi IP?"
     },
     {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "Cual es mi IP??"
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
     },
     {
         "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "Cual es mi IP??"
-    },
-    {
-        "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
+        "message": "Tu dirección IP es 172.20.10.2."
     },
     {
         "role": "user",
@@ -61,69 +19,13 @@
     },
     {
         "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.196"
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "Cual es mi IP??"
-    },
-    {
-        "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "Cual es mi IP??"
-    },
-    {
-        "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
+        "message": "Tu dirección IP es 172.20.10.2."
     },
     {
         "role": "user",
@@ -131,13 +33,13 @@
     },
     {
         "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.196"
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
+        "message": "Tu dirección IP es 172.20.10.2."
     },
     {
         "role": "user",
@@ -145,69 +47,13 @@
     },
     {
         "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     47      0 --:--:-- --:--:-- --:--:--    47\n45.232.94.196"
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "Cual es mi IP??"
-    },
-    {
-        "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "Cual es mi IP??"
-    },
-    {
-        "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
+        "message": "Tu dirección IP es 172.20.10.2."
     },
     {
         "role": "user",
@@ -215,69 +61,13 @@
     },
     {
         "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.196"
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "Cual es mi IP??"
-    },
-    {
-        "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "Cual es mi IP??"
-    },
-    {
-        "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.196"
-    },
-    {
-        "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
+        "message": "Tu dirección IP es 172.20.10.2."
     },
     {
         "role": "user",
@@ -285,13 +75,13 @@
     },
     {
         "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.196"
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
+        "message": "Tu dirección IP es 172.20.10.2."
     },
     {
         "role": "user",
@@ -299,13 +89,13 @@
     },
     {
         "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     47      0 --:--:-- --:--:-- --:--:--    47\n45.232.94.196"
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
+        "message": "Tu dirección IP es 172.20.10.2."
     },
     {
         "role": "user",
@@ -313,12 +103,104 @@
     },
     {
         "role": "assistant",
-        "language": "shell",
-        "code": "curl ifconfig.me",
-        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     34      0 --:--:-- --:--:-- --:--:--    34\n45.232.94.196"
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
     },
     {
         "role": "assistant",
-        "message": "Tu dirección IP es 45.232.94.196."
+        "message": "Tu dirección IP es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\nip = socket.gethostbyname(socket.gethostname())\nip",
+        "output": "'172.20.10.2'"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "escribe un poema sobre la liga de la justici"
+    },
+    {
+        "role": "assistant",
+        "message": "En una ciudad en peligro, llena de caos y maldad,\nSurge un grupo de héroes, con valor y bondad.\nLa Liga de la Justicia, con poderes sin igual,\nSe alzan como guardianes, dispuestos a luchar.\n\nSuperman, el Hombre de Acero, el símbolo de la esperanza,\nVuela en los cielos, con fuerza y confianza.\nBatman, en las sombras, con su astucia y destreza,\nProtege la ciudad, en la oscuridad y la tristeza.\n\nMujer Maravilla, con su coraje y valentía,\nDefiende a los inocentes, en cualquier día.\nLinterna Verde, con su anillo de poder,\nIlumina las tinieblas, en nombre del deber.\n\nFlash, el velocista, con su velocidad sin igual,\nCorre hacia el peligro, sin temor a tropezar.\nAquaman, el rey de los mares, con fuerza imponente,\nSurge del océano, en defensa de los inocentes.\n\nCyborg, mitad humano, mitad máquina,\nUsa su tecnología, para derrotar la ruina.\nJuntos, forman un equipo indomable,\nLa Liga de la Justicia, incansable y admirable.\n\nEnfrentan villanos y salvaguardan la paz,\nUnidos por un propósito, sin descansar jamás.\nLa Liga de la Justicia, símbolo de esperanza,\nEn un mundo que necesita su valentía y bonanza."
     }
 ]

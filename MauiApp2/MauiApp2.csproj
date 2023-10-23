@@ -45,13 +45,19 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<AndroidResource Remove="Resources\Animations\**" />
+		<Compile Remove="Resources\Animations\**" />
+		<EmbeddedResource Remove="Resources\Animations\**" />
+		<MauiCss Remove="Resources\Animations\**" />
+		<MauiXaml Remove="Resources\Animations\**" />
+		<None Remove="Resources\Animations\**" />
+		<MauiImage Remove="Resources\Images\genesis_code.gif" />
 		<MauiImage Update="Resources\Images\voice_dialog_option.svg">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</MauiImage>
@@ -65,6 +71,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\code - Copy.gif" />
+	  <None Remove="Resources\Images\code.gif" />
 	  <None Remove="Resources\Images\lyris_logo.svg" />
 	  <None Remove="Resources\Images\Settings.svg" />
 	  <None Remove="Resources\Images\VoiceDialogOption.svg" />
@@ -77,13 +85,10 @@
 	  <None Remove="Resources\Images\microphone.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Resources\Animations\" />
-	  <None Remove="Resources\Animations\animation.json" />
 	  <None Remove="Resources\Images\GenesisAnim.gif" />
 	  <None Remove="Resources\Images\genesis_loading.gif" />
 	  <None Remove="Resources\pPROMPTS\lyris_Prompt.txt" />
-	  <None Remove="Resources\Raw\animation.json" />
 	  <None Remove="Resources\Images\animation.json" />
-	  <None Remove="Resources\animation.json" />
 	  <None Remove="Resources\Fonts\Montserrat-Black.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-BlackItalic.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
@@ -129,7 +134,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Animations\" />
 	  <Folder Include="Resources\Audio\Converted\" />
 	  <Folder Include="CustomControls\" />
 	</ItemGroup>
@@ -140,14 +144,14 @@
 	  <BundleResource Include="Resources\Images\test.gif" />
 	</ItemGroup>
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Animations\animation.json" />
 	  <EmbeddedResource Include="Resources\Images\avioncito.png" />
+	  <EmbeddedResource Include="Resources\Images\genesis_code.gif">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Resources\Images\genesis_loading.gif" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Include="Resources\pPROMPTS\lyris_Prompt.txt" />
-	  <Content Include="Resources\Raw\animation.json" />
 	  <Content Include="Resources\Images\animation.json" />
-	  <Content Include="Resources\animation.json" />
 	</ItemGroup>
 </Project>
