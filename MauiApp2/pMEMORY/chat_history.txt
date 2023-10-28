@@ -1,58 +1,96 @@
 [
   {
-    "role": "user",
-    "message": "quien eres?"
+    "role": "assistant",
+    "language": "python",
+    "code": "import socket\n\nhostname = socket.gethostname()\nip_address = socket.gethostbyname(hostname)\nip_address",
+    "output": "'172.20.10.2'"
   },
   {
     "role": "assistant",
-    "message": "Soy Lyris, un asistente de inteligencia artificial programado para ayudarte con tus consultas y tareas. Estoy aquí para brindarte información, asistencia y ejecutar código en diferentes lenguajes de programación. ¿En qué puedo ayudarte hoy?"
+    "message": "Tu dirección IP actual es **172.20.10.2**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
   },
   {
     "role": "user",
-    "message": "quien eres?"
+    "message": "cual es mi IP?"
   },
   {
     "role": "assistant",
-    "message": "Soy Lyris, un asistente de inteligencia artificial aquí para ayudarte con tus preguntas y tareas. Puedo proporcionar información, realizar tareas y brindar asistencia en diferentes áreas. Si tienes alguna pregunta o necesitas ayuda con algo, estaré encantado de ayudarte en lo que pueda."
+    "language": "python",
+    "code": "import requests\n\nip = requests.get('https://api.ipify.org').text\nip",
+    "output": "'45.232.94.145'"
+  },
+  {
+    "role": "assistant",
+    "message": "Tu dirección IP actual es **45.232.94.145**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
   },
   {
     "role": "user",
-    "message": "quien eres?"
+    "message": "cual es mi IP?"
   },
   {
     "role": "assistant",
-    "message": "Soy Lyris, un asistente de inteligencia artificial aquí para ayudarte con tus preguntas y tareas. Puedo proporcionarte información, ejecutar código en diferentes lenguajes de programación y ayudarte en todo lo que necesites. ¿En qué puedo ayudarte hoy?"
+    "language": "shell",
+    "code": "curl ifconfig.me",
+    "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     37      0 --:--:-- --:--:-- --:--:--    37\n45.232.94.145"
+  },
+  {
+    "role": "assistant",
+    "message": "Tu dirección IP actual es **45.232.94.145**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
   },
   {
     "role": "user",
-    "message": "quien eres?"
+    "message": "cual es mi iP?"
   },
   {
     "role": "assistant",
-    "message": "Soy Lyris, un asistente de inteligencia artificial. Estoy aquí para ayudarte con tus consultas y tareas. ¿En qué puedo ayudarte hoy?"
+    "language": "python",
+    "code": "import socket\n\nhostname = socket.gethostname()\nip_address = socket.gethostbyname(hostname)\nip_address",
+    "output": "'172.20.10.2'"
+  },
+  {
+    "role": "assistant",
+    "message": "Tu dirección IP actual es **172.20.10.2**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
   },
   {
     "role": "user",
-    "message": "escribe un poema de btaman"
+    "message": "cual es mi IP'"
   },
   {
     "role": "assistant",
-    "message": "Bajo el cielo estrellado, en la oscuridad,\nSurge un héroe valiente, de capa negra y voluntad.\nCon su fuerza y astucia, defiende la ciudad,\nEs el héroe enmascarado, es el gran Batman.\n\nSus ojos brillan con determinación,\nEnfrentando a la injusticia con pasión.\nUn defensor de los inocentes, sin vacilación,\nBatman lucha por la paz, sin necesidad de explicación.\n\nEn las sombras se esconde, sin ser visto,\nEl guardián de Gotham, en quien se ha visto.\nCon su inteligencia y habilidades, desafía el abismo,\nBatman protege la ciudad, aunque parezca egoísmo.\n\nCon gadgets y artilugios, se enfrenta al mal,\nPersigue a los criminales, sin descansar ni un ritual.\nSu nombre infunde miedo, su valentía es real,\nBatman, el caballero oscuro, el héroe moral.\n\nEn cada rincón oscuro de la noche,\nSe oye el rumor de sus alas en su derroche.\nBatman, el vengador sin reproche,\nLucha por la justicia, su misión es aproche.\n\nOh, Batman, el caballero de la noche,\nTu valentía y coraje siempre nos derroche.\nGracias por protegernos, tu legado es de broche,\nTu poema se quedará en nuestros corazones, más allá de un embosche.\n\nEste es un pequeño poema en honor a Batman, el legendario héroe de Gotham City. Espero que te haya gustado."
+    "language": "python",
+    "code": "import socket\n\nhostname = socket.gethostname()\nip_address = socket.gethostbyname(hostname)\nip_address",
+    "output": "'172.20.10.2'"
+  },
+  {
+    "role": "assistant",
+    "message": "Tu dirección IP actual es **172.20.10.2**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
   },
   {
     "role": "user",
-    "message": "quien eres'"
+    "message": "cual es mi IP?"
   },
   {
     "role": "assistant",
-    "message": "Soy Lyris, un asistente de inteligencia artificial diseñado para ayudarte con tus preguntas y tareas. Estoy aquí para brindarte asistencia en diferentes áreas y tratar de resolver tus dudas de la mejor manera posible. ¿En qué puedo ayudarte hoy?"
+    "language": "python",
+    "code": "import requests\n\nip = requests.get('https://api.ipify.org').text\nip",
+    "output": "'45.232.94.145'"
+  },
+  {
+    "role": "assistant",
+    "message": "Tu dirección IP actual es **45.232.94.145**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
   },
   {
     "role": "user",
-    "message": "escribe un poema de batman"
+    "message": "cual es mi IP?"
   },
   {
     "role": "assistant",
-    "message": "En las sombras de la noche emerge un héroe,\nEl Caballero Oscuro, con su capa en vuelo.\nCon ojos brillantes y valentía en su corazón,\nBatman lucha contra el mal en la oscuridad sin razón.\n\nSu traje negro como la noche, símbolo de su poder,\nCon gadgets y armas, está listo para vencer.\nSe desliza por los tejados, sin hacer ruido,\nSiempre atento, en su misión no hay descuido.\n\nGotham City es su hogar, su jurisdicción,\nProtege a los inocentes de toda corrupción.\nCon su inteligencia y habilidades excepcionales,\nResuelve crímenes y lucha contra los maleantes más letales.\n\nAunque el dolor y la pérdida marcan su pasado,\nBatman persiste en su misión, siempre decidido.\nSer el símbolo de esperanza en la ciudad sumida en el caos,\nUn vigilante justiciero, que no teme al fragor.\n\nCon su fuerza y determinación, enfrenta las adversidades,\nContra villanos y criminales, sin preocupaciones ni mitades.\nEl protector de Gotham, el guardián de la noche,\nBatman, un héroe eterno, un símbolo de valentía y derroche.\n\nEn cada página de cómic y película de acción,\nBatman se alza como un ícono de la ficción.\nUn héroe sin poderes sobrenaturales,\nPero con una voluntad inquebrantable, siempre listo para los detalles.\n\nAsí es Batman, un ser enigmático y sombrío,\nAunque con un corazón noble y un sentido de justicia bravío.\nA través de las sombras, siempre acudirá al llamado,\nBatman, el héroe sin par, en la oscuridad iluminado.\n\nEspero que este poema te inspire y transmita la grandeza de Batman, un personaje icónico en la cultura popular. Si tienes alguna otra solicitud o necesitas ayuda adicional, no dudes en decírmelo. Estoy aquí para asistirte."
+    "language": "shell",
+    "code": "curl ifconfig.me",
+    "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.145"
+  },
+  {
+    "role": "assistant",
+    "message": "Tu dirección IP actual es **45.232.94.145**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
   }
 ]

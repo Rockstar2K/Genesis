@@ -34,11 +34,20 @@ namespace MauiApp2
 
         public bool is_executing_code = false;
 
-        //interper
+        //interpreter Chatbox
         Frame interpreterOutputFrame;
         private bool isFirstUpdate = true;
-        // Image loadingGif;
         Label resultLabel;
+
+        Label lastLabel;
+
+
+        //CODE
+        bool isCodeFirstUpdate = true;
+        Frame interpreterCodeFrame;
+        Label codeLabel;
+
+
 
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
 
@@ -157,21 +166,21 @@ namespace MauiApp2
             var screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
 
             // Calculate responsive margin
-            double relativeMargin = screenWidth * 0.1; // 10% of screen width
+            double relativeMargin = screenWidth * 0.05; // 10% of screen width
 
-            var gradientBrush = new LinearGradientBrush
+            var gradientBrush = new Microsoft.Maui.Controls.LinearGradientBrush
             {
                 StartPoint = new Point(0, 0.5),
                 EndPoint = new Point(1, 0.5)
             };
-            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.690f, 0.502f, 0.718f), Offset = 0 });
-            gradientBrush.GradientStops.Add(new GradientStop { Color = new Color(0.937f, 0.804f, 0.882f), Offset = 1 });
+            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#F0CEE2"), Offset = 1 });
+            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#B180B8"), Offset = 0 });
 
-            var customShadow = new Shadow
+            var customShadow = new Microsoft.Maui.Controls.Shadow
             {
                 Radius = 10,
                 Opacity = 0.6f,
-                Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),
+                Brush = new Microsoft.Maui.Controls.SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),
                 Offset = new Point(5, 5)
             };
 
@@ -214,8 +223,6 @@ namespace MauiApp2
             await RunPythonScriptAsync();
 
             
-
-
             this.Dispatcher.Dispatch(async () =>
             {
                 Debug.WriteLine("End of Interpreter ChatBOX UI");
@@ -227,6 +234,50 @@ namespace MauiApp2
 
                 await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
             });
+        }
+
+        private void AddInterpreterCodeBoxToInterpreterOutputFrame()
+        {
+            var gradientBrush = new Microsoft.Maui.Controls.LinearGradientBrush
+            {
+                StartPoint = new Point(0, 0.5),
+                EndPoint = new Point(1, 0.5)
+            };
+
+            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#5AFFFFFF"), Offset = 1 });
+            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#B180B8"), Offset = 0 });
+
+            interpreterCodeFrame = new Frame
+            {
+                Background = gradientBrush,
+                BorderColor = Color.FromRgba(255, 255, 255, 0),
+                Margin = new Thickness(0, 10, 0, 10),  // // left, top, right, bottom
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+
+
+            };
+
+            codeLabel = new Label
+            {
+                Text = "",
+                TextColor = Color.FromArgb("#fff"),
+                FontSize = 12,
+                FontFamily = "Montserrat-Light", //CONSOLAS TIPOGRAPHY
+                IsVisible = false
+            };
+
+            codeLabel.IsVisible = true;
+
+            interpreterCodeFrame.Content = new Microsoft.Maui.Controls.StackLayout
+            {
+                Children = { codeLabel }
+            };
+
+            var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)interpreterOutputFrame.Content;
+
+            // Add the new Frame to the existing StackLayout
+            interpreterOutput.Children.Add(interpreterCodeFrame);
         }
 
 
@@ -283,7 +334,7 @@ namespace MauiApp2
         private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string userPrompt, string apiKey, string interpreter_model)
         {
 
-            //THIS FUNCTION SHOULD CALL RUNPYTHONSCRIPT
+            //HERE THIS FUNCTION SHOULD CALL RUNPYTHONSCRIPT
 
             Debug.WriteLine($"ExecuteScriptAsync called with pythonPath: {pythonPath}, scriptPath: {scriptPath}, userPrompt: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
 
@@ -410,12 +461,14 @@ namespace MauiApp2
             return jsonObject;
         }
 
+        Dictionary<string, Label> dynamicLabels = new Dictionary<string, Label>();
 
+
+        int numberOfLabels = 1; // or however many you want
         private void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             Debug.WriteLine(jsonObject);
-
 
             this.Dispatcher.Dispatch(() =>
             {
@@ -460,17 +513,54 @@ namespace MauiApp2
                         Debug.WriteLine("START OF CODE is true");
 
                         is_executing_code = true;
-                        resultLabel.Text = "coding...";
 
-                        AddInterpreterCodeBoxToUI();
+                        AddInterpreterCodeBoxToInterpreterOutputFrame();
+
                     }
+                    
+                    if (code != null)
+                    {
+                        if (isCodeFirstUpdate)
+                        {
+                            codeLabel.Text = code;  // Set the text to the first message received
+                            isCodeFirstUpdate = false;
+
+                            this.Dispatcher.Dispatch(async () =>
+                            {
+                                Debug.WriteLine("DISPATCH FORCE UI");
+
+                                ChatScrollView.ForceLayout();
+                                interpreterOutputFrame.ForceLayout();
+                                interpreterCodeFrame.ForceLayout();
+
+                            });
+                        }
+                        else
+                        {
+                            codeLabel.Text += code;  // Append subsequent messages
+
+                            this.Dispatcher.Dispatch(async () =>
+                            {
+                                Debug.WriteLine("DISPATCH FORCE UI");
+
+                                ChatScrollView.ForceLayout();
+                                interpreterOutputFrame.ForceLayout();
+                                interpreterCodeFrame.ForceLayout();
+
+
+                            });
+
+                        }
+                        Debug.WriteLine("codeLAbel: " + codeLabel.Text);
+                    }
+                    
 
 
                     // end code
                     if (end_of_execution == true)
                     {
 
-                        DeactivateInterpreterCodeBox();
+                       // DeactivateInterpreterCodeBox();
 
                     }
                     //ends the UI
@@ -492,14 +582,7 @@ namespace MauiApp2
                         {
 
                             Debug.WriteLine("MESSAGE CONTAINS /N");
-
-                            //interpreterOutputFrame.ForceLayout();
-                            //ChatScrollView.ForceLayout();
-
-
-                            //var chatLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-                            //ChatScrollView.ScrollToAsync(0, chatLayout.Height, true);
-
+                           
                             this.Dispatcher.Dispatch(async () =>
                             {
                                 Debug.WriteLine("DISPATCH FORCE UI");
@@ -517,6 +600,15 @@ namespace MauiApp2
 
                     if (start_of_message == true)
                     {
+                        /*
+                         lastLabel = new Label
+                         {
+                              Text = "",
+                              TextColor = Color.FromArgb("#fff"),
+                              FontFamily = "Montserrat-Light",
+                              IsVisible = false
+                         };
+                        */
 
                     }
                     
@@ -547,93 +639,7 @@ namespace MauiApp2
             });
         }
 
-        private Frame interpreterCodeFrame; // Declare a class-level variable to hold the frame
-
-        private void AddInterpreterCodeBoxToUI()
-        {
-            Debug.WriteLine("AddInterpreterCodeBoxToUI has been called");
-
-            var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-
-            var newRow = new RowDefinition { Height = GridLength.Auto };
-            gridLayout.RowDefinitions.Add(newRow);
-            int currentRow = gridLayout.RowDefinitions.Count - 1;
-
-            var gradientBrush = new LinearGradientBrush
-            {
-                StartPoint = new Point(0, 0.5),
-                EndPoint = new Point(1, 0.5)
-            };
-
-            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#121B3F"), Offset = 1 });
-            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#B180B8"), Offset = 0 });
-
-
-            var customShadow = new Shadow
-            {
-                Radius = 10,
-                Opacity = 0.6f,
-                Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),  // #EFCDE1
-                Offset = new Point(5, 5)  // Offset of 5 pixels to the right and down
-            };
-
-            //Gif Animation
-            var CodeGif = new Image
-            {
-
-                Source = new FileImageSource
-                {
-                    File = "genesis_code.gif"
-                },
-                WidthRequest = 80,
-                HeightRequest = 80,
-                IsAnimationPlaying = true,
-                HorizontalOptions = LayoutOptions.Start
-
-            };
-
-            CodeGif.IsVisible = true;
-            CodeGif.IsAnimationPlaying = true;
-
-            var animatedGif2 = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
-            animatedGif2.WidthRequest = 80;
-            animatedGif2.HeightRequest = 80;
-
-            
-            interpreterCodeFrame = new Frame
-            {
-                HorizontalOptions = LayoutOptions.Start,
-                HasShadow = true,
-                Shadow = customShadow,
-                Background = gradientBrush,
-                Margin = new Thickness(0, 0, 80, 0),
-                BorderColor = Color.FromRgba(255, 255, 255, 0),
-
-
-            };
-
-            interpreterCodeFrame.Content = new Microsoft.Maui.Controls.StackLayout
-            { 
-                Children = { animatedGif2 }
-            };
-
-            gridLayout.Children.Add(interpreterCodeFrame);
-            Microsoft.Maui.Controls.Grid.SetRow(interpreterCodeFrame, currentRow);  // Use the currentRow variable
-            Microsoft.Maui.Controls.Grid.SetColumn(interpreterCodeFrame, 0);
-
-
-        }
-
-        private void DeactivateInterpreterCodeBox()
-        {
-            var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-
-            if (interpreterCodeFrame != null)
-            {
-                gridLayout.Children.Remove(interpreterCodeFrame);
-                interpreterCodeFrame = null; // Release the reference
-            }
-        }
+       
 
 
 
