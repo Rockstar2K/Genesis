@@ -9,20 +9,25 @@ namespace MauiApp2
 {
     public static class TrimMemoryCS
     {
+
+        public static int MaxCharacters = 5000;
+
         public static async Task TrimMemoryFile()
         {
             string FilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\pMEMORY\\chat_history.txt";
-            int MaxCharacters = 5000;
 
-            long characterCount;
+            long character_count;
 
             do
             {
                 string fileContent = await File.ReadAllTextAsync(FilePath);
-                characterCount = fileContent.Length;
-                Debug.WriteLine("characterCount: " + characterCount);
+                character_count = fileContent.Length;
 
-                if (characterCount >= MaxCharacters)
+                Preferences.Set("memory_character_count", character_count);
+
+                Debug.WriteLine("memory_character_count: " + character_count);
+
+                if (character_count >= MaxCharacters)
                 {
                     List<Entry> entries;
                     try
@@ -63,7 +68,7 @@ namespace MauiApp2
                         break;
                     }
                 }
-            } while (characterCount >= MaxCharacters);
+            } while (character_count >= MaxCharacters);
 
             Console.WriteLine("Old entries have been removed and the file has been updated.");
         }

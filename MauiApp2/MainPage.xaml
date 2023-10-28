@@ -3,131 +3,65 @@
     x:Class="MauiApp2.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MauiApp2"
-    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
     Title=""
     NavigationPage.HasNavigationBar="False">
 
-    <Grid
-        BackgroundColor="#EAEAEA"
-        HorizontalOptions="FillAndExpand"
-        VerticalOptions="FillAndExpand">
-
+    <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Frame
-            x:Name="NoInternetFrame"
-            BackgroundColor="White"
-            BorderColor="Transparent"
-            HorizontalOptions="Center"
-            IsVisible="False"
-            VerticalOptions="Center">
-            <Frame.Shadow>
-                <Shadow Brush="Gray" Radius="0.5" />
-            </Frame.Shadow>
-            <Label
-                FontFamily="Montserrat"
-                HorizontalOptions="Center"
-                Text="You have no internet connection"
-                VerticalOptions="Center" />
-        </Frame>
-
-        <ScrollView
-            x:Name="ChatScrollView"
-            Grid.Row="0"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
-
-            <VerticalStackLayout
-                Padding="30,0"
-                HorizontalOptions="FillAndExpand"
-                Spacing="25"
-                VerticalOptions="FillAndExpand">
-
-                <AbsoluteLayout Margin="0,20">
-                    <Button
-                        BackgroundColor="LightPink"
-                        Clicked="Welcome_Button_Clicked"
-                        Text="Welcome Page" />
-                    <ImageButton
-                        x:Name="Settings"
-                        AbsoluteLayout.LayoutBounds="1,0.5"
-                        AbsoluteLayout.LayoutFlags="PositionProportional"
-                        CornerRadius="15"
-                        HorizontalOptions="End"
-                        Pressed="Settings_Pressed"
-                        Source="settings.png">
-                        <ImageButton.Shadow>
-                            <Shadow
-                                Brush="#121B3F"
-                                Opacity="0.2"
-                                Radius="25"
-                                Offset="0,20" />
-
-                        </ImageButton.Shadow>
-
-                    </ImageButton>
-
-                    <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="PositionProportional">
-
-                        <!--<Image x:Name="imageFromComputer" WidthRequest="200" HeightRequest="200" Aspect="AspectFill"/> -->
-
-                        <!--
-                        <ImageButton
-                            x:Name="Chat_Option"
-                            Pressed="Chat_Option_Pressed"
-                            Source="chat_option.png" />
-                        <ImageButton
-                            x:Name="Voice_Option"
-                            Pressed="Voice_Option_Pressed"
-                            Source="voice_dialog_option.png" />
-                        -->
-
-                        <HorizontalStackLayout.Shadow>
-                            <Shadow
-                                Brush="#121B3F"
-                                Opacity="0.15"
-                                Radius="25"
-                                Offset="0,20" />
-                        </HorizontalStackLayout.Shadow>
-                    </HorizontalStackLayout>
-
-                </AbsoluteLayout>
+        <AbsoluteLayout Margin="0,0" Grid.Row="0" BackgroundColor="Transparent" ZIndex="1" >
+                        
+            <Button
+                ZIndex="1"
+                BackgroundColor="LightPink"
+                Clicked="Welcome_Button_Clicked"
+                Text="Welcome Page"
+                Margin="10,0,0,0" />
+                <ImageButton
+                    x:Name="Settings"
+                    ZIndex="1"
+                    AbsoluteLayout.LayoutBounds="1,0"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    CornerRadius="15"
+                    HorizontalOptions="End"
+                    Pressed="Settings_Pressed"
+                    Source="settings.png"
+                    Margin="0,0,10,0">
+                <ImageButton.Shadow>
+                    <Shadow
+                Brush="#121B3F"
+                Opacity="0.2"
+                Radius="25"
+                Offset="0,20" />
+                </ImageButton.Shadow>
+            </ImageButton>
+        </AbsoluteLayout>
 
 
-                <BoxView HeightRequest="0" VerticalOptions="FillAndExpand" /> 
-                <!--  what is this??  -->
 
-                <VerticalStackLayout
-                    x:Name="ChatLayout"
-                    Padding="30,0"
-                    HorizontalOptions="FillAndExpand"
-                    Spacing="25"
-                    VerticalOptions="FillAndExpand" />
-
-                <!-- STT
-                <StackLayout>
-                    <Button Text="Start Recording" Clicked="OnStartRecordingClicked" />
-                    <Button Text="Stop Recording" Clicked="OnStopRecordingClicked" />
-                </StackLayout>
-                -->
-
-            </VerticalStackLayout>
+        <!-- No Internet Frame 
+            <Frame x:Name="NoInternetFrame" Grid.Row="0" IsVisible="False">
+                <Label
+                    FontFamily="Montserrat"
+                    HorizontalOptions="Center"
+                    Text="You have no internet connection"
+                    VerticalOptions="Center" />
+            </Frame> 
+        -->
+ 
+        <!-- Chat Scroll View -->
+        <ScrollView x:Name="ChatScrollView" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
+            <Grid x:Name="ChatLayout" Padding="30,0">
+                <!-- Chat content -->
+            </Grid>
         </ScrollView>
 
-
-
-
-        <!--  Entry and Button at the bottom  -->
-
-        <Grid
-            Grid.Row="1"
-            Padding="15"
-            BackgroundColor="Transparent"
-            HorizontalOptions="FillAndExpand">
+        <!-- Bottom INPUT and Button -->
+        <Grid Grid.Row="2" Padding="0,20,0,0" BackgroundColor="#5AFFFFFF"> <!--Should be 50% transparent -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -161,24 +95,23 @@
                             <Shadow
                                 Brush="#121B3F"
                                 Opacity="0.4"
-                                Radius="30"
+                                Radius="20"
                                 Offset="0,20" />
                         </Entry.Shadow>
                     </Entry>
 
-                    <ImageButton
-                        Grid.Column="1"
-                        Margin="10,10"
-                        Padding="9"
+                    <ContentView Grid.Column="2" HeightRequest="50" WidthRequest="50">
+                        <ImageButton
+                        Padding="15"
                         BackgroundColor="Transparent"
                         Clicked="UserInputBox_Completed"
-                        HeightRequest="20"
                         HorizontalOptions="End"
                         Source="avioncito.png"
                         VerticalOptions="Center" />
+                    </ContentView>
+
                 </Grid>
             </Frame>
-
         </Grid>
     </Grid>
 </ContentPage>
