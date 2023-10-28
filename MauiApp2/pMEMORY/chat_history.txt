@@ -1,90 +1,58 @@
 [
-    {
-        "role": "user",
-        "message": "hola, quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, un asistente virtual diseñado para ayudarte con tus consultas y tareas. Estoy aquí para responder tus preguntas y brindarte asistencia en lo que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "escribe un poema del crepusculo"
-    },
-    {
-        "role": "assistant",
-        "message": "En el horizonte, tiñendo el cielo de colores,\nSurge el crepúsculo, un momento lleno de esplendores.\nLa luz del sol se desvanece lentamente,\nY el manto nocturno se acerca silente.\n\nEl cielo se viste de tonos dorados y rosados,\nMientras las estrellas despiertan en sus palacios.\nEl crepúsculo es un suspiro entre el día y la noche,\nUn instante mágico que nos envuelve y nos derroche.\n\nLas sombras se alargan, la tranquilidad se respira,\nEl crepúsculo nos envuelve con su belleza que no expira.\nLos colores se desvanecen poco a poco en el horizonte,\nDando paso a una noche llena de misterio y monte.\n\nEn este instante de transición, todo parece suspendido,\nLa naturaleza se adorna en un espectáculo compartido.\nEl crepúsculo nos invita a reflexionar y maravillarnos,\nEs un recordatorio de que la vida es preciosa, llena de claros.\n\nEl sol se despide, la luna asoma tímidamente,\nEl crepúsculo nos regala un momento de paz e mente.\nEl día se retira dando paso a la oscuridad,\nY el crepúsculo nos envuelve con su eternidad.\n\nAsí, el crepúsculo nos cautiva con su encanto,\nUn instante fugaz, pero que deja un recuerdo inmortal.\nDisfrutemos cada día de este regalo celestial,\nEl crepúsculo, un poema en el que todos podemos versar."
-    },
-    {
-        "role": "user",
-        "message": "hola"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "ESCRIBE UN CUENTO DE BATMAN"
-    },
-    {
-        "role": "assistant",
-        "message": "Claro, aquí tienes un cuento de Batman:\n\nEn lo profundo de la oscura ciudad de Gotham, un justiciero enmascarado conocido como Batman surcaba los tejados de los rascacielos. Con su capa negra ondeando al compás del viento, se adentraba en las sombras para proteger a los inocentes y hacer frente a los villanos que acechaban en las calles.\n\nBruce Wayne, el multimillonario filántropo que se escondía detrás de la capa de Batman, había jurado vengar la muerte de sus padres y librar a su ciudad del crimen. Dotado de una mente ágil y un cuerpo entrenado, dedicaba su vida a combatir la injusticia y mantener a salvo a Gotham.\n\nUn día, el Joker, el más temido y despiadado de los villanos, planeó sembrar el caos en la ciudad. Con sus risas siniestras y su mente retorcida, amenazaba con destruir todo lo que Batman había luchado por proteger.\n\nBatman, decidido a detener al Joker, siguió la pista de sus crímenes y se enfrentó a él en un duelo mortal. En una batalla épica, donde la oscuridad se mezclaba con el miedo, surgieron explosiones, acrobacias y golpes.\n\nPero Batman no solo luchaba físicamente contra el Joker, también se enfrentaba a su propia oscuridad interior. Debía recordar que su misión era proteger y no dejarse arrastrar por la venganza sin sentido.\n\nFinalmente, Batman logró derrotar al Joker, pero en lugar de celebrar su victoria, sintió una profunda tristeza. Sabía que la ciudad nunca estaría completamente libre de la maldad y que siempre enfrentaría nuevos desafíos.\n\nSin embargo, Batman no se rindió. Siguió patrullando las calles de Gotham, siempre alerta a cualquier señal de peligro. Inspiró a otros a levantarse contra la injusticia y demostró que incluso en la oscuridad más profunda, puede haber luz y esperanza.\n\nY así, el Caballero Oscuro, con su dedicación y valentía, se convirtió en el símbolo de la justicia en Gotham. Su legado perduró como una llama brillante en la noche, recordando a todos que, incluso en la adversidad, siempre hay espacio para la redención y la valentía.\n\nFin."
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, tu asistente virtual. Estoy aquí para ayudarte con todo lo que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "hola, quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, un asistente virtual diseñado para ayudarte con tus consultas y tareas. Estoy aquí para responder tus preguntas y brindarte asistencia en lo que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "escribe un poema del crepusculo"
-    },
-    {
-        "role": "assistant",
-        "message": "En el horizonte, tiñendo el cielo de colores,\nSurge el crepúsculo, un momento lleno de esplendores.\nLa luz del sol se desvanece lentamente,\nY el manto nocturno se acerca silente.\n\nEl cielo se viste de tonos dorados y rosados,\nMientras las estrellas despiertan en sus palacios.\nEl crepúsculo es un suspiro entre el día y la noche,\nUn instante mágico que nos envuelve y nos derroche.\n\nLas sombras se alargan, la tranquilidad se respira,\nEl crepúsculo nos envuelve con su belleza que no expira.\nLos colores se desvanecen poco a poco en el horizonte,\nDando paso a una noche llena de misterio y monte.\n\nEn este instante de transición, todo parece suspendido,\nLa naturaleza se adorna en un espectáculo compartido.\nEl crepúsculo nos invita a reflexionar y maravillarnos,\nEs un recordatorio de que la vida es preciosa, llena de claros.\n\nEl sol se despide, la luna asoma tímidamente,\nEl crepúsculo nos regala un momento de paz e mente.\nEl día se retira dando paso a la oscuridad,\nY el crepúsculo nos envuelve con su eternidad.\n\nAsí, el crepúsculo nos cautiva con su encanto,\nUn instante fugaz, pero que deja un recuerdo inmortal.\nDisfrutemos cada día de este regalo celestial,\nEl crepúsculo, un poema en el que todos podemos versar."
-    },
-    {
-        "role": "user",
-        "message": "hola"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "ESCRIBE UN CUENTO DE BATMAN"
-    },
-    {
-        "role": "assistant",
-        "message": "Claro, aquí tienes un cuento de Batman:\n\nEn lo profundo de la oscura ciudad de Gotham, un justiciero enmascarado conocido como Batman surcaba los tejados de los rascacielos. Con su capa negra ondeando al compás del viento, se adentraba en las sombras para proteger a los inocentes y hacer frente a los villanos que acechaban en las calles.\n\nBruce Wayne, el multimillonario filántropo que se escondía detrás de la capa de Batman, había jurado vengar la muerte de sus padres y librar a su ciudad del crimen. Dotado de una mente ágil y un cuerpo entrenado, dedicaba su vida a combatir la injusticia y mantener a salvo a Gotham.\n\nUn día, el Joker, el más temido y despiadado de los villanos, planeó sembrar el caos en la ciudad. Con sus risas siniestras y su mente retorcida, amenazaba con destruir todo lo que Batman había luchado por proteger.\n\nBatman, decidido a detener al Joker, siguió la pista de sus crímenes y se enfrentó a él en un duelo mortal. En una batalla épica, donde la oscuridad se mezclaba con el miedo, surgieron explosiones, acrobacias y golpes.\n\nPero Batman no solo luchaba físicamente contra el Joker, también se enfrentaba a su propia oscuridad interior. Debía recordar que su misión era proteger y no dejarse arrastrar por la venganza sin sentido.\n\nFinalmente, Batman logró derrotar al Joker, pero en lugar de celebrar su victoria, sintió una profunda tristeza. Sabía que la ciudad nunca estaría completamente libre de la maldad y que siempre enfrentaría nuevos desafíos.\n\nSin embargo, Batman no se rindió. Siguió patrullando las calles de Gotham, siempre alerta a cualquier señal de peligro. Inspiró a otros a levantarse contra la injusticia y demostró que incluso en la oscuridad más profunda, puede haber luz y esperanza.\n\nY así, el Caballero Oscuro, con su dedicación y valentía, se convirtió en el símbolo de la justicia en Gotham. Su legado perduró como una llama brillante en la noche, recordando a todos que, incluso en la adversidad, siempre hay espacio para la redención y la valentía.\n\nFin."
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, tu asistente virtual. Estoy aquí para ayudarte con todo lo que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "escribe un poema de batman"
-    },
-    {
-        "role": "assistant",
-        "message": "En la oscuridad de la noche, surge un vigilante,\nUn héroe enmascarado, un símbolo constante.\nEs Batman, el Caballero de la Sombra,\nSu fuerza y valentía hacen que el mal se asombre.\n\nCon su capa negra, avanza silencioso,\nProtegiendo a Gotham con fervor bondadoso.\nSus ojos brillan con determinación,\nDispuesto a enfrentar cualquier situación.\n\nEn las sombras, sus enemigos temen,\nPues su justicia implacable no se detiene.\nEl Joker, Catwoman, el Pingüino y Dos Caras,\nSaben que Batman siempre deja marcas.\n\nCon su inteligencia y astucia sin igual,\nDescubre la verdad tras cada malvado plan.\nNo descansa hasta ver la paz restaurada,\nLa ciudad a salvo, libre de la oscuridad.\n\nPero bajo el disfraz de murciélago y capucha,\nSe encuentra Bruce Wayne, hombre de fortuna.\nUna vida de secretos y sacrificio,\nPara proteger a otros y encontrar el equilibrio.\n\nElevándose sobre los edificios más altos,\nBatman sigue luchando contra los cobardes y osados.\nUn símbolo de esperanza en la noche,\nUn héroe que en las sombras se despoja de su derroche.\n\nEn las calles de Gotham, su nombre resuena,\nEl defensor incansable de aquellos sin pena.\nBatman, el héroe que nunca se doblega,\nSu legado perdura, en cada verso se anega.\n\nY así, en la eternidad de la noche,\nLa sombra de Batman se alza con derroche.\nProtegiendo a los inocentes, combatiendo el mal,\nSu espíritu heroico nunca cesará de brillar.\n\nFin."
-    }
+  {
+    "role": "user",
+    "message": "quien eres?"
+  },
+  {
+    "role": "assistant",
+    "message": "Soy Lyris, un asistente de inteligencia artificial programado para ayudarte con tus consultas y tareas. Estoy aquí para brindarte información, asistencia y ejecutar código en diferentes lenguajes de programación. ¿En qué puedo ayudarte hoy?"
+  },
+  {
+    "role": "user",
+    "message": "quien eres?"
+  },
+  {
+    "role": "assistant",
+    "message": "Soy Lyris, un asistente de inteligencia artificial aquí para ayudarte con tus preguntas y tareas. Puedo proporcionar información, realizar tareas y brindar asistencia en diferentes áreas. Si tienes alguna pregunta o necesitas ayuda con algo, estaré encantado de ayudarte en lo que pueda."
+  },
+  {
+    "role": "user",
+    "message": "quien eres?"
+  },
+  {
+    "role": "assistant",
+    "message": "Soy Lyris, un asistente de inteligencia artificial aquí para ayudarte con tus preguntas y tareas. Puedo proporcionarte información, ejecutar código en diferentes lenguajes de programación y ayudarte en todo lo que necesites. ¿En qué puedo ayudarte hoy?"
+  },
+  {
+    "role": "user",
+    "message": "quien eres?"
+  },
+  {
+    "role": "assistant",
+    "message": "Soy Lyris, un asistente de inteligencia artificial. Estoy aquí para ayudarte con tus consultas y tareas. ¿En qué puedo ayudarte hoy?"
+  },
+  {
+    "role": "user",
+    "message": "escribe un poema de btaman"
+  },
+  {
+    "role": "assistant",
+    "message": "Bajo el cielo estrellado, en la oscuridad,\nSurge un héroe valiente, de capa negra y voluntad.\nCon su fuerza y astucia, defiende la ciudad,\nEs el héroe enmascarado, es el gran Batman.\n\nSus ojos brillan con determinación,\nEnfrentando a la injusticia con pasión.\nUn defensor de los inocentes, sin vacilación,\nBatman lucha por la paz, sin necesidad de explicación.\n\nEn las sombras se esconde, sin ser visto,\nEl guardián de Gotham, en quien se ha visto.\nCon su inteligencia y habilidades, desafía el abismo,\nBatman protege la ciudad, aunque parezca egoísmo.\n\nCon gadgets y artilugios, se enfrenta al mal,\nPersigue a los criminales, sin descansar ni un ritual.\nSu nombre infunde miedo, su valentía es real,\nBatman, el caballero oscuro, el héroe moral.\n\nEn cada rincón oscuro de la noche,\nSe oye el rumor de sus alas en su derroche.\nBatman, el vengador sin reproche,\nLucha por la justicia, su misión es aproche.\n\nOh, Batman, el caballero de la noche,\nTu valentía y coraje siempre nos derroche.\nGracias por protegernos, tu legado es de broche,\nTu poema se quedará en nuestros corazones, más allá de un embosche.\n\nEste es un pequeño poema en honor a Batman, el legendario héroe de Gotham City. Espero que te haya gustado."
+  },
+  {
+    "role": "user",
+    "message": "quien eres'"
+  },
+  {
+    "role": "assistant",
+    "message": "Soy Lyris, un asistente de inteligencia artificial diseñado para ayudarte con tus preguntas y tareas. Estoy aquí para brindarte asistencia en diferentes áreas y tratar de resolver tus dudas de la mejor manera posible. ¿En qué puedo ayudarte hoy?"
+  },
+  {
+    "role": "user",
+    "message": "escribe un poema de batman"
+  },
+  {
+    "role": "assistant",
+    "message": "En las sombras de la noche emerge un héroe,\nEl Caballero Oscuro, con su capa en vuelo.\nCon ojos brillantes y valentía en su corazón,\nBatman lucha contra el mal en la oscuridad sin razón.\n\nSu traje negro como la noche, símbolo de su poder,\nCon gadgets y armas, está listo para vencer.\nSe desliza por los tejados, sin hacer ruido,\nSiempre atento, en su misión no hay descuido.\n\nGotham City es su hogar, su jurisdicción,\nProtege a los inocentes de toda corrupción.\nCon su inteligencia y habilidades excepcionales,\nResuelve crímenes y lucha contra los maleantes más letales.\n\nAunque el dolor y la pérdida marcan su pasado,\nBatman persiste en su misión, siempre decidido.\nSer el símbolo de esperanza en la ciudad sumida en el caos,\nUn vigilante justiciero, que no teme al fragor.\n\nCon su fuerza y determinación, enfrenta las adversidades,\nContra villanos y criminales, sin preocupaciones ni mitades.\nEl protector de Gotham, el guardián de la noche,\nBatman, un héroe eterno, un símbolo de valentía y derroche.\n\nEn cada página de cómic y película de acción,\nBatman se alza como un ícono de la ficción.\nUn héroe sin poderes sobrenaturales,\nPero con una voluntad inquebrantable, siempre listo para los detalles.\n\nAsí es Batman, un ser enigmático y sombrío,\nAunque con un corazón noble y un sentido de justicia bravío.\nA través de las sombras, siempre acudirá al llamado,\nBatman, el héroe sin par, en la oscuridad iluminado.\n\nEspero que este poema te inspire y transmita la grandeza de Batman, un personaje icónico en la cultura popular. Si tienes alguna otra solicitud o necesitas ayuda adicional, no dudes en decírmelo. Estoy aquí para asistirte."
+  }
 ]

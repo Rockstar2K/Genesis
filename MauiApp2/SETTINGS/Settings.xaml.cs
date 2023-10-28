@@ -21,11 +21,6 @@ public partial class Settings : ContentPage
     {
         if (API_Input_Box.Text != string.Empty && api_Key != string.Empty)
         {
-            /*
-            MainPage.apiKey = API_Input_Box.Text;
-            Debug.WriteLine("API_Input_Box.Text" + API_Input_Box.Text);
-            api_Key = API_Input_Box.Text;
-            */
             Preferences.Set("api_key", API_Input_Box.Text);
             Debug.WriteLine("api_key" + API_Input_Box.Text);
 

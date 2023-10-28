@@ -40,10 +40,21 @@ namespace MauiApp2.SCRIPTS
                 Opacity = 0.6f
             };
 
-            // Scroll to the newly added frame
+            Task.Delay(1000);
             chatScrollView.ScrollToAsync(0, gridLayout.Height, true);
 
+            /*
+            this.Dispatcher.Dispatch(async () =>
+            {
+                Task.Delay(500);
+                await chatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+
+
+            });
+            */
             
+
         }
+
     }
 }

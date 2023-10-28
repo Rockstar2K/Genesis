@@ -12,6 +12,7 @@ using Plugin.Maui.Audio;
 using MauiApp2.SCRIPTS;
 using MauiApp2.CustomControls;
 using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui;
 
 
 namespace MauiApp2
@@ -212,9 +213,18 @@ namespace MauiApp2
 
             await RunPythonScriptAsync();
 
+            
+
+
             this.Dispatcher.Dispatch(async () =>
             {
-                await Task.Delay(100);  // Optional: give it time to layout if needed
+                Debug.WriteLine("End of Interpreter ChatBOX UI");
+
+                interpreterOutputFrame.ForceLayout();
+                ChatScrollView.ForceLayout();
+
+                await Task.Delay(500);  // Optional: give it time to layout if needed
+
                 await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
             });
         }
@@ -272,6 +282,9 @@ namespace MauiApp2
 
         private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string userPrompt, string apiKey, string interpreter_model)
         {
+
+            //THIS FUNCTION SHOULD CALL RUNPYTHONSCRIPT
+
             Debug.WriteLine($"ExecuteScriptAsync called with pythonPath: {pythonPath}, scriptPath: {scriptPath}, userPrompt: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
 
             var outputBuilder = new StringBuilder();
@@ -382,6 +395,9 @@ namespace MauiApp2
 
                 jsonObject = jsonObject.Replace("'start_of_message': True", "'start_of_message': true");
 
+                jsonObject = jsonObject.Replace("'end_of_message': True", "'end_of_message': true");
+
+
             }
             catch (Newtonsoft.Json.JsonException ex)
             {
@@ -429,7 +445,9 @@ namespace MauiApp2
                     var active_line = json["active_line"];
                     var output = json["output"]?.ToString();
 
+                    //end-start of message
                     var start_of_message = json["start_of_message"]?.ToObject<bool>();
+                    var end_of_message = json["end_of_message"]?.ToObject<bool>();
 
                     //code
                     var end_of_execution = json["end_of_execution"]?.ToObject<bool>();
@@ -469,12 +487,46 @@ namespace MauiApp2
                         {
                             resultLabel.Text += message;  // Append subsequent messages
                         }
+
+                        if (message.Contains("\n"))
+                        {
+
+                            Debug.WriteLine("MESSAGE CONTAINS /N");
+
+                            //interpreterOutputFrame.ForceLayout();
+                            //ChatScrollView.ForceLayout();
+
+
+                            //var chatLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
+                            //ChatScrollView.ScrollToAsync(0, chatLayout.Height, true);
+
+                            this.Dispatcher.Dispatch(async () =>
+                            {
+                                Debug.WriteLine("DISPATCH FORCE UI");
+
+                                ChatScrollView.ForceLayout();
+                                interpreterOutputFrame.ForceLayout();
+
+                               // await Task.Delay(500);  // Optional: give it time to layout if needed
+                                var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
+                                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+                            });
+
+                        }
                     }
 
                     if (start_of_message == true)
                     {
 
                     }
+                    
+                    if (end_of_message == true)
+                    {
+                        // Assuming you want to reload the layout of ChatScrollView
+                        //ChatScrollView.ForceLayout();
+
+                    }
+                    
 
                     if (output != null)
                     {
