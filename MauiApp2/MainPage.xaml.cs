@@ -11,8 +11,8 @@ using System.Reflection.Metadata;
 using Plugin.Maui.Audio;
 using MauiApp2.SCRIPTS;
 using MauiApp2.CustomControls;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui;
+using CommunityToolkit.Maui;
 
 
 namespace MauiApp2
@@ -154,6 +154,20 @@ namespace MauiApp2
 
             UserChatBoxUI.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
             AddInterpreterChatBoxToUI();
+        }
+
+
+        //FILE
+        private async void OpenFileButton_Clicked(object sender, EventArgs e)
+        {
+            var result = await FilePicker.PickAsync();
+
+            if (result != null)
+            {
+                var addfilePath = result.FullPath;
+                Debug.WriteLine("add File Path: " + addfilePath);
+                // Store filePath in a variable or use as needed
+            }
         }
 
 

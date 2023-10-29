@@ -61,6 +61,10 @@
         "net7.0-android33.0": {
           "targetAlias": "net7.0-android",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Google.Cloud.Speech.V1": {
               "target": "Package",
               "version": "[3.4.0, )"
@@ -171,7 +175,7 @@
             },
             "pythonnet": {
               "target": "Package",
-              "version": "[3.0.2, )"
+              "version": "[3.0.3, )"
             }
           },
           "imports": [
@@ -225,6 +229,10 @@
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Google.Cloud.Speech.V1": {
               "target": "Package",
               "version": "[3.4.0, )"
@@ -280,7 +288,7 @@
             },
             "pythonnet": {
               "target": "Package",
-              "version": "[3.0.2, )"
+              "version": "[3.0.3, )"
             }
           },
           "imports": [
@@ -322,6 +330,10 @@
         "net7.0-maccatalyst16.1": {
           "targetAlias": "net7.0-maccatalyst",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Google.Cloud.Speech.V1": {
               "target": "Package",
               "version": "[3.4.0, )"
@@ -377,7 +389,7 @@
             },
             "pythonnet": {
               "target": "Package",
-              "version": "[3.0.2, )"
+              "version": "[3.0.3, )"
             }
           },
           "imports": [
@@ -420,6 +432,10 @@
         "net7.0-windows10.0.19041": {
           "targetAlias": "net7.0-windows10.0.19041.0",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Google.Cloud.Speech.V1": {
               "target": "Package",
               "version": "[3.4.0, )"
@@ -485,7 +501,7 @@
             },
             "pythonnet": {
               "target": "Package",
-              "version": "[3.0.2, )"
+              "version": "[3.0.3, )"
             }
           },
           "imports": [

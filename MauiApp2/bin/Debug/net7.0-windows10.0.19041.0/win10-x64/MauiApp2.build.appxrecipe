@@ -1438,6 +1438,12 @@
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.29\lib\net6.0\WinRT.Runtime.dll">
       <PackagePath>WinRT.Runtime.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\communitytoolkit.maui\6.0.0\lib\net7.0-windows10.0.19041\CommunityToolkit.Maui.dll">
+      <PackagePath>CommunityToolkit.Maui.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\communitytoolkit.maui.core\6.0.0\lib\net7.0-windows10.0.19041\CommunityToolkit.Maui.Core.dll">
+      <PackagePath>CommunityToolkit.Maui.Core.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\google.api.commonprotos\2.7.0\lib\netstandard2.0\Google.Api.CommonProtos.dll">
       <PackagePath>Google.Api.CommonProtos.dll</PackagePath>
     </AppxPackagedFile>
@@ -1591,7 +1597,7 @@
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\plugin.maui.audio\2.0.0\lib\net6.0-windows10.0.19041\Plugin.Maui.Audio.dll">
       <PackagePath>Plugin.Maui.Audio.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\pythonnet\3.0.2\lib\netstandard2.0\Python.Runtime.dll">
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\pythonnet\3.0.3\lib\netstandard2.0\Python.Runtime.dll">
       <PackagePath>Python.Runtime.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp\2.88.6\lib\net6.0\SkiaSharp.dll">
@@ -1617,6 +1623,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\skiasharp.views.winui\2.88.6\lib\net6.0-windows10.0.19041.0\SkiaSharp.Views.Windows.dll">
       <PackagePath>SkiaSharp.Views.Windows.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\system.speech\7.0.0\runtimes\win\lib\net7.0\System.Speech.dll">
+      <PackagePath>System.Speech.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thega\.nuget\packages\microsoft.graphics.win2d\1.0.5.1\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>

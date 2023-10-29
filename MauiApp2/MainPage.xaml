@@ -55,25 +55,39 @@
  
         <!-- Chat Scroll View -->
         <ScrollView x:Name="ChatScrollView" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
-            <Grid x:Name="ChatLayout" Padding="30,0">
+            <Grid x:Name="ChatLayout" Padding="0,0">
                 <!-- Chat content -->
             </Grid>
         </ScrollView>
 
         <!-- Bottom INPUT and Button -->
-        <Grid Grid.Row="2" Padding="0,20,0,0" BackgroundColor="#5AFFFFFF"> <!--Should be 50% transparent -->
+        <Grid Grid.Row="2" Padding="0,20,0,0" BackgroundColor="#5AFFFFFF">
+            <!--Should be 50% transparent -->
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <!-- New Column for the + Button -->
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
+            <!-- + Button -->
+            <Button
+        Grid.Column="0"
+        Text="+"
+        Margin="10,0,5,20"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Clicked="OpenFileButton_Clicked"
+        BackgroundColor="Transparent" />
+
             <Frame
-                Grid.Column="0"
-                Margin="20,0,20,20"
-                Padding="0"
-                BackgroundColor="Transparent"
-                BorderColor="#F2CFE2"
-                CornerRadius="30"
-                HorizontalOptions="FillAndExpand">
+        Grid.Column="1"
+        Margin="0,0,20,20"
+        Padding="0"
+        BackgroundColor="Transparent"
+        BorderColor="#F2CFE2"
+        CornerRadius="30"
+        HorizontalOptions="FillAndExpand">
                 <Grid HorizontalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -81,37 +95,41 @@
                     </Grid.ColumnDefinitions>
 
                     <Entry
-                        x:Name="UserInput"
-                        Grid.Column="0"
-                        BackgroundColor="Transparent"
-                        Completed="UserInputBox_Completed"
-                        FontFamily="Montserrat-Light"
-                        HorizontalOptions="FillAndExpand"
-                        IsVisible="True"
-                        Placeholder="¿Que quieres que haga?"
-                        PlaceholderColor="#68667D"
-                        TextColor="#121B3F">
+                x:Name="UserInput"
+                Grid.Column="0"
+                BackgroundColor="Transparent"
+                Completed="UserInputBox_Completed"
+                FontFamily="Montserrat-Light"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="True"
+                Placeholder="¿Que quieres que haga?"
+                PlaceholderColor="#68667D"
+                TextColor="#121B3F">
                         <Entry.Shadow>
                             <Shadow
-                                Brush="#121B3F"
-                                Opacity="0.4"
-                                Radius="20"
-                                Offset="0,20" />
+                        Brush="#121B3F"
+                        Opacity="0.4"
+                        Radius="20"
+                        Offset="0,20" />
                         </Entry.Shadow>
                     </Entry>
 
-                    <ContentView Grid.Column="2" HeightRequest="50" WidthRequest="50">
+                    <ContentView Grid.Column="1" HeightRequest="50" WidthRequest="50">
                         <ImageButton
-                        Padding="15"
-                        BackgroundColor="Transparent"
-                        Clicked="UserInputBox_Completed"
-                        HorizontalOptions="End"
-                        Source="avioncito.png"
-                        VerticalOptions="Center" />
+                    Padding="15"
+                    BackgroundColor="Transparent"
+                    Clicked="UserInputBox_Completed"
+                    HorizontalOptions="End"
+                    Source="avioncito.png"
+                    VerticalOptions="Center" />
                     </ContentView>
-
                 </Grid>
             </Frame>
         </Grid>
+
+
+
+
+
     </Grid>
 </ContentPage>

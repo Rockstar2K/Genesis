@@ -9,6 +9,7 @@
     ".NETCoreApp,Version=v7.0/win10-x64": {
       "MauiApp2/1.0": {
         "dependencies": {
+          "CommunityToolkit.Maui": "6.0.0",
           "Google.Cloud.Speech.V1": "3.4.0",
           "Google.Cloud.TextToSpeech.V1": "3.2.0",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -23,7 +24,7 @@
           "Newtonsoft.Json": "13.0.3",
           "Plugin.Maui.Audio": "2.0.0",
           "SkiaSharp.Extended.UI.Maui": "2.0.0-preview.86",
-          "pythonnet": "3.0.2",
+          "pythonnet": "3.0.3",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "7.0.13",
           "runtimepack.Microsoft.WindowsDesktop.App.Runtime.win-x64": "7.0.13",
           "runtimepack.Microsoft.Maui.Core.Runtime.win": "7.0.92",
@@ -1024,6 +1025,28 @@
           }
         }
       },
+      "CommunityToolkit.Maui/6.0.0": {
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "6.0.0"
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/6.0.0": {
+        "dependencies": {
+          "System.Speech": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Google.Api.CommonProtos/2.7.0": {
         "dependencies": {
           "Google.Protobuf": "3.21.0"
@@ -1509,15 +1532,15 @@
           }
         }
       },
-      "pythonnet/3.0.2": {
+      "pythonnet/3.0.3": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "System.Reflection.Emit": "4.3.0"
         },
         "runtime": {
           "lib/netstandard2.0/Python.Runtime.dll": {
-            "assemblyVersion": "3.0.2.0",
-            "fileVersion": "3.0.2.0"
+            "assemblyVersion": "3.0.3.0",
+            "fileVersion": "3.0.3.0"
           }
         }
       },
@@ -1693,6 +1716,14 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
+      "System.Speech/7.0.0": {
+        "runtime": {
+          "runtimes/win/lib/net7.0/System.Speech.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
       "System.Text.Encoding/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1746,6 +1777,20 @@
       "type": "runtimepack",
       "serviceable": false,
       "sha512": ""
+    },
+    "CommunityToolkit.Maui/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Pffh+cX5qA1DxecPOt2Zs2YVx3O1WQNQUV3Frbesoc6VWz7MJq3sQhN3emOqr7/ATvvTv7r8lqEYGduHtiNsgA==",
+      "path": "communitytoolkit.maui/6.0.0",
+      "hashPath": "communitytoolkit.maui.6.0.0.nupkg.sha512"
+    },
+    "CommunityToolkit.Maui.Core/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-crumJ4LAic/AUeG9gOkddaoAIR19iIq0u7kpugn1etsXMS3jr1vS/lIee5KFRUBL36ijSEzE0bGLAkCIaw9aSg==",
+      "path": "communitytoolkit.maui.core/6.0.0",
+      "hashPath": "communitytoolkit.maui.core.6.0.0.nupkg.sha512"
     },
     "Google.Api.CommonProtos/2.7.0": {
       "type": "package",
@@ -2041,12 +2086,12 @@
       "path": "plugin.maui.audio/2.0.0",
       "hashPath": "plugin.maui.audio.2.0.0.nupkg.sha512"
     },
-    "pythonnet/3.0.2": {
+    "pythonnet/3.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-iQneBziYx2lqBl1Q9VnkJ7vRugzoeq817Cqonh+KWGVxKeFILX5/cE2oZA1btzzLZDoz7Y0LihS3odqn8GFTvQ==",
-      "path": "pythonnet/3.0.2",
-      "hashPath": "pythonnet.3.0.2.nupkg.sha512"
+      "sha512": "sha512-Go6pLzJ0msUVISUDf4n49GFja/7PbrjfQ9Nxpz+KV0r39YB8x5lPz7sItX38a0KGLoQIsSMxkUNDRjGRvplLHw==",
+      "path": "pythonnet/3.0.3",
+      "hashPath": "pythonnet.3.0.3.nupkg.sha512"
     },
     "runtime.any.System.IO/4.3.0": {
       "type": "package",
@@ -2229,6 +2274,13 @@
       "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
+    },
+    "System.Speech/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7E0uB92Cx2sXR67HW9rMKJqDACdLuz9t3I3OwZUFDzAgwKXWuY6CYeRT/NiypHcyZO2be9+0H0w0M6fn7HQtgQ==",
+      "path": "system.speech/7.0.0",
+      "hashPath": "system.speech.7.0.0.nupkg.sha512"
     },
     "System.Text.Encoding/4.3.0": {
       "type": "package",
