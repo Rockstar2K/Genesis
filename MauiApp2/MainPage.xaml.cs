@@ -39,8 +39,6 @@ namespace MauiApp2
         private bool isFirstUpdate = true;
         Label resultLabel;
 
-        Label lastLabel;
-
 
         //CODE
         bool isCodeFirstUpdate = true;
@@ -115,16 +113,23 @@ namespace MauiApp2
                 {
 
 
-                    Debug.WriteLine("memory_count" + memory_count);
+                    Debug.WriteLine("User Input memory count: " + memory_count);
                     
-                    if (memory_count <= TrimMemoryCS.MaxCharacters)
+                    if (memory_count <= TrimMemoryCS.MaxCharacters) //si es menor se ejecuta addChatBoxes primero
                     {
+
+                        Debug.WriteLine("Memory count LESS than MaxCharachters");
+
                         AddChatBoxes();
-                        await TrimMemoryCS.TrimMemoryFile();
+                        //await Task.Delay(10000);
+                        //await TrimMemoryCS.TrimMemoryFile();
 
                     }
                     else
                     {
+
+                        Debug.WriteLine("Memory count MORE than MaxCharachters");
+
                         await TrimMemoryCS.TrimMemoryFile();
                         AddChatBoxes();
                     }
@@ -142,6 +147,8 @@ namespace MauiApp2
 
         private void AddChatBoxes()
         {
+            Debug.WriteLine("AddChatBoxes");
+
             var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
             ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
 
@@ -227,8 +234,8 @@ namespace MauiApp2
             {
                 Debug.WriteLine("End of Interpreter ChatBOX UI");
 
-                interpreterOutputFrame.ForceLayout();
-                ChatScrollView.ForceLayout();
+                //interpreterOutputFrame.ForceLayout();
+                //ChatScrollView.ForceLayout();
 
                 await Task.Delay(500);  // Optional: give it time to layout if needed
 
@@ -236,27 +243,9 @@ namespace MauiApp2
             });
         }
 
-        private void AddInterpreterCodeBoxToInterpreterOutputFrame()
+        private Task AddInterpreterCodeBoxToInterpreterOutputFrame()
         {
-            var gradientBrush = new Microsoft.Maui.Controls.LinearGradientBrush
-            {
-                StartPoint = new Point(0, 0.5),
-                EndPoint = new Point(1, 0.5)
-            };
-
-            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#5AFFFFFF"), Offset = 1 });
-            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#B180B8"), Offset = 0 });
-
-            interpreterCodeFrame = new Frame
-            {
-                Background = gradientBrush,
-                BorderColor = Color.FromRgba(255, 255, 255, 0),
-                Margin = new Thickness(0, 10, 0, 10),  // // left, top, right, bottom
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-
-
-            };
+            Debug.WriteLine("AddInterpreterCodeBoxToInterpreterOutputFrame");
 
             codeLabel = new Label
             {
@@ -269,6 +258,26 @@ namespace MauiApp2
 
             codeLabel.IsVisible = true;
 
+            var gradientBrush = new Microsoft.Maui.Controls.LinearGradientBrush
+            {
+                StartPoint = new Point(0, 0.5),
+                EndPoint = new Point(1, 0.5)
+            };
+
+            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#5AFFFFFF"), Offset = 1 });
+            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#1AFFFFFF"), Offset = 0 });
+
+            interpreterCodeFrame = new Frame
+            {
+                Background = gradientBrush,
+                BorderColor = Color.FromRgba(255, 255, 255, 0),
+                Margin = new Thickness(0, 10, 0, 10),  // // left, top, right, bottom
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+
+
+            };
+
             interpreterCodeFrame.Content = new Microsoft.Maui.Controls.StackLayout
             {
                 Children = { codeLabel }
@@ -278,6 +287,9 @@ namespace MauiApp2
 
             // Add the new Frame to the existing StackLayout
             interpreterOutput.Children.Add(interpreterCodeFrame);
+
+            return Task.CompletedTask; // Indicate that the Task is complete
+
         }
 
 
@@ -461,16 +473,13 @@ namespace MauiApp2
             return jsonObject;
         }
 
-        Dictionary<string, Label> dynamicLabels = new Dictionary<string, Label>();
 
-
-        int numberOfLabels = 1; // or however many you want
         private void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             Debug.WriteLine(jsonObject);
 
-            this.Dispatcher.Dispatch(() =>
+            this.Dispatcher.Dispatch(async () =>
             {
 
                 if (isGIFEnabled)
@@ -491,20 +500,20 @@ namespace MauiApp2
                 {
                     var json = JObject.Parse(jsonObject);
 
-                    var message = json["message"]?.ToString();
-                    var language = json["language"]?.ToString();
-                    var code = json["code"]?.ToString();
-                    var executing = json["executing"];
-                    var active_line = json["active_line"];
-                    var output = json["output"]?.ToString();
-
                     //end-start of message
                     var start_of_message = json["start_of_message"]?.ToObject<bool>();
+                    var message = json["message"]?.ToString();
                     var end_of_message = json["end_of_message"]?.ToObject<bool>();
 
                     //code
                     var end_of_execution = json["end_of_execution"]?.ToObject<bool>();
                     var start_of_code = json["start_of_code"]?.ToObject<bool>();
+
+                    var language = json["language"]?.ToString();
+                    var code = json["code"]?.ToString();
+                    var executing = json["executing"];
+                    var active_line = json["active_line"];
+                    var output = json["output"]?.ToString();
 
 
                     // start code
@@ -512,9 +521,7 @@ namespace MauiApp2
                     {
                         Debug.WriteLine("START OF CODE is true");
 
-                        is_executing_code = true;
-
-                        AddInterpreterCodeBoxToInterpreterOutputFrame();
+                        await AddInterpreterCodeBoxToInterpreterOutputFrame();
 
                     }
                     
@@ -524,46 +531,45 @@ namespace MauiApp2
                         {
                             codeLabel.Text = code;  // Set the text to the first message received
                             isCodeFirstUpdate = false;
+                            
+                            Debug.WriteLine("is code first update FORCE UI");
 
-                            this.Dispatcher.Dispatch(async () =>
-                            {
-                                Debug.WriteLine("DISPATCH FORCE UI");
+                            ChatScrollView.ForceLayout();
+                            interpreterOutputFrame.ForceLayout();
+                            interpreterCodeFrame.ForceLayout();
 
-                                ChatScrollView.ForceLayout();
-                                interpreterOutputFrame.ForceLayout();
-                                interpreterCodeFrame.ForceLayout();
-
-                            });
                         }
                         else
                         {
                             codeLabel.Text += code;  // Append subsequent messages
 
-                            this.Dispatcher.Dispatch(async () =>
-                            {
-                                Debug.WriteLine("DISPATCH FORCE UI");
-
-                                ChatScrollView.ForceLayout();
-                                interpreterOutputFrame.ForceLayout();
-                                interpreterCodeFrame.ForceLayout();
-
-
-                            });
-
                         }
                         Debug.WriteLine("codeLAbel: " + codeLabel.Text);
+
+                        if (code.Contains("\n"))
+                        {
+
+                             Debug.WriteLine("\n FORCE UI");
+
+                             ChatScrollView.ForceLayout();
+                             interpreterOutputFrame.ForceLayout();
+                             interpreterCodeFrame.ForceLayout();
+
+                        }
                     }
                     
-
 
                     // end code
                     if (end_of_execution == true)
                     {
+                        
+                         Debug.WriteLine("End of execution FORCE UI");
 
-                       // DeactivateInterpreterCodeBox();
+                         ChatScrollView.ForceLayout();
+                         interpreterOutputFrame.ForceLayout();
+                         interpreterCodeFrame.ForceLayout();
 
                     }
-                    //ends the UI
 
 
                     if (message != null)
@@ -580,21 +586,14 @@ namespace MauiApp2
 
                         if (message.Contains("\n"))
                         {
-
                             Debug.WriteLine("MESSAGE CONTAINS /N");
-                           
-                            this.Dispatcher.Dispatch(async () =>
-                            {
-                                Debug.WriteLine("DISPATCH FORCE UI");
 
-                                ChatScrollView.ForceLayout();
-                                interpreterOutputFrame.ForceLayout();
+                            ChatScrollView.ForceLayout();
+                            interpreterOutputFrame.ForceLayout();
 
-                               // await Task.Delay(500);  // Optional: give it time to layout if needed
-                                var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-                                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
-                            });
-
+                            // await Task.Delay(500);  // Optional: give it time to layout if needed
+                            var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
+                            await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
                         }
                     }
 
@@ -614,8 +613,18 @@ namespace MauiApp2
                     
                     if (end_of_message == true)
                     {
-                        // Assuming you want to reload the layout of ChatScrollView
-                        //ChatScrollView.ForceLayout();
+                        
+                        this.Dispatcher.Dispatch(async () =>
+                        {
+                            Debug.WriteLine("ens of message FORCE UI");
+
+                            ChatScrollView.ForceLayout();
+                            interpreterOutputFrame.ForceLayout();
+
+                            // await Task.Delay(500);  // Optional: give it time to layout if needed
+                            var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
+                            await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+                        });
 
                     }
                     

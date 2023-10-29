@@ -1,96 +1,212 @@
 [
-  {
-    "role": "assistant",
-    "language": "python",
-    "code": "import socket\n\nhostname = socket.gethostname()\nip_address = socket.gethostbyname(hostname)\nip_address",
-    "output": "'172.20.10.2'"
-  },
-  {
-    "role": "assistant",
-    "message": "Tu dirección IP actual es **172.20.10.2**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
-  },
-  {
-    "role": "user",
-    "message": "cual es mi IP?"
-  },
-  {
-    "role": "assistant",
-    "language": "python",
-    "code": "import requests\n\nip = requests.get('https://api.ipify.org').text\nip",
-    "output": "'45.232.94.145'"
-  },
-  {
-    "role": "assistant",
-    "message": "Tu dirección IP actual es **45.232.94.145**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
-  },
-  {
-    "role": "user",
-    "message": "cual es mi IP?"
-  },
-  {
-    "role": "assistant",
-    "language": "shell",
-    "code": "curl ifconfig.me",
-    "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     37      0 --:--:-- --:--:-- --:--:--    37\n45.232.94.145"
-  },
-  {
-    "role": "assistant",
-    "message": "Tu dirección IP actual es **45.232.94.145**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
-  },
-  {
-    "role": "user",
-    "message": "cual es mi iP?"
-  },
-  {
-    "role": "assistant",
-    "language": "python",
-    "code": "import socket\n\nhostname = socket.gethostname()\nip_address = socket.gethostbyname(hostname)\nip_address",
-    "output": "'172.20.10.2'"
-  },
-  {
-    "role": "assistant",
-    "message": "Tu dirección IP actual es **172.20.10.2**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
-  },
-  {
-    "role": "user",
-    "message": "cual es mi IP'"
-  },
-  {
-    "role": "assistant",
-    "language": "python",
-    "code": "import socket\n\nhostname = socket.gethostname()\nip_address = socket.gethostbyname(hostname)\nip_address",
-    "output": "'172.20.10.2'"
-  },
-  {
-    "role": "assistant",
-    "message": "Tu dirección IP actual es **172.20.10.2**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
-  },
-  {
-    "role": "user",
-    "message": "cual es mi IP?"
-  },
-  {
-    "role": "assistant",
-    "language": "python",
-    "code": "import requests\n\nip = requests.get('https://api.ipify.org').text\nip",
-    "output": "'45.232.94.145'"
-  },
-  {
-    "role": "assistant",
-    "message": "Tu dirección IP actual es **45.232.94.145**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
-  },
-  {
-    "role": "user",
-    "message": "cual es mi IP?"
-  },
-  {
-    "role": "assistant",
-    "language": "shell",
-    "code": "curl ifconfig.me",
-    "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n100    13  100    13    0     0     30      0 --:--:-- --:--:-- --:--:--    30\n45.232.94.145"
-  },
-  {
-    "role": "assistant",
-    "message": "Tu dirección IP actual es **45.232.94.145**. Recuerda que tu dirección IP puede cambiar dependiendo de tu proveedor de servicios de Internet y la configuración de red. Si necesitas más información o tienes alguna otra pregunta, no dudes en decirme. Estoy aquí para ayudar."
-  }
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    12  100    12    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.35"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 45.232.94.35."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    12  100    12    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.35"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 45.232.94.35."
+    },
+    {
+        "role": "user",
+        "message": "cual es la hora en Ámsterdam?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import datetime\nimport pytz\n\namsterdam_tz = pytz.timezone('Europe/Amsterdam')\nnow = datetime.datetime.now(amsterdam_tz)\nnow.strftime('%Y-%m-%d %H:%M:%S')",
+        "output": "'2023-10-29 20:36:30'"
+    },
+    {
+        "role": "assistant",
+        "message": "La hora actual en Ámsterdam es 20:36:30 del 29 de octubre de 2023."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    12  100    12    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.35"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 45.232.94.35."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    12  100    12    0     0     36      0 --:--:-- --:--:-- --:--:--    36\n45.232.94.35"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 45.232.94.35."
+    },
+    {
+        "role": "user",
+        "message": "cual es la hora en Ámsterdam?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import datetime\nimport pytz\n\namsterdam_tz = pytz.timezone('Europe/Amsterdam')\nnow = datetime.datetime.now(amsterdam_tz)\nnow.strftime('%Y-%m-%d %H:%M:%S')",
+        "output": "'2023-10-29 20:36:30'"
+    },
+    {
+        "role": "assistant",
+        "message": "La hora actual en Ámsterdam es 20:36:30 del 29 de octubre de 2023."
+    },
+    {
+        "role": "user",
+        "message": "cual es mi IP?"
+    },
+    {
+        "role": "assistant",
+        "language": "python",
+        "code": "import socket\n\nip = socket.gethostbyname(socket.gethostname())\nprint(ip)",
+        "output": "172.20.10.2"
+    },
+    {
+        "role": "assistant",
+        "message": "Tu dirección IP actual es 172.20.10.2."
+    }
 ]

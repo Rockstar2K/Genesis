@@ -14,8 +14,14 @@ namespace MauiApp2
 
         public static async Task TrimMemoryFile()
         {
-            string FilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\pMEMORY\\chat_history.txt";
+            Debug.WriteLine("TrimMemoryFile");
 
+            string FilePath = ""; 
+
+            if (OperatingSystem.IsWindows())
+            {
+                FilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\pMEMORY\\chat_history.txt";
+            }
             long character_count;
 
             do
@@ -25,7 +31,7 @@ namespace MauiApp2
 
                 Preferences.Set("memory_character_count", character_count);
 
-                Debug.WriteLine("memory_character_count: " + character_count);
+                Debug.WriteLine("Trim Memory count: " + character_count);
 
                 if (character_count >= MaxCharacters)
                 {
@@ -65,7 +71,7 @@ namespace MauiApp2
                     else
                     {
                         Console.WriteLine("No more entries to remove.");
-                        break;
+                        return;
                     }
                 }
             } while (character_count >= MaxCharacters);
