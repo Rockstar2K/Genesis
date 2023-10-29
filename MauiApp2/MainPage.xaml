@@ -6,88 +6,105 @@
     Title=""
     NavigationPage.HasNavigationBar="False">
 
-    <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Grid
+        BackgroundColor="#F9F9F9"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <AbsoluteLayout Margin="0,0" Grid.Row="0" BackgroundColor="Transparent" ZIndex="1" >
-                        
+        <AbsoluteLayout
+            Grid.Row="0"
+            Margin="0,0"
+            BackgroundColor="Transparent"
+            ZIndex="1">
+
             <Button
-                ZIndex="1"
+                Margin="10,0,0,0"
                 BackgroundColor="LightPink"
                 Clicked="Welcome_Button_Clicked"
                 Text="Welcome Page"
-                Margin="10,0,0,0" />
-                <ImageButton
-                    x:Name="Settings"
-                    ZIndex="1"
-                    AbsoluteLayout.LayoutBounds="1,0"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    CornerRadius="15"
-                    HorizontalOptions="End"
-                    Pressed="Settings_Pressed"
-                    Source="settings.png"
-                    Margin="0,0,10,0">
+                ZIndex="1" />
+            <ImageButton
+                x:Name="Settings"
+                Margin="0,0,10,0"
+                AbsoluteLayout.LayoutBounds="1,0"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                CornerRadius="15"
+                HorizontalOptions="End"
+                Pressed="Settings_Pressed"
+                Source="settings.png"
+                ZIndex="1">
                 <ImageButton.Shadow>
                     <Shadow
-                Brush="#121B3F"
-                Opacity="0.2"
-                Radius="25"
-                Offset="0,20" />
+                        Brush="#121B3F"
+                        Opacity="0.2"
+                        Radius="25"
+                        Offset="0,20" />
                 </ImageButton.Shadow>
             </ImageButton>
         </AbsoluteLayout>
 
 
 
-        <!-- No Internet Frame 
+        <!-- No Internet Frame
             <Frame x:Name="NoInternetFrame" Grid.Row="0" IsVisible="False">
                 <Label
                     FontFamily="Montserrat"
                     HorizontalOptions="Center"
                     Text="You have no internet connection"
                     VerticalOptions="Center" />
-            </Frame> 
+            </Frame>
         -->
- 
-        <!-- Chat Scroll View -->
-        <ScrollView x:Name="ChatScrollView" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
+
+        <!--  Chat Scroll View  -->
+        <ScrollView
+            x:Name="ChatScrollView"
+            Grid.Row="1"
+            Margin="0,0,0,0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
             <Grid x:Name="ChatLayout" Padding="0,0">
-                <!-- Chat content -->
+                <!--  Chat content  -->
             </Grid>
         </ScrollView>
 
-        <!-- Bottom INPUT and Button -->
-        <Grid Grid.Row="2" Padding="0,20,0,0" BackgroundColor="#5AFFFFFF">
-            <!--Should be 50% transparent -->
+        <!--  Bottom INPUT and Button  -->
+        <Grid
+            Grid.Row="2"
+            Padding="0,0,0,0"
+            BackgroundColor="#5AFFFFFF">
+            <!--  Should be 50% transparent  -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <!-- New Column for the + Button -->
+                <!--  New Column for the + Button  -->
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <!-- + Button -->
+            <!--  + Button  -->
             <Button
-        Grid.Column="0"
-        Text="+"
-        Margin="10,0,5,20"
-        VerticalOptions="Center"
-        HorizontalOptions="Center"
-        Clicked="OpenFileButton_Clicked"
-        BackgroundColor="Transparent" />
+                Grid.Column="0"
+                Margin="10,0,5,20"
+                BackgroundColor="Transparent"
+                Clicked="OpenFileButton_Clicked"
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="+"
+                VerticalOptions="Center" />
 
             <Frame
-        Grid.Column="1"
-        Margin="0,0,20,20"
-        Padding="0"
-        BackgroundColor="Transparent"
-        BorderColor="#F2CFE2"
-        CornerRadius="30"
-        HorizontalOptions="FillAndExpand">
+                Grid.Column="1"
+                Margin="0,0,20,20"
+                Padding="0"
+                BackgroundColor="Transparent"
+                BorderColor="#F2CFE2"
+                CornerRadius="30"
+                HorizontalOptions="FillAndExpand">
+
                 <Grid HorizontalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -95,33 +112,36 @@
                     </Grid.ColumnDefinitions>
 
                     <Entry
-                x:Name="UserInput"
-                Grid.Column="0"
-                BackgroundColor="Transparent"
-                Completed="UserInputBox_Completed"
-                FontFamily="Montserrat-Light"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="True"
-                Placeholder="¿Que quieres que haga?"
-                PlaceholderColor="#68667D"
-                TextColor="#121B3F">
+                        x:Name="UserInput"
+                        Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        Completed="UserInputBox_Completed"
+                        FontFamily="Montserrat-Light"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="True"
+                        Placeholder="¿Que quieres que haga?"
+                        PlaceholderColor="#68667D"
+                        TextColor="#121B3F">
                         <Entry.Shadow>
                             <Shadow
-                        Brush="#121B3F"
-                        Opacity="0.4"
-                        Radius="20"
-                        Offset="0,20" />
+                                Brush="#121B3F"
+                                Opacity="0.4"
+                                Radius="20"
+                                Offset="0,20" />
                         </Entry.Shadow>
                     </Entry>
 
-                    <ContentView Grid.Column="1" HeightRequest="50" WidthRequest="50">
+                    <ContentView
+                        Grid.Column="1"
+                        HeightRequest="50"
+                        WidthRequest="50">
                         <ImageButton
-                    Padding="15"
-                    BackgroundColor="Transparent"
-                    Clicked="UserInputBox_Completed"
-                    HorizontalOptions="End"
-                    Source="avioncito.png"
-                    VerticalOptions="Center" />
+                            Padding="15"
+                            BackgroundColor="Transparent"
+                            Clicked="UserInputBox_Completed"
+                            HorizontalOptions="End"
+                            Source="avioncito.png"
+                            VerticalOptions="Center" />
                     </ContentView>
                 </Grid>
             </Frame>
