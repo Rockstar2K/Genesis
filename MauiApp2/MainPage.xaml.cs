@@ -322,7 +322,7 @@ namespace MauiApp2
         }
 
         //INITIALIZES PYTHON
-
+        
         private async Task<string> RunPythonScriptAsync()
         {
             Debug.WriteLine($"RunPythonScriptAsync called with message: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
@@ -355,6 +355,7 @@ namespace MauiApp2
 
             return await ExecuteScriptAsync(pythonPath, scriptPath, userPrompt, apiKey, interpreter_model);
         }
+        
 
         //EXECUTES PYTHON
 
