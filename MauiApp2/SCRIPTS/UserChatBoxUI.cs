@@ -16,7 +16,7 @@ namespace MauiApp2.SCRIPTS
             {
                 BackgroundColor = Color.FromArgb("#F2CFE2"),
                 BorderColor = Color.FromArgb("#F2CFE2"),
-                Margin = new Thickness(relativeMargin, 20, 0, 20),  // left, top, right, bottom
+                Margin = new Thickness(relativeMargin, 20, 20, 20),  // left, top, right, bottom
 
                 // ... other styling ...
                 Content = new Label

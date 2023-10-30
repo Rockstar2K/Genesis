@@ -226,7 +226,7 @@ namespace MauiApp2
                 //Margin = new Thickness(0, 0, relativeMargin, 0),  // Use the responsive margin
                 BorderColor = Color.FromRgba(255, 255, 255, 0),
                 //VerticalOptions = LayoutOptions.FillAndExpand,  // Make it responsive
-                Margin = new Thickness(0, 0, relativeMargin, 0),  // Add 20 units of space at the bottom
+                Margin = new Thickness(20, 0, relativeMargin, 0),  // left, top, right, bottom
 
             };
 
@@ -340,7 +340,10 @@ namespace MauiApp2
             else if (System.OperatingSystem.IsWindows())
             {
                 //paths for Windows
-                projectDirectory = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2"; // Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                //projectDirectory = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2"; // Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                projectDirectory = projectDirectory.TrimEnd('\\');
+
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
                 pythonPath = "C:\\Program Files\\Python311\\python.exe";
             }
