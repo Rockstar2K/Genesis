@@ -25,7 +25,7 @@ namespace MauiApp2
 
             if (OperatingSystem.IsMacCatalyst())
             {
-                credentialsPath = "/Users/n/Desktop/AGI/MauiApp2/Resources/Credentials/high-invest-4da5afee15f3.json";  
+                credentialsPath = "/Users/n/Desktop/Genesis5/MauiApp2/Resources/Credentials/high-invest-4da5afee15f3.json";  
             }
             else if (System.OperatingSystem.IsWindows())
             {

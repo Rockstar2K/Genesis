@@ -333,7 +333,7 @@ namespace MauiApp2
 
             if (OperatingSystem.IsMacCatalyst())
             {
-                projectDirectory = "/Users/n/Desktop/AGI/MauiApp2/";
+                projectDirectory = "/Users/n/Desktop/Genesis5/MauiApp2";
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
                 pythonPath = "/Users/n/anaconda3/bin/python";
             }

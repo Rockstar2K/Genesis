@@ -32,20 +32,41 @@
                 TextColor="#B080B7"
                 Margin="40,0"/>
             <Label
-                Text="We're setting up everything"
+                x:Name="subHeader"
+                Text="We need to download a few more things"
                 Margin="40,10"
                 FontSize="30"
                 TextColor="#B080B7"
                 FontFamily="Montserrat-extralight"/>
             <Button
-                Text="Next Page"
-                MaximumWidthRequest="100"
+                x:Name="Download_Button"
+                Text="Download"
+                MinimumWidthRequest="150"
+                CornerRadius="20"
                 HorizontalOptions="Start"
                 Margin="40,20"
-                Clicked="Next_Page_Clicked"
+                Clicked="Download_Clicked"
                 BackgroundColor="#B080B7"/>
+            <ProgressBar
+                x:Name="progressBar"
+                Margin="40,20"
+                ProgressColor="#B080B7"
+                BackgroundColor="LightGray"
+                MaximumWidthRequest="600"
+                HorizontalOptions="Start"
+                IsVisible="false"/>
 
         </StackLayout>
+        <Button
+            x:Name="TermsAndConditions"
+            Text="By clicking download you are agreen to out Terms and Conditions"
+            FontSize="18"
+            FontFamily="Montserrat-Light"
+            BackgroundColor="Transparent"
+            TextColor="#B080B7"
+            AbsoluteLayout.LayoutBounds="0,1"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Margin="30,40"/>
     </AbsoluteLayout>
 
 </ContentPage>
