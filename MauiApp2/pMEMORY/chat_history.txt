@@ -5,7 +5,7 @@
     },
     {
         "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
+        "message": "Soy Lyris, una programadora experta en múltiples lenguajes de programación. Estoy aquí para ayudarte con cualquier tarea de codificación que necesites. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
@@ -13,7 +13,15 @@
     },
     {
         "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
+        "message": "Soy Lyris, una programadora experta en múltiples lenguajes de programación. Estoy aquí para ayudarte con cualquier tarea de codificación que necesites. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+        "role": "user",
+        "message": "who are you?"
+    },
+    {
+        "role": "assistant",
+        "message": "I am Lyris, a world-class programmer. I am capable of executing any coding task and running code on your local machine with full permissions. I have full control over your computer to perform tasks. How can I assist you today?"
     },
     {
         "role": "user",
@@ -21,7 +29,7 @@
     },
     {
         "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿Hay algo en específico en lo que te pueda ayudar hoy?"
+        "message": "Soy Lyris, una programadora experta en múltiples lenguajes de programación. Estoy aquí para ayudarte con cualquier tarea de codificación que necesites. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
@@ -29,222 +37,21 @@
     },
     {
         "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
+        "message": "Soy Lyris, una programadora experta en múltiples lenguajes de programación. Estoy aquí para ayudarte con cualquier tarea de codificación que necesites. ¿En qué puedo ayudarte hoy?"
     },
     {
         "role": "user",
-        "message": "quien eres?"
+        "message": "who are you?"
     },
     {
         "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
+        "message": "I am Lyris, a world-class programmer. I am capable of executing any coding task and running code on your local machine with full permissions. I have full control over your computer to perform tasks. How can I assist you today?"
     },
     {
         "role": "user",
-        "message": "quien eres?"
+        "message": "cual es mi IP?"
     },
     {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿Hay algo en específico en lo que te pueda ayudar hoy?"
-    },
-    {
-        "role": "user",
-        "message": "Hello"
-    },
-    {
-        "role": "assistant",
-        "message": "Hello! How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿Hay algo en específico en lo que te pueda ayudar hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿Hay algo en específico en lo que te pueda ayudar hoy?"
-    },
-    {
-        "role": "user",
-        "message": "Hello"
-    },
-    {
-        "role": "assistant",
-        "message": "Hello! How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿Hay algo en específico en lo que te pueda ayudar hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿Hay algo en específico en lo que te pueda ayudar hoy?"
-    },
-    {
-        "role": "user",
-        "message": "Hello"
-    },
-    {
-        "role": "assistant",
-        "message": "Hello! How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿Hay algo en específico en lo que te pueda ayudar hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola de nuevo! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿Hay algo en específico en lo que te pueda ayudar hoy?"
-    },
-    {
-        "role": "user",
-        "message": "Hello"
-    },
-    {
-        "role": "assistant",
-        "message": "Hello! How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "¡Hola! Soy Lyris, una programadora y estoy aquí para ayudarte en cualquier tarea relacionada con codificación que necesites. ¿En qué puedo ayudarte hoy?"
+        "role": "assistant"
     }
 ]

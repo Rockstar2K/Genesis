@@ -151,13 +151,13 @@ namespace MauiApp2
 
             var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
             ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
-
             UserChatBoxUI.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
-            AddInterpreterChatBoxToUI();
+
+             AddInterpreterChatBoxToUI(); //await for this and then call Execute?
         }
 
 
-        //FILE
+        //OPEN FILE
         private async void OpenFileButton_Clicked(object sender, EventArgs e)
         {
             var result = await FilePicker.PickAsync();
@@ -241,27 +241,18 @@ namespace MauiApp2
             Microsoft.Maui.Controls.Grid.SetRow(interpreterOutputFrame, gridLayout.RowDefinitions.Count - 1);
             Microsoft.Maui.Controls.Grid.SetColumn(interpreterOutputFrame, 0);
 
-            DependeciesForExecutePython dep = new DependeciesForExecutePython();
-            var (pythonPath, scriptPath) = await dep.findScriptsForPython();
-
-            await ExecuteScriptAsync(pythonPath, scriptPath);
-
-            //here await dep.findScriptsForPython(); returns pythonPath, scriptPath
+            await ExecuteScriptAsync();
 
 
+            Debug.WriteLine("End of Interpreter ChatBOX UI");
 
+            //interpreterOutputFrame.ForceLayout();
+            //ChatScrollView.ForceLayout();
 
-            this.Dispatcher.Dispatch(async () =>
-            {
-                Debug.WriteLine("End of Interpreter ChatBOX UI");
+            await Task.Delay(500);  // Optional: give it time to layout if needed
 
-                //interpreterOutputFrame.ForceLayout();
-                //ChatScrollView.ForceLayout();
-
-                await Task.Delay(500);  // Optional: give it time to layout if needed
-
-                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
-            });
+            await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+            
         }
 
         private Task AddInterpreterCodeBoxToInterpreterOutputFrame()
@@ -333,10 +324,14 @@ namespace MauiApp2
 
         static bool isGIFEnabled = false; // Inicializa la variable 
 
-        public async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath)
+        public async Task<string> ExecuteScriptAsync()
         {
 
-            //HERE THIS FUNCTION SHOULD CALL RUNPYTHONSCRIPT
+            DependeciesForExecutePython dep = new DependeciesForExecutePython();
+            var (pythonPath, scriptPath) = await dep.findScriptsForPython();
+
+            ProcessChunksAndJson processChunksAndJson = new ProcessChunksAndJson(); //initializes processChunksAndJson
+
 
             Debug.WriteLine($"ExecuteScriptAsync called with pythonPath: {pythonPath}, scriptPath: {scriptPath}, userPrompt: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
 
@@ -361,6 +356,7 @@ namespace MauiApp2
 
                 process.Start();
 
+
                 using (var reader = process.StandardOutput)
                 {
                     char[] buffer = new char[256];  // Adjust buffer size as needed
@@ -370,7 +366,14 @@ namespace MauiApp2
                     {
                         var interpreterChunk = new string(buffer, 0, charsRead);
                         //Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
-                        ProcessChunk(interpreterChunk);
+
+                        var validJson = processChunksAndJson.ProcessChunk(interpreterChunk);
+
+                        if (!string.IsNullOrEmpty(validJson))
+                        {
+                            UpdateInterpreterUI(validJson);
+                        }
+
                         outputBuilder.Append(interpreterChunk);
 
                         isGIFEnabled = true; // Establece la bandera para que no se llame nuevamente
@@ -399,72 +402,8 @@ namespace MauiApp2
             return outputBuilder.ToString();
         }
 
-        //UPDATES INTERPRETER UI
 
-        private StringBuilder jsonBuffer = new StringBuilder();
-
-        public void ProcessChunk(string chunk)
-        {
-            jsonBuffer.Append(chunk);
-            ExtractAndProcessJsonObjects();
-        }
-
-        private void ExtractAndProcessJsonObjects()
-        {
-            string bufferContent = jsonBuffer.ToString();
-            int lastObjectEndIndex = bufferContent.LastIndexOf('}');
-            if (lastObjectEndIndex < 0) return;  // No complete object found
-
-            string objectsString = bufferContent.Substring(0, lastObjectEndIndex + 1);
-            jsonBuffer = new StringBuilder(bufferContent.Substring(lastObjectEndIndex + 1));  // Keep remaining content
-
-            // Split based on '}' to get individual objects, then add '}' back to each object
-            string[] jsonObjects = objectsString.Split(new[] { '}' }, StringSplitOptions.RemoveEmptyEntries)
-                                                 .Select(objStr => objStr + "}").ToArray();
-            foreach (string jsonObject in jsonObjects)
-            {
-                try
-                {
-                    var validJson = MakeValidJson(jsonObject);
-                    UpdateInterpreterUI(validJson);
-                }
-                catch (JsonReaderException ex)
-                {
-                    Debug.WriteLine($"JSON parsing error: {ex.Message}");
-                    Debug.WriteLine($"Problematic JSON: {jsonObject}");
-                }
-            }
-            //Debug.WriteLine($"Remaining Buffer Content: {jsonBuffer}");  // Debug line
-        }
-
-        private string MakeValidJson(string jsonObject)
-        {
-            try
-            {
-                // Replace 'True' with 'true' 
-                jsonObject = jsonObject.Replace("'start_of_code': True", "'start_of_code': true");
-
-                jsonObject = jsonObject.Replace("'end_of_execution': True", "'end_of_execution': true");
-
-                jsonObject = jsonObject.Replace("'start_of_message': True", "'start_of_message': true");
-
-                jsonObject = jsonObject.Replace("'end_of_message': True", "'end_of_message': true");
-
-
-            }
-            catch (Newtonsoft.Json.JsonException ex)
-            {
-                Debug.WriteLine($"JSON parsing error: {ex.Message}");
-                Debug.WriteLine($"Problematic JSON: {jsonObject}");
-            }
-
-            // Debug.WriteLine("MakeValidJson: " + jsonObject);
-
-            return jsonObject;
-        }
-
-
-        private void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
+        public void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             Debug.WriteLine(jsonObject);
