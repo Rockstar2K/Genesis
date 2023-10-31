@@ -20,11 +20,11 @@ namespace MauiApp2
     public partial class MainPage : ContentPage
     {
 
-        string userPrompt;
+        static string userPrompt;
         public static string apiKey { get; set; } = Preferences.Get("api_key", "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");
         public bool is_night_mode_on { get; set; } = Preferences.Get("night_mode", false);
         public bool is_code_visible { get; set; } = Preferences.Get("see_code", false);
-        public string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
+        public static string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
 
         //memory
         public long memory_count { get; set; } = Preferences.Get("memory_character_count", (long)0);
@@ -241,9 +241,16 @@ namespace MauiApp2
             Microsoft.Maui.Controls.Grid.SetRow(interpreterOutputFrame, gridLayout.RowDefinitions.Count - 1);
             Microsoft.Maui.Controls.Grid.SetColumn(interpreterOutputFrame, 0);
 
-            await RunPythonScriptAsync();
+            DependeciesForExecutePython dep = new DependeciesForExecutePython();
+            var (pythonPath, scriptPath) = await dep.findScriptsForPython();
 
-            
+            await ExecuteScriptAsync(pythonPath, scriptPath);
+
+            //here await dep.findScriptsForPython(); returns pythonPath, scriptPath
+
+
+
+
             this.Dispatcher.Dispatch(async () =>
             {
                 Debug.WriteLine("End of Interpreter ChatBOX UI");
@@ -321,147 +328,12 @@ namespace MauiApp2
             }
         }
 
-        //INITIALIZES PYTHON
-        /*
-        private async Task<string> RunPythonScriptAsync()
-        {
-            Debug.WriteLine($"RunPythonScriptAsync called with message: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
-
-            string pythonPath;
-            string scriptPath;
-            string projectDirectory;
-
-            if (OperatingSystem.IsMacCatalyst())
-            {
-                projectDirectory = "/Users/n/Desktop/Genesis5/MauiApp2";
-                scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
-                pythonPath = "/Users/n/anaconda3/bin/python";
-            }
-            else if (System.OperatingSystem.IsWindows())
-            {
-                //paths for Windows
-                //projectDirectory = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2"; // Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                projectDirectory = projectDirectory.TrimEnd('\\');
-
-                scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
-                pythonPath = "C:\\Program Files\\Python311\\python.exe";
-            }
-            else
-            {
-                // Unsupported OS
-                return string.Empty;
-            }
-
-            return await ExecuteScriptAsync(pythonPath, scriptPath, userPrompt, apiKey, interpreter_model);
-        }
-        */
-
-        private async Task<string> RunPythonScriptAsync()
-        {
-            Debug.WriteLine($"RunPythonScriptAsync called with message: {userPrompt}, apiKey: {apiKey}");  // Monitoring line
-
-            string pythonPath = FindPythonPath();  // Call the function here
-            if (pythonPath == null)
-            {
-                // Handle the case where Python path couldn't be found
-                return "Python path not found";
-            }
-
-            string scriptPath;
-            string projectDirectory;
-
-            if (OperatingSystem.IsMacCatalyst())
-            {
-                projectDirectory = "/Users/n/Desktop/Genesis5/MauiApp2";
-                scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
-            }
-            else if (System.OperatingSystem.IsWindows())
-            {
-                //paths for Windows
-                projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                projectDirectory = projectDirectory.TrimEnd('\\');
-                scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
-            }
-            else
-            {
-                // Unsupported OS
-                return string.Empty;
-            }
-
-            return await ExecuteScriptAsync(pythonPath, scriptPath, userPrompt, apiKey, interpreter_model);
-        }
-
-
-        public static string FindPythonPath()
-        {
-
-            string[] possibleLocations = Array.Empty<string>(); // Initialize to empty array
-
-            if (OperatingSystem.IsWindows())
-            {
-
-                possibleLocations = new string[]
-                {
-                 "C:\\Python39\\",
-                 "C:\\Python38\\",
-                 "C:\\Python37\\",
-                 "C:\\Python36\\",
-                 "C:\\Program Files\\Python311\\",
-                 "C:\\Program Files\\Python39\\",
-                 "C:\\Program Files\\Python38\\",
-                 "C:\\Program Files\\Python37\\",
-                 "C:\\Program Files\\Python36\\",
-                 "C:\\Program Files (x86)\\Python39\\",
-                 "C:\\Program Files (x86)\\Python38\\",
-                 "C:\\Program Files (x86)\\Python37\\",
-                 "C:\\Program Files (x86)\\Python36\\",
-                 "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Programs\\Python\\Python39\\",
-                 "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Programs\\Python\\Python38\\",
-                 "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Programs\\Python\\Python37\\",
-                 "C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Programs\\Python\\Python36\\"
-                };
-
-                foreach (var location in possibleLocations)
-                {
-                    string path = Path.Combine(location, "python.exe");
-                    if (File.Exists(path))
-                    {
-                        return path;
-                    }
-                }
-            }
-            else if (OperatingSystem.IsMacCatalyst())
-            {
-                possibleLocations = new string[]
-                {
-                  "/usr/local/bin/",
-                  "/usr/bin/",
-                  "/Users/n/anaconda3/bin/",
-                  "/Users/" + Environment.UserName + "/anaconda3/bin/",                
-                };
-
-                foreach (var location in possibleLocations)
-                {
-                    string path = Path.Combine(location, "python");
-                    if (File.Exists(path))
-                    {
-                        return path;
-                    }
-                }
-
-            }
-
-            
-            return null;
-        }
-
-
+        
         //EXECUTES PYTHON
 
-        bool isGIFEnabled = false; // Inicializa la variable 
+        static bool isGIFEnabled = false; // Inicializa la variable 
 
-        private async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath, string userPrompt, string apiKey, string interpreter_model)
+        public async Task<string> ExecuteScriptAsync(string pythonPath, string scriptPath)
         {
 
             //HERE THIS FUNCTION SHOULD CALL RUNPYTHONSCRIPT
@@ -477,7 +349,7 @@ namespace MauiApp2
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = $"{pythonPath}",
-                        Arguments = $"\"{scriptPath}\" \"{userPrompt}\" \"{apiKey}\" \"{interpreter_model}\"",
+                        Arguments = $"\"{scriptPath}\" \"{MainPage.userPrompt}\" \"{apiKey}\" \"{interpreter_model}\"",
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         UseShellExecute = false,
@@ -531,7 +403,7 @@ namespace MauiApp2
 
         private StringBuilder jsonBuffer = new StringBuilder();
 
-        private void ProcessChunk(string chunk)
+        public void ProcessChunk(string chunk)
         {
             jsonBuffer.Append(chunk);
             ExtractAndProcessJsonObjects();
