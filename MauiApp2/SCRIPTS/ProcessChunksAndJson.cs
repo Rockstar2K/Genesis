@@ -73,14 +73,14 @@ namespace MauiApp2.SCRIPTS
 
         private string MakeValidJson(string jsonObject)
         {
-            Debug.WriteLine($"Making JSON valid for: {jsonObject}");
+            //Debug.WriteLine($"Making JSON valid for: {jsonObject}");
 
             string validJson = jsonObject.Replace("'start_of_code': True", "'start_of_code': true")
                                          .Replace("'end_of_execution': True", "'end_of_execution': true")
                                          .Replace("'start_of_message': True", "'start_of_message': true")
                                          .Replace("'end_of_message': True", "'end_of_message': true");
 
-            Debug.WriteLine($"Valid JSON made: {validJson}");
+            //Debug.WriteLine($"Valid JSON made: {validJson}");
             return validJson;
         }
     }
