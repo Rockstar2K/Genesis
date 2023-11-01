@@ -10,64 +10,79 @@ namespace MauiApp2.SCRIPTS
 {
     public class ProcessChunksAndJson
     {
-        private StringBuilder jsonBuffer = new StringBuilder();
-
-        public string ProcessChunk(string chunk)
+        private readonly StringBuilder jsonBuffer = new StringBuilder();
+        
+        public List<string> ProcessChunk(string chunk)  // Changed return type to List<string>
         {
-            jsonBuffer.Append(chunk);
-            var validJson = ExtractAndProcessJsonObjects();
+            // Separate lines
+            var lines = chunk.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
-            return validJson;
-        }
-
-        private string ExtractAndProcessJsonObjects()
-        {
-            string bufferContent = jsonBuffer.ToString();
-            int lastObjectEndIndex = bufferContent.LastIndexOf('}');
-            if (lastObjectEndIndex < 0)
+            // Append only lines that are potential JSON objects (starts with '{' and ends with '}')
+            foreach (var line in lines)
             {
-                return string.Empty;  // Return empty string if no valid JSON found
+                if (line.Trim().StartsWith("{") && line.Trim().EndsWith("}"))
+                {
+                    //Debug.WriteLine($"Appending chunk: {line}"); // Debug line
+                    jsonBuffer.Append(line);
+                }
+                else
+                {
+                    Debug.WriteLine($"Ignoring non-JSON content: {line}"); // Debug line
+                }
             }
 
-            string objectsString = bufferContent.Substring(0, lastObjectEndIndex + 1);
-            jsonBuffer = new StringBuilder(bufferContent.Substring(lastObjectEndIndex + 1));
+            return ExtractAndProcessJsonObjects();
+        }
 
-            string[] jsonObjects = objectsString.Split(new[] { '}' }, StringSplitOptions.RemoveEmptyEntries)
-                                               .Select(objStr => objStr + "}").ToArray();
-            foreach (string jsonObject in jsonObjects)
+
+
+        private List<string> ExtractAndProcessJsonObjects()
+        {
+            string bufferContent = jsonBuffer.ToString();
+            //Debug.WriteLine($"Buffer content: {bufferContent}");
+
+            List<string> validJsons = new List<string>();
+
+            // Changed this part to search from the start
+            int nextObjectEndIndex = bufferContent.IndexOf('}');
+            while (nextObjectEndIndex >= 0)
             {
+                string singleJsonObject = bufferContent.Substring(0, nextObjectEndIndex + 1);
+                bufferContent = bufferContent.Substring(nextObjectEndIndex + 1);
+
                 try
                 {
-                    var validJson = MakeValidJson(jsonObject);
-                    return validJson;
+                    string validJson = MakeValidJson(singleJsonObject);
+                    validJsons.Add(validJson);
                 }
                 catch (JsonReaderException ex)
                 {
                     Debug.WriteLine($"JSON parsing error: {ex.Message}");
-                    Debug.WriteLine($"Problematic JSON: {jsonObject}");
+                    Debug.WriteLine($"Problematic JSON: {singleJsonObject}");
                 }
-            }
-            return string.Empty;  // Return empty string if loop ends without returning
-        }
 
+                nextObjectEndIndex = bufferContent.IndexOf('}');
+            }
+
+            jsonBuffer.Clear();
+            jsonBuffer.Append(bufferContent);
+
+            //Debug.WriteLine($"Total JSON objects extracted: {validJsons.Count}");
+            return validJsons.Count > 0 ? validJsons : null;
+        }
 
         private string MakeValidJson(string jsonObject)
         {
-            try
-            {
-                jsonObject = jsonObject.Replace("'start_of_code': True", "'start_of_code': true")
-                                       .Replace("'end_of_execution': True", "'end_of_execution': true")
-                                       .Replace("'start_of_message': True", "'start_of_message': true")
-                                       .Replace("'end_of_message': True", "'end_of_message': true");
-            }
-            catch (JsonException ex)
-            {
-                Debug.WriteLine($"JSON parsing error: {ex.Message}");
-                Debug.WriteLine($"Problematic JSON: {jsonObject}");
-            }
-            return jsonObject;
-        }
+            Debug.WriteLine($"Making JSON valid for: {jsonObject}");
 
+            string validJson = jsonObject.Replace("'start_of_code': True", "'start_of_code': true")
+                                         .Replace("'end_of_execution': True", "'end_of_execution': true")
+                                         .Replace("'start_of_message': True", "'start_of_message': true")
+                                         .Replace("'end_of_message': True", "'end_of_message': true");
+
+            Debug.WriteLine($"Valid JSON made: {validJson}");
+            return validJson;
+        }
     }
 }
 

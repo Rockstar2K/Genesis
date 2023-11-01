@@ -344,7 +344,7 @@ namespace MauiApp2
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = $"{pythonPath}",
-                        Arguments = $"\"{scriptPath}\" \"{MainPage.userPrompt}\" \"{apiKey}\" \"{interpreter_model}\"",
+                        Arguments = $"\"{scriptPath}\" \"{userPrompt}\" \"{apiKey}\" \"{interpreter_model}\"",
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         UseShellExecute = false,
@@ -357,6 +357,7 @@ namespace MauiApp2
                 process.Start();
 
 
+
                 using (var reader = process.StandardOutput)
                 {
                     char[] buffer = new char[256];  // Adjust buffer size as needed
@@ -365,27 +366,34 @@ namespace MauiApp2
                     while ((charsRead = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
                         var interpreterChunk = new string(buffer, 0, charsRead);
-                        //Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
+                        Debug.WriteLine($"The model returned: {interpreterChunk}");  // Monitoring line
 
-                        var validJson = processChunksAndJson.ProcessChunk(interpreterChunk);
+                        var validJsonList = processChunksAndJson.ProcessChunk(interpreterChunk);
 
-                        if (!string.IsNullOrEmpty(validJson))
+                        Debug.WriteLine($"validJsonList: {validJsonList}");  // Monitoring line
+
+
+                        if (validJsonList != null && validJsonList.Count > 0)
                         {
-                            UpdateInterpreterUI(validJson);
+                            foreach (var validJson in validJsonList)
+                            {
+                                Debug.WriteLine("validJson inside for each: " + validJson);
+                                UpdateInterpreterUI(validJson);
+                            }
                         }
 
                         outputBuilder.Append(interpreterChunk);
 
-                        isGIFEnabled = true; // Establece la bandera para que no se llame nuevamente
-
+                        isGIFEnabled = true; // Establece la bandera para que no se llame nuevamente may be in message first update
                     }
+
 
                     isGIFEnabled = false;
                 }
 
 
                 string error = await process.StandardError.ReadToEndAsync();
-                process.WaitForExit();
+                await process.WaitForExitAsync(); // non-blocking wait
 
                 if (!string.IsNullOrEmpty(error))
                 {
@@ -393,9 +401,9 @@ namespace MauiApp2
                 }
             });
 
-            string IConcatenatedChunks = outputBuilder.ToString();
+            //string IConcatenatedChunks = outputBuilder.ToString();
             //Debug.WriteLine($"Concatenated Chunks: {IConcatenatedChunks}");  // Debug line
-            var decodedJson = JsonDecoder.DecodeConcatenatedJSON(IConcatenatedChunks);  // DECODES ENTIRE INTERPRETER MESSAGE
+            //var decodedJson = JsonDecoder.DecodeConcatenatedJSON(IConcatenatedChunks);  // DECODES ENTIRE INTERPRETER MESSAGE
 
             //PlayAudioFromText(decodedJson);
 
@@ -456,6 +464,7 @@ namespace MauiApp2
                     
                     if (code != null)
                     {
+
                         if (isCodeFirstUpdate)
                         {
                             codeLabel.Text = code;  // Set the text to the first message received
@@ -561,6 +570,7 @@ namespace MauiApp2
                     if (output != null)
                     {
                         //write the output in the code box?
+                        //TTS
                     }
 
 

@@ -66,7 +66,8 @@ def load_chat_history(filename='chat_history.txt'):
     except FileNotFoundError:
         pass  # It's okay if the file does not exist
     except json.JSONDecodeError:
-        print(f"Error: Could not decode JSON from {filename}")
+         '''pass'''
+         print("PYTHON JSON ERROR")
     
     return messages  
 

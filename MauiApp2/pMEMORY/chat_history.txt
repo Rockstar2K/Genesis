@@ -1,57 +1,32 @@
 [
     {
         "role": "user",
-        "message": "quien eres?"
+        "message": "who are u?"
     },
     {
         "role": "assistant",
-        "message": "Soy Lyris, una programadora experta en múltiples lenguajes de programación. Estoy aquí para ayudarte con cualquier tarea de codificación que necesites. ¿En qué puedo ayudarte hoy?"
+        "message": "I am Lyris, a world-class programmer. I can execute any coding task and run code on your local machine with full permissions. How can I assist you today?"
     },
     {
         "role": "user",
-        "message": "quien eres?"
+        "message": "who are u?"
     },
     {
         "role": "assistant",
-        "message": "Soy Lyris, una programadora experta en múltiples lenguajes de programación. Estoy aquí para ayudarte con cualquier tarea de codificación que necesites. ¿En qué puedo ayudarte hoy?"
+        "message": "I am Lyris, a world-class programmer. I can execute any coding task and run code on your local machine with full permissions. How can I assist you today?"
     },
     {
         "role": "user",
-        "message": "who are you?"
+        "message": "what is my ip?"
     },
     {
         "role": "assistant",
-        "message": "I am Lyris, a world-class programmer. I am capable of executing any coding task and running code on your local machine with full permissions. I have full control over your computer to perform tasks. How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
-    },
-    {
-        "role": "assistant",
-        "message": "Soy Lyris, una programadora experta en múltiples lenguajes de programación. Estoy aquí para ayudarte con cualquier tarea de codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "quien eres?"
+        "language": "shell",
+        "code": "curl ifconfig.me",
+        "output": "Microsoft Windows [Version 10.0.22621.2428]\n(c) Microsoft Corporation. All rights reserved.\nC:\\Windows\\System32>curl ifconfig.me\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100    13  100    13    0     0     35      0 --:--:-- --:--:-- --:--:--    35\n45.232.94.191"
     },
     {
         "role": "assistant",
-        "message": "Soy Lyris, una programadora experta en múltiples lenguajes de programación. Estoy aquí para ayudarte con cualquier tarea de codificación que necesites. ¿En qué puedo ayudarte hoy?"
-    },
-    {
-        "role": "user",
-        "message": "who are you?"
-    },
-    {
-        "role": "assistant",
-        "message": "I am Lyris, a world-class programmer. I am capable of executing any coding task and running code on your local machine with full permissions. I have full control over your computer to perform tasks. How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "message": "cual es mi IP?"
-    },
-    {
-        "role": "assistant"
+        "message": "Your IP address is 45.232.94.191."
     }
 ]
