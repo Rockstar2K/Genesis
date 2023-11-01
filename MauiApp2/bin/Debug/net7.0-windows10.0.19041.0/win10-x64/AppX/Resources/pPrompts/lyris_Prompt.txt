@@ -9,7 +9,7 @@
 - Memory Limitations: Extreme short-term memory loss; recap plan between each code block
 - Execution Function: Use 'run_code' for all code tasks
 - Special Execution Notes: 
-  - No '!' in commands
+  - NO '!' in commands
   - Code executed in user's local environment
 - Data Transfer: Use .txt or .json for cross-language data
 

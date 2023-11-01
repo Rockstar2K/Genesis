@@ -322,8 +322,6 @@ namespace MauiApp2
         
         //EXECUTES PYTHON
 
-        static bool isGIFEnabled = false; // Inicializa la variable 
-
         public async Task<string> ExecuteScriptAsync()
         {
 
@@ -384,11 +382,8 @@ namespace MauiApp2
 
                         outputBuilder.Append(interpreterChunk);
 
-                        isGIFEnabled = true; // Establece la bandera para que no se llame nuevamente may be in message first update
                     }
 
-
-                    isGIFEnabled = false;
                 }
 
 
@@ -418,15 +413,7 @@ namespace MauiApp2
 
             this.Dispatcher.Dispatch(async () =>
             {
-
-                if (isGIFEnabled)
-                {
-                    //loadingGif.IsVisible = false;
-                    resultLabel.IsVisible = true;  // Show the label
-                    animatedGif.IsVisible = false;
-                }
-
-
+                
                 if (string.IsNullOrEmpty(jsonObject))
                 {
                     Debug.WriteLine("Text is null or empty updateUI");
@@ -514,6 +501,8 @@ namespace MauiApp2
                     {
                         if (isFirstUpdate)
                         {
+                            
+
                             resultLabel.Text = message;  // Set the text to the first message received
                             isFirstUpdate = false;
                         }
@@ -537,15 +526,10 @@ namespace MauiApp2
 
                     if (start_of_message == true)
                     {
-                        /*
-                         lastLabel = new Label
-                         {
-                              Text = "",
-                              TextColor = Color.FromArgb("#fff"),
-                              FontFamily = "Montserrat-Light",
-                              IsVisible = false
-                         };
-                        */
+                        
+                        resultLabel.IsVisible = true;  // Show the label
+                        animatedGif.IsVisible = false; //hide the GIF
+
 
                     }
                     
