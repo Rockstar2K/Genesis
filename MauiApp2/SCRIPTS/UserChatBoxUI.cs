@@ -42,7 +42,7 @@ namespace MauiApp2.SCRIPTS
             };
 
             
-            await Task.Delay(1000);
+            await Task.Delay(0);
             chatScrollView.ScrollToAsync(0, gridLayout.Height, true);
 
         }
