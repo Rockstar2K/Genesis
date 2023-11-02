@@ -94,6 +94,7 @@ def OI_Python2(message, api_key=None, interpreter_model=None):
         save_chat_history(interpreter.messages)
         
     except Exception as e:
+         print(f"Error: {e}\n{traceback.format_exc()}")
          return f"Error: {e}\n{traceback.format_exc()}"
     
 #...

@@ -1,5 +1,6 @@
 ﻿using MauiApp2.CustomControls;
 using MauiApp2.SCRIPTS;
+using Microsoft.Maui;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
@@ -21,24 +22,15 @@ namespace MauiApp2
         //memory
         public long memory_count { get; set; } = Preferences.Get("memory_character_count", (long)0);
 
-
-        AnimatedGif animatedGif;
-
         public bool is_executing_code = false;
 
         //interpreter Chatbox
-        Frame interpreterOutputFrame;
         private bool isFirstUpdate = true;
-        Label resultLabel;
 
 
         //CODE
         bool isCodeFirstUpdate = true;
-        Frame interpreterCodeFrame;
-        Label codeLabel;
         Label currentCodeLabel = null;
-
-
 
         private GoogleTTSPlayer ttsPlayer = new GoogleTTSPlayer();  // Initializing TTS
 
@@ -113,6 +105,7 @@ namespace MauiApp2
 
                         Debug.WriteLine("Memory count LESS than MaxCharachters");
 
+                        await TrimMemoryCS.TrimMemoryFile();
                         AddChatBoxes();
                         //await Task.Delay(10000);
                         //await TrimMemoryCS.TrimMemoryFile();
@@ -146,7 +139,7 @@ namespace MauiApp2
 
                 var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
                 ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
-                UserChatBoxUI.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
+                await UserChatBoxUI.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
 
                 await AddInterpreterChatBoxToUI(); //await for this and then call Execute?
                 await ExecuteScriptAsync();
@@ -174,6 +167,9 @@ namespace MauiApp2
                 var addfilePath = result.FullPath;
                 Debug.WriteLine("add File Path: " + addfilePath);
                 // Store filePath in a variable or use as needed
+
+
+                //Add UI to user input
             }
         }
 
@@ -181,8 +177,11 @@ namespace MauiApp2
         public class ChatBubble
         {
             public AnimatedGif AnimatedGif { get; set; }
-            public Frame InterpreterOutputFrame { get; set; }
+            public Frame InterpreterFrame { get; set; }
+
             public Label ResultLabel { get; set; }
+            public Label OutputLabel { get; set; }
+
             public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
 
         }
@@ -198,8 +197,6 @@ namespace MauiApp2
 
             var chatBubble = new ChatBubble();
             currentChatBubble = chatBubble; 
-
-
 
             var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
 
@@ -232,7 +229,7 @@ namespace MauiApp2
             chatBubble.AnimatedGif.WidthRequest = 80;
             chatBubble.AnimatedGif.HeightRequest = 80;
 
-            chatBubble.InterpreterOutputFrame = new Frame
+            chatBubble.InterpreterFrame = new Frame
             {
                 //HorizontalOptions = LayoutOptions.FillAndExpand,  
                 HasShadow = true,
@@ -244,30 +241,29 @@ namespace MauiApp2
 
             };
 
-            chatBubble.InterpreterOutputFrame.Content = new Microsoft.Maui.Controls.StackLayout
+            chatBubble.InterpreterFrame.Content = new Microsoft.Maui.Controls.StackLayout
             {
                 Children = { chatBubble.AnimatedGif, chatBubble.ResultLabel }
             };
 
             // Add the new Frame to the Grid
 
-            gridLayout.Children.Add(chatBubble.InterpreterOutputFrame);
-            Microsoft.Maui.Controls.Grid.SetRow(chatBubble.InterpreterOutputFrame, gridLayout.RowDefinitions.Count - 1);
-            Microsoft.Maui.Controls.Grid.SetColumn(chatBubble.InterpreterOutputFrame, 0);
+            this.Dispatcher.Dispatch(async () => //this code seems to work right only in the dispatcher
+            {
+                gridLayout.Children.Add(chatBubble.InterpreterFrame);
+                Microsoft.Maui.Controls.Grid.SetRow(chatBubble.InterpreterFrame, gridLayout.RowDefinitions.Count - 1);
+                Microsoft.Maui.Controls.Grid.SetColumn(chatBubble.InterpreterFrame, 0);
 
-
-
-            await Task.Delay(500);
-
-            //ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
-            //return Task.CompletedTask; // Indicate that the Task is complete
+                //await Task.Delay(100);
+                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true); //i dont know why awaiting this doesnt returns (outside the dispatcher)
+            });
 
         }
 
-        private Task addLabelToInterpreterChatBoxUI(ChatBubble chatBubble)
+        private Task AddLabelToInterpreterOutputFrame(ChatBubble chatBubble)
         {
 
-            Debug.WriteLine("addLabelToInterpreterChatBoxUI");
+            Debug.WriteLine("AddLabelToInterpreterOutputFrame");
 
             chatBubble.ResultLabel = new Label
             {
@@ -275,23 +271,55 @@ namespace MauiApp2
                 TextColor = Color.FromArgb("#fff"),
                 FontSize = 14,
                 FontFamily = "Montserrat-Light", //CONSOLAS TIPOGRAPHY
-                IsVisible = false
+                IsVisible = false,
+                //HorizontalOptions = LayoutOptions.FillAndExpand,  // Make sure the label expands horizontally
+
             };
 
             chatBubble.AnimatedGif.IsVisible = false;
             chatBubble.ResultLabel.IsVisible = true;
 
-            var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)chatBubble.InterpreterOutputFrame.Content;
-            interpreterOutput.Children.Add(chatBubble.ResultLabel);
+            this.Dispatcher.Dispatch(async () => //this code seems to work right only in the dispatcher
+            {
+                var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)chatBubble.InterpreterFrame.Content;
+                interpreterOutput.Children.Add(chatBubble.ResultLabel);
+            });
+
+            return Task.CompletedTask; // Indicate that the Task is complete
+
+        }
+        
+        private bool isOutputFirstUpdate = true;
+        /*
+
+        private Task AddOutputToInterpreterOutputFrame(ChatBubble chatBubble)
+        {
+
+            Debug.WriteLine("AddOutputToInterpreterOutputFrame");
+
+            chatBubble.OutputLabel = new Label
+            {
+                Text = "",
+                TextColor = Color.FromArgb("#F2CFE2"),
+                FontSize = 14,
+                FontFamily = "Montserrat-Light", //CONSOLAS TIPOGRAPHY
+                IsVisible = false
+            };
+
+            chatBubble.AnimatedGif.IsVisible = false;
+            chatBubble.OutputLabel.IsVisible = true;
+
+            var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)chatBubble.InterpreterFrame.Content;
+            interpreterOutput.Children.Add(chatBubble.OutputLabel);
 
 
             return Task.CompletedTask; // Indicate that the Task is complete
 
-
-
         }
+        */
 
 
+        private Frame currentCodeFrame;
 
         private Label AddInterpreterCodeBoxToInterpreterOutputFrame(ChatBubble chatBubble)
         {
@@ -319,6 +347,9 @@ namespace MauiApp2
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
 
+            currentCodeFrame = interpreterCodeFrame;
+
+
             // Label Configuration
             Label codeLabel = new Label
             {
@@ -335,8 +366,17 @@ namespace MauiApp2
             };
 
             // Adding Frame to ChatBubble
-            var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)chatBubble.InterpreterOutputFrame.Content;
+            var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)chatBubble.InterpreterFrame.Content;
             interpreterOutput.Children.Add(interpreterCodeFrame);
+
+            var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
+
+            this.Dispatcher.Dispatch(async () => //this code seems to work right only in the dispatcher
+            {
+
+                //await Task.Delay(100);
+                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true); //i dont know why awaiting this doesnt returns (outside the dispatcher)
+            });
 
             return codeLabel;
         }
@@ -461,13 +501,16 @@ namespace MauiApp2
                     var end_of_message = json["end_of_message"]?.ToObject<bool>();
 
                     //code
-                    var end_of_execution = json["end_of_execution"]?.ToObject<bool>();
                     var start_of_code = json["start_of_code"]?.ToObject<bool>();
+                    var code = json["code"]?.ToString();
+                    var end_of_code = json["start_of_code"]?.ToObject<bool>();
 
                     var language = json["language"]?.ToString();
-                    var code = json["code"]?.ToString();
-                    var executing = json["executing"];
                     var active_line = json["active_line"];
+
+                    //Execution
+                    var end_of_execution = json["end_of_execution"]?.ToObject<bool>();
+                    var executing = json["executing"];
                     var output = json["output"]?.ToString();
 
 
@@ -479,7 +522,9 @@ namespace MauiApp2
                         currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentChatBubble);
                         isCodeFirstUpdate = true;
 
-                    }   
+                        isOutputFirstUpdate = true; //lets see
+
+                    }
 
                     if (code != null)
                     {
@@ -494,6 +539,8 @@ namespace MauiApp2
                             ChatScrollView.ForceLayout();
                             //interpreterOutputFrame.ForceLayout();
                             //interpreterCodeFrame.ForceLayout();
+                            currentCodeFrame.ForceLayout();
+
 
                         }
                         else
@@ -511,27 +558,38 @@ namespace MauiApp2
                             ChatScrollView.ForceLayout();
                             //interpreterOutputFrame.ForceLayout();
                             //interpreterCodeFrame.ForceLayout();
+                            currentCodeFrame.ForceLayout();
+
 
                         }
                     }
 
 
                     // end code
-                    if (end_of_execution == true)
+                    if (end_of_code == true)
                     {
 
-                        Debug.WriteLine("End of execution FORCE UI");
+                        Debug.WriteLine("End of code FORCE UI");
+
+                        currentChatBubble.InterpreterFrame.ForceLayout();
+                        currentCodeFrame.ForceLayout();
 
                         ChatScrollView.ForceLayout();
                         //interpreterOutputFrame.ForceLayout();
-                        //interpreterCodeFrame.ForceLayout();
+                        currentCodeFrame.ForceLayout();
 
                     }
 
                     if (start_of_message == true)
                     {
 
-                        await addLabelToInterpreterChatBoxUI(currentChatBubble);
+                        await AddLabelToInterpreterOutputFrame(currentChatBubble);
+
+                        //  isFirstUpdate = false; ??
+
+                        isOutputFirstUpdate = true;
+
+
 
                     }
 
@@ -551,10 +609,9 @@ namespace MauiApp2
                         {
                             Debug.WriteLine("MESSAGE CONTAINS /N");
 
+                            currentChatBubble.InterpreterFrame.ForceLayout();
                             ChatScrollView.ForceLayout();
-                            //interpreterOutputFrame.ForceLayout();
 
-                            // await Task.Delay(500);  // Optional: give it time to layout if needed
                             var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
                             await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
                         }
@@ -566,10 +623,9 @@ namespace MauiApp2
 
                          Debug.WriteLine("ens of message FORCE UI");
 
-                         ChatScrollView.ForceLayout();
-                         //interpreterOutputFrame.ForceLayout();
+                        currentChatBubble.InterpreterFrame.ForceLayout();
+                        ChatScrollView.ForceLayout();
 
-                         // await Task.Delay(500);  // Optional: give it time to layout if needed
                          var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
                          await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
                         
@@ -579,8 +635,20 @@ namespace MauiApp2
 
                     if (output != null)
                     {
-                        //write the output in the code box?
-                        //TTS
+                        /*
+                        if(isOutputFirstUpdate)
+                        {
+                            await AddOutputToInterpreterOutputFrame(currentChatBubble);
+                            currentChatBubble.OutputLabel.Text = output;
+                            isOutputFirstUpdate = false;
+                        }
+                        else
+                        {
+                            currentChatBubble.OutputLabel.Text += output;
+
+                        }
+                        */
+
                     }
 
 

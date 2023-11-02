@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Controls;
+﻿using Google.Api;
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 using System;
 
@@ -6,7 +7,7 @@ namespace MauiApp2.SCRIPTS
 {
     public static class UserChatBoxUI
     {
-        public static void AddUserChatBoxToUI(Grid gridLayout, ScrollView chatScrollView, string userPrompt)
+        public static async Task AddUserChatBoxToUI(Grid gridLayout, ScrollView chatScrollView, string userPrompt)
         {
 
             var screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
@@ -40,19 +41,9 @@ namespace MauiApp2.SCRIPTS
                 Opacity = 0.6f
             };
 
-            Task.Delay(1000);
-            chatScrollView.ScrollToAsync(0, gridLayout.Height, true);
-
-            /*
-            this.Dispatcher.Dispatch(async () =>
-            {
-                Task.Delay(500);
-                await chatScrollView.ScrollToAsync(0, gridLayout.Height, true);
-
-
-            });
-            */
             
+            await Task.Delay(1000);
+            chatScrollView.ScrollToAsync(0, gridLayout.Height, true);
 
         }
 

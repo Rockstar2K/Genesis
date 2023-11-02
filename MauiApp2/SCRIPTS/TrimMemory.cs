@@ -16,7 +16,7 @@ namespace MauiApp2
         {
             Debug.WriteLine("TrimMemoryFile");
 
-            string FilePath = ""; 
+            string FilePath = "";
 
             if (OperatingSystem.IsWindows())
             {
@@ -24,60 +24,65 @@ namespace MauiApp2
             }
             long character_count;
 
-            do
+            string fileContent = await File.ReadAllTextAsync(FilePath);
+            character_count = fileContent.Length;
+
+            Preferences.Set("memory_character_count", character_count);
+
+            Debug.WriteLine("Trim Memory count: " + character_count);
+
+            while (character_count >= MaxCharacters)
             {
-                string fileContent = await File.ReadAllTextAsync(FilePath);
-                character_count = fileContent.Length;
-
-                Preferences.Set("memory_character_count", character_count);
-
-                Debug.WriteLine("Trim Memory count: " + character_count);
-
-                if (character_count >= MaxCharacters)
+                List<Entry> entries;
+                try
                 {
-                    List<Entry> entries;
+                    entries = JsonConvert.DeserializeObject<List<Entry>>(fileContent);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error deserializing: " + ex.Message);
+                    return;
+                }
+
+                if (entries != null && entries.Count > 0)
+                {
+                    entries.RemoveAt(0); // Remove the oldest entry
+
+                    string updatedContent;
                     try
                     {
-                        entries = JsonConvert.DeserializeObject<List<Entry>>(fileContent);
+                        JsonSerializerSettings settings = new JsonSerializerSettings
+                        {
+                            Formatting = Formatting.Indented, // Make JSON output indented
+                            NullValueHandling = NullValueHandling.Ignore  // Ignore null values
+                        };
+                        updatedContent = JsonConvert.SerializeObject(entries, settings);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Error deserializing: " + ex.Message);
+                        Console.WriteLine("Error serializing: " + ex.Message);
                         return;
                     }
 
-                    if (entries != null && entries.Count > 0)
-                    {
-                        entries.RemoveAt(0); // Remove the oldest entry
+                    await File.WriteAllTextAsync(FilePath, updatedContent);
 
-                        string updatedContent;
-                        try
-                        {
-                            JsonSerializerSettings settings = new JsonSerializerSettings
-                            {
-                                Formatting = Formatting.Indented, // Make JSON output indented
-                                NullValueHandling = NullValueHandling.Ignore  // Ignore null values
-                            };
-                            updatedContent = JsonConvert.SerializeObject(entries, settings);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Error serializing: " + ex.Message);
-                            return;
-                        }
+                    fileContent = await File.ReadAllTextAsync(FilePath);
+                    character_count = fileContent.Length;
 
-                        await File.WriteAllTextAsync(FilePath, updatedContent);
-                    }
-                    else
-                    {
-                        Console.WriteLine("No more entries to remove.");
-                        return;
-                    }
+                    Preferences.Set("memory_character_count", character_count);
+
+                    Debug.WriteLine("Trim Memory count: " + character_count);
                 }
-            } while (character_count >= MaxCharacters);
+                else
+                {
+                    Console.WriteLine("No more entries to remove.");
+                    break;
+                }
+            }
 
-            Console.WriteLine("Old entries have been removed and the file has been updated.");
+            Debug.WriteLine("Old entries have been removed and the file has been updated.");
         }
+
 
 
         public class Entry
