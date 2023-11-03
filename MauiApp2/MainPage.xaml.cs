@@ -105,7 +105,7 @@ namespace MauiApp2
 
                         Debug.WriteLine("Memory count LESS than MaxCharachters");
 
-                        //await TrimMemoryCS.TrimMemoryFile();
+                        await TrimMemoryCS.TrimMemoryFile();
                         AddChatBoxes();
                         //await Task.Delay(10000);
                         //await TrimMemoryCS.TrimMemoryFile();

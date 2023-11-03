@@ -22,6 +22,10 @@ namespace MauiApp2
             {
                 FilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\pMEMORY\\chat_history.txt";
             }
+            if (OperatingSystem.IsMacCatalyst())
+            {
+                FilePath = "/Users/n/Desktop/Genesis5/MauiApp2/pMEMORY/chat_history.txt";
+            }
             long character_count;
 
             string fileContent = await File.ReadAllTextAsync(FilePath);
