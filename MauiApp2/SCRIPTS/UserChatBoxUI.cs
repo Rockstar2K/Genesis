@@ -46,7 +46,7 @@ namespace MauiApp2.SCRIPTS
 
             if (OperatingSystem.IsWindows())
             {
-                await chatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+                chatScrollView.ScrollToAsync(0, gridLayout.Height, true);
 
             }
 
