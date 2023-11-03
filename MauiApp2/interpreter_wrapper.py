@@ -65,15 +65,15 @@ def load_chat_history(filename='chat_history.txt'):
             messages = json.load(file)
     except FileNotFoundError:
         pass  # It's okay if the file does not exist
-    except json.JSONDecodeError:
-         '''pass'''
-         print("PYTHON JSON ERROR")
+    except json.JSONDecodeError as e:
+        print("PYTHON JSON ERROR: ", e)
+        pass
     
     return messages  
 
 # ...
 
-def OI_Python2(message, api_key=None, interpreter_model=None):
+def OI_Python2(userPrompt, api_key=None, interpreter_model=None):
     if api_key:
         Set_API_Key(api_key)
     try:
@@ -86,7 +86,7 @@ def OI_Python2(message, api_key=None, interpreter_model=None):
         
         interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
 
-        output = interpreter.chat(f"{message}", stream=True, display=False)
+        output = interpreter.chat(userPrompt, stream=True, display=False)
         for chunk in output:
             print(chunk, flush=True)
 
@@ -99,15 +99,15 @@ def OI_Python2(message, api_key=None, interpreter_model=None):
     
 #...
 
-def OI_Python(message, api_key=None, interpreter_model=None):
+def OI_Python(userPrompt, api_key=None, interpreter_model=None):
     if api_key:
         Set_API_Key(api_key)
-    OI_Python2(message, api_key, interpreter_model)
+    OI_Python2(userPrompt, api_key, interpreter_model)
     
 #...
 
 if __name__ == "__main__":
-    message = sys.argv[1]
+    userPrompt = sys.argv[1]
     api_key = sys.argv[2] if len(sys.argv) > 2 else None
     interpreter_model = sys.argv[3] if len(sys.argv) > 3 else None
-    result = OI_Python(message, api_key, interpreter_model)
+    result = OI_Python(userPrompt, api_key, interpreter_model)

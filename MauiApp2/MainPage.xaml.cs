@@ -91,7 +91,18 @@ namespace MauiApp2
             var current = Connectivity.NetworkAccess;
             if (current == NetworkAccess.Internet)
             {
-                userPrompt = UserInput.Text;
+
+                if (isFileSaved)
+                { //checks if there is a file saved
+                    userPrompt += UserInput.Text;
+                    isFileSaved = false;
+
+                }
+                else
+                {
+                    userPrompt = UserInput.Text;
+
+                }
                 UserInput.Text = "";
 
                 if (!string.IsNullOrEmpty(userPrompt))
@@ -139,12 +150,15 @@ namespace MauiApp2
 
                 var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
                 ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
+
                 await UserChatBoxUI.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
 
                 await AddInterpreterChatBoxToUI(); //await for this and then call Execute?
                 await ExecuteScriptAsync();
 
                 //TTS   //PlayAudioFromText(decodedJson);
+
+                userPrompt = "";
 
             }
 
@@ -156,6 +170,7 @@ namespace MauiApp2
 
         }
 
+        private bool isFileSaved = false;
 
         //OPEN FILE
         private async void OpenFileButton_Clicked(object sender, EventArgs e)
@@ -164,11 +179,12 @@ namespace MauiApp2
 
             if (result != null)
             {
+                isFileSaved = true;
                 var addfilePath = result.FullPath;
-                Debug.WriteLine("add File Path: " + addfilePath);
+                Debug.WriteLine(" add File Path: " + addfilePath);
                 // Store filePath in a variable or use as needed
 
-
+                userPrompt += " Added File Path: " + addfilePath + " ";
                 //Add UI to user input
             }
         }
