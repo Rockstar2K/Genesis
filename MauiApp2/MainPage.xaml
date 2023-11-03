@@ -92,6 +92,7 @@
                 BackgroundColor="Transparent"
                 Clicked="OpenFileButton_Clicked"
                 FontSize="24"
+                TextColor="#B080B7"
                 HorizontalOptions="Center"
                 Text="+"
                 VerticalOptions="Center" />
@@ -136,10 +137,11 @@
                         HeightRequest="50"
                         WidthRequest="50">
                         <ImageButton
-                            Padding="15"
+                            HeightRequest="40"
+                            Padding="12"
                             BackgroundColor="Transparent"
                             Clicked="UserInputBox_Completed"
-                            HorizontalOptions="End"
+                            HorizontalOptions="EndAndExpand"
                             Source="avioncito.png"
                             VerticalOptions="Center" />
                     </ContentView>

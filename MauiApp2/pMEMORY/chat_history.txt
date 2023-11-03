@@ -1,120 +1,26 @@
 [
     {
         "role": "user",
-        "message": "do it"
+        "message": "Hello"
     },
     {
         "role": "assistant",
-        "message": "Sure! Could you please provide me with more details on what task you would like me to complete?"
+        "message": "Hi there! How can I assist you today?"
     },
     {
         "role": "user",
-        "message": "do it"
+        "message": "Hello"
     },
     {
         "role": "assistant",
-        "message": "Sure! Could you please provide me with more details on what task you would like me to complete?"
+        "message": "Hi there! How can I assist you today?"
     },
     {
         "role": "user",
-        "message": "write a batman sonnet"
+        "message": "Write a sonnet"
     },
     {
         "role": "assistant",
-        "message": "Certainly! I can write a Batman sonnet for you. Here's the plan:\n\n1. Define the structure and rhyme scheme of a sonnet.\n2. Write the lines of the sonnet using Batman-themed imagery.\n3. Verify that the sonnet follows the structure and rhyme scheme of a sonnet.\n\nLet's start by defining the structure and rhyme scheme of a sonnet. A traditional sonnet consists of 14 lines written in iambic pentameter. The rhyme scheme can vary, but for our sonnet, we'll use the following pattern: ABABCDCDEFEFGG.\n\nNow I'll start writing the lines of the sonnet using Batman imagery."
-    },
-    {
-        "role": "user",
-        "message": "do it"
-    },
-    {
-        "role": "assistant",
-        "message": "Sure! Could you please provide me with more details on what task you would like me to complete?"
-    },
-    {
-        "role": "user",
-        "message": "do it"
-    },
-    {
-        "role": "assistant",
-        "message": "Sure! Could you please provide me with more details on what task you would like me to complete?"
-    },
-    {
-        "role": "user",
-        "message": "write a batman sonnet"
-    },
-    {
-        "role": "assistant",
-        "message": "Certainly! I can write a Batman sonnet for you. Here's the plan:\n\n1. Define the structure and rhyme scheme of a sonnet.\n2. Write the lines of the sonnet using Batman-themed imagery.\n3. Verify that the sonnet follows the structure and rhyme scheme of a sonnet.\n\nLet's start by defining the structure and rhyme scheme of a sonnet. A traditional sonnet consists of 14 lines written in iambic pentameter. The rhyme scheme can vary, but for our sonnet, we'll use the following pattern: ABABCDCDEFEFGG.\n\nNow I'll start writing the lines of the sonnet using Batman imagery."
-    },
-    {
-        "role": "user",
-        "message": "crea un archivo txt con la información del excel: C:\\Users\\thega\\Desktop\\cabaña\\cabaña.xlsx"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "do it"
-    },
-    {
-        "role": "assistant",
-        "message": "Sure! Could you please provide me with more details on what task you would like me to complete?"
-    },
-    {
-        "role": "user",
-        "message": "do it"
-    },
-    {
-        "role": "assistant",
-        "message": "Sure! Could you please provide me with more details on what task you would like me to complete?"
-    },
-    {
-        "role": "user",
-        "message": "write a batman sonnet"
-    },
-    {
-        "role": "assistant",
-        "message": "Certainly! I can write a Batman sonnet for you. Here's the plan:\n\n1. Define the structure and rhyme scheme of a sonnet.\n2. Write the lines of the sonnet using Batman-themed imagery.\n3. Verify that the sonnet follows the structure and rhyme scheme of a sonnet.\n\nLet's start by defining the structure and rhyme scheme of a sonnet. A traditional sonnet consists of 14 lines written in iambic pentameter. The rhyme scheme can vary, but for our sonnet, we'll use the following pattern: ABABCDCDEFEFGG.\n\nNow I'll start writing the lines of the sonnet using Batman imagery."
-    },
-    {
-        "role": "user",
-        "message": "do it"
-    },
-    {
-        "role": "assistant",
-        "message": "Sure! Could you please provide me with more details on what task you would like me to complete?"
-    },
-    {
-        "role": "user",
-        "message": "do it"
-    },
-    {
-        "role": "assistant",
-        "message": "Sure! Could you please provide me with more details on what task you would like me to complete?"
-    },
-    {
-        "role": "user",
-        "message": "write a batman sonnet"
-    },
-    {
-        "role": "assistant",
-        "message": "Certainly! I can write a Batman sonnet for you. Here's the plan:\n\n1. Define the structure and rhyme scheme of a sonnet.\n2. Write the lines of the sonnet using Batman-themed imagery.\n3. Verify that the sonnet follows the structure and rhyme scheme of a sonnet.\n\nLet's start by defining the structure and rhyme scheme of a sonnet. A traditional sonnet consists of 14 lines written in iambic pentameter. The rhyme scheme can vary, but for our sonnet, we'll use the following pattern: ABABCDCDEFEFGG.\n\nNow I'll start writing the lines of the sonnet using Batman imagery."
-    },
-    {
-        "role": "user",
-        "message": "crea un archivo txt con la información del excel: C:\\Users\\thega\\Desktop\\cabaña\\cabaña.xlsx"
-    },
-    {
-        "role": "assistant"
-    },
-    {
-        "role": "user",
-        "message": "who are you?"
-    },
-    {
-        "role": "assistant",
-        "message": "I am an AI assistant programmed to help with various tasks and provide information. How can I assist you today?"
+        "message": "Of love and longing in the moonlit night,\nWhere hearts entwined in pure and gentle flow,\nA sonnet tells a tale of pure delight,\nIn words that dance with beauty's graceful glow.\n\nWith fourteen lines, each carefully composed,\nAnd rhyme and rhythm woven hand in hand,\nA sonnet's power can never be opposed,\nFor it can make hearts flutter and hearts expand.\n\nFrom Shakespeare's quill to modern poet's pen,\nSonnet's beauty transcends the bounds of time,\nIt captures feelings, sweet moments akin,\nAnd paints emotions with verses sublime.\n\nSo let us journey through love's wondrous art,\nIn sonnet's embrace, forever depart."
     }
 ]

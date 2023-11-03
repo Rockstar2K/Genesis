@@ -105,7 +105,7 @@ namespace MauiApp2
 
                         Debug.WriteLine("Memory count LESS than MaxCharachters");
 
-                        await TrimMemoryCS.TrimMemoryFile();
+                        //await TrimMemoryCS.TrimMemoryFile();
                         AddChatBoxes();
                         //await Task.Delay(10000);
                         //await TrimMemoryCS.TrimMemoryFile();
@@ -229,17 +229,36 @@ namespace MauiApp2
             chatBubble.AnimatedGif.WidthRequest = 80;
             chatBubble.AnimatedGif.HeightRequest = 80;
 
-            chatBubble.InterpreterFrame = new Frame
+            if (OperatingSystem.IsMacCatalyst())
             {
-                //HorizontalOptions = LayoutOptions.FillAndExpand,  
-                HasShadow = true,
-                Shadow = customShadow,
-                Background = gradientBrush,
-                BorderColor = Color.FromRgba(255, 255, 255, 0),
-                //VerticalOptions = LayoutOptions.FillAndExpand,  // Make it responsive
-                Margin = new Thickness(20, 0, relativeMargin, 0),  // left, top, right, bottom
+                chatBubble.InterpreterFrame = new Frame
+                {
+                    HorizontalOptions = LayoutOptions.Start,
+                    HasShadow = true,
+                    Shadow = customShadow,
+                    Background = gradientBrush,
+                    BorderColor = Color.FromRgba(255, 255, 255, 0),
+                    //VerticalOptions = LayoutOptions.FillAndExpand,  // Make it responsive
+                    Margin = new Thickness(20, 0, relativeMargin, 0),  // left, top, right, bottom
 
-            };
+                };
+            }
+            else if (OperatingSystem.IsWindows())
+            {
+                chatBubble.InterpreterFrame = new Frame
+                {
+
+                    HasShadow = true,
+                    Shadow = customShadow,
+                    Background = gradientBrush,
+                    BorderColor = Color.FromRgba(255, 255, 255, 0),
+                    //VerticalOptions = LayoutOptions.FillAndExpand,  // Make it responsive
+                    Margin = new Thickness(20, 0, relativeMargin, 0),  // left, top, right, bottom
+
+                };
+            }
+
+
 
             chatBubble.InterpreterFrame.Content = new Microsoft.Maui.Controls.StackLayout
             {
@@ -255,7 +274,7 @@ namespace MauiApp2
                 Microsoft.Maui.Controls.Grid.SetColumn(chatBubble.InterpreterFrame, 0);
 
                 //await Task.Delay(100);
-                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true); //i dont know why awaiting this doesnt returns (outside the dispatcher)
+                //await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true); //i dont know why awaiting this doesnt returns (outside the dispatcher)
             });
 
         }
@@ -613,7 +632,12 @@ namespace MauiApp2
                             ChatScrollView.ForceLayout();
 
                             var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-                            await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+
+                            if (OperatingSystem.IsWindows())
+                            {
+                                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+
+                            }
                         }
                     }
 
@@ -627,7 +651,11 @@ namespace MauiApp2
                         ChatScrollView.ForceLayout();
 
                          var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-                         await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+                        if (OperatingSystem.IsWindows())
+                        {
+                            await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+
+                        }
                         
 
                     }
