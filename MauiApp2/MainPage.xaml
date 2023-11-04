@@ -74,13 +74,13 @@
             </Grid>
         </ScrollView>
 
-        <!-- path UI -->
-        <Grid 
-             x:Name="FileBoxContainer"
-             Grid.Row="2"
-             HorizontalOptions="FillAndExpand"
-             VerticalOptions="FillAndExpand">
-            <!-- Dynamically added file boxes will go here -->
+        <!--  path UI  -->
+        <Grid
+            x:Name="FileBoxContainer"
+            Grid.Row="2"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <!--  Dynamically added file boxes will go here  -->
         </Grid>
 
         <!--  Bottom INPUT and Button  -->
@@ -103,9 +103,9 @@
                 BackgroundColor="Transparent"
                 Clicked="OpenFileButton_Clicked"
                 FontSize="24"
-                TextColor="#B080B7"
                 HorizontalOptions="Center"
                 Text="+"
+                TextColor="#A49FF9"
                 VerticalOptions="Center" />
 
             <Frame
@@ -113,7 +113,7 @@
                 Margin="0,0,20,20"
                 Padding="0"
                 BackgroundColor="Transparent"
-                BorderColor="#F2CFE2"
+                BorderColor="#00E0DD"
                 CornerRadius="30"
                 HorizontalOptions="FillAndExpand">
 
@@ -148,10 +148,10 @@
                         HeightRequest="50"
                         WidthRequest="50">
                         <ImageButton
-                            HeightRequest="40"
                             Padding="12"
                             BackgroundColor="Transparent"
                             Clicked="UserInputBox_Completed"
+                            HeightRequest="40"
                             HorizontalOptions="EndAndExpand"
                             Source="avioncito.png"
                             VerticalOptions="Center" />

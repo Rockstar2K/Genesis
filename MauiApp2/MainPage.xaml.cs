@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Text;
 using static MauiApp2.MainPage;
+using CommunityToolkit;
 
 
 namespace MauiApp2
@@ -184,44 +185,92 @@ namespace MauiApp2
                 Debug.WriteLine(" add File Path: " + addfilePath);
                 userPrompt += " Added File Path: " + addfilePath + " ";
 
-
                 // Extract file name from the path
                 string fileName = System.IO.Path.GetFileName(addfilePath);
+
+                // Create the gradient brush
+                var gradientBrush = new LinearGradientBrush
+                {
+                    StartPoint = new Point(0, 0.5),
+                    EndPoint = new Point(1, 0.5)
+                };
+                gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb("#F0CEE2"), 0.0f));
+                gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb("#B180B8"), 1.0f));
 
                 // Create the "file box" view
                 var fileLabel = new Label
                 {
                     Text = fileName,
                     FontFamily = "Montserrat-Light",
+                    FontSize = 10,
                     TextColor = Color.FromArgb("#121B3F"),
-                    BackgroundColor = Color.FromArgb("#F2CFE2")
+                    BackgroundColor = Color.FromArgb("#00000000"),
+                    Padding = new Thickness(10),
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center
                 };
 
+                // Create the close button with a grid container
                 var closeButton = new Button
                 {
                     Text = "x",
-                    BackgroundColor = Color.FromArgb("#000"),
-                    TextColor = Color.FromArgb("#B180B8")
+                    FontSize = 10,
+                    BackgroundColor = Color.FromArgb("#00000000"),
+                    //BorderColor = Color.FromArgb("#fff"),
+                    TextColor = Color.FromArgb("#fff"),
+                    Padding = 0,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center
                 };
+
+                var buttonContainer = new Grid
+                {
+                    HeightRequest = 20,
+                    WidthRequest = 20,
+                    Children = { closeButton },
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Center
+                };
+
+                // Button click event
                 closeButton.Clicked += (s, ev) =>
                 {
                     // Remove the file box from the StackLayout
-                    //  FileBoxContainer.Children.Remove(fileLayout);
+                    //FileBoxContainer.Children.Remove(fileFrame);
                 };
 
                 var fileLayout = new StackLayout
                 {
                     Orientation = StackOrientation.Horizontal,
-                    Children = { fileLabel, closeButton },
-                    HorizontalOptions = LayoutOptions.EndAndExpand,
-                    VerticalOptions = LayoutOptions.End // Ensure it appears at the bottom of the grid, overlaying UserInput.
+                    Children = { buttonContainer, fileLabel },
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.Center,
+                    BackgroundColor = Color.FromArgb("#00000000"),
+                    Margin = new Thickness(5),
+                    Padding = new Thickness(0, 5),
+                    Spacing = 5
+                };
+
+                
+                // Create the frame that wraps the file layout
+                var fileFrame = new Frame
+                {
+                    Content = fileLayout,
+                    CornerRadius = 20,
+                    HasShadow = true,
+                    Padding = 0,
+                    Margin = new Thickness(10, 0, 25, 0),  // left, top, right, bottom
+                    Background = gradientBrush,
+                    BorderColor = Color.FromArgb("#00000000"),
+                    HorizontalOptions = LayoutOptions.End,
 
                 };
 
-                // Add the file box to the StackLayout in the UI
-                FileBoxContainer.Children.Add(fileLayout);
+                // Add the file frame to the container
+                FileBoxContainer.Children.Add(fileFrame);
             }
         }
+
 
 
         public class ChatBubble
@@ -262,10 +311,10 @@ namespace MauiApp2
             var gradientBrush = new Microsoft.Maui.Controls.LinearGradientBrush
             {
                 StartPoint = new Point(0, 0.5),
-                EndPoint = new Point(1, 0.5)
+                EndPoint = new Point(1, 0.5) 
             };
-            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#F0CEE2"), Offset = 1 });
-            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#B180B8"), Offset = 0 });
+            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#337DFFCF"), Offset = 0 });
+            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#7F00E0DD"), Offset = 1 });
 
             var customShadow = new Microsoft.Maui.Controls.Shadow
             {
@@ -337,7 +386,7 @@ namespace MauiApp2
             chatBubble.ResultLabel = new Label
             {
                 Text = "",
-                TextColor = Color.FromArgb("#fff"),
+                TextColor = Color.FromArgb("#121B3F"),
                 FontSize = 14,
                 FontFamily = "Montserrat-Light", //CONSOLAS TIPOGRAPHY
                 IsVisible = false,

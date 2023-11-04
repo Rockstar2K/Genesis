@@ -15,8 +15,8 @@ namespace MauiApp2.SCRIPTS
 
             var userInputframe = new Frame
             {
-                BackgroundColor = Color.FromArgb("#F2CFE2"),
-                BorderColor = Color.FromArgb("#F2CFE2"),
+                BackgroundColor = Color.FromArgb("#335FB5FF"),
+                BorderColor = Color.FromArgb("#335FB5FF"),
                 Margin = new Thickness(relativeMargin, 20, 20, 20),  // left, top, right, bottom
 
                 // ... other styling ...
