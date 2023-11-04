@@ -182,10 +182,44 @@ namespace MauiApp2
                 isFileSaved = true;
                 var addfilePath = result.FullPath;
                 Debug.WriteLine(" add File Path: " + addfilePath);
-                // Store filePath in a variable or use as needed
-
                 userPrompt += " Added File Path: " + addfilePath + " ";
-                //Add UI to user input
+
+
+                // Extract file name from the path
+                string fileName = System.IO.Path.GetFileName(addfilePath);
+
+                // Create the "file box" view
+                var fileLabel = new Label
+                {
+                    Text = fileName,
+                    FontFamily = "Montserrat-Light",
+                    TextColor = Color.FromArgb("#121B3F"),
+                    BackgroundColor = Color.FromArgb("#F2CFE2")
+                };
+
+                var closeButton = new Button
+                {
+                    Text = "x",
+                    BackgroundColor = Color.FromArgb("#000"),
+                    TextColor = Color.FromArgb("#B180B8")
+                };
+                closeButton.Clicked += (s, ev) =>
+                {
+                    // Remove the file box from the StackLayout
+                    //  FileBoxContainer.Children.Remove(fileLayout);
+                };
+
+                var fileLayout = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,
+                    Children = { fileLabel, closeButton },
+                    HorizontalOptions = LayoutOptions.EndAndExpand,
+                    VerticalOptions = LayoutOptions.End // Ensure it appears at the bottom of the grid, overlaying UserInput.
+
+                };
+
+                // Add the file box to the StackLayout in the UI
+                FileBoxContainer.Children.Add(fileLayout);
             }
         }
 
