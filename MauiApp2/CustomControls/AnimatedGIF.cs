@@ -40,7 +40,7 @@ public class AnimatedGif : SKCanvasView
         }
     }
 
-    private void PrecomputeResizedFrames(int desiredWidth = 80, int desiredHeight = 80)
+    private void PrecomputeResizedFrames(int desiredWidth = 100, int desiredHeight = 100)
     {
 
         for (int i = 0; i < frames.Length; i++)

@@ -8,51 +8,51 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MauiApp2
-build_property.ProjectDir = C:\Users\thega\source\repos\MauiApp2\MauiApp2\
+build_property.ProjectDir = /Users/n/Desktop/Genesis5/MauiApp2/
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/API_Key_Page.xaml]
+[/Users/n/Desktop/Genesis5/MauiApp2/API_Key_Page.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.API_Key_Page.xaml
 build_metadata.AdditionalFiles.TargetPath = API_Key_Page.xaml
 build_metadata.AdditionalFiles.RelativePath = API_Key_Page.xaml
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/App.xaml]
+[/Users/n/Desktop/Genesis5/MauiApp2/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/AppShell.xaml]
+[/Users/n/Desktop/Genesis5/MauiApp2/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/MainPage.xaml]
+[/Users/n/Desktop/Genesis5/MauiApp2/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/Resources/Styles/Colors.xaml]
+[/Users/n/Desktop/Genesis5/MauiApp2/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.Resources.Styles.Colors.xaml
-build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
-build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/Resources/Styles/Styles.xaml]
+[/Users/n/Desktop/Genesis5/MauiApp2/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.Resources.Styles.Styles.xaml
-build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
-build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/SETTINGS/Settings.xaml]
+[/Users/n/Desktop/Genesis5/MauiApp2/SETTINGS/Settings.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.SETTINGS.Settings.xaml
-build_metadata.AdditionalFiles.TargetPath = SETTINGS\Settings.xaml
-build_metadata.AdditionalFiles.RelativePath = SETTINGS\Settings.xaml
+build_metadata.AdditionalFiles.TargetPath = SETTINGS/Settings.xaml
+build_metadata.AdditionalFiles.RelativePath = SETTINGS/Settings.xaml
 
-[C:/Users/thega/source/repos/MauiApp2/MauiApp2/Welcome_Page.xaml]
+[/Users/n/Desktop/Genesis5/MauiApp2/Welcome_Page.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.Welcome_Page.xaml
 build_metadata.AdditionalFiles.TargetPath = Welcome_Page.xaml

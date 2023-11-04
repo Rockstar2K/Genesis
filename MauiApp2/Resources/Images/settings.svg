@@ -3,27 +3,29 @@
   <defs>
     <style>
       .cls-1 {
-        fill: url(#Degradado_sin_nombre_8414);
+        fill: url(#linear-gradient);
         stroke-width: 0px;
       }
 
       .cls-2 {
         fill: none;
-        stroke: #e2e4e4;
+        stroke: #fff;
         stroke-miterlimit: 10;
         stroke-width: 1.55px;
       }
     </style>
-    <linearGradient id="Degradado_sin_nombre_8414" data-name="Degradado sin nombre 8414" x1="-3651.78" y1="-4546.32" x2="-3612.66" y2="-4546.32" gradientTransform="translate(62.76 5838.51) rotate(38.2)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#b080b7"/>
-      <stop offset="1" stop-color="#efcde1"/>
+    <linearGradient id="linear-gradient" x1="-4498.07" y1="-6978.31" x2="-4458.95" y2="-6978.31" gradientTransform="translate(-776.03 8273.1) rotate(38.2)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7dffcf" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#5fb5ff"/>
     </linearGradient>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
-    <circle class="cls-1" cx="19.56" cy="19.56" r="19.56"/>
     <g>
-      <path class="cls-2" d="m29.73,19.56c0,1.25-1.66,2.16-2.11,3.24s.05,2.94-.8,3.79-2.66.33-3.79.8-1.99,2.11-3.24,2.11-2.16-1.66-3.24-2.11-2.94.05-3.79-.8-.33-2.66-.8-3.79-2.11-1.99-2.11-3.24,1.66-2.16,2.11-3.24-.05-2.94.8-3.79,2.66-.33,3.79-.8,1.99-2.11,3.24-2.11,2.16,1.66,3.24,2.11,2.94-.05,3.79.8.33,2.66.8,3.79,2.11,1.99,2.11,3.24Z"/>
-      <circle class="cls-2" cx="19.79" cy="19.62" r="3.03"/>
+      <circle class="cls-1" cx="19.56" cy="19.56" r="19.56"/>
+      <g>
+        <path class="cls-2" d="m29.73,19.56c0,1.25-1.66,2.16-2.11,3.24s.05,2.94-.8,3.79-2.66.33-3.79.8-1.99,2.11-3.24,2.11-2.16-1.66-3.24-2.11-2.94.05-3.79-.8-.33-2.66-.8-3.79-2.11-1.99-2.11-3.24,1.66-2.16,2.11-3.24-.05-2.94.8-3.79,2.66-.33,3.79-.8,1.99-2.11,3.24-2.11,2.16,1.66,3.24,2.11,2.94-.05,3.79.8.33,2.66.8,3.79,2.11,1.99,2.11,3.24Z"/>
+        <circle class="cls-2" cx="19.79" cy="19.62" r="3.03"/>
+      </g>
     </g>
   </g>
 </svg>

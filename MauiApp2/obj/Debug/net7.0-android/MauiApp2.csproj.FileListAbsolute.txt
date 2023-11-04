@@ -1,0 +1,9 @@
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/build.props
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/adb.props
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/MauiApp2.csproj.AssemblyReference.cache
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/mauiimage.inputs
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/mauifont.inputs
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/mauisplash.inputs
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/mauisplash.stamp
+/Users/n/Desktop/Genesis5/MauiApp2/obj/Debug/net7.0-android/mauifont.stamp

@@ -472,7 +472,7 @@ namespace MauiApp2
             Label codeLabel = new Label
             {
                 Text = "",
-                TextColor = Color.FromArgb("#fff"),
+                TextColor = Color.FromArgb("#121B3F"),
                 FontSize = 12,
                 FontFamily = "Montserrat-Light"  // CONSOLAS TIPOGRAPHY
             };
@@ -491,9 +491,11 @@ namespace MauiApp2
 
             this.Dispatcher.Dispatch(async () => //this code seems to work right only in the dispatcher
             {
+                if (OperatingSystem.IsWindows())
+                {
+                    await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true); //i dont know why awaiting this doesnt returns (outside the dispatcher)
+                }
 
-                //await Task.Delay(100);
-                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true); //i dont know why awaiting this doesnt returns (outside the dispatcher)
             });
 
             return codeLabel;

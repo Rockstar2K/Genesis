@@ -1,0 +1,1 @@
+-v --force --timestamp=none --sign - /Users/n/Desktop/Genesis5/MauiApp2/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MauiApp2.app/Contents/MonoBundle/libxamarin-dotnet-debug.dylib
