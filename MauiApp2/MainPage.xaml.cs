@@ -194,8 +194,6 @@ namespace MauiApp2
                     StartPoint = new Point(0, 0.5),
                     EndPoint = new Point(1, 0.5)
                 };
-                gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb("#F0CEE2"), 0.0f));
-                gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb("#B180B8"), 1.0f));
 
                 // Create the "file box" view
                 var fileLabel = new Label
@@ -203,7 +201,8 @@ namespace MauiApp2
                     Text = fileName,
                     FontFamily = "Montserrat-Light",
                     FontSize = 10,
-                    TextColor = Color.FromArgb("#121B3F"),
+                    FontAttributes = FontAttributes.Bold,
+                    TextColor = Color.FromArgb("#fff"),
                     BackgroundColor = Color.FromArgb("#00000000"),
                     Padding = new Thickness(10),
                     HorizontalOptions = LayoutOptions.Center,
@@ -215,12 +214,13 @@ namespace MauiApp2
                 {
                     Text = "x",
                     FontSize = 10,
-                    BackgroundColor = Color.FromArgb("#00000000"),
-                    //BorderColor = Color.FromArgb("#fff"),
+                    BackgroundColor = Color.FromArgb("#fff"),
                     TextColor = Color.FromArgb("#fff"),
                     Padding = 0,
                     HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center
+                    VerticalOptions = LayoutOptions.Center,
+                    CornerRadius = 25,
+                    BorderWidth = 0,
                 };
 
                 var buttonContainer = new Grid
@@ -242,13 +242,13 @@ namespace MauiApp2
                 var fileLayout = new StackLayout
                 {
                     Orientation = StackOrientation.Horizontal,
-                    Children = { buttonContainer, fileLabel },
+                    Children = { fileLabel, buttonContainer },
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.Center,
                     BackgroundColor = Color.FromArgb("#00000000"),
-                    Margin = new Thickness(5),
-                    Padding = new Thickness(0, 5),
-                    Spacing = 5
+                    Margin = new Thickness(5, 10), // Adjust margin for spacing
+                    Padding = new Thickness(0), // Remove padding
+                    Spacing = 0
                 };
 
                 
@@ -256,11 +256,11 @@ namespace MauiApp2
                 var fileFrame = new Frame
                 {
                     Content = fileLayout,
-                    CornerRadius = 20,
+                    CornerRadius = 25,
                     HasShadow = true,
                     Padding = 0,
-                    Margin = new Thickness(10, 0, 25, 0),  // left, top, right, bottom
-                    Background = gradientBrush,
+                    Margin = new Thickness(10, 0, 25, 5),  // left, top, right, bottom
+                    BackgroundColor = Color.FromArgb("#00E0DD"),
                     BorderColor = Color.FromArgb("#00000000"),
                     HorizontalOptions = LayoutOptions.End,
 
@@ -336,7 +336,7 @@ namespace MauiApp2
                     HasShadow = true,
                     Shadow = customShadow,
                     Background = gradientBrush,
-                    BorderColor = Color.FromRgba(255, 255, 255, 0),
+                    BorderColor = Color.FromRgba("#00000000"),
                     //VerticalOptions = LayoutOptions.FillAndExpand,  // Make it responsive
                     Margin = new Thickness(20, 0, relativeMargin, 0),  // left, top, right, bottom
 
@@ -350,7 +350,7 @@ namespace MauiApp2
                     HasShadow = true,
                     Shadow = customShadow,
                     Background = gradientBrush,
-                    BorderColor = Color.FromRgba(255, 255, 255, 0),
+                    BorderColor = Color.FromRgba("#00000000"),
                     //VerticalOptions = LayoutOptions.FillAndExpand,  // Make it responsive
                     Margin = new Thickness(20, 0, relativeMargin, 0),  // left, top, right, bottom
 
