@@ -50,18 +50,6 @@
             </ImageButton>
         </AbsoluteLayout>
 
-
-
-        <!-- No Internet Frame
-            <Frame x:Name="NoInternetFrame" Grid.Row="0" IsVisible="False">
-                <Label
-                    FontFamily="Montserrat"
-                    HorizontalOptions="Center"
-                    Text="You have no internet connection"
-                    VerticalOptions="Center" />
-            </Frame>
-        -->
-
         <!--  Chat Scroll View  -->
         <ScrollView
             x:Name="ChatScrollView"
@@ -74,14 +62,16 @@
             </Grid>
         </ScrollView>
 
-        <!--  path UI  -->
-        <Grid
+        <FlexLayout
             x:Name="FileBoxContainer"
             Grid.Row="2"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
-            <!--  Dynamically added file boxes will go here  -->
-        </Grid>
+            Margin="0,0,10,5"
+            AlignItems="Start"
+            BackgroundColor="#00000000"
+            Direction="Row"
+            JustifyContent="Start"
+            Wrap="Wrap" />
+
 
         <!--  Bottom INPUT and Button  -->
         <Grid
@@ -159,9 +149,6 @@
                 </Grid>
             </Frame>
         </Grid>
-
-
-
 
 
     </Grid>

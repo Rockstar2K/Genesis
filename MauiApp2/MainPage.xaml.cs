@@ -176,110 +176,110 @@ namespace MauiApp2
         //OPEN FILE
         private async void OpenFileButton_Clicked(object sender, EventArgs e)
         {
-            var result = await FilePicker.PickAsync();
+            // Use PickMultipleAsync to allow multiple file selections
+            var results = await FilePicker.PickMultipleAsync();
+            FileBoxContainer.HorizontalOptions = LayoutOptions.End; // Align to the end (right)
 
-            if (result != null)
+
+            // Check if any files are selected
+            if (results?.Count() > 0)
             {
-                isFileSaved = true;
-                var addfilePath = result.FullPath;
-                Debug.WriteLine(" add File Path: " + addfilePath);
-                userPrompt += " Added File Path: " + addfilePath + " ";
-
-                // Extract file name from the path
-                string fileName = System.IO.Path.GetFileName(addfilePath);
-
-                // Create the gradient brush
-                var gradientBrush = new LinearGradientBrush
+                foreach (var result in results)
                 {
-                    StartPoint = new Point(0, 0.5),
-                    EndPoint = new Point(1, 0.5)
-                };
+                    var addfilePath = result.FullPath;
+                    Debug.WriteLine(" add File Path: " + addfilePath);
+                    userPrompt += " Added File (Path): " + addfilePath + " ";
+                    string fileName = System.IO.Path.GetFileName(addfilePath);
 
-                // Create the "file box" view
-                var fileLabel = new Label
-                {
-                    Text = fileName,
-                    FontFamily = "Montserrat-Light",
-                    FontSize = 10,
-                    FontAttributes = FontAttributes.Bold,
-                    TextColor = Color.FromArgb("#fff"),
-                    BackgroundColor = Color.FromArgb("#00000000"),
-                    Padding = new Thickness(10),
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.Center,
-                    //MaxWidthRequest = 120,
-                    WidthRequest = 150,
-                    MinimumWidthRequest = 120,
-                };
-
-                // Create the close button with a grid container
-                var closeButton = new Button
-                {
-                    Text = "x",
-                    FontSize = 14,
-                    BackgroundColor = Color.FromArgb("#fff"),
-                    TextColor = Color.FromArgb("#00E0DD"),
-                    Padding = 0,
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    CornerRadius = 25,
-                    BorderWidth = 3,
-                    BorderColor = Color.FromArgb("#00E0DD"),
-                };
-                Frame fileFrame = null;
-
-                closeButton.Clicked += (s, ev) =>
-                {
-                    // Check if FileBoxContainer actually contains the fileFrame to avoid exceptions
-                    if (FileBoxContainer.Children.Contains(fileFrame))
+                    // Create the fileLabel
+                    var fileLabel = new Label
                     {
-                        // Remove the fileFrame from the StackLayout
-                        FileBoxContainer.Children.Remove(fileFrame);
-                    }
-                    isFileSaved = false;
-                };
+                        Text = fileName,
+                        FontFamily = "Montserrat-Light",
+                        FontSize = 10,
+                        FontAttributes = FontAttributes.Bold,
+                        TextColor = Color.FromArgb("#fff"),
+                        BackgroundColor = Color.FromArgb("#00000000"),
+                        Padding = new Thickness(10),
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 150,
+                        MinimumWidthRequest = 120,
+                    };
 
-
-                var grid = new Grid
-                {
-                    ColumnDefinitions =
+                    // Create the closeButton
+                    var closeButton = new Button
                     {
-                        new ColumnDefinition { Width = GridLength.Star }, // Takes as much space as available
-                        new ColumnDefinition { Width = GridLength.Auto } // Takes only the space it needs
-                    },
-                    BackgroundColor = Color.FromArgb("#00000000"),
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.Center,
-                    Padding = new Thickness(0) // No padding inside the grid
-                };
+                        Text = "x",
+                        FontSize = 14,
+                        BackgroundColor = Color.FromArgb("#fff"),
+                        TextColor = Color.FromArgb("#00E0DD"),
+                        Padding = 0,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        CornerRadius = 25,
+                        BorderWidth = 3,
+                        BorderColor = Color.FromArgb("#00E0DD"),
+                    };
 
-                // Add fileLabel to the grid
-                grid.Children.Add(fileLabel);
-                Grid.SetColumn(fileLabel, 0); // Set the label to column 0
+                    // Create the grid to hold the fileLabel and closeButton
+                    var grid = new Grid
+                    {
+                        ColumnDefinitions =
+                        {
+                            new ColumnDefinition { Width = GridLength.Star },
+                            new ColumnDefinition { Width = GridLength.Auto }
+                        },
+                        BackgroundColor = Color.FromArgb("#00000000"),
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Center,
+                        Padding = new Thickness(0)
+                    };
 
-                // Add closeButton to the grid
-                grid.Children.Add(closeButton);
-                Grid.SetColumn(closeButton, 1); // Set the button to column 1
+                    grid.Children.Add(fileLabel);
+                    Grid.SetColumn(fileLabel, 0);
+                    grid.Children.Add(closeButton);
+                    Grid.SetColumn(closeButton, 1);
+
+                    // Create the frame that will hold the grid
+                    var fileFrame = new Frame
+                    {
+                        Content = grid,
+                        CornerRadius = 25,
+                        HasShadow = false,
+                        Padding = 0,
+                        Margin = new Thickness(5, 0, 5, 0), // left, top, right, bottom
+                        BackgroundColor = Color.FromArgb("#00E0DD"),
+                        BorderColor = Color.FromArgb("#00E0DD"),
+                        HorizontalOptions = LayoutOptions.End,
+                    };
+
+                    // Closure to capture the current fileFrame in the loop
+                    closeButton.Clicked += (s, ev) =>
+                    {
+                        // Remove the fileFrame from the FileBoxContainer
+                        if (FileBoxContainer.Children.Contains(fileFrame))
+                        {
+                            FileBoxContainer.Children.Remove(fileFrame);
+                            // Now also remove the file path from userPrompt
+                            if (!string.IsNullOrEmpty(addfilePath))
+                            {
+                                userPrompt = userPrompt.Replace(" Added File (Path): " + addfilePath + " ", "");
+                                // You may need additional logic if userPrompt could contain other data.
+                            }
+                        }
+                    };
 
 
-                // Create the frame that wraps the file layout
-                fileFrame = new Frame
-                {
-                    Content = grid,
-                    CornerRadius = 25,
-                    HasShadow = false,
-                    Padding = 0,
-                    Margin = new Thickness(10, 0, 25, 5),  // left, top, right, bottom
-                    BackgroundColor = Color.FromArgb("#00E0DD"),
-                    BorderColor = Color.FromArgb("#00E0DD"),
-                    HorizontalOptions = LayoutOptions.End,
+                    // Add the file frame to the container
+                    FileBoxContainer.Children.Insert(0, fileFrame); // Insert at index 0 to stack from right to left
 
-                };
+                    isFileSaved = true;
 
-                // Add the file frame to the container
-                FileBoxContainer.Children.Add(fileFrame);
+                }
             }
         }
+
 
 
 
