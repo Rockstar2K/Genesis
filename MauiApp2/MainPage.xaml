@@ -60,7 +60,10 @@
             <Grid x:Name="ChatLayout" Padding="0,0">
                 <!--  Chat content  -->
             </Grid>
+            
         </ScrollView>
+        
+        
 
         <FlexLayout
             x:Name="FileBoxContainer"

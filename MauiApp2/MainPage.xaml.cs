@@ -48,43 +48,6 @@ namespace MauiApp2
 
 
 
-        //STT
-        /*
-        private void InitializeAudioRecorder()
-        {
-            var audioManager = new AudioManager();
-            audioRecorder = new AudioRecorder(audioManager);  // Initializing audio recorder
-        }
-
-        string recordedAudioFilePath = "";
-
-        private async void OnStartRecordingClicked(object sender, EventArgs e)
-        {
-
-            if (OperatingSystem.IsWindows())
-            {
-                recordedAudioFilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Audio\\recording.wav";
-            }
-
-            await audioRecorder.StartRecordingAsync(recordedAudioFilePath);
-
-        }
-
-        private async void OnStopRecordingClicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine("OnStopRecordingClicked, recordedAudioFilePath: " + recordedAudioFilePath);
-            var audioSource = await audioRecorder.StopRecordingAsync();
-
-            string convertedAudioFilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\Resources\\Audio\\Converted\\recording.wav";
-
-            await audioRecorder.ConvertAudio(recordedAudioFilePath, convertedAudioFilePath);
-
-            var transcription = await sttPlayer.ConvertSpeechToTextAsync(recordedAudioFilePath);
-            Debug.WriteLine("transcription: " + transcription);
-
-        }
-        //STT
-        */
 
         //USER PROMPT INPUT
         private async void UserInputBox_Completed(System.Object sender, System.EventArgs e)
@@ -293,6 +256,83 @@ namespace MauiApp2
 
             public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
 
+            public void InitializeUIComponents(double screenWidth)
+            {
+                InitializeAnimatedGif();
+                InitializeInterpreterFrame(screenWidth);
+                InitializeResultLabel();
+            }
+
+            private void InitializeAnimatedGif()
+            {
+                AnimatedGif = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
+                AnimatedGif.WidthRequest = 80;
+                AnimatedGif.HeightRequest = 80;
+            }
+
+            private void InitializeInterpreterFrame(double screenWidth)
+            {
+                var gradientBrush = GetGradientBrush();
+                var customShadow = GetCustomShadow();
+
+                InterpreterFrame = new Frame
+                {
+                    HasShadow = true,
+                    Shadow = customShadow,
+                    Background = gradientBrush,
+                    BorderColor = Color.FromRgba("#00000000"),
+                    Margin = new Thickness(20, 0, screenWidth * 0.05, 0), // Calculate responsive margin
+                    Content = new StackLayout() // Assign stack layout here if common for all OS
+                    {
+                        Children = { AnimatedGif, ResultLabel } // Add the AnimatedGif here
+                    }
+                };
+
+                if (OperatingSystem.IsMacCatalyst() || OperatingSystem.IsWindows())
+                {
+                    // Special handling for MacCatalyst and Windows if needed
+                }
+            }
+
+            private void InitializeResultLabel()
+            {
+                ResultLabel = new Label
+                {
+                    Text = "",
+                    TextColor = Color.FromArgb("#121B3F"),
+                    FontSize = 14,
+                    FontFamily = "Montserrat-Light",
+                    IsVisible = false
+                };
+            }
+
+            private LinearGradientBrush GetGradientBrush()
+            {
+                var gradientBrush = new LinearGradientBrush
+                {
+                    StartPoint = new Point(0, 0.5),
+                    EndPoint = new Point(1, 0.5)
+                };
+                gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#337DFFCF"), Offset = 0 });
+                gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#7F00E0DD"), Offset = 1 });
+
+                return gradientBrush;
+            }
+
+            private Shadow GetCustomShadow()
+            {
+                var customShadow = new Shadow
+                {
+                    Radius = 10,
+                    Opacity = 0.6f,
+                    Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),
+                    Offset = new Point(5, 5)
+                };
+
+                return customShadow;
+            }
+
+
         }
 
         private ChatBubble currentChatBubble;
@@ -302,91 +342,29 @@ namespace MauiApp2
         private async Task AddInterpreterChatBoxToUI()
         {
 
-            Debug.WriteLine("AddInterpreterChatBoxToUI");
-
             var chatBubble = new ChatBubble();
-            currentChatBubble = chatBubble; 
+            currentChatBubble = chatBubble;
 
-            var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-
-            // Add a new RowDefinition for each chat bubble
+            var gridLayout = (Grid)FindByName("ChatLayout");
             gridLayout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
-            // Get screen dimensions
-            var screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
+            double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
+            chatBubble.InitializeUIComponents(screenWidth);
 
-            // Calculate responsive margin
-            double relativeMargin = screenWidth * 0.05; // 10% of screen width
-
-            var gradientBrush = new Microsoft.Maui.Controls.LinearGradientBrush
-            {
-                StartPoint = new Point(0, 0.5),
-                EndPoint = new Point(1, 0.5) 
-            };
-            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#337DFFCF"), Offset = 0 });
-            gradientBrush.GradientStops.Add(new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#7F00E0DD"), Offset = 1 });
-
-            var customShadow = new Microsoft.Maui.Controls.Shadow
-            {
-                Radius = 10,
-                Opacity = 0.6f,
-                Brush = new Microsoft.Maui.Controls.SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),
-                Offset = new Point(5, 5)
-            };
-
-            chatBubble.AnimatedGif = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
-            chatBubble.AnimatedGif.WidthRequest = 80;
-            chatBubble.AnimatedGif.HeightRequest = 80;
-
-            if (OperatingSystem.IsMacCatalyst())
-            {
-                chatBubble.InterpreterFrame = new Frame
-                {
-                    HorizontalOptions = LayoutOptions.Start,
-                    HasShadow = true,
-                    Shadow = customShadow,
-                    Background = gradientBrush,
-                    BorderColor = Color.FromRgba("#00000000"),
-                    //VerticalOptions = LayoutOptions.FillAndExpand,  // Make it responsive
-                    Margin = new Thickness(20, 0, relativeMargin, 0),  // left, top, right, bottom
-
-                };
-            }
-            else if (OperatingSystem.IsWindows())
-            {
-                chatBubble.InterpreterFrame = new Frame
-                {
-
-                    HasShadow = true,
-                    Shadow = customShadow,
-                    Background = gradientBrush,
-                    BorderColor = Color.FromRgba("#00000000"),
-                    //VerticalOptions = LayoutOptions.FillAndExpand,  // Make it responsive
-                    Margin = new Thickness(20, 0, relativeMargin, 0),  // left, top, right, bottom
-
-                };
-            }
-
-
-
-            chatBubble.InterpreterFrame.Content = new Microsoft.Maui.Controls.StackLayout
-            {
-                Children = { chatBubble.AnimatedGif, chatBubble.ResultLabel }
-            };
-
-            // Add the new Frame to the Grid
-
-            this.Dispatcher.Dispatch(async () => //this code seems to work right only in the dispatcher
+            await this.Dispatcher.DispatchAsync(() => // Use DispatchAsync and ensure awaiting the operation if needed
             {
                 gridLayout.Children.Add(chatBubble.InterpreterFrame);
-                Microsoft.Maui.Controls.Grid.SetRow(chatBubble.InterpreterFrame, gridLayout.RowDefinitions.Count - 1);
-                Microsoft.Maui.Controls.Grid.SetColumn(chatBubble.InterpreterFrame, 0);
-
-                //await Task.Delay(100);
-                //await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true); //i dont know why awaiting this doesnt returns (outside the dispatcher)
+                Grid.SetRow(chatBubble.InterpreterFrame, gridLayout.RowDefinitions.Count - 1);
+                Grid.SetColumn(chatBubble.InterpreterFrame, 0);
             });
 
+
+            //await ChatScrollView.ScrollToAsync(chatBubble.InterpreterFrame, ScrollToPosition.MakeVisible, true);
         }
+
+
+
+
 
         private Task AddLabelToInterpreterOutputFrame(ChatBubble chatBubble)
         {
