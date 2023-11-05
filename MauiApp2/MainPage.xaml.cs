@@ -205,63 +205,73 @@ namespace MauiApp2
                     TextColor = Color.FromArgb("#fff"),
                     BackgroundColor = Color.FromArgb("#00000000"),
                     Padding = new Thickness(10),
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.Center,
+                    //MaxWidthRequest = 120,
+                    WidthRequest = 150,
+                    MinimumWidthRequest = 120,
                 };
 
                 // Create the close button with a grid container
                 var closeButton = new Button
                 {
                     Text = "x",
-                    FontSize = 10,
+                    FontSize = 14,
                     BackgroundColor = Color.FromArgb("#fff"),
-                    TextColor = Color.FromArgb("#fff"),
+                    TextColor = Color.FromArgb("#00E0DD"),
                     Padding = 0,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
                     CornerRadius = 25,
-                    BorderWidth = 0,
+                    BorderWidth = 3,
+                    BorderColor = Color.FromArgb("#00E0DD"),
                 };
+                Frame fileFrame = null;
 
-                var buttonContainer = new Grid
-                {
-                    HeightRequest = 20,
-                    WidthRequest = 20,
-                    Children = { closeButton },
-                    HorizontalOptions = LayoutOptions.End,
-                    VerticalOptions = LayoutOptions.Center
-                };
-
-                // Button click event
                 closeButton.Clicked += (s, ev) =>
                 {
-                    // Remove the file box from the StackLayout
-                    //FileBoxContainer.Children.Remove(fileFrame);
+                    // Check if FileBoxContainer actually contains the fileFrame to avoid exceptions
+                    if (FileBoxContainer.Children.Contains(fileFrame))
+                    {
+                        // Remove the fileFrame from the StackLayout
+                        FileBoxContainer.Children.Remove(fileFrame);
+                    }
+                    isFileSaved = false;
                 };
 
-                var fileLayout = new StackLayout
+
+                var grid = new Grid
                 {
-                    Orientation = StackOrientation.Horizontal,
-                    Children = { fileLabel, buttonContainer },
+                    ColumnDefinitions =
+                    {
+                        new ColumnDefinition { Width = GridLength.Star }, // Takes as much space as available
+                        new ColumnDefinition { Width = GridLength.Auto } // Takes only the space it needs
+                    },
+                    BackgroundColor = Color.FromArgb("#00000000"),
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.Center,
-                    BackgroundColor = Color.FromArgb("#00000000"),
-                    Margin = new Thickness(5, 10), // Adjust margin for spacing
-                    Padding = new Thickness(0), // Remove padding
-                    Spacing = 0
+                    Padding = new Thickness(0) // No padding inside the grid
                 };
 
-                
+                // Add fileLabel to the grid
+                grid.Children.Add(fileLabel);
+                Grid.SetColumn(fileLabel, 0); // Set the label to column 0
+
+                // Add closeButton to the grid
+                grid.Children.Add(closeButton);
+                Grid.SetColumn(closeButton, 1); // Set the button to column 1
+
+
                 // Create the frame that wraps the file layout
-                var fileFrame = new Frame
+                fileFrame = new Frame
                 {
-                    Content = fileLayout,
+                    Content = grid,
                     CornerRadius = 25,
-                    HasShadow = true,
+                    HasShadow = false,
                     Padding = 0,
                     Margin = new Thickness(10, 0, 25, 5),  // left, top, right, bottom
                     BackgroundColor = Color.FromArgb("#00E0DD"),
-                    BorderColor = Color.FromArgb("#00000000"),
+                    BorderColor = Color.FromArgb("#00E0DD"),
                     HorizontalOptions = LayoutOptions.End,
 
                 };
