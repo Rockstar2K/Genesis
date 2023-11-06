@@ -117,11 +117,12 @@ namespace MauiApp2
                 ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
 
                 await UserChatBoxUI.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
+                await CloseAllOpenFileFrames(); //CLOSE path UI frames
 
-                await AddInterpreterChatBoxToUI(); //await for this and then call Execute?
+                await AddInterpreterChatBoxToUI(); 
                 await ExecuteScriptAsync();
 
-                //TTS   //PlayAudioFromText(decodedJson);
+                //TTSPlayAudioFromText(decodedJson);
 
                 userPrompt = "";
 
@@ -140,13 +141,10 @@ namespace MauiApp2
         public class OpenFileButtonUI
         {
             public Frame frame { get; set; }
-            public Label fileLabel { get; set; }
-            public string fileLabelText { get; set; }
+            public Label label { get; set; }
+            public string labelText { get; set; }
             public Button closeButton { get; set; }
             public Grid grid { get; set; }
-
-
-
 
             public void InitializeUIComponents()
             {
@@ -158,9 +156,9 @@ namespace MauiApp2
             }
             private void Initializelabel()
             {
-                fileLabel = new Label
+                label = new Label
                 {
-                    Text = fileLabelText,
+                    Text = labelText,
                     FontFamily = "Montserrat-Light",
                     FontSize = 10,
                     FontAttributes = FontAttributes.Bold,
@@ -206,8 +204,8 @@ namespace MauiApp2
                     Padding = new Thickness(0)
                 };
 
-                grid.Children.Add(fileLabel);
-                Grid.SetColumn(fileLabel, 0);
+                grid.Children.Add(label);
+                Grid.SetColumn(label, 0);
                 grid.Children.Add(closeButton);
                 Grid.SetColumn(closeButton, 1);
 
@@ -232,6 +230,7 @@ namespace MauiApp2
 
         }
 
+        private Dictionary<Frame, string> openFileFrames = new Dictionary<Frame, string>();
 
         //OPEN FILE
         private async void OpenFileButton_Clicked(object sender, EventArgs e)
@@ -247,47 +246,66 @@ namespace MauiApp2
                 foreach (var result in results)
                 {
                     var addfilePath = result.FullPath;
-                    Debug.WriteLine(" add File Path: " + addfilePath);
+
+                    //Debug.WriteLine(" add File Path: " + addfilePath);
+
                     userPrompt += " Added File (Path): " + addfilePath + " ";
+
                     string fileName = System.IO.Path.GetFileName(addfilePath);
 
                     var openFileUI = new OpenFileButtonUI
                     {
-                        fileLabelText = fileName
+                        labelText = fileName
                     };
                     openFileUI.InitializeUIComponents();
 
-                    Frame fileFrame = openFileUI.frame;
-                    Label fileLabel = openFileUI.fileLabel;
+                    Frame frame = openFileUI.frame;
+                    Label label = openFileUI.label;
                     Button closeButton = openFileUI.closeButton;
                     Grid grid = openFileUI.grid;
 
 
-                                        // Closure to capture the current fileFrame in the loop
-                    closeButton.Clicked += (s, ev) =>
-                    {
-                        // Remove the fileFrame from the FileBoxContainer
-                        if (FileBoxContainer.Children.Contains(fileFrame))
-                        {
-                            FileBoxContainer.Children.Remove(fileFrame);
-                            // Now also remove the file path from userPrompt
-                            if (!string.IsNullOrEmpty(addfilePath))
-                            {
-                                userPrompt = userPrompt.Replace(" Added File (Path): " + addfilePath + " ", "");
-                                // You may need additional logic if userPrompt could contain other data.
-                            }
-                        }
-                    };
+                    // Closure to capture the current fileFrame in the loop
+                    closeButton.Clicked += (s, ev) => HandleClose(frame, addfilePath);
+
 
 
                     // Add the file frame to the container
-                    FileBoxContainer.Children.Insert(0, fileFrame); 
+                    FileBoxContainer.Children.Insert(0, frame); 
 
                     isFileSaved = true;
+
+                    //add frames to the list (for closure)
+                    openFileFrames.Add(frame, addfilePath);
+
 
                 }
             }
         }
+
+        // Method to handle the close operation from the close button
+        private void HandleClose(Frame frame, string addfilePath)
+        {
+            if (FileBoxContainer.Children.Contains(frame))
+            {
+                FileBoxContainer.Children.Remove(frame);
+                if (!string.IsNullOrEmpty(addfilePath))
+                {
+                    userPrompt = userPrompt.Replace($" Added File (Path): {addfilePath} ", string.Empty);
+                }
+            }
+        }
+
+        //Method to handle the close of all the frames after User message is sended
+        private async Task CloseAllOpenFileFrames()
+        {
+            foreach (var frame in openFileFrames.Keys.ToList())
+            {
+                HandleClose(frame, openFileFrames[frame]);
+            }
+            openFileFrames.Clear(); // Clear the dictionary after closing all frames
+        }
+
 
 
 
