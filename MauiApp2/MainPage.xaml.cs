@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Text;
 using static MauiApp2.MainPage;
 using CommunityToolkit;
+using Microsoft.Maui.Storage;
 
 
 namespace MauiApp2
@@ -136,6 +137,102 @@ namespace MauiApp2
 
         private bool isFileSaved = false;
 
+        public class OpenFileButtonUI
+        {
+            public Frame frame { get; set; }
+            public Label fileLabel { get; set; }
+            public string fileLabelText { get; set; }
+            public Button closeButton { get; set; }
+            public Grid grid { get; set; }
+
+
+
+
+            public void InitializeUIComponents()
+            {
+                Initializelabel();
+                InitializeCloseBtn();
+                InitializeGrid();
+                InitializeFrame();
+
+            }
+            private void Initializelabel()
+            {
+                fileLabel = new Label
+                {
+                    Text = fileLabelText,
+                    FontFamily = "Montserrat-Light",
+                    FontSize = 10,
+                    FontAttributes = FontAttributes.Bold,
+                    TextColor = Color.FromArgb("#fff"),
+                    BackgroundColor = Color.FromArgb("#00000000"),
+                    Padding = new Thickness(10),
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.Center,
+                    WidthRequest = 150,
+                    MinimumWidthRequest = 120,
+                };
+            }
+
+            private void InitializeCloseBtn()
+            {
+                closeButton = new Button
+                {
+                    Text = "x",
+                    FontSize = 14,
+                    BackgroundColor = Color.FromArgb("#fff"),
+                    TextColor = Color.FromArgb("#00E0DD"),
+                    Padding = 0,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    CornerRadius = 25,
+                    BorderWidth = 3,
+                    BorderColor = Color.FromArgb("#00E0DD"),
+                };
+            }
+
+            private void InitializeGrid()
+            {
+                grid = new Grid
+                {
+                    ColumnDefinitions =
+                        {
+                            new ColumnDefinition { Width = GridLength.Star },
+                            new ColumnDefinition { Width = GridLength.Auto }
+                        },
+                    BackgroundColor = Color.FromArgb("#00000000"),
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.Center,
+                    Padding = new Thickness(0)
+                };
+
+                grid.Children.Add(fileLabel);
+                Grid.SetColumn(fileLabel, 0);
+                grid.Children.Add(closeButton);
+                Grid.SetColumn(closeButton, 1);
+
+            }
+
+            private void InitializeFrame()
+            {
+                frame = new Frame
+                {
+                    Content = grid,
+                    CornerRadius = 25,
+                    HasShadow = false,
+                    Padding = 0,
+                    Margin = new Thickness(5, 0, 5, 0), // left, top, right, bottom
+                    BackgroundColor = Color.FromArgb("#00E0DD"),
+                    BorderColor = Color.FromArgb("#00E0DD"),
+                    HorizontalOptions = LayoutOptions.End,
+                };
+
+            }
+
+
+        }
+
+
         //OPEN FILE
         private async void OpenFileButton_Clicked(object sender, EventArgs e)
         {
@@ -154,70 +251,19 @@ namespace MauiApp2
                     userPrompt += " Added File (Path): " + addfilePath + " ";
                     string fileName = System.IO.Path.GetFileName(addfilePath);
 
-                    // Create the fileLabel
-                    var fileLabel = new Label
+                    var openFileUI = new OpenFileButtonUI
                     {
-                        Text = fileName,
-                        FontFamily = "Montserrat-Light",
-                        FontSize = 10,
-                        FontAttributes = FontAttributes.Bold,
-                        TextColor = Color.FromArgb("#fff"),
-                        BackgroundColor = Color.FromArgb("#00000000"),
-                        Padding = new Thickness(10),
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.Center,
-                        WidthRequest = 150,
-                        MinimumWidthRequest = 120,
+                        fileLabelText = fileName
                     };
+                    openFileUI.InitializeUIComponents();
 
-                    // Create the closeButton
-                    var closeButton = new Button
-                    {
-                        Text = "x",
-                        FontSize = 14,
-                        BackgroundColor = Color.FromArgb("#fff"),
-                        TextColor = Color.FromArgb("#00E0DD"),
-                        Padding = 0,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        CornerRadius = 25,
-                        BorderWidth = 3,
-                        BorderColor = Color.FromArgb("#00E0DD"),
-                    };
+                    Frame fileFrame = openFileUI.frame;
+                    Label fileLabel = openFileUI.fileLabel;
+                    Button closeButton = openFileUI.closeButton;
+                    Grid grid = openFileUI.grid;
 
-                    // Create the grid to hold the fileLabel and closeButton
-                    var grid = new Grid
-                    {
-                        ColumnDefinitions =
-                        {
-                            new ColumnDefinition { Width = GridLength.Star },
-                            new ColumnDefinition { Width = GridLength.Auto }
-                        },
-                        BackgroundColor = Color.FromArgb("#00000000"),
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.Center,
-                        Padding = new Thickness(0)
-                    };
 
-                    grid.Children.Add(fileLabel);
-                    Grid.SetColumn(fileLabel, 0);
-                    grid.Children.Add(closeButton);
-                    Grid.SetColumn(closeButton, 1);
-
-                    // Create the frame that will hold the grid
-                    var fileFrame = new Frame
-                    {
-                        Content = grid,
-                        CornerRadius = 25,
-                        HasShadow = false,
-                        Padding = 0,
-                        Margin = new Thickness(5, 0, 5, 0), // left, top, right, bottom
-                        BackgroundColor = Color.FromArgb("#00E0DD"),
-                        BorderColor = Color.FromArgb("#00E0DD"),
-                        HorizontalOptions = LayoutOptions.End,
-                    };
-
-                    // Closure to capture the current fileFrame in the loop
+                                        // Closure to capture the current fileFrame in the loop
                     closeButton.Clicked += (s, ev) =>
                     {
                         // Remove the fileFrame from the FileBoxContainer
@@ -235,7 +281,7 @@ namespace MauiApp2
 
 
                     // Add the file frame to the container
-                    FileBoxContainer.Children.Insert(0, fileFrame); // Insert at index 0 to stack from right to left
+                    FileBoxContainer.Children.Insert(0, fileFrame); 
 
                     isFileSaved = true;
 
