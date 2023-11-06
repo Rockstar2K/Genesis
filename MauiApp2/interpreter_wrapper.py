@@ -19,6 +19,14 @@ def Set_API_Key(key):
 
 # ...
 
+
+def log_error(*args):
+    # Add proper logging here
+    print("Log Error:", *args)
+
+# ...
+
+
 def read_prompt(filename='lyris_Prompt.txt'):
     
     # Construct the full file path
@@ -32,68 +40,46 @@ def read_prompt(filename='lyris_Prompt.txt'):
 # ...
 
 def save_chat_history(messages, filename='chat_history.txt'):
-    
     file_path = os.path.join(root_dir, "pMEMORY", filename)
-    
-    # Step 1: Load existing messages
-    existing_messages = load_chat_history(filename)
-    
-    # Step 2: Append new messages to the existing ones
-    existing_messages.extend(messages)
-    
-    # Step 3: Save all messages back to the file
     with open(file_path, 'w', encoding='utf-8') as file:
-        json.dump(existing_messages, file, ensure_ascii=False, indent=4)
-        
+        json.dump(messages, file, ensure_ascii=False, indent=4)
+
 # ...
 
 def load_chat_history(filename='chat_history.txt'):
     file_path = os.path.join(root_dir, "pMEMORY", filename)
-    messages = []
-    
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
-            messages = json.load(file)
-    except FileNotFoundError:
-        pass  # It's okay if the file does not exist
-    except json.JSONDecodeError as e:
-        print("PYTHON JSON ERROR: ", e)
-        pass
-    
-    return messages  
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        # Log errors rather than print them for production-ready code
+        log_error("Loading chat history failed:", e)
+        return []
 
 # ...
 
-def OI_Python2(userPrompt, api_key=None, interpreter_model=None):
+def run_interpreter(userPrompt, api_key=None, interpreter_model=None):
     if api_key:
         Set_API_Key(api_key)
     try:
-
-        interpreter.messages += load_chat_history()
+        # It would be better to manage the chat history state outside this function
+        messages = load_chat_history()
+        interpreter.messages.extend(messages)
 
         interpreter.system_message = read_prompt()
-        
-        interpreter.model = interpreter_model # Set the interpreter model from the variable in c# / settings
-        
-        interpreter.auto_run = True  # Set auto_run to True to bypass user confirmation
+        interpreter.model = interpreter_model
+        interpreter.auto_run = True
 
         output = interpreter.chat(userPrompt, stream=True, display=False)
         for chunk in output:
             print(chunk, flush=True)
 
-        interpreter.messages += output
+        interpreter.messages.extend(output)
         save_chat_history(interpreter.messages)
         
     except Exception as e:
-         print(f"Error: {e}\n{traceback.format_exc()}")
-         return f"Error: {e}\n{traceback.format_exc()}"
-    
-#...
+        log_error(f"Error: {e}\n{traceback.format_exc()}")
 
-def OI_Python(userPrompt, api_key=None, interpreter_model=None):
-    if api_key:
-        Set_API_Key(api_key)
-    OI_Python2(userPrompt, api_key, interpreter_model)
     
 #...
 
@@ -101,4 +87,4 @@ if __name__ == "__main__":
     userPrompt = sys.argv[1]
     api_key = sys.argv[2] if len(sys.argv) > 2 else None
     interpreter_model = sys.argv[3] if len(sys.argv) > 3 else None
-    result = OI_Python(userPrompt, api_key, interpreter_model)
+    result = run_interpreter(userPrompt, api_key, interpreter_model)
