@@ -11,16 +11,7 @@ import subprocess
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 root_dir = os.path.dirname(os.path.abspath(__file__))
-
-#...
-
-def update_interpreter_package(): #in the future this should update the interpreter library
-    try:
-        subprocess.run(["pip", "install", "--upgrade", "open-interpreter"])
-        
-    except Exception as e:
-        return
-        
+ 
 #...
 
 def Set_API_Key(key):

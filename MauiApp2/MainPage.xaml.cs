@@ -245,250 +245,71 @@ namespace MauiApp2
 
 
 
-
-        public class ChatBubble
-        {
-            public AnimatedGif AnimatedGif { get; set; }
-            public Frame InterpreterFrame { get; set; }
-
-            public Label ResultLabel { get; set; }
-            public Label OutputLabel { get; set; }
-
-            public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
-
-            public void InitializeUIComponents(double screenWidth)
-            {
-                InitializeAnimatedGif();
-                InitializeInterpreterFrame(screenWidth);
-                InitializeResultLabel();
-            }
-
-            private void InitializeAnimatedGif()
-            {
-                AnimatedGif = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
-                AnimatedGif.WidthRequest = 80;
-                AnimatedGif.HeightRequest = 80;
-            }
-
-            private void InitializeInterpreterFrame(double screenWidth)
-            {
-                var gradientBrush = GetGradientBrush();
-                var customShadow = GetCustomShadow();
-
-                InterpreterFrame = new Frame
-                {
-                    HasShadow = true,
-                    Shadow = customShadow,
-                    Background = gradientBrush,
-                    BorderColor = Color.FromRgba("#00000000"),
-                    Margin = new Thickness(20, 0, screenWidth * 0.05, 0), // Calculate responsive margin
-                    Content = new StackLayout() // Assign stack layout here if common for all OS
-                    {
-                        Children = { AnimatedGif, ResultLabel } // Add the AnimatedGif here
-                    }
-                };
-
-                if (OperatingSystem.IsMacCatalyst() || OperatingSystem.IsWindows())
-                {
-                    // Special handling for MacCatalyst and Windows if needed
-                }
-            }
-
-            private void InitializeResultLabel()
-            {
-                ResultLabel = new Label
-                {
-                    Text = "",
-                    TextColor = Color.FromArgb("#121B3F"),
-                    FontSize = 14,
-                    FontFamily = "Montserrat-Light",
-                    IsVisible = false
-                };
-            }
-
-            private LinearGradientBrush GetGradientBrush()
-            {
-                var gradientBrush = new LinearGradientBrush
-                {
-                    StartPoint = new Point(0, 0.5),
-                    EndPoint = new Point(1, 0.5)
-                };
-                gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#337DFFCF"), Offset = 0 });
-                gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#7F00E0DD"), Offset = 1 });
-
-                return gradientBrush;
-            }
-
-            private Shadow GetCustomShadow()
-            {
-                var customShadow = new Shadow
-                {
-                    Radius = 10,
-                    Opacity = 0.6f,
-                    Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),
-                    Offset = new Point(5, 5)
-                };
-
-                return customShadow;
-            }
-
-
-        }
-
-        private ChatBubble currentChatBubble;
+        private InterpreterUI currentInterpreterUI;
 
 
         //INTERPRETER CHAT UI
         private async Task AddInterpreterChatBoxToUI()
         {
-
-            var chatBubble = new ChatBubble();
-            currentChatBubble = chatBubble;
+            var interpreterUI = new InterpreterUI();
+            currentInterpreterUI = interpreterUI;
 
             var gridLayout = (Grid)FindByName("ChatLayout");
             gridLayout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
             double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
-            chatBubble.InitializeUIComponents(screenWidth);
+            interpreterUI.InitializeUIComponents(screenWidth);
 
-            await this.Dispatcher.DispatchAsync(() => // Use DispatchAsync and ensure awaiting the operation if needed
+            await this.Dispatcher.DispatchAsync(() =>
             {
-                gridLayout.Children.Add(chatBubble.InterpreterFrame);
-                Grid.SetRow(chatBubble.InterpreterFrame, gridLayout.RowDefinitions.Count - 1);
-                Grid.SetColumn(chatBubble.InterpreterFrame, 0);
+                gridLayout.Children.Add(interpreterUI.InterpreterFrame);
+                Grid.SetRow(interpreterUI.InterpreterFrame, gridLayout.RowDefinitions.Count - 1);
+                Grid.SetColumn(interpreterUI.InterpreterFrame, 0);
             });
-
-
-            //await ChatScrollView.ScrollToAsync(chatBubble.InterpreterFrame, ScrollToPosition.MakeVisible, true);
         }
 
-
-
-
-
-        private Task AddLabelToInterpreterOutputFrame(ChatBubble chatBubble)
+        private Task AddLabelToInterpreterOutputFrame(InterpreterUI interpreterUI)
         {
-
             Debug.WriteLine("AddLabelToInterpreterOutputFrame");
 
-            chatBubble.ResultLabel = new Label
+            interpreterUI.AnimatedGif.IsVisible = false;
+            interpreterUI.ResultLabel.IsVisible = true;
+
+            this.Dispatcher.Dispatch(async () =>
             {
-                Text = "",
-                TextColor = Color.FromArgb("#121B3F"),
-                FontSize = 14,
-                FontFamily = "Montserrat-Light", //CONSOLAS TIPOGRAPHY
-                IsVisible = false,
-                //HorizontalOptions = LayoutOptions.FillAndExpand,  // Make sure the label expands horizontally
-
-            };
-
-            chatBubble.AnimatedGif.IsVisible = false;
-            chatBubble.ResultLabel.IsVisible = true;
-
-            this.Dispatcher.Dispatch(async () => //this code seems to work right only in the dispatcher
-            {
-                var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)chatBubble.InterpreterFrame.Content;
-                interpreterOutput.Children.Add(chatBubble.ResultLabel);
+                var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
+                interpreterOutput.Children.Add(interpreterUI.ResultLabel);
             });
 
-            return Task.CompletedTask; // Indicate that the Task is complete
-
+            return Task.CompletedTask;
         }
-        
-        private bool isOutputFirstUpdate = true;
-        /*
-
-        private Task AddOutputToInterpreterOutputFrame(ChatBubble chatBubble)
-        {
-
-            Debug.WriteLine("AddOutputToInterpreterOutputFrame");
-
-            chatBubble.OutputLabel = new Label
-            {
-                Text = "",
-                TextColor = Color.FromArgb("#F2CFE2"),
-                FontSize = 14,
-                FontFamily = "Montserrat-Light", //CONSOLAS TIPOGRAPHY
-                IsVisible = false
-            };
-
-            chatBubble.AnimatedGif.IsVisible = false;
-            chatBubble.OutputLabel.IsVisible = true;
-
-            var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)chatBubble.InterpreterFrame.Content;
-            interpreterOutput.Children.Add(chatBubble.OutputLabel);
-
-
-            return Task.CompletedTask; // Indicate that the Task is complete
-
-        }
-        */
-
 
         private Frame currentCodeFrame;
 
-        private Label AddInterpreterCodeBoxToInterpreterOutputFrame(ChatBubble chatBubble)
+        private Label AddInterpreterCodeBoxToInterpreterOutputFrame(InterpreterUI interpreterUI)
         {
             Debug.WriteLine("AddInterpreterCodeBoxToInterpreterOutputFrame");
 
-            // Gradient Brush Configuration
-            var gradientBrush = new Microsoft.Maui.Controls.LinearGradientBrush
-            {
-                StartPoint = new Point(0, 0.5),
-                EndPoint = new Point(1, 0.5),
-                GradientStops =
-            {
-                new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#5AFFFFFF"), Offset = 1 },
-                new Microsoft.Maui.Controls.GradientStop { Color = Color.FromArgb("#1AFFFFFF"), Offset = 0 }
-            }
-            };
+            Label codeLabel = interpreterUI.CreateCodeLabel();
+            Frame codeFrame = interpreterUI.CreateCodeFrameWithLabel(codeLabel);
 
-            // Frame Configuration
-            Frame interpreterCodeFrame = new Frame
-            {
-                Background = gradientBrush,
-                BorderColor = Color.FromRgba(255, 255, 255, 0),
-                Margin = new Thickness(0, 10, 0, 10),  // left, top, right, bottom
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
+            currentCodeFrame = codeFrame;
 
-            currentCodeFrame = interpreterCodeFrame;
+            var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
+            interpreterOutput.Children.Add(codeFrame);
 
+            var gridLayout = (Grid)FindByName("ChatLayout");
 
-            // Label Configuration
-            Label codeLabel = new Label
-            {
-                Text = "",
-                TextColor = Color.FromArgb("#121B3F"),
-                FontSize = 12,
-                FontFamily = "Montserrat-Light"  // CONSOLAS TIPOGRAPHY
-            };
-
-            // Assigning Label to Frame
-            interpreterCodeFrame.Content = new Microsoft.Maui.Controls.StackLayout
-            {
-                Children = { codeLabel }
-            };
-
-            // Adding Frame to ChatBubble
-            var interpreterOutput = (Microsoft.Maui.Controls.StackLayout)chatBubble.InterpreterFrame.Content;
-            interpreterOutput.Children.Add(interpreterCodeFrame);
-
-            var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-
-            this.Dispatcher.Dispatch(async () => //this code seems to work right only in the dispatcher
+            this.Dispatcher.Dispatch(async () =>
             {
                 if (OperatingSystem.IsWindows())
                 {
-                    await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true); //i dont know why awaiting this doesnt returns (outside the dispatcher)
+                    await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
                 }
-
             });
 
             return codeLabel;
         }
-
 
 
         //TTS
@@ -627,10 +448,10 @@ namespace MauiApp2
                     {
                         Debug.WriteLine("START OF CODE is true");
 
-                        currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentChatBubble);
+                        currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
                         isCodeFirstUpdate = true;
 
-                        isOutputFirstUpdate = true; //lets see
+                       // isOutputFirstUpdate = true; //lets see
 
                     }
 
@@ -679,7 +500,7 @@ namespace MauiApp2
 
                         Debug.WriteLine("End of code FORCE UI");
 
-                        currentChatBubble.InterpreterFrame.ForceLayout();
+                        currentInterpreterUI.InterpreterFrame.ForceLayout();
                         currentCodeFrame.ForceLayout();
 
                         ChatScrollView.ForceLayout();
@@ -691,11 +512,11 @@ namespace MauiApp2
                     if (start_of_message == true)
                     {
 
-                        await AddLabelToInterpreterOutputFrame(currentChatBubble);
+                        await AddLabelToInterpreterOutputFrame(currentInterpreterUI);
 
                         //  isFirstUpdate = false; ??
 
-                        isOutputFirstUpdate = true;
+                        //isOutputFirstUpdate = true;
 
 
 
@@ -705,19 +526,19 @@ namespace MauiApp2
                     {
                         if (isFirstUpdate)
                         {
-                            currentChatBubble.ResultLabel.Text = message;  // Use currentChatBubble.ResultLabel here
+                            currentInterpreterUI.ResultLabel.Text = message;  // Use currentChatBubble.ResultLabel here
                             isFirstUpdate = false;
                         }
                         else
                         {
-                            currentChatBubble.ResultLabel.Text += message;  // Use currentChatBubble.ResultLabel here
+                            currentInterpreterUI.ResultLabel.Text += message;  // Use currentChatBubble.ResultLabel here
                         }
 
                         if (message.Contains("\n"))
                         {
                             Debug.WriteLine("MESSAGE CONTAINS /N");
 
-                            currentChatBubble.InterpreterFrame.ForceLayout();
+                            currentInterpreterUI.InterpreterFrame.ForceLayout();
                             ChatScrollView.ForceLayout();
 
                             var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
@@ -736,7 +557,7 @@ namespace MauiApp2
 
                          Debug.WriteLine("ens of message FORCE UI");
 
-                        currentChatBubble.InterpreterFrame.ForceLayout();
+                        currentInterpreterUI.InterpreterFrame.ForceLayout();
                         ChatScrollView.ForceLayout();
 
                          var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
