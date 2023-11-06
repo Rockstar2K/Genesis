@@ -15,7 +15,6 @@ namespace MauiApp2
     public partial class MainPage : ContentPage
     {
 
-        static string userPrompt;
         public static string apiKey { get; set; } = Preferences.Get("api_key", "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");
         public bool is_night_mode_on { get; set; } = Preferences.Get("night_mode", false);
         public bool is_code_visible { get; set; } = Preferences.Get("see_code", false);
@@ -48,7 +47,7 @@ namespace MauiApp2
         }
 
 
-
+        static string userPrompt;
 
         //USER PROMPT INPUT
         private async void UserInputBox_Completed(System.Object sender, System.EventArgs e)
@@ -56,23 +55,20 @@ namespace MauiApp2
             var current = Connectivity.NetworkAccess;
             if (current == NetworkAccess.Internet)
             {
-
                 if (isFileSaved)
-                { //checks if there is a file saved
+                {
                     userPrompt += UserInput.Text;
                     isFileSaved = false;
-
                 }
                 else
                 {
                     userPrompt = UserInput.Text;
-
                 }
+
                 UserInput.Text = "";
 
                 if (!string.IsNullOrEmpty(userPrompt))
                 {
-
 
                     Debug.WriteLine("User Input memory count: " + memory_count);
 
@@ -90,13 +86,9 @@ namespace MauiApp2
                     else
                     {
 
-                        Debug.WriteLine("Memory count MORE than MaxCharachters");
-
                         await TrimMemoryCS.TrimMemoryFile();
                         AddChatBoxes();
                     }
-
-
                 }
             }
             else
@@ -117,7 +109,8 @@ namespace MauiApp2
                 ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
 
                 await UserChatBoxUI.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
-                await CloseAllOpenFileFrames(); //CLOSE path UI frames
+                await CloseAllOpenFileFrames(); //CLOSE path UI frames this function is erasing the filePath from the prompt before is sended to the API in AddInterpreterChatBoxToUI
+
 
                 await AddInterpreterChatBoxToUI(); 
                 await ExecuteScriptAsync();
@@ -136,100 +129,10 @@ namespace MauiApp2
 
         }
 
+
+        //private OpenFileUI openFileUI; //Class from another file
+
         private bool isFileSaved = false;
-
-        public class OpenFileButtonUI
-        {
-            public Frame frame { get; set; }
-            public Label label { get; set; }
-            public string labelText { get; set; }
-            public Button closeButton { get; set; }
-            public Grid grid { get; set; }
-
-            public void InitializeUIComponents()
-            {
-                Initializelabel();
-                InitializeCloseBtn();
-                InitializeGrid();
-                InitializeFrame();
-
-            }
-            private void Initializelabel()
-            {
-                label = new Label
-                {
-                    Text = labelText,
-                    FontFamily = "Montserrat-Light",
-                    FontSize = 10,
-                    FontAttributes = FontAttributes.Bold,
-                    TextColor = Color.FromArgb("#fff"),
-                    BackgroundColor = Color.FromArgb("#00000000"),
-                    Padding = new Thickness(10),
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.Center,
-                    WidthRequest = 150,
-                    MinimumWidthRequest = 120,
-                };
-            }
-
-            private void InitializeCloseBtn()
-            {
-                closeButton = new Button
-                {
-                    Text = "x",
-                    FontSize = 14,
-                    BackgroundColor = Color.FromArgb("#fff"),
-                    TextColor = Color.FromArgb("#00E0DD"),
-                    Padding = 0,
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    CornerRadius = 25,
-                    BorderWidth = 3,
-                    BorderColor = Color.FromArgb("#00E0DD"),
-                };
-            }
-
-            private void InitializeGrid()
-            {
-                grid = new Grid
-                {
-                    ColumnDefinitions =
-                        {
-                            new ColumnDefinition { Width = GridLength.Star },
-                            new ColumnDefinition { Width = GridLength.Auto }
-                        },
-                    BackgroundColor = Color.FromArgb("#00000000"),
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.Center,
-                    Padding = new Thickness(0)
-                };
-
-                grid.Children.Add(label);
-                Grid.SetColumn(label, 0);
-                grid.Children.Add(closeButton);
-                Grid.SetColumn(closeButton, 1);
-
-            }
-
-            private void InitializeFrame()
-            {
-                frame = new Frame
-                {
-                    Content = grid,
-                    CornerRadius = 25,
-                    HasShadow = false,
-                    Padding = 0,
-                    Margin = new Thickness(5, 0, 5, 0), // left, top, right, bottom
-                    BackgroundColor = Color.FromArgb("#00E0DD"),
-                    BorderColor = Color.FromArgb("#00E0DD"),
-                    HorizontalOptions = LayoutOptions.End,
-                };
-
-            }
-
-
-        }
-
         private Dictionary<Frame, string> openFileFrames = new Dictionary<Frame, string>();
 
         //OPEN FILE
@@ -253,7 +156,7 @@ namespace MauiApp2
 
                     string fileName = System.IO.Path.GetFileName(addfilePath);
 
-                    var openFileUI = new OpenFileButtonUI
+                    var openFileUI = new OpenFileUI
                     {
                         labelText = fileName
                     };
@@ -269,48 +172,46 @@ namespace MauiApp2
                     closeButton.Clicked += (s, ev) => HandleClose(frame, addfilePath);
 
 
-
                     // Add the file frame to the container
                     FileBoxContainer.Children.Insert(0, frame); 
 
                     isFileSaved = true;
 
                     //add frames to the list (for closure)
-                    openFileFrames.Add(frame, addfilePath);
+                    openFileFrames[frame] = addfilePath; // Use indexer for potential frame update
 
 
                 }
             }
         }
 
-        // Method to handle the close operation from the close button
-        private void HandleClose(Frame frame, string addfilePath)
+        // Modify the HandleClose method to include a flag for updating the userPrompt
+        private void HandleClose(Frame frame, string addfilePath, bool updatePrompt = true)
         {
             if (FileBoxContainer.Children.Contains(frame))
             {
                 FileBoxContainer.Children.Remove(frame);
-                if (!string.IsNullOrEmpty(addfilePath))
+                if (updatePrompt == true && !string.IsNullOrEmpty(addfilePath))
                 {
                     userPrompt = userPrompt.Replace($" Added File (Path): {addfilePath} ", string.Empty);
                 }
             }
         }
 
-        //Method to handle the close of all the frames after User message is sended
+        // Modify CloseAllOpenFileFrames to pass 'false' for the updatePrompt parameter
         private async Task CloseAllOpenFileFrames()
         {
             foreach (var frame in openFileFrames.Keys.ToList())
             {
-                HandleClose(frame, openFileFrames[frame]);
+                // Pass 'false' to prevent userPrompt from being updated
+                HandleClose(frame, openFileFrames[frame], false);
             }
             openFileFrames.Clear(); // Clear the dictionary after closing all frames
         }
 
 
 
-
         private InterpreterUI currentInterpreterUI;
-
 
         //INTERPRETER CHAT UI
         private async Task AddInterpreterChatBoxToUI()
