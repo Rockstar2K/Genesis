@@ -3,118 +3,118 @@
     x:Class="MauiApp2.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ui="clr-namespace:Xe.AcrylicView;assembly=Xe.AcrylicView"
     Title=""
-    NavigationPage.HasNavigationBar="False"
-    xmlns:ui="clr-namespace:Xe.AcrylicView;assembly=Xe.AcrylicView">
-    
+    NavigationPage.HasNavigationBar="False">
 
-    <!-- Use AbsoluteLayout as the main container -->
+
+    <!--  Use AbsoluteLayout as the main container  -->
     <AbsoluteLayout
         BackgroundColor="#F9F9F9"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
 
-        <!-- Top Bar -->
-        <ui:AcrylicView VerticalOptions="FillAndExpand"
-             HorizontalOptions="FillAndExpand"
-             EffectStyle="Custom"
-             TintColor="White"
-             TintOpacity="0.1"        
-             AbsoluteLayout.LayoutBounds="0,0,1,56"
-             AbsoluteLayout.LayoutFlags="WidthProportional"
-             ZIndex="10">
-            <Grid
-                 BackgroundColor="Transparent"
-                 RowDefinitions="Auto">
-                <!-- Welcome Button -->
+        <!--  Top Bar  -->
+        <ui:AcrylicView
+            AbsoluteLayout.LayoutBounds="0,0,1,56"
+            AbsoluteLayout.LayoutFlags="WidthProportional"
+            BackgroundColor="Transparent"
+            EffectStyle="Custom"
+            HorizontalOptions="FillAndExpand"
+            TintColor="White"
+            TintOpacity="0.1"
+            VerticalOptions="FillAndExpand"
+            ZIndex="10">
+            <Grid BackgroundColor="Transparent" RowDefinitions="Auto">
+                <!--  Welcome Button  -->
                 <Button
-                     Grid.Row="0"
-                     Margin="10,0,0,0"
-                     BackgroundColor="LightPink"
-                     Clicked="Welcome_Button_Clicked"
-                     Text="Welcome Page"
-                     HeightRequest="46"
-                     HorizontalOptions="Start"
-                     VerticalOptions="Center" />
-                <!-- Settings ImageButton -->
+                    Grid.Row="0"
+                    Margin="10,0,0,0"
+                    BackgroundColor="LightPink"
+                    Clicked="Welcome_Button_Clicked"
+                    HeightRequest="46"
+                    HorizontalOptions="Start"
+                    Text="Welcome Page"
+                    VerticalOptions="Center" />
+                <!--  Settings ImageButton  -->
                 <ImageButton
-                     x:Name="Settings"
-                     Grid.Row="0"
-                     Margin="0,0,10,0"
-                     BackgroundColor="Transparent"
-                     HorizontalOptions="End"
-                     VerticalOptions="Center"
-                     HeightRequest="46"
-                     Pressed="Settings_Pressed"
-                     Source="settings.png">
+                    x:Name="Settings"
+                    Grid.Row="0"
+                    Margin="0,0,10,0"
+                    BackgroundColor="Transparent"
+                    HeightRequest="46"
+                    HorizontalOptions="End"
+                    Pressed="Settings_Pressed"
+                    Source="settings.png"
+                    VerticalOptions="Center">
                     <ImageButton.Shadow>
                         <Shadow
-                             Brush="#121B3F"
-                             Opacity="0.2"
-                             Radius="25"
-                             Offset="0,20" />
+                            Brush="#121B3F"
+                            Opacity="0.2"
+                            Radius="25"
+                            Offset="0,20" />
                     </ImageButton.Shadow>
                 </ImageButton>
             </Grid>
         </ui:AcrylicView>
 
 
-        <!-- Chat Scroll View that fills the entire page -->
+        <!--  Chat Scroll View that fills the entire page  -->
         <ScrollView
-           x:Name="ChatScrollView"
-           AbsoluteLayout.LayoutBounds="0,0,1,1"
-           AbsoluteLayout.LayoutFlags="All"
-           BackgroundColor="Transparent"
-           Padding="0"
-           ZIndex="0"
-           Margin="0, 50, 0, 0">
+            x:Name="ChatScrollView"
+            Margin="0,50,0,0"
+            Padding="0"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
+            BackgroundColor="Transparent"
+            ZIndex="0">
             <Grid x:Name="ChatLayout">
-                <!-- Your chat content goes here -->
+                <!--  Your chat content goes here  -->
             </Grid>
         </ScrollView>
 
 
 
-        <!-- File Box Container (FlexLayout) positioned above the Bottom Bar -->
-        <!-- 135 is the bottom-margin-->
+        <!--  File Box Container (FlexLayout) positioned above the Bottom Bar  -->
+        <!--  135 is the bottom-margin  -->
         <FlexLayout
             x:Name="FileBoxContainer"
-            Margin="0,0,10,0" 
-            AbsoluteLayout.LayoutBounds="0,1,1,135" 
+            Margin="0,0,10,0"
+            AbsoluteLayout.LayoutBounds="0,1,1,135"
             AbsoluteLayout.LayoutFlags="WidthProportional, XProportional, YProportional"
             AlignItems="Start"
             BackgroundColor="#00000000"
             Direction="Row"
             JustifyContent="Start"
             Wrap="Wrap">
-            <!-- Child elements -->
+            <!--  Child elements  -->
         </FlexLayout>
 
 
 
-        <!-- Bottom Bar -->
-        <ui:AcrylicView VerticalOptions="FillAndExpand"
-             HorizontalOptions="FillAndExpand"
-             EffectStyle="Custom"
-             TintColor="White"
-             TintOpacity="0.05"   
-             AbsoluteLayout.LayoutBounds="0,1,1,AutoSize"
-             AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
-             ZIndex="1">
-            <Grid
-                Padding="10,15,15,15"
-                BackgroundColor="Transparent">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <!--  Bottom Bar  -->
+        <ui:AcrylicView
+            AbsoluteLayout.LayoutBounds="0,1,1,AutoSize"
+            AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
+            EffectStyle="Custom"
+            HorizontalOptions="FillAndExpand"
+            TintColor="White"
+            TintOpacity="0.05"
+            VerticalOptions="FillAndExpand"
+            ZIndex="1">
+            <Grid Padding="10,15,15,15" BackgroundColor="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <!--  + Button  -->
-            <Button
+                <!--  + Button  -->
+                <Button
                     Grid.Column="0"
                     Padding="10"
                     BackgroundColor="Transparent"
+                    BorderWidth="0"
                     Clicked="OpenFileButton_Clicked"
                     FontSize="24"
                     HorizontalOptions="Center"
@@ -122,7 +122,7 @@
                     TextColor="#A49FF9"
                     VerticalOptions="Center" />
 
-            <Frame
+                <Frame
                     Grid.Column="1"
                     Margin="0"
                     Padding="0"
@@ -133,45 +133,43 @@
                     VerticalOptions="FillAndExpand"
                     ZIndex="2">
 
-                <Grid HorizontalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                    <Entry
+                        <Entry
                             x:Name="UserInput"
                             Grid.Column="0"
-                            BackgroundColor="#5AFFFFFF"
+                            BackgroundColor="Transparent"
                             Completed="UserInputBox_Completed"
                             FontFamily="Montserrat-Light"
                             HorizontalOptions="FillAndExpand"
+                            IsTextPredictionEnabled="True"
                             IsVisible="True"
                             Placeholder="¿Que quieres que haga?"
                             PlaceholderColor="#68667D"
-                            TextColor="#121B3F"
-                            IsTextPredictionEnabled="True">
-                        
-                    </Entry>
+                            TextColor="#121B3F" />
 
-                    <ContentView
+                        <ContentView
                             Grid.Column="1"
+                            BackgroundColor="Transparent"
                             HeightRequest="50"
-                            WidthRequest="50"
-                            BackgroundColor="#5AFFFFFF"
-                            >
+                            WidthRequest="50">
 
-                        <ImageButton
+                            <ImageButton
                                 Padding="12"
                                 BackgroundColor="Transparent"
+                                BorderWidth="0"
                                 Clicked="UserInputBox_Completed"
                                 HeightRequest="40"
                                 HorizontalOptions="EndAndExpand"
                                 Source="avioncito.png"
                                 VerticalOptions="Center" />
-                    </ContentView>
-                </Grid>
-            </Frame>
+                        </ContentView>
+                    </Grid>
+                </Frame>
             </Grid>
         </ui:AcrylicView>
 
