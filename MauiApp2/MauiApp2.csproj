@@ -116,7 +116,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
+		<PackageReference Include="AcrylicView.Maui" Version="2.0.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
 		<PackageReference Include="Google.Cloud.Speech.V1" Version="3.4.0" />
 		<PackageReference Include="Google.Cloud.TextToSpeech.V1" Version="3.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />

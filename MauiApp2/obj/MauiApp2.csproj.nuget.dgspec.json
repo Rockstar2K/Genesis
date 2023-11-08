@@ -61,9 +61,13 @@
         "net7.0-android33.0": {
           "targetAlias": "net7.0-android",
           "dependencies": {
+            "AcrylicView.Maui": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.1.0, )"
             },
             "Google.Cloud.Speech.V1": {
               "target": "Package",
@@ -229,9 +233,13 @@
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
           "dependencies": {
+            "AcrylicView.Maui": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.1.0, )"
             },
             "Google.Cloud.Speech.V1": {
               "target": "Package",
@@ -330,9 +338,13 @@
         "net7.0-maccatalyst16.1": {
           "targetAlias": "net7.0-maccatalyst",
           "dependencies": {
+            "AcrylicView.Maui": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.1.0, )"
             },
             "Google.Cloud.Speech.V1": {
               "target": "Package",
@@ -432,9 +444,13 @@
         "net7.0-windows10.0.19041": {
           "targetAlias": "net7.0-windows10.0.19041.0",
           "dependencies": {
+            "AcrylicView.Maui": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.1.0, )"
             },
             "Google.Cloud.Speech.V1": {
               "target": "Package",

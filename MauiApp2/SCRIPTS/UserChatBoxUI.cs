@@ -33,10 +33,10 @@ namespace MauiApp2.SCRIPTS
         {
             frame.Shadow = new Shadow
             {
-                Brush = new SolidColorBrush(Color.FromArgb("#121B3F")),
-                Offset = new Point(0, 5),
+                Brush = Color.FromArgb("000"),
+                Offset = new Point(10, 10),
                 Radius = 15,
-                Opacity = 0.6f
+                Opacity = 0.25f
             };
         }
     }

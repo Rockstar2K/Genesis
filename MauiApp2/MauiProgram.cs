@@ -2,6 +2,8 @@
 using MauiApp2;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using CommunityToolkit.Maui;
+using Xe.AcrylicView;
+
 
 
 namespace MauiApp2
@@ -20,6 +22,7 @@ namespace MauiApp2
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
                 .UseSkiaSharp()
+                .UseAcrylicView() 
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

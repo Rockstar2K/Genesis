@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "s07ckcoBFgDGPed6VIFfs7xN2UY8hOLqy9PiIr8+nqkf6Bl9ecAOtVL6fkESGCPqpv1R//n0WfMZx1q0J48I2g==",
+  "dgSpecHash": "DjA5Cvxhdciqwmo26vtuGxKb5GYFU/BUq1aDKTJW8wiy5lKsx+7hj2TsWHi6q1Fj6Z9o0w5F3Blh1wEqT+uQ5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\MauiApp2.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\thega\\.nuget\\packages\\communitytoolkit.maui\\6.0.0\\communitytoolkit.maui.6.0.0.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\communitytoolkit.maui.core\\6.0.0\\communitytoolkit.maui.core.6.0.0.nupkg.sha512",
+    "C:\\Users\\thega\\.nuget\\packages\\acrylicview.maui\\2.0.1\\acrylicview.maui.2.0.1.nupkg.sha512",
+    "C:\\Users\\thega\\.nuget\\packages\\communitytoolkit.maui\\6.1.0\\communitytoolkit.maui.6.1.0.nupkg.sha512",
+    "C:\\Users\\thega\\.nuget\\packages\\communitytoolkit.maui.core\\6.1.0\\communitytoolkit.maui.core.6.1.0.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\google.api.commonprotos\\2.7.0\\google.api.commonprotos.2.7.0.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\google.api.gax\\4.3.1\\google.api.gax.4.3.1.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\google.api.gax.grpc\\4.3.1\\google.api.gax.grpc.4.3.1.nupkg.sha512",
