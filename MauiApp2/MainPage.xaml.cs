@@ -52,52 +52,42 @@ namespace MauiApp2
         //USER PROMPT INPUT
         private async void UserInputBox_Completed(System.Object sender, System.EventArgs e)
         {
-            var current = Connectivity.NetworkAccess;
-            if (current == NetworkAccess.Internet)
+            try
             {
-                if (isFileSaved)
+                var current = Connectivity.NetworkAccess;
+                if (current == NetworkAccess.Internet)
                 {
-                    userPrompt += UserInput.Text;
+                    userPrompt = isFileSaved ? userPrompt + UserInput.Text : UserInput.Text;
                     isFileSaved = false;
+                    UserInput.Text = "";
+
+                    if (!string.IsNullOrWhiteSpace(userPrompt))
+                    {
+                        Debug.WriteLine($"User Input memory count: {memory_count}");
+
+                        await TrimMemoryCS.TrimMemoryFile().ConfigureAwait(false);
+                        AddChatBoxes();
+
+                        if (memory_count <= TrimMemoryCS.MaxCharacters)
+                        {
+                            Debug.WriteLine("Memory count LESS than MaxCharacters");
+                        }
+                    }
                 }
                 else
                 {
-                    userPrompt = UserInput.Text;
-                }
-
-                UserInput.Text = "";
-
-                if (!string.IsNullOrEmpty(userPrompt))
-                {
-
-                    Debug.WriteLine("User Input memory count: " + memory_count);
-
-                    if (memory_count <= TrimMemoryCS.MaxCharacters) //si es menor se ejecuta addChatBoxes primero
-                    {
-
-                        Debug.WriteLine("Memory count LESS than MaxCharachters");
-
-                        await TrimMemoryCS.TrimMemoryFile();
-                        AddChatBoxes();
-                        //await Task.Delay(10000);
-                        //await TrimMemoryCS.TrimMemoryFile();
-
-                    }
-                    else
-                    {
-
-                        await TrimMemoryCS.TrimMemoryFile();
-                        AddChatBoxes();
-                    }
+                    // NoInternetFrame.IsVisible = true;
+                    await Task.Delay(3000).ConfigureAwait(false);
+                    // NoInternetFrame.IsVisible = false;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                // NoInternetFrame.IsVisible = true;
-                await Task.Delay(3000);
-                //NoInternetFrame.IsVisible = false;
+                Debug.WriteLine($"An error occurred: {ex.Message}");
+                // Handle exceptions (e.g., display a message to the user)
             }
         }
+
 
         private async void AddChatBoxes() //calls the main functions in order
         {
@@ -108,7 +98,7 @@ namespace MauiApp2
                 var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
                 ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
 
-                await UserChatBoxUI.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
+                await UserChatBoxLogic.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
                 await CloseAllOpenFileFrames(); //CLOSE path UI frames this function is erasing the filePath from the prompt before is sended to the API in AddInterpreterChatBoxToUI
 
 
@@ -134,13 +124,39 @@ namespace MauiApp2
 
         private bool isFileSaved = false;
         private Dictionary<Frame, string> openFileFrames = new Dictionary<Frame, string>();
+        /*
+        private void OnOptionSelected(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
 
+            // Do something based on the button's text
+            switch (button.Text)
+            {
+                case "Document":
+                    // Handle "Document" action
+                    break;
+                case "Photos & Videos":
+                    // Handle "Photos & Videos" action
+                    break;
+                case "Camera":
+                    // Handle "Camera" action
+                    break;
+                    // ... Handle other cases
+            }
+
+            // Hide the overlay after selection
+            optionsOverlay.IsVisible = false;
+        }
+        */
         //OPEN FILE
         private async void OpenFileButton_Clicked(object sender, EventArgs e)
         {
             // Use PickMultipleAsync to allow multiple file selections
             var results = await FilePicker.PickMultipleAsync();
             FileBoxContainer.HorizontalOptions = LayoutOptions.End; // Align to the end (right)
+
+            //optionsOverlay.IsVisible = !optionsOverlay.IsVisible;
+
 
 
             // Check if any files are selected
@@ -216,17 +232,17 @@ namespace MauiApp2
         //INTERPRETER CHAT UI
         private async Task AddInterpreterChatBoxToUI()
         {
-            var interpreterUI = new InterpreterUI();
-            currentInterpreterUI = interpreterUI;
-
-            var gridLayout = (Grid)FindByName("ChatLayout");
-            gridLayout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-
-            double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
-            interpreterUI.InitializeUIComponents(screenWidth);
-
             await this.Dispatcher.DispatchAsync(() =>
             {
+                var interpreterUI = new InterpreterUI();
+                currentInterpreterUI = interpreterUI;
+
+                var gridLayout = (Grid)FindByName("ChatLayout");
+                gridLayout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+                double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
+                interpreterUI.InitializeUIComponents(screenWidth);
+
                 gridLayout.Children.Add(interpreterUI.InterpreterFrame);
                 Grid.SetRow(interpreterUI.InterpreterFrame, gridLayout.RowDefinitions.Count - 1);
                 Grid.SetColumn(interpreterUI.InterpreterFrame, 0);
@@ -237,11 +253,11 @@ namespace MauiApp2
         {
             Debug.WriteLine("AddLabelToInterpreterOutputFrame");
 
-            interpreterUI.AnimatedGif.IsVisible = false;
-            interpreterUI.ResultLabel.IsVisible = true;
-
-            this.Dispatcher.Dispatch(async () =>
+            this.Dispatcher.Dispatch(() =>
             {
+                interpreterUI.AnimatedGif.IsVisible = false;
+                interpreterUI.ResultLabel.IsVisible = true;
+
                 var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
                 interpreterOutput.Children.Add(interpreterUI.ResultLabel);
             });

@@ -6,40 +6,40 @@
     Title=""
     NavigationPage.HasNavigationBar="False">
 
-    <Grid
+    <!-- Use AbsoluteLayout as the main container -->
+    <AbsoluteLayout
         BackgroundColor="#F9F9F9"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
 
-        </Grid.RowDefinitions>
 
-        <AbsoluteLayout
-            Grid.Row="0"
-            Margin="0,0"
-            BackgroundColor="Transparent"
-            ZIndex="1">
-
+        <!-- Top Bar -->
+        <Grid
+            BackgroundColor="#5AFFFFFF"
+            AbsoluteLayout.LayoutBounds="0,0,1,56"
+            AbsoluteLayout.LayoutFlags="WidthProportional"
+            RowDefinitions="Auto">
+            <!-- Welcome Button -->
             <Button
+                Grid.Row="0"
                 Margin="10,0,0,0"
                 BackgroundColor="LightPink"
                 Clicked="Welcome_Button_Clicked"
                 Text="Welcome Page"
-                ZIndex="1" />
+                 HeightRequest="46"
+                HorizontalOptions="Start"
+                VerticalOptions="Center" />
+            <!-- Settings ImageButton -->
             <ImageButton
                 x:Name="Settings"
+                Grid.Row="0"
                 Margin="0,0,10,0"
-                AbsoluteLayout.LayoutBounds="1,0"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                CornerRadius="15"
+                BackgroundColor="Transparent"
                 HorizontalOptions="End"
+                VerticalOptions="Center"
+                HeightRequest="46"
                 Pressed="Settings_Pressed"
-                Source="settings.png"
-                ZIndex="1">
+                Source="settings.png">
                 <ImageButton.Shadow>
                     <Shadow
                         Brush="#121B3F"
@@ -48,43 +48,47 @@
                         Offset="0,20" />
                 </ImageButton.Shadow>
             </ImageButton>
-        </AbsoluteLayout>
+        </Grid>
 
-        <!--  Chat Scroll View  -->
+
+
+        <!-- Chat Scroll View that fills the entire page -->
         <ScrollView
-            x:Name="ChatScrollView"
-            Grid.Row="1"
-            Margin="0,0,0,0"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
-            <Grid x:Name="ChatLayout" Padding="0,0">
-                <!--  Chat content  -->
+           x:Name="ChatScrollView"
+           AbsoluteLayout.LayoutBounds="0,0,1,1"
+           AbsoluteLayout.LayoutFlags="All"
+           BackgroundColor="Transparent"
+           Padding="0">
+            <Grid x:Name="ChatLayout">
+                <!-- Your chat content goes here -->
             </Grid>
-            
         </ScrollView>
         
-        
+
 
         <FlexLayout
             x:Name="FileBoxContainer"
-            Grid.Row="2"
-            Margin="0,0,10,5"
+            Margin="0,50,10,5" 
+            AbsoluteLayout.LayoutBounds="0,0,1,AutoSize"
+            AbsoluteLayout.LayoutFlags="WidthProportional"
             AlignItems="Start"
             BackgroundColor="#00000000"
             Direction="Row"
             JustifyContent="Start"
-            Wrap="Wrap" />
+            Wrap="Wrap">
+            <!-- Child elements -->
+        </FlexLayout>
+        
 
 
-        <!--  Bottom INPUT and Button  -->
+        <!-- Bottom Bar -->
         <Grid
-            Grid.Row="3"
             Padding="0,0,0,0"
-            BackgroundColor="#5AFFFFFF">
-            <!--  Should be 50% transparent  -->
+            BackgroundColor="#5AFFFFFF"
+            AbsoluteLayout.LayoutBounds="0,1,1,AutoSize"
+            AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <!--  New Column for the + Button  -->
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
@@ -119,7 +123,7 @@
                     <Entry
                         x:Name="UserInput"
                         Grid.Column="0"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="#5AFFFFFF"
                         Completed="UserInputBox_Completed"
                         FontFamily="Montserrat-Light"
                         HorizontalOptions="FillAndExpand"
@@ -139,7 +143,10 @@
                     <ContentView
                         Grid.Column="1"
                         HeightRequest="50"
-                        WidthRequest="50">
+                        WidthRequest="50"
+                        BackgroundColor="#5AFFFFFF"
+                        >
+                        
                         <ImageButton
                             Padding="12"
                             BackgroundColor="Transparent"
@@ -152,7 +159,8 @@
                 </Grid>
             </Frame>
         </Grid>
+        
 
 
-    </Grid>
+    </AbsoluteLayout>
 </ContentPage>
