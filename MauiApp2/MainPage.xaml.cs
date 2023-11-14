@@ -147,11 +147,9 @@ namespace MauiApp2
 
                     if (fileName.Length > 12)
                     {
-                        fileName = fileName.Substring(0, 12);
+                        fileName = fileName.Substring(0, 12) + "...";
 
                     }
-
-
 
                     this.Dispatcher.Dispatch(() =>
                     {

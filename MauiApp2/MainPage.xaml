@@ -60,10 +60,11 @@
 
 
         <!--  Chat Scroll View that fills the entire page  -->
+        <!--  we use padding for top and bottom for a "margin" and for the glass to be diplayed (margin doesnt works)  -->
         <ScrollView
             x:Name="ChatScrollView"
-            Margin="0,50,0,0"
-            Padding="0"
+            Margin="0"
+            Padding="0,50,0,100"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
             BackgroundColor="Transparent"
