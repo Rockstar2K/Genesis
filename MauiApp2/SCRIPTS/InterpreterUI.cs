@@ -46,8 +46,9 @@ namespace MauiApp2.SCRIPTS
                     Margin = new Thickness(20, 0, screenWidth * 0.05, 0), // Calculate responsive margin
                     Content = new StackLayout() // Assign stack layout here if common for all OS
                     {
+                        VerticalOptions = LayoutOptions.StartAndExpand, // Set VerticalOptions for the StackLayout
                         Children = { AnimatedGif, ResultLabel } // Add the AnimatedGif here
-                    }
+                    },
                 };
 
                 if (OperatingSystem.IsMacCatalyst() || OperatingSystem.IsWindows())
@@ -64,7 +65,17 @@ namespace MauiApp2.SCRIPTS
                     TextColor = Color.FromArgb("#121B3F"),
                     FontSize = 14,
                     FontFamily = "Montserrat-Light",
-                    IsVisible = false
+                    IsVisible = false,
+                    LineBreakMode = LineBreakMode.WordWrap,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
+
+                };
+
+                ResultLabel.SizeChanged += (sender, args) =>
+                {
+                    // Check the new size and adjust the layout or log for debugging
+                    var newSize = (sender as Label)?.Height;
+                    System.Diagnostics.Debug.WriteLine($"Label new size: {newSize}");
                 };
             }
 
@@ -103,6 +114,7 @@ namespace MauiApp2.SCRIPTS
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Content = new StackLayout { Children = { label } }
+                
             };
 
             public Label CreateCodeLabel() => new Label
@@ -110,7 +122,10 @@ namespace MauiApp2.SCRIPTS
                 Text = "",
                 TextColor = Color.FromArgb("#121B3F"),
                 FontSize = 12,
-                FontFamily = "Montserrat-Light"
+                FontFamily = "Montserrat-Light",
+                LineBreakMode = LineBreakMode.WordWrap,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+
             };
 
             private LinearGradientBrush GetCodeGradientBrush() => new LinearGradientBrush

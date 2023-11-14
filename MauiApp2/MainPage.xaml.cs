@@ -95,10 +95,11 @@ namespace MauiApp2
             {
                 Debug.WriteLine("AddChatBoxes");
 
-                var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
+                var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
                 ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
 
-                await UserChatBoxLogic.AddUserChatBoxToUI(gridLayout, chatScrollView, userPrompt);
+                await UserChatBoxLogic.AddUserChatBoxToUI(stackLayout, chatScrollView, userPrompt);
+
                 await CloseAllOpenFileFrames(); //CLOSE path UI frames this function is erasing the filePath from the prompt before is sended to the API in AddInterpreterChatBoxToUI
 
 
@@ -133,7 +134,7 @@ namespace MauiApp2
             FileBoxContainer.HorizontalOptions = LayoutOptions.End; // Align to the end (right)
 
             // Check if any files are selected
-            if (results?.Count() > 0)
+            if (results?.Any() == true)
             {
                 foreach (var result in results)
                 {
@@ -230,17 +231,15 @@ namespace MauiApp2
                 var interpreterUI = new InterpreterUI();
                 currentInterpreterUI = interpreterUI;
 
-                var gridLayout = (Grid)FindByName("ChatLayout");
-                gridLayout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                var verticalStackLayout = (VerticalStackLayout)FindByName("ChatLayout");
 
                 double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
                 interpreterUI.InitializeUIComponents(screenWidth);
 
-                gridLayout.Children.Add(interpreterUI.InterpreterFrame);
-                Grid.SetRow(interpreterUI.InterpreterFrame, gridLayout.RowDefinitions.Count - 1);
-                Grid.SetColumn(interpreterUI.InterpreterFrame, 0);
+                verticalStackLayout.Children.Add(interpreterUI.InterpreterFrame);
             });
         }
+
 
         private Task AddLabelToInterpreterOutputFrame(InterpreterUI interpreterUI)
         {
@@ -272,13 +271,13 @@ namespace MauiApp2
             var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
             interpreterOutput.Children.Add(codeFrame);
 
-            var gridLayout = (Grid)FindByName("ChatLayout");
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
 
             this.Dispatcher.Dispatch(async () =>
             {
                 if (OperatingSystem.IsWindows())
                 {
-                    await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+                    ChatScrollView.ScrollToAsync(0, stackLayout.Height, true); // Ensure this logic still correctly scrolls to the bottom
                 }
             });
 
@@ -515,11 +514,10 @@ namespace MauiApp2
                             currentInterpreterUI.InterpreterFrame.ForceLayout();
                             ChatScrollView.ForceLayout();
 
-                            var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
-
                             if (OperatingSystem.IsWindows())
                             {
-                                await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+                                var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
+                                await ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
 
                             }
                         }
@@ -534,10 +532,10 @@ namespace MauiApp2
                         currentInterpreterUI.InterpreterFrame.ForceLayout();
                         ChatScrollView.ForceLayout();
 
-                         var gridLayout = (Microsoft.Maui.Controls.Grid)FindByName("ChatLayout");
                         if (OperatingSystem.IsWindows())
                         {
-                            await ChatScrollView.ScrollToAsync(0, gridLayout.Height, true);
+                            var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
+                            await ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
 
                         }
                         
