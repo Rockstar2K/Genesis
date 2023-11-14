@@ -69,6 +69,7 @@ def run_interpreter(userPrompt, api_key=None, interpreter_model=None):
         interpreter.system_message = read_prompt()
         interpreter.model = interpreter_model
         interpreter.auto_run = True
+        #interpreter.vision = True
 
         output = interpreter.chat(userPrompt, stream=True, display=False)
         for chunk in output:

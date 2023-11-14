@@ -124,40 +124,13 @@ namespace MauiApp2
 
         private bool isFileSaved = false;
         private Dictionary<Frame, string> openFileFrames = new Dictionary<Frame, string>();
-        /*
-        private void OnOptionSelected(object sender, EventArgs e)
-        {
-            var button = (Button)sender;
 
-            // Do something based on the button's text
-            switch (button.Text)
-            {
-                case "Document":
-                    // Handle "Document" action
-                    break;
-                case "Photos & Videos":
-                    // Handle "Photos & Videos" action
-                    break;
-                case "Camera":
-                    // Handle "Camera" action
-                    break;
-                    // ... Handle other cases
-            }
-
-            // Hide the overlay after selection
-            optionsOverlay.IsVisible = false;
-        }
-        */
         //OPEN FILE
         private async void OpenFileButton_Clicked(object sender, EventArgs e)
         {
             // Use PickMultipleAsync to allow multiple file selections
             var results = await FilePicker.PickMultipleAsync();
             FileBoxContainer.HorizontalOptions = LayoutOptions.End; // Align to the end (right)
-
-            //optionsOverlay.IsVisible = !optionsOverlay.IsVisible;
-
-
 
             // Check if any files are selected
             if (results?.Count() > 0)
@@ -172,30 +145,42 @@ namespace MauiApp2
 
                     string fileName = System.IO.Path.GetFileName(addfilePath);
 
-                    var openFileUI = new OpenFileUI
+                    if (fileName.Length > 12)
                     {
-                        labelText = fileName
-                    };
-                    openFileUI.InitializeUIComponents();
+                        fileName = fileName.Substring(0, 12);
 
-                    Frame frame = openFileUI.frame;
-                    Label label = openFileUI.label;
-                    Button closeButton = openFileUI.closeButton;
-                    Grid grid = openFileUI.grid;
+                    }
 
 
-                    // Closure to capture the current fileFrame in the loop
-                    closeButton.Clicked += (s, ev) => HandleClose(frame, addfilePath);
+
+                    this.Dispatcher.Dispatch(() =>
+                    {
+
+                        var openFileUI = new OpenFileUI
+                        {
+                            labelText = fileName
+                        };
+                        openFileUI.InitializeUIComponents();
+
+                        Frame frame = openFileUI.frame;
+                        Label label = openFileUI.label;
+                        Button closeButton = openFileUI.closeButton;
+                        Grid grid = openFileUI.grid;
+
+                        // Closure to capture the current fileFrame in the loop
+                        closeButton.Clicked += (s, ev) => HandleClose(frame, addfilePath);
 
 
-                    // Add the file frame to the container
-                    FileBoxContainer.Children.Insert(0, frame); 
+                        // Add the file frame to the container
+                        FileBoxContainer.Children.Insert(0, frame);
 
-                    isFileSaved = true;
+                        isFileSaved = true;
 
-                    //add frames to the list (for closure)
-                    openFileFrames[frame] = addfilePath; // Use indexer for potential frame update
+                        //add frames to the list (for closure)
+                        openFileFrames[frame] = addfilePath; // Use indexer for potential frame update
 
+                    });
+                  
 
                 }
             }
@@ -204,25 +189,35 @@ namespace MauiApp2
         // Modify the HandleClose method to include a flag for updating the userPrompt
         private void HandleClose(Frame frame, string addfilePath, bool updatePrompt = true)
         {
-            if (FileBoxContainer.Children.Contains(frame))
+            this.Dispatcher.Dispatch(() =>
             {
-                FileBoxContainer.Children.Remove(frame);
-                if (updatePrompt == true && !string.IsNullOrEmpty(addfilePath))
+                if (FileBoxContainer.Children.Contains(frame))
                 {
-                    userPrompt = userPrompt.Replace($" Added File (Path): {addfilePath} ", string.Empty);
+                    FileBoxContainer.Children.Remove(frame);
+                    if (updatePrompt == true && !string.IsNullOrEmpty(addfilePath))
+                    {
+                        userPrompt = userPrompt.Replace($" Added File (Path): {addfilePath} ", string.Empty);
+                    }
                 }
-            }
+            });
+          
         }
 
         // Modify CloseAllOpenFileFrames to pass 'false' for the updatePrompt parameter
         private async Task CloseAllOpenFileFrames()
         {
-            foreach (var frame in openFileFrames.Keys.ToList())
+            isFileSaved = false;
+
+            this.Dispatcher.Dispatch(() =>
             {
-                // Pass 'false' to prevent userPrompt from being updated
-                HandleClose(frame, openFileFrames[frame], false);
-            }
-            openFileFrames.Clear(); // Clear the dictionary after closing all frames
+                foreach (var frame in openFileFrames.Keys.ToList())
+                {
+                    // Pass 'false' to prevent userPrompt from being updated
+                    HandleClose(frame, openFileFrames[frame], false);
+                }
+                openFileFrames.Clear(); // Clear the dictionary after closing all frames
+            });
+            
         }
 
 

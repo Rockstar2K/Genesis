@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace MauiApp2.SCRIPTS
 {
+
     public class UserChatBoxUI
     {
         public Frame frame { get; set; }
@@ -43,6 +44,7 @@ namespace MauiApp2.SCRIPTS
 
     public static class UserChatBoxLogic
     {
+       
         public static async Task AddUserChatBoxToUI(Grid gridLayout, ScrollView chatScrollView, string userPrompt)
         {
             var screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
@@ -80,3 +82,4 @@ namespace MauiApp2.SCRIPTS
         }
     }
 }
+
