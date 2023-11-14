@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MauiApp2.CustomControls;
+using Microsoft.Maui.Layouts;
 
 
 namespace MauiApp2.SCRIPTS
@@ -16,7 +17,7 @@ namespace MauiApp2.SCRIPTS
             public Label ResultLabel { get; set; }
             public Label OutputLabel { get; set; }
 
-            public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
+    public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
 
             public void InitializeUIComponents(double screenWidth)
             {
@@ -44,17 +45,21 @@ namespace MauiApp2.SCRIPTS
                     Background = gradientBrush,
                     BorderColor = Color.FromRgba("#00000000"),
                     Margin = new Thickness(20, 0, screenWidth * 0.05, 0), // Calculate responsive margin
-                    Content = new StackLayout() // Assign stack layout here if common for all OS
+                    HorizontalOptions = LayoutOptions.Start, 
+                    Content = new StackLayout
                     {
-                        VerticalOptions = LayoutOptions.StartAndExpand, // Set VerticalOptions for the StackLayout
-                        Children = { AnimatedGif, ResultLabel } // Add the AnimatedGif here
-                    },
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+
+                        Children = {AnimatedGif, ResultLabel}
+                    }
                 };
 
                 if (OperatingSystem.IsMacCatalyst() || OperatingSystem.IsWindows())
                 {
                     // Special handling for MacCatalyst and Windows if needed
                 }
+
             }
 
             private void InitializeResultLabel()
@@ -67,16 +72,9 @@ namespace MauiApp2.SCRIPTS
                     FontFamily = "Montserrat-Light",
                     IsVisible = false,
                     LineBreakMode = LineBreakMode.WordWrap,
-                    HorizontalOptions = LayoutOptions.FillAndExpand
 
                 };
 
-                ResultLabel.SizeChanged += (sender, args) =>
-                {
-                    // Check the new size and adjust the layout or log for debugging
-                    var newSize = (sender as Label)?.Height;
-                    System.Diagnostics.Debug.WriteLine($"Label new size: {newSize}");
-                };
             }
 
             private LinearGradientBrush GetGradientBrush()

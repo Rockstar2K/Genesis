@@ -252,6 +252,8 @@ namespace MauiApp2
 
                 var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
                 interpreterOutput.Children.Add(interpreterUI.ResultLabel);
+
+
             });
 
             return Task.CompletedTask;
@@ -268,7 +270,7 @@ namespace MauiApp2
 
             currentCodeFrame = codeFrame;
 
-            var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
+            var interpreterOutput = (FlexLayout)interpreterUI.InterpreterFrame.Content;
             interpreterOutput.Children.Add(codeFrame);
 
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout

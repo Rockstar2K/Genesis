@@ -5,12 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ui="clr-namespace:Xe.AcrylicView;assembly=Xe.AcrylicView"
     Title=""
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False" BackgroundColor="#F9F9F9">
 
 
     <!--  Use AbsoluteLayout as the main container  -->
     <AbsoluteLayout
-        BackgroundColor="#F9F9F9"
+        
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
 
@@ -71,7 +71,7 @@
             AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
             BackgroundColor="Transparent"
             ZIndex="0">
-            <VerticalStackLayout x:Name="ChatLayout">
+            <VerticalStackLayout x:Name="ChatLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
                 <!--  Your chat content goes here  -->
             </VerticalStackLayout>
         </ScrollView>

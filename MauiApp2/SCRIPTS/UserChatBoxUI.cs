@@ -16,11 +16,10 @@ namespace MauiApp2.SCRIPTS
             {
                 BackgroundColor = Color.FromArgb("#335FB5FF"),
                 BorderColor = Color.FromArgb("#335FB5FF"),
-                Margin = new Thickness(relativeMargin, 20, 20, 20),  // left, top, right, bottom
-                VerticalOptions = LayoutOptions.StartAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                Padding = new Thickness(10),
-
+                Margin = new Thickness(20, 20, 20, 20),  // left, top, right, bottom
+                //VerticalOptions = LayoutOptions.StartAndExpand,
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                Padding = new Thickness(15),
 
             };
         }
@@ -32,16 +31,11 @@ namespace MauiApp2.SCRIPTS
                 Text = userPrompt,
                 FontFamily = "Montserrat-Light",
                 TextColor = Color.FromArgb("#121B3F"),
-                LineBreakMode = LineBreakMode.WordWrap,
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                LineBreakMode = LineBreakMode.NoWrap,
+                HorizontalTextAlignment = TextAlignment.End,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
 
-            };
 
-            label.SizeChanged += (sender, args) =>
-            {
-                // Check the new size and adjust the layout or log for debugging
-                var newSize = (sender as Label)?.Height;
-                System.Diagnostics.Debug.WriteLine($"Label new size: {newSize}");
             };
         }
 
@@ -55,13 +49,6 @@ namespace MauiApp2.SCRIPTS
                 Opacity = 0.25f
             };
 
-            frame.SizeChanged += (sender, args) =>
-            {
-                // Check the new size and adjust the layout or log for debugging
-                var newWidth = (sender as Frame)?.Width;
-                var newHeight = (sender as Frame)?.Height;
-                System.Diagnostics.Debug.WriteLine($"Frame new size: Width={newWidth}, Height={newHeight}");
-            };
         }
     }
 
@@ -100,4 +87,3 @@ namespace MauiApp2.SCRIPTS
 
     }
 }
-
