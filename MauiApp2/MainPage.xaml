@@ -10,7 +10,6 @@
 
     <!--  Use AbsoluteLayout as the main container  -->
     <AbsoluteLayout
-        
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
 

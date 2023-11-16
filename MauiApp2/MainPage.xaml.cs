@@ -93,23 +93,25 @@ namespace MauiApp2
         {
             try
             {
-                Debug.WriteLine("AddChatBoxes");
+                this.Dispatcher.Dispatch(async () =>
+                {
+                    Debug.WriteLine("AddChatBoxes");
 
-                var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
-                ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
+                    var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
+                    ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
 
-                await UserChatBoxLogic.AddUserChatBoxToUI(stackLayout, chatScrollView, userPrompt);
+                    await UserChatBoxLogic.AddUserChatBoxToUI(stackLayout, chatScrollView, userPrompt);
 
-                await CloseAllOpenFileFrames(); //CLOSE path UI frames this function is erasing the filePath from the prompt before is sended to the API in AddInterpreterChatBoxToUI
+                    await CloseAllOpenFileFrames(); //CLOSE path UI frames this function is erasing the filePath from the prompt before is sended to the API in AddInterpreterChatBoxToUI
 
 
-                await AddInterpreterChatBoxToUI(); 
-                await ExecuteScriptAsync();
+                    await AddInterpreterChatBoxToUI();
+                    await ExecuteScriptAsync();
 
-                //TTSPlayAudioFromText(decodedJson);
+                    //TTSPlayAudioFromText(decodedJson);
 
-                userPrompt = "";
-
+                    userPrompt = "";
+                });
             }
 
             catch (Exception ex)
