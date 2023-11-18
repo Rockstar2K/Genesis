@@ -28,7 +28,7 @@ namespace MauiApp2.SCRIPTS
 
             private void InitializeAnimatedGif()
             {
-                AnimatedGif = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
+                AnimatedGif = new AnimatedGif("MauiApp2.Resources.Images.image001.gif");
                 AnimatedGif.WidthRequest = 80;
                 AnimatedGif.HeightRequest = 80;
             }
@@ -45,20 +45,23 @@ namespace MauiApp2.SCRIPTS
                     Background = gradientBrush,
                     BorderColor = Color.FromRgba("#00000000"),
                     Margin = new Thickness(20, 0, screenWidth * 0.05, 0), // Calculate responsive margin
-                    HorizontalOptions = LayoutOptions.Start, 
                     Content = new StackLayout
                     {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        //HorizontalOptions = LayoutOptions.Start,
+                        //VerticalOptions = LayoutOptions.StartAndExpand,
 
                         Children = {AnimatedGif, ResultLabel}
                     }
                 };
 
-                if (OperatingSystem.IsMacCatalyst() || OperatingSystem.IsWindows())
+                if(OperatingSystem.IsWindows())
                 {
-                    // Special handling for MacCatalyst and Windows if needed
+                    //InterpreterFrame.HorizontalOptions = LayoutOptions.FillAndExpand;
+                } else
+                {
+                    InterpreterFrame.HorizontalOptions = LayoutOptions.StartAndExpand;
                 }
+
 
             }
 
@@ -109,10 +112,10 @@ namespace MauiApp2.SCRIPTS
                 Background = GetCodeGradientBrush(),
                 BorderColor = Color.FromArgb("#00000000"),
                 Margin = new Thickness(0, 10, 0, 10),
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Content = new StackLayout { Children = { label } }
-                
+                Content = new StackLayout { Children = { label } },
+                //MinimumHeightRequest = 30
+               // MinimumWidthRequest = 100
+
             };
 
             public Label CreateCodeLabel() => new Label
@@ -122,7 +125,7 @@ namespace MauiApp2.SCRIPTS
                 FontSize = 12,
                 FontFamily = "Montserrat-Light",
                 LineBreakMode = LineBreakMode.WordWrap,
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                //HorizontalOptions = LayoutOptions.FillAndExpand,
 
             };
 

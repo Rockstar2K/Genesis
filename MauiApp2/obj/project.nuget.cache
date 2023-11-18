@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DjA5Cvxhdciqwmo26vtuGxKb5GYFU/BUq1aDKTJW8wiy5lKsx+7hj2TsWHi6q1Fj6Z9o0w5F3Blh1wEqT+uQ5Q==",
+  "dgSpecHash": "w06ZrkdivTg3sN5mcHYlOhxESMA61cQvP715qxKZSGk72dkWmPb9EP78ZJVJcvaUsCkmNIo5p4E3Mj2f+HjqAQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\MauiApp2.csproj",
   "expectedPackageFiles": [
@@ -34,8 +34,8 @@
     "C:\\Users\\thega\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\microsoft.graphics.win2d\\1.0.5.1\\microsoft.graphics.win2d.1.0.5.1.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.maui.graphics\\7.0.92\\microsoft.maui.graphics.7.0.92.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\7.0.92\\microsoft.maui.graphics.win2d.winui.desktop.7.0.92.nupkg.sha512",
+    "C:\\Users\\thega\\.nuget\\packages\\microsoft.maui.graphics\\7.0.96\\microsoft.maui.graphics.7.0.96.nupkg.sha512",
+    "C:\\Users\\thega\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\7.0.96\\microsoft.maui.graphics.win2d.winui.desktop.7.0.96.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
@@ -170,16 +170,10 @@
     "C:\\Users\\thega\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk8\\1.7.20.1\\xamarin.kotlin.stdlib.jdk8.1.7.20.1.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.6.4.1\\xamarin.kotlinx.coroutines.android.1.6.4.1.nupkg.sha512",
     "C:\\Users\\thega\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.4.1\\xamarin.kotlinx.coroutines.core.jvm.1.6.4.1.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.android-arm\\7.0.13\\microsoft.netcore.app.runtime.mono.android-arm.7.0.13.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.android-x86\\7.0.13\\microsoft.netcore.app.runtime.mono.android-x86.7.0.13.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.android-x64\\7.0.13\\microsoft.netcore.app.runtime.mono.android-x64.7.0.13.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.android-arm64\\7.0.13\\microsoft.netcore.app.runtime.mono.android-arm64.7.0.13.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.iossimulator-x64\\7.0.13\\microsoft.netcore.app.runtime.mono.iossimulator-x64.7.0.13.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.maccatalyst-x64\\7.0.13\\microsoft.netcore.app.runtime.mono.maccatalyst-x64.7.0.13.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.29\\microsoft.windows.sdk.net.ref.10.0.19041.29.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.13\\microsoft.aspnetcore.app.runtime.win-x64.7.0.13.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.13\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.13.nupkg.sha512",
-    "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.13\\microsoft.netcore.app.runtime.win-x64.7.0.13.nupkg.sha512"
+    "C:\\Users\\thega\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.31\\microsoft.windows.sdk.net.ref.10.0.19041.31.nupkg.sha512",
+    "C:\\Users\\thega\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.14\\microsoft.aspnetcore.app.runtime.win-x64.7.0.14.nupkg.sha512",
+    "C:\\Users\\thega\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.14\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.14.nupkg.sha512",
+    "C:\\Users\\thega\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.14\\microsoft.netcore.app.runtime.win-x64.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

@@ -272,8 +272,9 @@ namespace MauiApp2
 
             currentCodeFrame = codeFrame;
 
-            var interpreterOutput = (FlexLayout)interpreterUI.InterpreterFrame.Content;
+            var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
             interpreterOutput.Children.Add(codeFrame);
+
 
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
 
@@ -358,7 +359,7 @@ namespace MauiApp2
                         {
                             foreach (var validJson in validJsonList)
                             {
-                                //Debug.WriteLine("validJson inside for each: " + validJson);
+                                Debug.WriteLine("validJson inside for each: " + validJson);
                                 UpdateInterpreterUI(validJson);
                             }
                         }
@@ -382,6 +383,16 @@ namespace MauiApp2
             return outputBuilder.ToString();
         }
 
+        private void scrollToLastChatBox()
+        {
+            var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
+            ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
+
+            if (OperatingSystem.IsWindows())
+            {
+                ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
+            }
+        }
 
         public void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
@@ -409,7 +420,7 @@ namespace MauiApp2
                     //code
                     var start_of_code = json["start_of_code"]?.ToObject<bool>();
                     var code = json["code"]?.ToString();
-                    var end_of_code = json["start_of_code"]?.ToObject<bool>();
+                    var end_of_code = json["end_of_code"]?.ToObject<bool>();
 
                     var language = json["language"]?.ToString();
                     var active_line = json["active_line"];
@@ -423,11 +434,8 @@ namespace MauiApp2
                     // start code
                     if (start_of_code == true)
                     {
-                        Debug.WriteLine("START OF CODE is true");
-
                         currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
                         isCodeFirstUpdate = true;
-
                        // isOutputFirstUpdate = true; //lets see
 
                     }
@@ -439,63 +447,33 @@ namespace MauiApp2
                         {
                             currentCodeLabel.Text = code;  // Set the text to the first message received
                             isCodeFirstUpdate = false;
-
-                            Debug.WriteLine("is code first update FORCE UI");
-
-                            ChatScrollView.ForceLayout();
-                            //interpreterOutputFrame.ForceLayout();
-                            //interpreterCodeFrame.ForceLayout();
-                            currentCodeFrame.ForceLayout();
-
+                            scrollToLastChatBox();
 
                         }
                         else
                         {
                             currentCodeLabel.Text += code;  // Append subsequent messages
-
                         }
-                        Debug.WriteLine("codeLAbel: " + currentCodeLabel.Text);
 
                         if (code.Contains("\n"))
                         {
-
-                            Debug.WriteLine("\n FORCE UI");
-
-                            ChatScrollView.ForceLayout();
-                            //interpreterOutputFrame.ForceLayout();
-                            //interpreterCodeFrame.ForceLayout();
-                            currentCodeFrame.ForceLayout();
-
+                            //scrollToLastChatBox();
 
                         }
                     }
 
-
                     // end code
                     if (end_of_code == true)
                     {
-
-                        Debug.WriteLine("End of code FORCE UI");
-
-                        currentInterpreterUI.InterpreterFrame.ForceLayout();
-                        currentCodeFrame.ForceLayout();
-
-                        ChatScrollView.ForceLayout();
-                        //interpreterOutputFrame.ForceLayout();
-                        currentCodeFrame.ForceLayout();
+                        scrollToLastChatBox();
 
                     }
 
                     if (start_of_message == true)
                     {
-
                         await AddLabelToInterpreterOutputFrame(currentInterpreterUI);
-
                         //  isFirstUpdate = false; ??
-
                         //isOutputFirstUpdate = true;
-
-
 
                     }
 
@@ -513,55 +491,15 @@ namespace MauiApp2
 
                         if (message.Contains("\n"))
                         {
-                            Debug.WriteLine("MESSAGE CONTAINS /N");
+                            scrollToLastChatBox();
 
-                            currentInterpreterUI.InterpreterFrame.ForceLayout();
-                            ChatScrollView.ForceLayout();
-
-                            if (OperatingSystem.IsWindows())
-                            {
-                                var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
-                                await ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
-
-                            }
                         }
                     }
 
 
                     if (end_of_message == true)
                     {
-
-                         Debug.WriteLine("ens of message FORCE UI");
-
-                        currentInterpreterUI.InterpreterFrame.ForceLayout();
-                        ChatScrollView.ForceLayout();
-
-                        if (OperatingSystem.IsWindows())
-                        {
-                            var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
-                            await ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
-
-                        }
-                        
-
-                    }
-
-
-                    if (output != null)
-                    {
-                        /*
-                        if(isOutputFirstUpdate)
-                        {
-                            await AddOutputToInterpreterOutputFrame(currentChatBubble);
-                            currentChatBubble.OutputLabel.Text = output;
-                            isOutputFirstUpdate = false;
-                        }
-                        else
-                        {
-                            currentChatBubble.OutputLabel.Text += output;
-
-                        }
-                        */
+                        scrollToLastChatBox();
 
                     }
 
@@ -573,9 +511,6 @@ namespace MauiApp2
                     Debug.WriteLine("JSON object: " + jsonObject);
 
                 }
-
-
-
             });
         }
 
