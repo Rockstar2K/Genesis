@@ -278,13 +278,7 @@ namespace MauiApp2
 
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
 
-            this.Dispatcher.Dispatch(async () =>
-            {
-                if (OperatingSystem.IsWindows())
-                {
-                    ChatScrollView.ScrollToAsync(0, stackLayout.Height, true); // Ensure this logic still correctly scrolls to the bottom
-                }
-            });
+            scrollToLastChatBox();
 
             return codeLabel;
         }
@@ -386,7 +380,7 @@ namespace MauiApp2
         private void scrollToLastChatBox()
         {
             var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
-            ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
+            //ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
 
             if (OperatingSystem.IsWindows())
             {
