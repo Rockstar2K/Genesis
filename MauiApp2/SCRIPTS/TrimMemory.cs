@@ -20,7 +20,13 @@ namespace MauiApp2
 
             if (OperatingSystem.IsWindows())
             {
-                FilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\pMEMORY\\chat_history.txt";
+                //FilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\pMEMORY\\chat_history.txt";
+
+                FilePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                FilePath = Path.Combine(FilePath, "pMEMORY\\chat_history.txt");
+
+                Debug.WriteLine("FilePath trimemmory: " + FilePath);
+
             }
             if (OperatingSystem.IsMacCatalyst())
             {
