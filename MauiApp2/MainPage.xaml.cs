@@ -15,10 +15,10 @@ namespace MauiApp2
     public partial class MainPage : ContentPage
     {
 
-        public static string apiKey { get; set; } = Preferences.Get("api_key", "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");
+        public static string apiKey { get; set; } = Preferences.Get("api_key", "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");
         public bool is_night_mode_on { get; set; } = Preferences.Get("night_mode", false);
         public bool is_code_visible { get; set; } = Preferences.Get("see_code", false);
-        public static string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "gpt-3.5-turbo");
+        public static string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "gpt-4-turbo");
 
         //memory
         public long memory_count { get; set; } = Preferences.Get("memory_character_count", (long)0);
@@ -181,7 +181,7 @@ namespace MauiApp2
                         openFileFrames[frame] = addfilePath; // Use indexer for potential frame update
 
                     });
-                  
+
 
                 }
             }
@@ -201,7 +201,7 @@ namespace MauiApp2
                     }
                 }
             });
-          
+
         }
 
         // Modify CloseAllOpenFileFrames to pass 'false' for the updatePrompt parameter
@@ -218,7 +218,7 @@ namespace MauiApp2
                 }
                 openFileFrames.Clear(); // Clear the dictionary after closing all frames
             });
-            
+
         }
 
 
@@ -234,11 +234,13 @@ namespace MauiApp2
                 currentInterpreterUI = interpreterUI;
 
                 var verticalStackLayout = (VerticalStackLayout)FindByName("ChatLayout");
-
                 interpreterUI.InitializeUIComponents();
 
                 verticalStackLayout.Children.Add(interpreterUI.InterpreterFrame);
+
+
             });
+
         }
 
 
@@ -257,27 +259,33 @@ namespace MauiApp2
 
             });
 
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
+
+
             return Task.CompletedTask;
         }
 
         private Frame currentCodeFrame;
+        public VerticalStackLayout verticalStackLayout;
 
         private Label AddInterpreterCodeBoxToInterpreterOutputFrame(InterpreterUI interpreterUI)
         {
             Debug.WriteLine("AddInterpreterCodeBoxToInterpreterOutputFrame");
 
+
             Label codeLabel = interpreterUI.CreateCodeLabel();
             Frame codeFrame = interpreterUI.CreateCodeFrameWithLabel(codeLabel);
+            this.Dispatcher.Dispatch(() =>
+            {
+                currentCodeFrame = codeFrame;
 
-            currentCodeFrame = codeFrame;
+                var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
+                interpreterOutput.Children.Add(currentCodeFrame);
 
-            var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
-            interpreterOutput.Children.Add(codeFrame);
+                var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
 
-
-            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
-
-            scrollToLastChatBox();
+                scrollToLastChatBox();
+            });
 
             return codeLabel;
         }
@@ -382,9 +390,13 @@ namespace MauiApp2
             //ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
 
             if (OperatingSystem.IsWindows())
-            {
+            { 
                 ChatScrollView.ScrollToAsync(0, stackLayout.Height, true);
             }
+            this.Dispatcher.Dispatch(async () =>
+            {
+            this.ForceLayout();
+            });
         }
 
         public void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
@@ -459,6 +471,7 @@ namespace MauiApp2
                     if (end_of_code == true)
                     {
                         scrollToLastChatBox();
+                        UpdateChatLayout();
 
                     }
 
@@ -493,6 +506,7 @@ namespace MauiApp2
                     if (end_of_message == true)
                     {
                         scrollToLastChatBox();
+                        UpdateChatLayout();
 
                     }
 
@@ -565,5 +579,23 @@ namespace MauiApp2
                 // NoInternetFrame.IsVisible = true;
             }
         }
+        public void UpdateChatLayout()
+        {
+
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Corrected name
+            if (stackLayout != null)
+            {
+                // Save the original WidthRequest
+                var originalWidthRequest = stackLayout.WidthRequest;
+
+                // Modify the WidthRequest to trigger layout update
+                stackLayout.WidthRequest = originalWidthRequest - 1;
+
+                // Reset the WidthRequest to its original value
+                stackLayout.WidthRequest = originalWidthRequest;
+            }
+        }
+
     }
+
 }

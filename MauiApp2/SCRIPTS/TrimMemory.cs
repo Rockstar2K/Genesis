@@ -16,33 +16,22 @@ namespace MauiApp2
         {
             Debug.WriteLine("TrimMemoryFile");
 
-            string FilePath = "";
-
-            if (OperatingSystem.IsWindows())
+            string FilePath = GetMemoryFilePath();
+            if (!File.Exists(FilePath))
             {
-                //FilePath = "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\pMEMORY\\chat_history.txt";
-
-                FilePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
-                FilePath = Path.Combine(FilePath, "pMEMORY\\chat_history.txt");
-
-                Debug.WriteLine("FilePath trimemmory: " + FilePath);
-
+                File.WriteAllText(FilePath, string.Empty);
             }
-            if (OperatingSystem.IsMacCatalyst())
-            {
-                FilePath = "/Users/n/Desktop/Genesis5/MauiApp2/pMEMORY/chat_history.txt";
-            }
+
             long character_count;
-
             string fileContent = await File.ReadAllTextAsync(FilePath);
             character_count = fileContent.Length;
 
             Preferences.Set("memory_character_count", character_count);
-
             Debug.WriteLine("Trim Memory count: " + character_count);
 
             while (character_count >= MaxCharacters)
             {
+                // Deserialize the JSON content into a list of entries
                 List<Entry> entries;
                 try
                 {
@@ -54,10 +43,12 @@ namespace MauiApp2
                     return;
                 }
 
+                // Check if the list has entries and remove the oldest one
                 if (entries != null && entries.Count > 0)
                 {
                     entries.RemoveAt(0); // Remove the oldest entry
 
+                    // Serialize the updated list back to JSON
                     string updatedContent;
                     try
                     {
@@ -74,13 +65,15 @@ namespace MauiApp2
                         return;
                     }
 
+                    // Write the updated content back to the file
                     await File.WriteAllTextAsync(FilePath, updatedContent);
 
+                    // Read the file again to update the character count
                     fileContent = await File.ReadAllTextAsync(FilePath);
                     character_count = fileContent.Length;
 
+                    // Update the preference with the new character count
                     Preferences.Set("memory_character_count", character_count);
-
                     Debug.WriteLine("Trim Memory count: " + character_count);
                 }
                 else
@@ -90,9 +83,36 @@ namespace MauiApp2
                 }
             }
 
+
             Debug.WriteLine("Old entries have been removed and the file has been updated.");
         }
 
+        private static string GetMemoryFilePath()
+        {
+            string appDataPath;
+
+            if (OperatingSystem.IsWindows())
+            {
+                appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            }
+            else if (OperatingSystem.IsMacCatalyst())
+            {
+                appDataPath = FileSystem.AppDataDirectory;
+            }
+            else
+            {
+                throw new NotSupportedException("Unsupported platform");
+            }
+
+            string pMemoryPath = Path.Combine(appDataPath, "pMEMORY");
+
+            if (!Directory.Exists(pMemoryPath))
+            {
+                Directory.CreateDirectory(pMemoryPath);
+            }
+
+            return Path.Combine(pMemoryPath, "chat_history.txt");
+        }
 
 
         public class Entry

@@ -39,15 +39,42 @@ def read_prompt(filename='lyris_Prompt.txt'):
 
 # ...
 
+def create_file_in_appdata(filename):
+    # Determine the operating system
+    if os.name == 'nt':  # Windows
+        root_dir = os.getenv('APPDATA')
+    else:  # macOS and other Unix-like OS
+        root_dir = os.path.join(os.path.expanduser('~'), 'Library', 'Application Support')
+
+    # Create the directory path
+    directory_path = os.path.join(root_dir, "pMEMORY")
+
+    # Create the directory if it doesn't exist
+    if not os.path.exists(directory_path):
+        os.makedirs(directory_path)
+
+    # Create the full file path
+    file_path = os.path.join(directory_path, filename)
+
+    # Create the file if it doesn't exist
+    if not os.path.exists(file_path):
+        with open(file_path, 'w') as file:
+            file.write('')  # Create an empty file
+
+    return file_path
+
+
+
 def save_chat_history(messages, filename='chat_history.txt'):
-    file_path = os.path.join(root_dir, "pMEMORY", filename)
+    
+    file_path = create_file_in_appdata(filename)
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(messages, file, ensure_ascii=False, indent=4)
 
 # ...
 
 def load_chat_history(filename='chat_history.txt'):
-    file_path = os.path.join(root_dir, "pMEMORY", filename)
+    file_path = create_file_in_appdata(filename)
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
             return json.load(file)

@@ -40,7 +40,7 @@ public class AnimatedGif : SKCanvasView
         }
     }
 
-    private void PrecomputeResizedFrames(int desiredWidth = 100, int desiredHeight = 100)
+    private void PrecomputeResizedFrames(int desiredWidth = 225, int desiredHeight = 225)
     {
 
         for (int i = 0; i < frames.Length; i++)
@@ -55,7 +55,7 @@ public class AnimatedGif : SKCanvasView
         if (isAnimating) return;
         isAnimating = true;
 
-        Dispatcher.StartTimer(TimeSpan.FromMilliseconds(35), () =>
+        Dispatcher.StartTimer(TimeSpan.FromMilliseconds(15), () =>
         {
             currentFrame = (currentFrame + 1) % frames.Length;
             InvalidateSurface();  // Triggers a call to OnPaintSurface

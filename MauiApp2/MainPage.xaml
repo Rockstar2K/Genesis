@@ -22,8 +22,7 @@
             HorizontalOptions="FillAndExpand"
             TintColor="White"
             TintOpacity="0.1"
-            VerticalOptions="FillAndExpand"
-            ZIndex="10">
+            VerticalOptions="FillAndExpand">
             <Grid BackgroundColor="Transparent" RowDefinitions="Auto">
                 <!--  Welcome Button  -->
                 <Button
@@ -63,12 +62,12 @@
         <!--  Add spacing?? (space between rows) -->
 
         <ScrollView
+            BackgroundColor="AliceBlue"
             x:Name="ChatScrollView"
             Margin="0"
             Padding="0,50,0,100"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
-            BackgroundColor="Transparent"
             ZIndex="0">
             <VerticalStackLayout x:Name="ChatLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
                 <!--  Your chat content goes here  -->

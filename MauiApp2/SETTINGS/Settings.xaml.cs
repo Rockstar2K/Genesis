@@ -66,7 +66,7 @@ public partial class Settings : ContentPage
     void GPT4_Pressed(System.Object sender, System.EventArgs e)
     {
 
-        Preferences.Set("interpreter_model", "gpt-4");
+        Preferences.Set("interpreter_model", "gpt-4-turbo");
         Debug.WriteLine("interpreter_model" + interpreter_model);
 
         //change GPT 4
