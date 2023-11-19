@@ -29,8 +29,17 @@ namespace MauiApp2.SCRIPTS
             private void InitializeAnimatedGif()
             {
                 AnimatedGif = new AnimatedGif("MauiApp2.Resources.Images.image001.gif");
+                
+                if(OperatingSystem.IsWindows())
+                {
                 AnimatedGif.WidthRequest = 80;
                 AnimatedGif.HeightRequest = 80;
+                }
+                else
+                {
+                AnimatedGif.WidthRequest = 120;
+                AnimatedGif.HeightRequest = 120;
+                }
             }
 
             private void InitializeInterpreterFrame(double screenWidth)
