@@ -12,6 +12,9 @@ namespace MauiApp2.SCRIPTS
 
         public class InterpreterUI
         {
+
+            private double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
+
             public AnimatedGif AnimatedGif { get; set; }
             public Frame InterpreterFrame { get; set; }
             public Label ResultLabel { get; set; }
@@ -19,10 +22,10 @@ namespace MauiApp2.SCRIPTS
 
              public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
 
-            public void InitializeUIComponents(double screenWidth)
+            public void InitializeUIComponents()
             {
                 InitializeAnimatedGif();
-                InitializeInterpreterFrame(screenWidth);
+                InitializeInterpreterFrame();
                 InitializeResultLabel();
             }
 
@@ -42,7 +45,7 @@ namespace MauiApp2.SCRIPTS
                 }
             }
 
-            private void InitializeInterpreterFrame(double screenWidth)
+            private void InitializeInterpreterFrame()
             {
                 var gradientBrush = GetGradientBrush();
                 var customShadow = GetCustomShadow();

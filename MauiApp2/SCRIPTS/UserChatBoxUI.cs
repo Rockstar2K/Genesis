@@ -7,10 +7,13 @@ namespace MauiApp2.SCRIPTS
 
     public class UserChatBoxUI
     {
+
+        double relativeMargin = (DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density) * 0.1; // 10% of screen width
+
         public Frame frame { get; set; }
         public Label label { get; set; }
 
-        public void InitializeFrame(double relativeMargin)
+        public void InitializeFrame()
         {
             frame = new Frame
             {
@@ -57,15 +60,13 @@ namespace MauiApp2.SCRIPTS
 
         public static async Task AddUserChatBoxToUI(VerticalStackLayout stackLayout, ScrollView chatScrollView, string userPrompt)
         {
-            var screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
-            double relativeMargin = screenWidth * 0.1; // 10% of screen width
 
             var userChatBoxUI = new UserChatBoxUI();
 
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 userChatBoxUI.InitializeLabel(userPrompt);
-                userChatBoxUI.InitializeFrame(relativeMargin);
+                userChatBoxUI.InitializeFrame();
                 userChatBoxUI.InitializeShadow();
 
                 userChatBoxUI.frame.Content = userChatBoxUI.label;
