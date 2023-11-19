@@ -72,9 +72,11 @@ public partial class Welcome_Page : ContentPage
             await DisplayAlert("Download Complete", "Python installer downloaded successfully.", "OK");
 
             InstallPython(installerName);
+
             await DisplayAlert("Notice", "Please complete the Python installation process and then press OK.", "OK");
 
             string pythonPath = await GetPythonInstallationPath();
+
             Preferences.Set("Python_Path", pythonPath);
 
             if (!string.IsNullOrEmpty(pythonPath))
@@ -98,11 +100,16 @@ public partial class Welcome_Page : ContentPage
             // After Python installation is complete, install open-interpreter
             await InstallPythonLibrary("open-interpreter");
             progressBar.Progress = 1;
-            await DisplayAlert("Installation Complete", "Open Interpreterhas been installed successfully.", "OK");
+            await DisplayAlert("Installation Complete", "Open Interpreter has been installed successfully.", "OK");
+
+            App.Current.MainPage = new NavigationPage(new API_Key_Page());
+
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+            await DisplayAlert("Error", $"An error occurred: {ex.Message}. Try again. If the error persists, let us know at hello@get-aimee.com", "OK");
+            progressBar.IsVisible = false;
+            Download_Button.IsVisible = true;
         }
     }
 
@@ -187,84 +194,84 @@ public partial class Welcome_Page : ContentPage
             process.Start();
             process.WaitForExit(); // Optional, depends on whether you want to wait here or later
         }
-    
+
         process.Start();
         process.WaitForExit();
 
 
     }
 
-private async Task InstallPythonLibrary(string libraryName)
-{
+    private async Task InstallPythonLibrary(string libraryName)
+    {
         var pythonPath = Preferences.Get("Python_Path", "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3");
 
-    if (string.IsNullOrEmpty(pythonPath))
-    {
-        await DisplayAlert("Error", "Failed to find Python installation path.", "OK");
-        return;
-    }
-
-    var process = new Process
-    {
-        StartInfo = new ProcessStartInfo
+        if (string.IsNullOrEmpty(pythonPath))
         {
-            FileName = pythonPath,
-            Arguments = $"-m pip install {libraryName}",
-            RedirectStandardOutput = true,
-            RedirectStandardError = true, // Capture standard error as well
-            UseShellExecute = false,
-            CreateNoWindow = false,
+            await DisplayAlert("Error", "Failed to find Python installation path.", "OK");
+            return;
         }
-    };
-    process.Start();
 
-    string output = await process.StandardOutput.ReadToEndAsync();
-    string error = await process.StandardError.ReadToEndAsync();
-
-    await process.WaitForExitAsync();
-
-    if (process.ExitCode != 0)
-    {
-        // Handle the error
-        // You can use the 'error' variable to get the error details
-        await DisplayAlert("Installation Error", $"Failed to install {libraryName}. Error: {error}", "OK");
-        Console.WriteLine("Installation Error", $"Failed to install {libraryName}. Error: {error}", "OK");
-    }
-
-}
-
-private async Task UpgradePipAsync(string pythonPath)
-{
-    var process = new Process
-    {
-        StartInfo = new ProcessStartInfo
+        var process = new Process
         {
-            FileName = pythonPath,
-            Arguments = "-m pip install --upgrade pip",
-            RedirectStandardOutput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = pythonPath,
+                Arguments = $"-m pip install {libraryName}",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true, // Capture standard error as well
+                UseShellExecute = false,
+                CreateNoWindow = false,
+            }
+        };
+        process.Start();
+
+        string output = await process.StandardOutput.ReadToEndAsync();
+        string error = await process.StandardError.ReadToEndAsync();
+
+        await process.WaitForExitAsync();
+
+        if (process.ExitCode != 0)
+        {
+            // Handle the error
+            // You can use the 'error' variable to get the error details
+            await DisplayAlert("Installation Error", $"Failed to install {libraryName}. Error: {error}", "OK");
+            Console.WriteLine("Installation Error", $"Failed to install {libraryName}. Error: {error}", "OK");
         }
-    };
 
-    process.Start();
-
-    // Optionally, read the output to capture any messages
-    string output = await process.StandardOutput.ReadToEndAsync();
-
-    process.WaitForExit();
-
-    if (process.ExitCode != 0)
-    {
-        // There was an error, handle it as needed
-        await DisplayAlert("Error", "Failed to upgrade pip.", "OK");
     }
-    else
+
+    private async Task UpgradePipAsync(string pythonPath)
     {
-        // pip was upgraded successfully
-        await DisplayAlert("Success", "pip was upgraded successfully.", "OK");
+        var process = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = pythonPath,
+                Arguments = "-m pip install --upgrade pip",
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            }
+        };
+
+        process.Start();
+
+        // Optionally, read the output to capture any messages
+        string output = await process.StandardOutput.ReadToEndAsync();
+
+        process.WaitForExit();
+
+        if (process.ExitCode != 0)
+        {
+            // There was an error, handle it as needed
+            await DisplayAlert("Error", "Failed to upgrade pip.", "OK");
+        }
+        else
+        {
+            // pip was upgraded successfully
+            await DisplayAlert("Success", "pip was upgraded successfully.", "OK");
+        }
     }
-}
 
 
     private async Task<string> GetPythonInstallationPath()
