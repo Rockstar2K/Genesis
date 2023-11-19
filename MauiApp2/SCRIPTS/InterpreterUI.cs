@@ -17,7 +17,7 @@ namespace MauiApp2.SCRIPTS
             public Label ResultLabel { get; set; }
             public Label OutputLabel { get; set; }
 
-    public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
+             public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
 
             public void InitializeUIComponents(double screenWidth)
             {
@@ -48,7 +48,8 @@ namespace MauiApp2.SCRIPTS
                     Content = new StackLayout
                     {
                         //HorizontalOptions = LayoutOptions.Start,
-                        //VerticalOptions = LayoutOptions.StartAndExpand,
+                        VerticalOptions = LayoutOptions.StartAndExpand,
+                        Spacing = 4,
 
                         Children = {AnimatedGif, ResultLabel}
                     }
