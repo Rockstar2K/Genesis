@@ -6,7 +6,7 @@
              x:Class="MauiApp2.Settings"
              Title="Settings"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#E2E4E4">
+             BackgroundColor="#F9F9F9">
     <ScrollView>
         <VerticalStackLayout>
 
@@ -16,7 +16,7 @@
                     FontFamily="Montserrat-Light"
                     FontSize="50"
                     BackgroundColor="Transparent"
-                    TextColor="#B080B7"
+                    TextColor="#00E0DD"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
                     Margin="30,20,40,0"
@@ -39,11 +39,11 @@
             <Label
                 Text="Settings"
                 FontSize="40"
-                TextColor="#B080B7"
+                TextColor="#00E0DD"
                 FontFamily="Montserrat-Light"
                 Margin="40,20,0,10"/>
             <Label
-                TextColor="#B080B7"
+                TextColor="#00E0DD"
                 Text="OpenAI API Key"
                 FontSize="18"
                 FontFamily="Montserrat-Light"
@@ -51,7 +51,7 @@
             <Frame
                 Margin="40,10,40,0"
                 Padding="0"
-                BorderColor="#F2CFE2"
+                BorderColor="#00E0DD"
                 BackgroundColor="White"
                 CornerRadius="25"
                 Opacity="0.5">
@@ -77,7 +77,7 @@
                 HorizontalOptions="Start"
                 Margin="40,0,0,5"
                 BackgroundColor="Transparent"
-                TextColor="#B080B7"
+                TextColor="#00E0DD"
                 FontFamily="Montserrat-ExtraLightItalic"/>
 
             <!--Choose Model Buttons-->
@@ -86,7 +86,7 @@
                 <VerticalStackLayout
                     Margin="40,0,0,0">
                     <Label
-                        TextColor="#B080B7"
+                        TextColor="#00E0DD"
                         Text="See Generated Code"
                         FontSize="18"
                         FontFamily="Montserrat-Medium"
@@ -97,8 +97,8 @@
 
                     <Switch
                         Toggled="Code_Switch_Toggled" 
-                        ThumbColor="#B080B7"
-                        OnColor="#EFCDE1"
+                        ThumbColor="#00E0DD"
+                        OnColor="#00E0DD"
                         HorizontalOptions="Center"/>
 
 
@@ -107,7 +107,7 @@
                     AbsoluteLayout.LayoutBounds="0.3, 0"
                     AbsoluteLayout.LayoutFlags="PositionProportional">
                     <Label
-                        TextColor="#B080B7"
+                        TextColor="#00E0DD"
                         Text="Dark Mode"
                         FontSize="18"
                         FontFamily="Montserrat-Medium"
@@ -118,7 +118,7 @@
 
                     <Switch
                         Toggled="Night_Mode_Toggled" 
-                        ThumbColor="#B080B7"
+                        ThumbColor="#00E0DD"
                         OnColor="#121A3F"
                         HorizontalOptions="Center"/>
 
@@ -129,7 +129,7 @@
                     AbsoluteLayout.LayoutFlags="PositionProportional"
                     Margin="40,0">
                 <Label
-                    TextColor="#B080B7"
+                    TextColor="#00E0DD"
                     Text="Choose Model"
                     FontSize="18"
                     Margin="0,0,0,15"
@@ -145,14 +145,14 @@
                             BackgroundColor="#fff"
                             CornerRadius="22"
                             MinimumWidthRequest="130"
-                            TextColor="#B080B7"
-                            BorderColor="#B080B7"
+                            TextColor="#00E0DD"
+                            BorderColor="#00E0DD"
                             Margin="0,0,0,5"
                             FontFamily="Montserrat-ExtraLight"/>
                         <Label
                             Text="Cheaper - Faster"
                             FontFamily="Montserrat-Light"
-                            TextColor="#B080B7"
+                            TextColor="#00E0DD"
                             HorizontalOptions="Center"/>
 
                     </VerticalStackLayout>
@@ -167,14 +167,14 @@
                             HorizontalOptions="End"
                             Margin="0,0,0,5"
                             BackgroundColor="White"
-                            BorderColor="#B080B7"
-                            TextColor="#B080B7"
+                            BorderColor="#00E0DD"
+                            TextColor="#00E0DD"
                             FontFamily="Montserrat-Light"/>
 
                         <Label
                             Text="Best Performance"
                             FontFamily="Montserrat-Light"
-                            TextColor="#B080B7"
+                            TextColor="#00E0DD"
                             HorizontalOptions="Center"/>
 
                     </VerticalStackLayout>
@@ -191,7 +191,7 @@
                      FontFamily="Montserrat-Medium"
                      CornerRadius="23"
                      MinimumWidthRequest="100"
-                     BackgroundColor="#B080B7"
+                     BackgroundColor="#00E0DD"
                      TextColor="White"
                      Margin="40,0,10,10"
                      HorizontalOptions="Start"
@@ -201,7 +201,7 @@
                     HorizontalOptions="Start"
                     Margin="10,0,0,5"
                     BackgroundColor="Transparent"
-                    TextColor="#B080B7"
+                    TextColor="#00E0DD"
                     FontFamily="Montserrat-ExtraLightItalic"/>
             </HorizontalStackLayout>
 
