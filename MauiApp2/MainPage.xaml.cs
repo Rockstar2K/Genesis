@@ -235,8 +235,7 @@ namespace MauiApp2
 
                 var verticalStackLayout = (VerticalStackLayout)FindByName("ChatLayout");
 
-                double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
-                interpreterUI.InitializeUIComponents(screenWidth);
+                interpreterUI.InitializeUIComponents();
 
                 verticalStackLayout.Children.Add(interpreterUI.InterpreterFrame);
             });
