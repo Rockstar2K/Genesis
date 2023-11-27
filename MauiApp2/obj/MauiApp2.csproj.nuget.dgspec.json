@@ -1,29 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "/Users/n/Desktop/Genesis5/MauiApp2/MauiApp2.csproj": {}
+    "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\MauiApp2.csproj": {}
   },
   "projects": {
-    "/Users/n/Desktop/Genesis5/MauiApp2/MauiApp2.csproj": {
+    "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\MauiApp2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/n/Desktop/Genesis5/MauiApp2/MauiApp2.csproj",
+        "projectUniqueName": "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\MauiApp2.csproj",
         "projectName": "MauiApp2",
-        "projectPath": "/Users/n/Desktop/Genesis5/MauiApp2/MauiApp2.csproj",
-        "packagesPath": "/Users/n/.nuget/packages/",
-        "outputPath": "/Users/n/Desktop/Genesis5/MauiApp2/obj/",
+        "projectPath": "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\MauiApp2.csproj",
+        "packagesPath": "C:\\Users\\thega\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thega\\source\\repos\\MauiApp2\\MauiApp2\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/n/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\thega\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0-android",
           "net7.0-ios",
-          "net7.0-maccatalyst"
+          "net7.0-maccatalyst",
+          "net7.0-windows10.0.19041.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,6 +44,10 @@
           },
           "net7.0-maccatalyst16.1": {
             "targetAlias": "net7.0-maccatalyst",
+            "projectReferences": {}
+          },
+          "net7.0-windows10.0.19041": {
+            "targetAlias": "net7.0-windows10.0.19041.0",
             "projectReferences": {}
           }
         },
@@ -87,7 +98,7 @@
             },
             "Microsoft.Maui.Graphics": {
               "target": "Package",
-              "version": "[7.0.101, )",
+              "version": "[7.0.96, )",
               "autoReferenced": true
             },
             "NAudio": {
@@ -194,7 +205,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.311/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         },
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
@@ -236,7 +247,7 @@
             },
             "Microsoft.Maui.Graphics": {
               "target": "Package",
-              "version": "[7.0.101, )",
+              "version": "[7.0.96, )",
               "autoReferenced": true
             },
             "NAudio": {
@@ -288,7 +299,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.311/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         },
         "net7.0-maccatalyst16.1": {
           "targetAlias": "net7.0-maccatalyst",
@@ -330,7 +341,7 @@
             },
             "Microsoft.Maui.Graphics": {
               "target": "Package",
-              "version": "[7.0.101, )",
+              "version": "[7.0.96, )",
               "autoReferenced": true
             },
             "NAudio": {
@@ -383,7 +394,129 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.311/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        },
+        "net7.0-windows10.0.19041": {
+          "targetAlias": "net7.0-windows10.0.19041.0",
+          "dependencies": {
+            "AcrylicView.Maui": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "Google.Cloud.Speech.V1": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
+            "Google.Cloud.TextToSpeech.V1": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Maui.Graphics": {
+              "target": "Package",
+              "version": "[7.0.96, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Maui.Graphics.Win2D.WinUI.Desktop": {
+              "target": "Package",
+              "version": "[7.0.96, )",
+              "autoReferenced": true
+            },
+            "Microsoft.WindowsAppSDK": {
+              "target": "Package",
+              "version": "[1.2.221209.1, )",
+              "autoReferenced": true
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Plugin.Maui.Audio": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "SkiaSharp.Extended.UI.Maui": {
+              "target": "Package",
+              "version": "[2.0.0-preview.86, )"
+            },
+            "pythonnet": {
+              "target": "Package",
+              "version": "[3.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.Windows.SDK.NET.Ref",
+              "version": "[10.0.19041.31, 10.0.19041.31]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+              "version": "[7.0.14, 7.0.14]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.Maui.Controls": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Maui.Core": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Maui.Essentials": {
+              "privateAssets": "all"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Windows.SDK.NET.Ref": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -403,6 +536,9 @@
           "#import": []
         },
         "maccatalyst-x64": {
+          "#import": []
+        },
+        "win10-x64": {
           "#import": []
         }
       }

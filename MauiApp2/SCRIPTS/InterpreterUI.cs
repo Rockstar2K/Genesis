@@ -38,11 +38,12 @@ namespace MauiApp2.SCRIPTS
                 AnimatedGif.WidthRequest = 80;
                 AnimatedGif.HeightRequest = 80;
                 }
-                else
+                else if (OperatingSystem.IsMacCatalyst())
                 {
                 AnimatedGif.WidthRequest = 120;
                 AnimatedGif.HeightRequest = 120;
                 }
+               
             }
 
             private void InitializeInterpreterFrame()

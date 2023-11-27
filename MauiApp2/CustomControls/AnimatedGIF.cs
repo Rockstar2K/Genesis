@@ -43,6 +43,12 @@ public class AnimatedGif : SKCanvasView
     private void PrecomputeResizedFrames(int desiredWidth = 225, int desiredHeight = 225)
     {
 
+        if (OperatingSystem.IsWindows())
+        {
+            desiredWidth = 100;
+            desiredHeight = 100;
+        }
+
         for (int i = 0; i < frames.Length; i++)
         {
             var resizedFrame = frames[i].Resize(new SKImageInfo(desiredWidth, desiredHeight), SKFilterQuality.Low);
