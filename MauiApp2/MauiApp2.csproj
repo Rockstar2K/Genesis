@@ -33,6 +33,10 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	  <OutputPath>bin\Debug</OutputPath>
+	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\genesis_loading.gif" />
 	</ItemGroup>
@@ -69,6 +73,9 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</MauiImage>
 		<MauiImage Include="Resources\genesis_loading.gif" />
+		<None Remove="Resources\Credentials\high-invest-4da5afee15f3.json" />
+		<None Remove="Properties\launchSettings.json" />
+		<MauiAsset Include="Properties\launchSettings.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -134,6 +141,7 @@
 	  <Compile Update="MainPage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Compile>
 	</ItemGroup>
 
@@ -146,6 +154,9 @@
 	  <BundleResource Include="Resources\Images\chat.png" />
 	  <BundleResource Include="Resources\Images\microphone.png" />
 	  <BundleResource Include="Resources\Images\test.gif" />
+	  <BundleResource Include="Resources\Credentials\high-invest-4da5afee15f3.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </BundleResource>
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Include="Resources\Images\avioncito.png" />
@@ -160,5 +171,10 @@
 	<ItemGroup>
 	  <Content Include="Resources\pPROMPTS\lyris_Prompt.txt" />
 	  <Content Include="Resources\Images\animation.json" />
+	  <Content Include="interpreter_wrapper.py">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+	  </Content>
 	</ItemGroup>
+
 </Project>

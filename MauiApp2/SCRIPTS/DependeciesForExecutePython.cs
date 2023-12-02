@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,8 +23,11 @@ namespace MauiApp2.SCRIPTS
 
             if (OperatingSystem.IsMacCatalyst())
             {
-                projectDirectory = "/Users/n/Desktop/Genesis5/MauiApp2";
-                scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+                string fileName = "interpreter_wrapper.py";
+                string baseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "Resources");
+                scriptPath = Path.Combine(baseDirectory, fileName);
+
+
             }
             else if (System.OperatingSystem.IsWindows())
             {

@@ -1,0 +1,37 @@
+﻿<Properties BuildWithMSBuildOnMono="True" StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/TTS SST/GoogleSTTPlayer.cs" relfile="MauiApp2/TTS SST/GoogleSTTPlayer.cs" line="23" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.MauiApp2 PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <Debugger.DebugSourceFolders />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/SCRIPTS/DependeciesForExecutePython.cs">
+    <Files>
+      <File FileName="MauiApp2/SCRIPTS/DependeciesForExecutePython.cs" Line="32" Column="192" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="MauiApp2" expanded="True">
+            <Node name="MauiApp2">
+              <Node name="Platforms" expanded="True">
+                <Node name="MacCatalyst" expanded="True" />
+              </Node>
+              <Node name="SCRIPTS" expanded="True">
+                <Node name="DependeciesForExecutePython.cs" selected="True" />
+              </Node>
+              <Node name="TTS SST" expanded="True" />
+              <Node name="MainPage.xaml" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

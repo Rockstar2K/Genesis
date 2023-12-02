@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Cloud.Speech.V1;
 using Google.Protobuf;
+using Foundation;
 
 namespace MauiApp2
 {
@@ -25,7 +26,22 @@ namespace MauiApp2
 
             if (OperatingSystem.IsMacCatalyst())
             {
-                credentialsPath = "/Users/n/Desktop/Genesis5/MauiApp2/Resources/Credentials/high-invest-4da5afee15f3.json";  
+                //credentialsPath = "/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/Resources/Credentials/high-invest-4da5afee15f3.json";
+
+                string resourcesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "Resources");
+                var credentialsFilePath = Path.Combine(resourcesPath, "Credentials", "high-invest-4da5afee15f3.json");
+                Console.WriteLine(credentialsFilePath);
+                Console.WriteLine(AppContext.BaseDirectory);
+
+                if (string.IsNullOrWhiteSpace(credentialsFilePath))
+                {
+                    Console.WriteLine("Credentials file not found in the app bundle.");
+                }
+                else
+                {
+                    Console.WriteLine("Credentials file found: " + credentialsFilePath);
+                }
+
             }
             else if (System.OperatingSystem.IsWindows())
             {
