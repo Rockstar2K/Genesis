@@ -522,7 +522,11 @@ namespace MauiApp2
         }
 
 
+        private async void Baby_Button_Clicked(System.Object sender, System.EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Baby());
 
+        }
 
 
 

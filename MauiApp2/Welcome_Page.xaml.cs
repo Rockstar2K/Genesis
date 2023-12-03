@@ -333,4 +333,9 @@ public partial class Welcome_Page : ContentPage
                "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3";
     }
 
+    void TermsAndConditions_Clicked(System.Object sender, System.EventArgs e)
+    {
+        App.Current.MainPage = new NavigationPage(new API_Key_Page());
+
+    }
 }

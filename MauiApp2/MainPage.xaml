@@ -28,13 +28,24 @@
                 <Button
                     Grid.Row="0"
                     Margin="10,0,0,0"
-                    BackgroundColor="LightPink"
+                    BackgroundColor="#00E0DD"
                     Clicked="Welcome_Button_Clicked"
                     HeightRequest="46"
                     HorizontalOptions="Start"
                     Text="Welcome Page"
                     VerticalOptions="Center" />
                 <!--  Settings ImageButton  -->
+                                <!--  Welcome Button  -->
+                <Button
+                    Grid.Row="0"
+                    Margin="10,0,0,0"
+                    BackgroundColor="#00E0DD"
+                    Clicked="Baby_Button_Clicked"
+                    HeightRequest="46"
+                    HorizontalOptions="Center"
+                    Text="Baby Page"
+                    VerticalOptions="Center" />
+
                 <ImageButton
                     x:Name="Settings"
                     Grid.Row="0"
@@ -68,7 +79,7 @@
             Padding="0,50,0,100"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
-            ZIndex="0">
+            ZIndex="-1">
             <VerticalStackLayout x:Name="ChatLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
                 <!--  Your chat content goes here  -->
             </VerticalStackLayout>

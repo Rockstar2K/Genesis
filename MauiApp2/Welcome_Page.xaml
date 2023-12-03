@@ -5,10 +5,11 @@
              x:Class="MauiApp2.Welcome_Page"
             NavigationPage.HasNavigationBar="False"
              Title="Welcome_Page">
-    <AbsoluteLayout BackgroundColor="#E2E4E4">
+    <AbsoluteLayout>
+
         <Image
             Source="wave1.png"
-            AbsoluteLayout.LayoutBounds="1,0,800,600"
+            AbsoluteLayout.LayoutBounds="1,0,1500,875"
             AbsoluteLayout.LayoutFlags="PositionProportional">
         </Image>
         <StackLayout
@@ -29,14 +30,14 @@
                 FontSize="60"
                 FontFamily="Montserrat-Light"
                 HorizontalOptions="Start"
-                TextColor="#B080B7"
+                TextColor="#00E0DD"
                 Margin="40,0"/>
             <Label
                 x:Name="subHeader"
                 Text="We need to download a few more things"
                 Margin="40,10"
                 FontSize="30"
-                TextColor="#B080B7"
+                TextColor="#00E0DD"
                 FontFamily="Montserrat-extralight"/>
             <Button
                 x:Name="Download_Button"
@@ -46,11 +47,12 @@
                 HorizontalOptions="Start"
                 Margin="40,20"
                 Clicked="Download_Clicked"
-                BackgroundColor="#B080B7"/>
+                TextColor="#121A3F"
+                BackgroundColor="#00E0DD"/>
             <ProgressBar
                 x:Name="progressBar"
                 Margin="40,20"
-                ProgressColor="#B080B7"
+                ProgressColor="#7DFFCF"
                 BackgroundColor="LightGray"
                 MaximumWidthRequest="600"
                 HorizontalOptions="Start"
@@ -59,14 +61,21 @@
         </StackLayout>
         <Button
             x:Name="TermsAndConditions"
+            Clicked="TermsAndConditions_Clicked"
             Text="By clicking download you are agreen to out Terms and Conditions"
             FontSize="18"
             FontFamily="Montserrat-Light"
             BackgroundColor="Transparent"
-            TextColor="#B080B7"
+            TextColor="#00E0DD"
             AbsoluteLayout.LayoutBounds="0,1"
             AbsoluteLayout.LayoutFlags="PositionProportional"
             Margin="30,40"/>
+        <AbsoluteLayout.Background>
+        <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+            <GradientStop Color="#121A3F" Offset="0.35" />
+            <GradientStop Color="#7DFFCF" Offset="1.8" />
+        </LinearGradientBrush>
+        </AbsoluteLayout.Background>
     </AbsoluteLayout>
 
 </ContentPage>

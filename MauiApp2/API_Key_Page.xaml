@@ -5,7 +5,7 @@
              x:Class="MauiApp2.API_Key_Page"
              NavigationPage.HasNavigationBar="False"
              Title="API_Key_Page">
-    <AbsoluteLayout BackgroundColor="#E2E4E4">
+    <AbsoluteLayout>
             <skia:SKLottieView 
                 Source="https://lottie.host/1bc5c802-b494-4edc-aad4-9c382ec0bf76/K5DJcz5pNn.json"
                 HeightRequest="130"
@@ -58,39 +58,34 @@
         <VerticalStackLayout
             AbsoluteLayout.LayoutFlags="PositionProportional"
              AbsoluteLayout.LayoutBounds="0,0.4"
-            BackgroundColor="#E2E4E4"
             Margin="80,0">
-            <VerticalStackLayout.Shadow>
-                <Shadow
-                    Brush="#E2E4E4"
-                    Radius="100"/>
-            </VerticalStackLayout.Shadow>
+
             <Label 
                 Text="Insert your OpenAI API Key"
                 VerticalOptions="Center"
                 FontSize="60"
                 FontFamily="Montserrat-Light"
                 HorizontalOptions="Start"
-                TextColor="#B080B7"
+                TextColor="#00E0DD"
                 Margin="40,100,10,10"/>
             <Label
                 Text="Don’t worry, it won’t leave your device."
                 Margin="40,10,0,30"
                 FontSize="25"
-                TextColor="#B080B7"
+                TextColor="#00E0DD"
                 FontFamily="Montserrat-extralight"/>
             <Frame
                 Margin="40,20,40,20"
                 Padding="0"
-                BorderColor="#F2CFE2"
+                BorderColor="#00E0DD"
                 BackgroundColor="White"
                 CornerRadius="25"
                 Opacity="0.5">
                 <Entry
                     x:Name="API_Input_Box"
-                    BackgroundColor="Transparent"
+                    BackgroundColor="#7DFFCF"
                     Placeholder="   API Key"
-                    PlaceholderColor="#68667D"
+                    PlaceholderColor="#121A3F"
                     FontFamily="Montserrat-Light"
                     TextColor="#121B3F"
                     HorizontalOptions="FillAndExpand">
@@ -110,7 +105,7 @@
                 MaximumWidthRequest="100"
                 HorizontalOptions="Start"
                 Margin="40,50,0,0"
-                BackgroundColor="#B080B7"
+                BackgroundColor="#00E0DD"
                 MinimumWidthRequest="150"
                 MinimumHeightRequest="50"
                 CornerRadius="22"
@@ -120,7 +115,7 @@
                 Text="Where can I find API Key"
                 Margin="0,50,0,0"
                 FontSize="20"
-                TextColor="#B080B7"
+                TextColor="#00E0DD"
                 BackgroundColor="Transparent"
                 FontFamily="Montserrat-ExtraLightItalic"
                 VerticalOptions="FillAndExpand"
@@ -129,6 +124,11 @@
 
 
         </VerticalStackLayout>
-
+         <AbsoluteLayout.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                <GradientStop Color="#121A3F" Offset="0.35" />
+                <GradientStop Color="#121A3F" Offset="1.8" />
+            </LinearGradientBrush>
+        </AbsoluteLayout.Background>
     </AbsoluteLayout>
 </ContentPage>
