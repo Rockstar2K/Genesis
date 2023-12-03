@@ -18,6 +18,13 @@ public partial class Welcome_Page : ContentPage
         InitializeComponent();
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        this.Window.MinimumHeight = 600;
+        this.Window.MinimumWidth = 600;
+    }
+
     private async void Download_Clicked(object sender, EventArgs e)
     {
         subHeader.Text = "We're setting up everything";

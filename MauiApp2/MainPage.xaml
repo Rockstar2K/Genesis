@@ -36,15 +36,6 @@
                     VerticalOptions="Center" />
                 <!--  Settings ImageButton  -->
                                 <!--  Welcome Button  -->
-                <Button
-                    Grid.Row="0"
-                    Margin="10,0,0,0"
-                    BackgroundColor="#00E0DD"
-                    Clicked="Baby_Button_Clicked"
-                    HeightRequest="46"
-                    HorizontalOptions="Center"
-                    Text="Baby Page"
-                    VerticalOptions="Center" />
 
                 <ImageButton
                     x:Name="Settings"

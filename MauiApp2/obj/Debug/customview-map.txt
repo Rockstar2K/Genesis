@@ -18,12 +18,9 @@ attr;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/res/val
 attr;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/170/jl/res/values/attrs.xml
 background;obj/Debug/resizetizer/r/mipmap-anydpi-v26/appicon_round.xml
 background;obj/Debug/resizetizer/r/mipmap-anydpi-v26/appicon.xml
-bitmap;obj/Debug/resizetizer/sp/drawable-v31/maui_splash_image.xml
-bitmap;obj/Debug/resizetizer/sp/drawable/maui_splash_image.xml
 cache-path;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/168/jl/res/xml/microsoft_maui_essentials_fileprovider_file_paths.xml
 color;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/res/values/colors.xml
 color;obj/Debug/res/values/colors.xml
-color;obj/Debug/resizetizer/sp/values/maui_colors.xml
 com.google.android.material.appbar.AppBarLayout;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/164/jl/res/layout/flyoutcontent.xml
 com.google.android.material.appbar.AppBarLayout;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/164/jl/res/layout/shellcontent.xml
 com.google.android.material.appbar.AppBarLayout;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/res/layout/navigationlayout.xml
@@ -39,12 +36,8 @@ foreground;obj/Debug/resizetizer/r/mipmap-anydpi-v26/appicon.xml
 item;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/165/jl/res/values/styles.xml
 item;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/res/drawable/maui_splash.xml
 item;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/res/values/styles.xml
-item;obj/Debug/resizetizer/sp/drawable-v31/maui_splash_image.xml
-item;obj/Debug/resizetizer/sp/drawable/maui_splash_image.xml
 layer-list;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/res/drawable/maui_splash_image.xml
 layer-list;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/res/drawable/maui_splash.xml
-layer-list;obj/Debug/resizetizer/sp/drawable-v31/maui_splash_image.xml
-layer-list;obj/Debug/resizetizer/sp/drawable/maui_splash_image.xml
 microsoft.maui.controls.platform.compatibility.ShellFlyoutLayout;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/164/jl/res/layout/flyoutcontent.xml
 paths;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/168/jl/res/xml/microsoft_maui_essentials_fileprovider_file_paths.xml
 resources;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/164/jl/res/values/strings.xml
@@ -56,7 +49,6 @@ resources;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/re
 resources;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/167/jl/res/values/styles.xml
 resources;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/170/jl/res/values/attrs.xml
 resources;obj/Debug/res/values/colors.xml
-resources;obj/Debug/resizetizer/sp/values/maui_colors.xml
 set;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/164/jl/res/anim/enterfromleft.xml
 set;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/164/jl/res/anim/enterfromright.xml
 set;/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/lp/164/jl/res/anim/exittoleft.xml

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="456" height="456" fill="#512BD4" />
+    <defs>
+        <linearGradient id="new-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5fb5ff"/>
+            <stop offset="100%" stop-color="#7dffcf"/>
+        </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="457" height="457" fill="url(#new-gradient)" />
 </svg>

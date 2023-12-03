@@ -85,16 +85,17 @@ def load_chat_history(filename='chat_history.txt'):
 
 # ...
 
-def run_interpreter(userPrompt, api_key=None, interpreter_model=None):
+def run_interpreter(userPrompt, api_key=None, interpreter_model='openai/gpt-4-vision-preview'):
     if api_key:
         Set_API_Key(api_key)
     try:
         # It would be better to manage the chat history state outside this function
         messages = load_chat_history()
         interpreter.messages.extend(messages)
-
         interpreter.system_message = read_prompt()
-        interpreter.model = interpreter_model
+        interpreter.model =interpreter_model
+        interpreter.max_output = 2000
+        interpreter.max_tokens = 1000
         interpreter.auto_run = True
         #interpreter.vision = True
 

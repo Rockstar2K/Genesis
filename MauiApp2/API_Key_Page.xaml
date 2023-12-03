@@ -7,7 +7,7 @@
              Title="API_Key_Page">
     <AbsoluteLayout>
             <skia:SKLottieView 
-                Source="https://lottie.host/1bc5c802-b494-4edc-aad4-9c382ec0bf76/K5DJcz5pNn.json"
+                Source="https://lottie.host/ea593009-4e38-4074-8a10-ecb72aa83c50/RafT6dYlKG.json"
                 HeightRequest="130"
                 WidthRequest="130"
                 RepeatCount="-1"
@@ -78,14 +78,14 @@
                 Margin="40,20,40,20"
                 Padding="0"
                 BorderColor="#00E0DD"
-                BackgroundColor="White"
+                BackgroundColor="Transparent"
                 CornerRadius="25"
                 Opacity="0.5">
                 <Entry
                     x:Name="API_Input_Box"
-                    BackgroundColor="#7DFFCF"
+                    BackgroundColor="Transparent"
                     Placeholder="   API Key"
-                    PlaceholderColor="#121A3F"
+                    PlaceholderColor="White"
                     FontFamily="Montserrat-Light"
                     TextColor="#121B3F"
                     HorizontalOptions="FillAndExpand">
@@ -106,6 +106,7 @@
                 HorizontalOptions="Start"
                 Margin="40,50,0,0"
                 BackgroundColor="#00E0DD"
+                TextColor="#121A3F"
                 MinimumWidthRequest="150"
                 MinimumHeightRequest="50"
                 CornerRadius="22"
@@ -127,7 +128,7 @@
          <AbsoluteLayout.Background>
             <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
                 <GradientStop Color="#121A3F" Offset="0.35" />
-                <GradientStop Color="#121A3F" Offset="1.8" />
+                <GradientStop Color="#68A497" Offset="1.8" />
             </LinearGradientBrush>
         </AbsoluteLayout.Background>
     </AbsoluteLayout>

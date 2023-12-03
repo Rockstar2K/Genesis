@@ -17,7 +17,7 @@
             AbsoluteLayout.LayoutFlags="PositionProportional"
             Margin="40,0">
             <skia:SKLottieView 
-                Source="https://lottie.host/1bc5c802-b494-4edc-aad4-9c382ec0bf76/K5DJcz5pNn.json"
+                Source="https://lottie.host/ea593009-4e38-4074-8a10-ecb72aa83c50/RafT6dYlKG.json"
                 HeightRequest="150"
                 WidthRequest="150"
                 RepeatCount="-1"
@@ -72,7 +72,7 @@
             Margin="30,40"/>
         <AbsoluteLayout.Background>
         <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
-            <GradientStop Color="#121A3F" Offset="0.35" />
+            <GradientStop Color="#121A3F" Offset="0.36" />
             <GradientStop Color="#7DFFCF" Offset="1.8" />
         </LinearGradientBrush>
         </AbsoluteLayout.Background>

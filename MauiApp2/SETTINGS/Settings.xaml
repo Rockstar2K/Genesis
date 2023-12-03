@@ -20,7 +20,7 @@
                     HorizontalOptions="Start"
                     Pressed="Back_Pressed"
                     Text="←"
-                    TextColor="#00E0DD"
+                    TextColor="#5FB5FF"
                     VerticalOptions="Start" />
                 <!--what is this
                     <skia:SKLottieView
@@ -33,8 +33,9 @@
                 <Picker
                     x:Name="LanguagePicker"
                     Title="Select Language"
-                    AbsoluteLayout.LayoutBounds="1,0.9"
+                    AbsoluteLayout.LayoutBounds="1,2.5"
                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                    TextColor="#A49FF9"
                     WidthRequest="200" />
             </AbsoluteLayout>
 
@@ -44,20 +45,20 @@
                 FontFamily="Montserrat-Light"
                 FontSize="40"
                 Text="Settings"
-                TextColor="#00E0DD" />
+                TextColor="#5FB5FF" />
 
             <!--  OpenAI Api Key subtitle  -->
             <Label
                 FontFamily="Montserrat-Light"
                 FontSize="18"
                 Text="OpenAI API Key"
-                TextColor="#00E0DD" />
+                TextColor="#5FB5FF" />
 
             <!--  API key Input  -->
             <Frame
                 Padding="0"
                 BackgroundColor="White"
-                BorderColor="#00E0DD"
+                BorderColor="#5FB5FF"
                 CornerRadius="25"
                 Opacity="0.5">
                 <Entry
@@ -66,7 +67,7 @@
                     FontFamily="Montserrat-Light"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="   API Key"
-                    PlaceholderColor="#68667D"
+                    PlaceholderColor="#A49FF9"
                     TextColor="#121B3F">
                     <Entry.Shadow>
                         <Shadow
@@ -83,11 +84,11 @@
                 FontFamily="Montserrat-ExtraLightItalic"
                 FontSize="14"
                 Text="Where i can find my API Key?"
-                TextColor="#00E0DD" />
+                TextColor="#A49FF9" />
 
             <!--  3 boxes see generated code - dark mode - choose mmodel  -->
             <FlexLayout
-                Margin="0,10,0,0"
+                Margin="0,25,0,0"
                 Direction="Row"
                 JustifyContent="SpaceBetween"
                 Wrap="Wrap">
@@ -99,7 +100,8 @@
                         FontSize="18"
                         HorizontalOptions="Start"
                         Text="See Generated Code"
-                        TextColor="#00E0DD" />
+                        TextColor="#5FB5FF"
+                        Margin="0,0,0,20"/>
 
                     <Switch
                         HorizontalOptions="Start"
@@ -115,11 +117,12 @@
                         FontSize="18"
                         HorizontalOptions="Start"
                         Text="Dark Mode"
-                        TextColor="#00E0DD" />
+                        TextColor="#5FB5FF"
+                        Margin="0,0,0,20"/>
 
                     <Switch
                         HorizontalOptions="Start"
-                        OnColor="#121A3F"
+                        OnColor="#A49FF9"
                         ThumbColor="#00E0DD"
                         Toggled="Night_Mode_Toggled" />
                 </VerticalStackLayout>
@@ -134,7 +137,7 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="Choose Model"
-                        TextColor="#00E0DD" />
+                        TextColor="#5FB5FF" />
 
                     <!--  Buttons Choose model  -->
                     <FlexLayout Direction="Row" Wrap="Wrap">
@@ -175,7 +178,7 @@
                                 MinimumWidthRequest="130"
                                 Pressed="GPT4_Pressed"
                                 Text="GPT-4"
-                                TextColor="#00E0DD" />
+                                TextColor="#A49FF9" />
 
                             <Label
                                 FontFamily="Montserrat-Light"

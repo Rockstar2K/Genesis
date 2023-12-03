@@ -1,5 +1,7 @@
+File=Resources/Images/aimee_icon.svg;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources/Images/animation.json;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources/Images/avioncito.png;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
+File=Resources/Images/background.svg;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources/Images/chat.png;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources/Images/chat_option.svg;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources/Images/genee.gif;Link=;BaseSize=;Resize=False;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
@@ -12,4 +14,4 @@ File=Resources/Images/test.gif;Link=;BaseSize=;Resize=False;TintColor=;Color=;Is
 File=Resources/Images/voice_dialog_option.svg;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources/Images/wave1.png;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
 File=Resources/genesis_loading.gif;Link=;BaseSize=;Resize=False;TintColor=;Color=;IsAppIcon=;ForegroundScale=;ForegroundFile=
-File=Resources/AppIcon/appicon.svg;Link=;BaseSize=;Resize=;TintColor=;Color=#512BD4;IsAppIcon=True;ForegroundScale=;ForegroundFile=Resources/AppIcon/appiconfg.svg
+File=Resources/AppIcon/appicon.svg;Link=;BaseSize=;Resize=;TintColor=;Color=;IsAppIcon=True;ForegroundScale=;ForegroundFile=Resources/AppIcon/aimee_icon.svg

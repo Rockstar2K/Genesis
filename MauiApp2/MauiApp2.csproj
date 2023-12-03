@@ -42,7 +42,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\aimee_icon.svg" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -76,6 +76,8 @@
 		<None Remove="Resources\Credentials\high-invest-4da5afee15f3.json" />
 		<None Remove="Properties\launchSettings.json" />
 		<MauiAsset Include="Properties\launchSettings.json" />
+		<None Remove="Resources\Images\aimee_icon.svg" />
+		<None Remove="Resources\AppIcon\background2.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -157,6 +159,8 @@
 	  <BundleResource Include="Resources\Credentials\high-invest-4da5afee15f3.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </BundleResource>
+	  <BundleResource Include="Resources\Images\aimee_icon.svg" />
+	  <BundleResource Include="Resources\AppIcon\background2.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Include="Resources\Images\avioncito.png" />

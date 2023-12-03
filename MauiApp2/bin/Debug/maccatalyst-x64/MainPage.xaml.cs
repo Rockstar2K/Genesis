@@ -15,11 +15,11 @@ namespace MauiApp2
     public partial class MainPage : ContentPage
     {
 
-        public static string apiKey { get; set; } = Preferences.Get("api_key", "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");
-        public bool is_night_mode_on { get; set; } = Preferences.Get("night_mode", false);
-        public bool is_code_visible { get; set; } = Preferences.Get("see_code", false);
-        public static string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "gpt-4-turbo");
-
+        public static string apiKey     { get; set; }   = Preferences.Get("api_key", "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");
+        public bool is_night_mode_on    { get; set; }   = Preferences.Get("night_mode", false);
+        public bool is_code_visible     { get; set; }   = Preferences.Get("see_code", false);
+        public static string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "openai/gpt-4-vision-preview");
+        private Frame interpreterCodeFrame; // Declare a class-level variable to hold the frame
         //memory
         public long memory_count { get; set; } = Preferences.Get("memory_character_count", (long)0);
 
@@ -439,32 +439,53 @@ namespace MauiApp2
                     // start code
                     if (start_of_code == true)
                     {
-                        currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
-                        isCodeFirstUpdate = true;
-                       // isOutputFirstUpdate = true; //lets see
+                        is_code_visible = Preferences.Get("see_code", false);
+                        //If the code visibility is off...
+                        if (!is_code_visible)
+                        {
+                            AddInterpreterCodeBoxToUI();
+                        }
+                        else
+                        {
+                            currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
+                            isCodeFirstUpdate = true;
+                        }
+
 
                     }
 
                     if (code != null)
                     {
-
-                        if (isCodeFirstUpdate)
+                        is_code_visible = Preferences.Get("see_code", false);
+                        //If the code visibility is off...
+                        if (!is_code_visible)
                         {
-                            currentCodeLabel.Text = code;  // Set the text to the first message received
-                            isCodeFirstUpdate = false;
-                            scrollToLastChatBox();
-
+                            //What to do if visibility is off
                         }
                         else
                         {
-                            currentCodeLabel.Text += code;  // Append subsequent messages
+                            if (isCodeFirstUpdate)
+                            {
+                                currentCodeLabel.Text = code;  // Set the text to the first message received
+                                isCodeFirstUpdate = false;
+                                scrollToLastChatBox();
+
+                            }
+                            else
+                            {
+                                currentCodeLabel.Text += code;  // Append subsequent messages
+                            }
+
+                            if (code.Contains("\n"))
+                            {
+                                //scrollToLastChatBox();
+                            }
                         }
 
-                        if (code.Contains("\n"))
-                        {
-                            //scrollToLastChatBox();
 
-                        }
+
+
+
                     }
 
                     // end code
@@ -510,6 +531,18 @@ namespace MauiApp2
 
                     }
 
+                    if (end_of_execution == true)
+                    {
+                        //If the code visibility is off...
+                        if (!is_code_visible)
+                        {
+                            DeactivateInterpreterCodeBox();
+                        }
+
+
+                        
+                    }
+
 
                 }
                 catch (JsonReaderException ex)
@@ -521,13 +554,67 @@ namespace MauiApp2
             });
         }
 
-
-        private async void Baby_Button_Clicked(System.Object sender, System.EventArgs e)
+        private void AddInterpreterCodeBoxToUI()
         {
-            App.Current.MainPage = new NavigationPage(new Baby());
-
+            Debug.WriteLine("AddInterpreterCodeBoxToUI has been called");
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+            var gradientBrush = new LinearGradientBrush
+            {
+                StartPoint = new Point(0, 0.5),
+                EndPoint = new Point(1, 0.5)
+            };
+            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#5FB5FF"), Offset = 1 });
+            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#7DFFCF"), Offset = 0 });
+            var customShadow = new Shadow
+            {
+                Radius = 10,
+                Opacity = 0.6f,
+                Brush = new SolidColorBrush(new Color(0.690f, 0.502f, 0.718f)),  // #EFCDE1
+                Offset = new Point(5, 5)  // Offset of 5 pixels to the right and down
+            };
+            //Gif Animation
+            var CodeGif = new Image
+            {
+                Source = new FileImageSource
+                {
+                    File = "genesis_loading.gif"
+                },
+                WidthRequest = 100,
+                HeightRequest = 100,
+                IsAnimationPlaying = true,
+                HorizontalOptions = LayoutOptions.Start
+            };
+            CodeGif.IsVisible = true;
+            CodeGif.IsAnimationPlaying = true;
+            var animatedGif2 = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
+            animatedGif2.WidthRequest = 100;
+            animatedGif2.HeightRequest = 100;
+            interpreterCodeFrame = new Frame
+            {
+                HorizontalOptions = LayoutOptions.Start,
+                HasShadow = true,
+                Shadow = customShadow,
+                Background = gradientBrush,
+                Margin = new Thickness(0, 0, 80, 0),
+                BorderColor = Color.FromRgba(255, 255, 255, 0),
+            };
+            interpreterCodeFrame.Content = new StackLayout
+            {
+                Children = { animatedGif2 }
+            };
+            stackLayout.Children.Add(interpreterCodeFrame);
         }
 
+
+        private void DeactivateInterpreterCodeBox()
+        {
+            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout");
+            if (interpreterCodeFrame != null)
+            {
+                stackLayout.Children.Remove(interpreterCodeFrame);
+                interpreterCodeFrame = null; // Release the reference
+            }
+        }
 
 
         private async void Settings_Pressed(System.Object sender, System.EventArgs e)
@@ -583,6 +670,7 @@ namespace MauiApp2
                 // NoInternetFrame.IsVisible = true;
             }
         }
+
         public void UpdateChatLayout()
         {
 

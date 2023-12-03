@@ -8,17 +8,25 @@
 		<data>
 		I0opJEwIlZhM0dGUVkhWsa+0IZA=
 		</data>
+		<key>Resources/AppIcon/background2.svg</key>
+		<data>
+		NXTTtCN4HStHrAxBmQkBftT3Osw=
+		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		ly1rrUjH8U8lVV1UfzXeZUrBNMU=
+		eYJE7Hqqzmu27zaB3MXHcY8JU2Y=
 		</data>
 		<key>Resources/Credentials/high-invest-4da5afee15f3.json</key>
 		<data>
 		jzt5YjoHFdyw1HZfAKEIr7G7J8Y=
 		</data>
+		<key>Resources/Images/aimee_icon.svg</key>
+		<data>
+		9tLP7TAL7EeEtGBXEQiCYZsfmBw=
+		</data>
 		<key>Resources/Images/animation.json</key>
 		<data>
-		0FuPN0frT9iUrZnhBb1ZPm61CbE=
+		3mqWen8ndS2ncWoD+hOzfhG/qNw=
 		</data>
 		<key>Resources/Images/chat.png</key>
 		<data>
@@ -124,17 +132,41 @@
 		<data>
 		BFY4ZYRegL6Bv1J3UWeH1O8coJU=
 		</data>
+		<key>Resources/aimee_icon.png</key>
+		<data>
+		/82cE3+tBPYb6EDtEK46CCWPft0=
+		</data>
+		<key>Resources/aimee_icon@2x.png</key>
+		<data>
+		cMPsNb9Ff0GZ45i+DTR97f1ItR8=
+		</data>
+		<key>Resources/aimee_icon@3x.png</key>
+		<data>
+		mQ0qcDCfssNOkbU+ueD7cTI7a1g=
+		</data>
 		<key>Resources/animation.json</key>
 		<data>
-		0FuPN0frT9iUrZnhBb1ZPm61CbE=
+		3mqWen8ndS2ncWoD+hOzfhG/qNw=
 		</data>
 		<key>Resources/appicon.icns</key>
 		<data>
-		L9cHAOVSlaW2jMaBgy7GlIBZdZg=
+		LK8NxGj8Wkpbpww22x1aLvNRSyk=
 		</data>
 		<key>Resources/avioncito.png</key>
 		<data>
 		oH9O4EYgyst++1AI+d/9hByIv4A=
+		</data>
+		<key>Resources/background.png</key>
+		<data>
+		YnSCmG4SPBpDVwBZvFgx3Oxy9cU=
+		</data>
+		<key>Resources/background@2x.png</key>
+		<data>
+		j4pYCjjQBJwhLfi1iIhHg+2ohsI=
+		</data>
+		<key>Resources/background@3x.png</key>
+		<data>
+		JJ7syLbOo9hQ1Rs71nqzPkfnf+4=
 		</data>
 		<key>Resources/chat.png</key>
 		<data>
@@ -162,7 +194,7 @@
 		</data>
 		<key>Resources/interpreter_wrapper.py</key>
 		<data>
-		U1mosyljO4gguBCqwhnrJ2xSKFQ=
+		RGm6Bn20OThF2yUvaeU02c2ibmk=
 		</data>
 		<key>Resources/lyris_logo.png</key>
 		<data>
@@ -182,7 +214,7 @@
 		</data>
 		<key>Resources/pPrompts/lyris_Prompt.txt</key>
 		<data>
-		KIHYOwYPQx9jTajVYdWH61UQekI=
+		u1frQHFaKCOjKjrNfL4oG+h7LO4=
 		</data>
 		<key>Resources/settings.png</key>
 		<data>
@@ -351,14 +383,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DgmwLoRuOP2MohQb6wwv8Mbo+CvaxVpApPt2E8Rksq0=
+			Tm2sea3E2AN4AQBRYklKTXL6s5+YHn0lLMEm6//HHqo=
 			</data>
 		</dict>
 		<key>MonoBundle/MauiApp2.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZZi7MayqyupwcCQujr6IXhJQWHAvyNSJF3qSImIhaXw=
+			vigAlnZJTvG0DL50TyBF4EudpDxWJn4SpseCBPHm2jE=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.Bcl.AsyncInterfaces.dll</key>
@@ -1810,11 +1842,18 @@
 			kRwTeQo9/FfdBETrNWyVnQeAl/xUTSZzE/X1gey54yE=
 			</data>
 		</dict>
+		<key>Resources/AppIcon/background2.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			glOC6jR6WrQ+g7xyRmIq2FC4Lr3QVX7cWgg3aQyZl/M=
+			</data>
+		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Qni5y9/VzlXDy9XC9Rbbvp4zkPIS1SRPNdFqAGlJHPc=
+			aqOtB2gKlR0hcUNei5OHgGLp3uP+zydkblS/XqhXLDk=
 			</data>
 		</dict>
 		<key>Resources/Credentials/high-invest-4da5afee15f3.json</key>
@@ -1824,11 +1863,18 @@
 			CSJlVB0E5TpLbYw+WJ6G+Dzu68GJVF/CfL9wC8brnJQ=
 			</data>
 		</dict>
+		<key>Resources/Images/aimee_icon.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CTDyLHdGzXHQfftv511Ihec5qLpSrk1qqxwI8OHvWLk=
+			</data>
+		</dict>
 		<key>Resources/Images/animation.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vHH446Yq3oBaUeKCBToSo/ISK+QrySg4Nyv/pF4aBZo=
+			oV/04p8nlmLU1mQGiIFi45odF5bNbzk+LQo6rr35X54=
 			</data>
 		</dict>
 		<key>Resources/Images/chat.png</key>
@@ -2013,18 +2059,39 @@
 			INz+/J31nntcwl4XQwDPzSju+z/N8FQLrPeB4Ooh3gk=
 			</data>
 		</dict>
+		<key>Resources/aimee_icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/BGcTl/39f0J8VAqlcc4+xvV8x/23YbH6Yx7YaiRKNU=
+			</data>
+		</dict>
+		<key>Resources/aimee_icon@2x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rfdDrt4/fPKCJmSSw7PqVuAr7dC4TaVWzB3TRDvzhRk=
+			</data>
+		</dict>
+		<key>Resources/aimee_icon@3x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9g9YWtOnk44a/WSs8LLCy027dDTETF+TDRpS5AUtqeM=
+			</data>
+		</dict>
 		<key>Resources/animation.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vHH446Yq3oBaUeKCBToSo/ISK+QrySg4Nyv/pF4aBZo=
+			oV/04p8nlmLU1mQGiIFi45odF5bNbzk+LQo6rr35X54=
 			</data>
 		</dict>
 		<key>Resources/appicon.icns</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			H4w+DqGNITnXOEy4UxkSBph9BjGxHf/ui2zq6lzv5a0=
+			WXvJiVeQ5bWrVTbZ1rZJQyxGqZVt2teKyZivl7Vwe7o=
 			</data>
 		</dict>
 		<key>Resources/avioncito.png</key>
@@ -2032,6 +2099,27 @@
 			<key>hash2</key>
 			<data>
 			2Fo2orm1OMDJ2fs/7Ny1ZBd3S5Zs5SNspFUL19SpsxY=
+			</data>
+		</dict>
+		<key>Resources/background.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			R7pKH7ZeTDr90ne4fBe691C1cNczFC2etN5/9SsMhqo=
+			</data>
+		</dict>
+		<key>Resources/background@2x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ShlrQ/tvaxdLEpvDFtUjY35N4oC9XGk0nQCU0u0TdrI=
+			</data>
+		</dict>
+		<key>Resources/background@3x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RrcxMNqQ5uQxFHgQ/wNLtbJ3bbZ0c5UJIxgC5e/mPe8=
 			</data>
 		</dict>
 		<key>Resources/chat.png</key>
@@ -2080,7 +2168,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LB1ijLG7GZfiraPLpgfnHjtcLBw6Z8t3cQO71+pJGPE=
+			DlDsAxGVDWVIyzcGfMktr3Pyvzw1JGn8E/fMb8B23wU=
 			</data>
 		</dict>
 		<key>Resources/lyris_logo.png</key>
@@ -2115,7 +2203,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hSO2hnVKA+6BUkTeVNEXyfCPte0okA6gCuGo8ucdOJs=
+			wy9m+UOwpU7rMsUPWOE9YzrJd1alD8W1fK5P7z1qhAM=
 			</data>
 		</dict>
 		<key>Resources/settings.png</key>

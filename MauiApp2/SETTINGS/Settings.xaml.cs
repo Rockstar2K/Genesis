@@ -37,7 +37,7 @@ public partial class Settings : ContentPage
     {
         see_code = e.Value;
 
-        Preferences.Set("True", see_code);
+        Preferences.Set("see_code", see_code);
     }
 
     void Night_Mode_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
@@ -50,7 +50,7 @@ public partial class Settings : ContentPage
     void GPT3_Pressed(System.Object sender, System.EventArgs e)
     {
 
-        Preferences.Set("interpreter_model", "gpt-3.5-turbo");
+        Preferences.Set("interpreter_model", "openai/gpt-3.5-turbo");
 
         //change GPT 3
         GPT3btn.BackgroundColor = Color.FromArgb("#00E0DD");
@@ -66,7 +66,7 @@ public partial class Settings : ContentPage
     void GPT4_Pressed(System.Object sender, System.EventArgs e)
     {
 
-        Preferences.Set("interpreter_model", "gpt-4-turbo");
+        Preferences.Set("interpreter_model", "openai/gpt-4-vision-preview");
         Debug.WriteLine("interpreter_model" + interpreter_model);
 
         //change GPT 4
