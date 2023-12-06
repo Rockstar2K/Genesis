@@ -222,7 +222,6 @@ namespace MauiApp2
         }
 
 
-
         private InterpreterUI currentInterpreterUI;
 
         //INTERPRETER CHAT UI
@@ -255,8 +254,6 @@ namespace MauiApp2
 
                 var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
                 interpreterOutput.Children.Add(interpreterUI.ResultLabel);
-
-
             });
 
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
@@ -266,7 +263,6 @@ namespace MauiApp2
         }
 
         private Frame currentCodeFrame;
-        public VerticalStackLayout verticalStackLayout;
 
         private Label AddInterpreterCodeBoxToInterpreterOutputFrame(InterpreterUI interpreterUI)
         {
@@ -282,9 +278,9 @@ namespace MauiApp2
                 var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
                 interpreterOutput.Children.Add(currentCodeFrame);
 
-                var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
+                //var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
 
-                scrollToLastChatBox();
+                //scrollToLastChatBox();
             });
 
             return codeLabel;
@@ -488,7 +484,7 @@ namespace MauiApp2
                     if (end_of_code == true)
                     {
                         scrollToLastChatBox();
-                        UpdateChatLayout();
+                        currentCodeFrame = null;
 
                     }
 
@@ -514,7 +510,7 @@ namespace MauiApp2
 
                         if (message.Contains("\n"))
                         {
-                            scrollToLastChatBox();
+                            //scrollToLastChatBox();
 
                         }
                     }
@@ -523,16 +519,16 @@ namespace MauiApp2
                     if (end_of_message == true)
                     {
                         scrollToLastChatBox();
-                        UpdateChatLayout();
 
                     }
 
                     if (end_of_execution == true)
                     {
+                        currentCodeFrame = null;
                         //If the code visibility is off...
                         if (!is_code_visible)
                         {
-                            DeactivateInterpreterCodeBox();
+                           DeactivateInterpreterCodeBox();
                         }
 
 
@@ -664,23 +660,6 @@ namespace MauiApp2
             {
                 // Connection to internet is not available
                 // NoInternetFrame.IsVisible = true;
-            }
-        }
-
-        public void UpdateChatLayout()
-        {
-
-            var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Corrected name
-            if (stackLayout != null)
-            {
-                // Save the original WidthRequest
-                var originalWidthRequest = stackLayout.WidthRequest;
-
-                // Modify the WidthRequest to trigger layout update
-                stackLayout.WidthRequest = originalWidthRequest - 1;
-
-                // Reset the WidthRequest to its original value
-                stackLayout.WidthRequest = originalWidthRequest;
             }
         }
 

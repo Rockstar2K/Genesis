@@ -40,11 +40,11 @@ namespace MauiApp2.SCRIPTS
                 }
                 else if (OperatingSystem.IsMacCatalyst())
                 {
-                AnimatedGif.WidthRequest = 120;
-                AnimatedGif.HeightRequest = 120;
-                }
-               
+                AnimatedGif.HorizontalOptions = LayoutOptions.FillAndExpand;
+                AnimatedGif.VerticalOptions = LayoutOptions.FillAndExpand;
             }
+
+        }
 
             private void InitializeInterpreterFrame()
             {
@@ -134,7 +134,6 @@ namespace MauiApp2.SCRIPTS
 
             public Label CreateCodeLabel() => new Label
             {
-                Text = "",
                 TextColor = Color.FromArgb("#121B3F"),
                 FontSize = 12,
                 FontFamily = "Montserrat-Light",
