@@ -17,6 +17,7 @@ namespace MauiApp2.SCRIPTS
 
             public AnimatedGif AnimatedGif { get; set; }
             public Frame InterpreterFrame { get; set; }
+            public Frame ResultTextFrame { get; set; }
             public Label ResultLabel { get; set; }
             public Label OutputLabel { get; set; }
 
@@ -26,7 +27,7 @@ namespace MauiApp2.SCRIPTS
             {
                 InitializeAnimatedGif();
                 InitializeInterpreterFrame();
-                InitializeResultLabel();
+                InitializeResultTextFrame();
             }
 
             private void InitializeAnimatedGif()
@@ -40,8 +41,8 @@ namespace MauiApp2.SCRIPTS
                 }
                 else if (OperatingSystem.IsMacCatalyst())
                 {
-                AnimatedGif.HorizontalOptions = LayoutOptions.FillAndExpand;
-                AnimatedGif.VerticalOptions = LayoutOptions.FillAndExpand;
+                AnimatedGif.WidthRequest = 120;
+                AnimatedGif.HeightRequest = 120;
             }
 
         }
@@ -64,7 +65,7 @@ namespace MauiApp2.SCRIPTS
                         VerticalOptions = LayoutOptions.StartAndExpand,
                         Spacing = 4,
 
-                        Children = {AnimatedGif, ResultLabel}
+                        Children = {AnimatedGif, ResultTextFrame}
                     }
                 };
 
@@ -79,7 +80,7 @@ namespace MauiApp2.SCRIPTS
 
             }
 
-            private void InitializeResultLabel()
+            public Frame InitializeResultTextFrame()
             {
                 ResultLabel = new Label
                 {
@@ -87,10 +88,19 @@ namespace MauiApp2.SCRIPTS
                     TextColor = Color.FromArgb("#121B3F"),
                     FontSize = 14,
                     FontFamily = "Montserrat-Light",
-                    IsVisible = false,
                     LineBreakMode = LineBreakMode.WordWrap,
 
                 };
+                ResultTextFrame = new Frame
+                {
+                    Content = ResultLabel,
+                    BackgroundColor = Color.FromArgb("00000000"), // Set the background color to transparent using ARGB
+                    BorderColor = Color.FromArgb("00000000"),
+                    HasShadow = false, // Ensure no shadow is displayed
+                    Padding = 0, // Set padding to 0 if you want the Frame to collapse its space
+                    Margin = 0, // Set margin to 0 if you want the Frame to collapse its space
+                };
+            return ResultTextFrame;
 
             }
 
@@ -119,6 +129,17 @@ namespace MauiApp2.SCRIPTS
 
                 return customShadow;
             }
+            //CODE
+            public Frame CreateTextFrameWithLabel(Label label) => new Frame
+            {
+                Background = GetCodeGradientBrush(),
+                BorderColor = Color.FromArgb("#00000000"),
+                Margin = new Thickness(0, 10, 0, 10),
+                Content = new StackLayout { Children = { label } },
+                //MinimumHeightRequest = 30
+                // MinimumWidthRequest = 100
+
+            };
 
             //CODE
             public Frame CreateCodeFrameWithLabel(Label label) => new Frame

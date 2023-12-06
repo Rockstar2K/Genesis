@@ -242,6 +242,7 @@ namespace MauiApp2
 
         }
 
+        Frame currentTextFrame;
 
         private Task AddLabelToInterpreterOutputFrame(InterpreterUI interpreterUI)
         {
@@ -250,10 +251,14 @@ namespace MauiApp2
             this.Dispatcher.Dispatch(() =>
             {
                 interpreterUI.AnimatedGif.IsVisible = false;
-                interpreterUI.ResultLabel.IsVisible = true;
+                interpreterUI.ResultTextFrame.IsVisible = true;
+
+                Frame currentFrame = interpreterUI.InitializeResultTextFrame();
+                currentTextFrame = currentFrame;
+
 
                 var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
-                interpreterOutput.Children.Add(interpreterUI.ResultLabel);
+                interpreterOutput.Children.Add(currentTextFrame);
             });
 
             var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
