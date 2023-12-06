@@ -1,9 +1,9 @@
 AreAnyAssembliesTrimmed=false
-				AssemblyName=MauiApp2.dll
+				AssemblyName=aimee.dll
 				
 				AOTCompiler=/usr/local/share/dotnet/packs/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-x64/7.0.14/Sdk/../tools/mono-aot-cross
 				AOTOutputDirectory=obj/Debug/maccatalyst-x64/nativelibraries/aot-output/
-				AppBundleManifestPath=bin/Debug/maccatalyst-x64/MauiApp2.app/Contents/Info.plist
+				AppBundleManifestPath=bin/Debug/maccatalyst-x64/aimee.app/Contents/Info.plist
 				CacheDirectory=/Users/n/Desktop/DesktopItems/Genesis5/MauiApp2/obj/Debug/maccatalyst-x64/linker-cache
 				
 				Debug=true
@@ -209,7 +209,7 @@ MonoLibrary=/usr/local/share/dotnet/packs/Microsoft.NETCore.App.Runtime.Mono.mac
 				PartialStaticRegistrarLibrary=/usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Runtime.maccatalyst-x64/16.4.7125/runtimes/maccatalyst-x64/native/Microsoft.MacCatalyst.registrar.a
 				Platform=MacCatalyst
 				PlatformAssembly=Microsoft.MacCatalyst.dll
-				RelativeAppBundlePath=../MauiApp2.app/
+				RelativeAppBundlePath=../aimee.app/
 				Registrar=
 				RequirePInvokeWrappers=
 				RuntimeConfigurationFile=runtimeconfig.bin

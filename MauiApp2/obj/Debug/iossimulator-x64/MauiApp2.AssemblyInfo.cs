@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("MauiApp2")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("aimee")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("MauiApp2")]
-[assembly: System.Reflection.AssemblyTitleAttribute("MauiApp2")]
+[assembly: System.Reflection.AssemblyProductAttribute("aimee")]
+[assembly: System.Reflection.AssemblyTitleAttribute("aimee")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("iOS16.1")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("iOS11.0")]

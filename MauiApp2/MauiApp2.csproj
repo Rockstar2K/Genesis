@@ -36,6 +36,7 @@
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 	  <OutputPath>bin\Debug</OutputPath>
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	  <AssemblyName>aimee</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\genesis_loading.gif" />
@@ -78,6 +79,7 @@
 		<MauiAsset Include="Properties\launchSettings.json" />
 		<None Remove="Resources\Images\aimee_icon.svg" />
 		<None Remove="Resources\AppIcon\background2.svg" />
+		<None Remove="pPROMPTS\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -98,7 +100,6 @@
 	  <None Remove="Resources\Animations\" />
 	  <None Remove="Resources\Images\GenesisAnim.gif" />
 	  <None Remove="Resources\Images\genesis_loading.gif" />
-	  <None Remove="Resources\pPROMPTS\lyris_Prompt.txt" />
 	  <None Remove="Resources\Images\animation.json" />
 	  <None Remove="Resources\Fonts\Montserrat-Black.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-BlackItalic.ttf" />
@@ -150,6 +151,7 @@
 	<ItemGroup>
 	  <Folder Include="Resources\Audio\Converted\" />
 	  <Folder Include="CustomControls\" />
+	  <Folder Include="pPROMPTS\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -173,7 +175,6 @@
 	  </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-	  <Content Include="Resources\pPROMPTS\lyris_Prompt.txt" />
 	  <Content Include="Resources\Images\animation.json" />
 	  <Content Include="interpreter_wrapper.py">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
