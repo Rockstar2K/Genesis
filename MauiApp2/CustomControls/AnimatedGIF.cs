@@ -13,12 +13,16 @@ public class AnimatedGif : SKCanvasView
     private bool isPlaying = true;
     private bool isAnimating;
 
-    public AnimatedGif(string resourceId)
+    public AnimatedGif(string resourceId) : base()
     {
         LoadFrames(resourceId);
         PrecomputeResizedFrames();
         StartAnimation();
+        // Set the view to expand to fill the space, and to scale the image proportionally
+        this.HorizontalOptions = LayoutOptions.FillAndExpand;
+        this.VerticalOptions = LayoutOptions.FillAndExpand;
     }
+
 
     private void LoadFrames(string resourceId)
     {
@@ -72,12 +76,33 @@ public class AnimatedGif : SKCanvasView
 
     protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
     {
+
         base.OnPaintSurface(e);
 
         var canvas = e.Surface.Canvas;
         canvas.Clear();
+
+        var info = e.Info; // Information about the surface/canvas including size
         var frame = frames[currentFrame];
-        canvas.DrawBitmap(frame, 0, 0);
+
+        // Calculate aspect ratio of the frame
+        float frameAspectRatio = frame.Width / (float)frame.Height;
+        // Calculate the scaling factor to maintain aspect ratio
+        float scale = Math.Min(info.Width / (float)frame.Width, info.Height / (float)frame.Height);
+
+        // New width and height based on the scale factor
+        float scaledWidth = frame.Width * scale;
+        float scaledHeight = frame.Height * scale;
+
+        // Calculate the X and Y positions to center the frame
+        float x = (info.Width - scaledWidth) / 2;
+        float y = (info.Height - scaledHeight) / 2;
+
+        // Create a rectangle that represents the destination for the frame
+        SKRect destRect = new SKRect(x, y, x + scaledWidth, y + scaledHeight);
+
+        // Draw the bitmap to the canvas, scaling it to fit the destination rectangle
+        canvas.DrawBitmap(frame, destRect);
     }
 
     public void StopAnimation()

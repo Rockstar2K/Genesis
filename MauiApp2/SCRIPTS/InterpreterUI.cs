@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,8 +34,10 @@ namespace MauiApp2.SCRIPTS
             private void InitializeAnimatedGif()
             {
                 AnimatedGif = new AnimatedGif("MauiApp2.Resources.Images.image001.gif");
+
                 
-                if(OperatingSystem.IsWindows())
+
+            if (OperatingSystem.IsWindows())
                 {
                 AnimatedGif.WidthRequest = 80;
                 AnimatedGif.HeightRequest = 80;

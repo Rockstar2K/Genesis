@@ -93,13 +93,12 @@ def run_interpreter(userPrompt, api_key=None, interpreter_model='openai/gpt-4-vi
         messages = load_chat_history()
         interpreter.messages.extend(messages)
         #interpreter.system_message = read_prompt()
-        interpreter.system_message += "*Your name is aimee*"
+        #interpreter.system_message += "*Your name is aimee*"
         interpreter.model =interpreter_model
         interpreter.max_output = 2000
         interpreter.max_tokens = 1000
         interpreter.auto_run = True
-        #interpreter.vision = True
-
+        interpreter.vision = True
         output = interpreter.chat(userPrompt, stream=True, display=False)
         for chunk in output:
             print(chunk, flush=True)

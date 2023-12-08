@@ -144,7 +144,7 @@ namespace MauiApp2
 
                     //Debug.WriteLine(" add File Path: " + addfilePath);
 
-                    userPrompt += " Added File (Path): " + addfilePath + " ";
+                    userPrompt += addfilePath + " ";
 
                     string fileName = System.IO.Path.GetFileName(addfilePath);
 
@@ -490,6 +490,7 @@ namespace MauiApp2
                     {
                         scrollToLastChatBox();
                         currentCodeFrame = null;
+                        currentCodeLabel = null;
 
                     }
 
@@ -560,8 +561,8 @@ namespace MauiApp2
                 StartPoint = new Point(0, 0.5),
                 EndPoint = new Point(1, 0.5)
             };
-            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#5FB5FF"), Offset = 1 });
-            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#7DFFCF"), Offset = 0 });
+            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#000000"), Offset = 1});
+            gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#5FB5FF"), Offset = 0 });
             var customShadow = new Shadow
             {
                 Radius = 10,
@@ -570,19 +571,7 @@ namespace MauiApp2
                 Offset = new Point(5, 5)  // Offset of 5 pixels to the right and down
             };
             //Gif Animation
-            var CodeGif = new Image
-            {
-                Source = new FileImageSource
-                {
-                    File = "genesis_loading.gif"
-                },
-                WidthRequest = 100,
-                HeightRequest = 100,
-                IsAnimationPlaying = true,
-                HorizontalOptions = LayoutOptions.Start
-            };
-            CodeGif.IsVisible = true;
-            CodeGif.IsAnimationPlaying = true;
+    
             var animatedGif2 = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
             animatedGif2.WidthRequest = 100;
             animatedGif2.HeightRequest = 100;
@@ -592,7 +581,7 @@ namespace MauiApp2
                 HasShadow = true,
                 Shadow = customShadow,
                 Background = gradientBrush,
-                Margin = new Thickness(0, 0, 80, 0),
+                Margin = new Thickness(20, 20, 80, 0),
                 BorderColor = Color.FromRgba(255, 255, 255, 0),
             };
             interpreterCodeFrame.Content = new StackLayout
