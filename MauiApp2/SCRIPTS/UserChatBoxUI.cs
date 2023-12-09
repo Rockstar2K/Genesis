@@ -17,8 +17,8 @@ namespace MauiApp2.SCRIPTS
         {
             frame = new Frame
             {
-                BackgroundColor = Color.FromArgb("#335FB5FF"),
-                BorderColor = Color.FromArgb("#335FB5FF"),
+                BackgroundColor = Color.FromArgb("#FF5FB5FF"),
+                BorderColor = Color.FromArgb("#FF5FB5FF"),
                 Margin = new Thickness(20, 20, 20, 20),  // left, top, right, bottom
                 //VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.EndAndExpand,
@@ -87,4 +87,5 @@ namespace MauiApp2.SCRIPTS
         }
 
     }
+
 }

@@ -8,7 +8,7 @@ using System.Text;
 using static MauiApp2.MainPage;
 using CommunityToolkit;
 using Microsoft.Maui.Storage;
-
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace MauiApp2
 {
@@ -16,7 +16,7 @@ namespace MauiApp2
     {
 
         public static string apiKey     { get; set; }   = Preferences.Get("api_key", "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");
-        public bool is_night_mode_on    { get; set; }   = Preferences.Get("night_mode", false);
+        public bool is_night_mode_on    { get; set; }   = Preferences.Get("night_mode", true);
         public bool is_code_visible     { get; set; }   = Preferences.Get("see_code", false);
         public static string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "openai/gpt-4-vision-preview");
         private Frame interpreterCodeFrame; // Declare a class-level variable to hold the frame
@@ -44,8 +44,48 @@ namespace MauiApp2
             Shell.SetNavBarIsVisible(this, false);
             Connectivity.ConnectivityChanged += OnConnectivityChanged;
 
+            // Register to receive DarkModeMessage
+            WeakReferenceMessenger.Default.Register<DarkModeMessage>(this, (recipient, message) =>
+            {
+                // Call the ApplyDarkMode method
+                ApplyTheme();
+            });
+
+        }
+        public async void ApplyTheme()
+        {
+            is_night_mode_on = Preferences.Get("night_mode", true);
+
+            if (true)
+            {
+                // Apply dark mode
+                await AnimationUtilities.ApplyDarkMode(BackgroundView);
+                AcrilicView1.TintColor = new Color(0, 0, 0, 0); // RGB set to 0 with 0 opacity
+                AcrilicView2.TintColor = new Color(0, 0, 0, 0); // RGB set to 0 with 0 opacity
+
+            }
+            else
+            {
+                // Apply light mode or other logic
+                await AnimationUtilities.ApplyLightMode(BackgroundView);
+                AcrilicView1.TintColor = Color.FromArgb("#FF");
+                AcrilicView2.TintColor = Color.FromArgb("#FF");
+
+            }
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            // Unregister when the page is no longer visible
+            WeakReferenceMessenger.Default.Unregister<DarkModeMessage>(this);
+        }
 
         static string userPrompt;
 

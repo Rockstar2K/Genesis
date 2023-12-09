@@ -6,9 +6,8 @@
     xmlns:local="clr-namespace:MauiApp2"
     xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
     Title="Settings"
-    BackgroundColor="#F9F9F9"
     NavigationPage.HasNavigationBar="False">
-    <ScrollView>
+    <ScrollView x:Name="BackgroundView" >
         <VerticalStackLayout Margin="40" Spacing="20">
 
             <!--  Top Bar (should be absolute?)  -->
@@ -57,7 +56,7 @@
             <!--  API key Input  -->
             <Frame
                 Padding="0"
-                BackgroundColor="White"
+                BackgroundColor="Transparent"
                 BorderColor="#5FB5FF"
                 CornerRadius="25"
                 Opacity="0.5">
@@ -104,10 +103,11 @@
                         Margin="0,0,0,20"/>
 
                     <Switch
+                        x:Name="Code_Switch"
                         HorizontalOptions="Start"
                         OnColor="#00E0DD"
                         ThumbColor="#00E0DD"
-                        Toggled="Code_Switch_Toggled" />
+                        Toggled="Code_Switch_Toggled"/>
                 </VerticalStackLayout>
 
                 <!--  Dark Mode  -->
@@ -121,6 +121,7 @@
                         Margin="0,0,0,20"/>
 
                     <Switch
+                        x:Name="Nigh_Mode_Switch"
                         HorizontalOptions="Start"
                         OnColor="#A49FF9"
                         ThumbColor="#00E0DD"
@@ -146,7 +147,6 @@
                         <VerticalStackLayout Margin="0,0,5,0" Spacing="10">
                             <Button
                                 x:Name="GPT3btn"
-                                BackgroundColor="#fff"
                                 BorderColor="#00E0DD"
                                 CornerRadius="22"
                                 FontFamily="Montserrat-ExtraLight"
@@ -169,7 +169,6 @@
 
                             <Button
                                 x:Name="GPT4btn"
-                                BackgroundColor="White"
                                 BorderColor="#00E0DD"
                                 BorderWidth="1"
                                 CornerRadius="22"

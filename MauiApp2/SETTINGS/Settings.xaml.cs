@@ -1,4 +1,7 @@
 ﻿using System.Diagnostics;
+using CommunityToolkit.Mvvm.Messaging;
+using MauiApp2.SCRIPTS;
+using Microsoft.Maui.ApplicationModel;
 
 namespace MauiApp2;
 
@@ -14,7 +17,44 @@ public partial class Settings : ContentPage
         InitializeComponent();
         Shell.SetNavBarIsVisible(this, false);
         LanguagePicker.ItemsSource = new List<string> { "English", "Spanish" };
+        SetSettings();
+        night_mode = Preferences.Get("dark_mode", true);
 
+        ApplyTheme(night_mode);
+
+
+    }
+
+    void SetSettings()
+    {
+        see_code = Preferences.Get("see_code", false);
+        night_mode = Preferences.Get("dark_mode", true);
+        interpreter_model = Preferences.Get("interpreter_model", "openai/gpt-4-vision-preview");
+
+        Code_Switch.IsToggled = see_code;
+        Nigh_Mode_Switch.IsToggled = night_mode;
+
+        if (interpreter_model == "openai/gpt-3.5-turbo")
+        {
+            //change GPT 3
+            GPT3btn.BackgroundColor = Color.FromArgb("#00E0DD");
+            GPT3btn.TextColor = Color.FromArgb("#fff");
+
+            //change GPT 4
+            GPT4btn.BackgroundColor = Color.FromArgb("#fff");
+            GPT4btn.TextColor = Color.FromArgb("#00E0DD");
+        }
+
+        else
+        {
+            //change GPT 4
+            GPT4btn.BackgroundColor = Color.FromArgb("#00E0DD");
+            GPT4btn.TextColor = Color.FromArgb("#fff");
+
+            //change GPT 4
+            GPT3btn.BackgroundColor = Color.FromArgb("#fff");
+            GPT3btn.TextColor = Color.FromArgb("#00E0DD");
+        }
     }
 
     void Save_Button_Pressed(System.Object sender, System.EventArgs e)
@@ -25,6 +65,22 @@ public partial class Settings : ContentPage
             Debug.WriteLine("api_key" + API_Input_Box.Text);
 
         }
+    }
+
+    async void ApplyTheme(bool IsNightMode)
+    {
+        Console.WriteLine("DARK MODE: " + IsNightMode);
+
+        if (IsNightMode)
+        {
+            await AnimationUtilities.ApplyDarkMode(BackgroundView);
+        }
+        else
+        {
+            await AnimationUtilities.ApplyLightMode(BackgroundView);
+        }
+
+        WeakReferenceMessenger.Default.Send(new SCRIPTS.Messages(night_mode));
     }
 
     async void Back_Pressed(System.Object sender, System.EventArgs e)
@@ -42,9 +98,13 @@ public partial class Settings : ContentPage
 
     void Night_Mode_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
     {
-        night_mode = e.Value;
 
-        Preferences.Set("night_mode", night_mode);
+        night_mode = e.Value;
+        Preferences.Set("dark_mode", night_mode);
+
+        ApplyTheme(night_mode);
+
+
     }
 
     void GPT3_Pressed(System.Object sender, System.EventArgs e)
@@ -52,13 +112,7 @@ public partial class Settings : ContentPage
 
         Preferences.Set("interpreter_model", "openai/gpt-3.5-turbo");
 
-        //change GPT 3
-        GPT3btn.BackgroundColor = Color.FromArgb("#00E0DD");
-        GPT3btn.TextColor = Color.FromArgb("#fff");
-
-        //change GPT 4
-        GPT4btn.BackgroundColor = Color.FromArgb("#fff");
-        GPT4btn.TextColor = Color.FromArgb("#00E0DD");
+        SetSettings();
 
         Debug.WriteLine("Interpreter model set to GPT-3.5-turbo");
 
@@ -67,15 +121,8 @@ public partial class Settings : ContentPage
     {
 
         Preferences.Set("interpreter_model", "openai/gpt-4-vision-preview");
-        Debug.WriteLine("interpreter_model" + interpreter_model);
 
-        //change GPT 4
-        GPT4btn.BackgroundColor = Color.FromArgb("#00E0DD");
-        GPT4btn.TextColor = Color.FromArgb("#fff");
-
-        //change GPT 4
-        GPT3btn.BackgroundColor = Color.FromArgb("#fff");
-        GPT3btn.TextColor = Color.FromArgb("#00E0DD");
+        SetSettings();
 
         Debug.WriteLine("Interpreter model set to GPT-4");
     }

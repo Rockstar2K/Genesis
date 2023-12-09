@@ -5,16 +5,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ui="clr-namespace:Xe.AcrylicView;assembly=Xe.AcrylicView"
     Title=""
-    NavigationPage.HasNavigationBar="False" BackgroundColor="#F9F9F9">
+    NavigationPage.HasNavigationBar="False">
 
 
     <!--  Use AbsoluteLayout as the main container  -->
     <AbsoluteLayout
+        x:Name="BackgroundView"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
 
         <!--  Top Bar  -->
         <ui:AcrylicView
+            x:Name="AcrilicView1"
             AbsoluteLayout.LayoutBounds="0,0,1,56"
             AbsoluteLayout.LayoutFlags="WidthProportional"
             BackgroundColor="Transparent"
@@ -64,7 +66,6 @@
         <!--  Add spacing?? (space between rows) -->
 
         <ScrollView
-            BackgroundColor="AliceBlue"
             x:Name="ChatScrollView"
             Margin="0"
             Padding="0,50,0,100"
@@ -97,15 +98,17 @@
 
         <!--  Bottom Bar  -->
         <ui:AcrylicView
+            x:Name="AcrilicView2"
             AbsoluteLayout.LayoutBounds="0,1,1,AutoSize"
             AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
             EffectStyle="Custom"
             HorizontalOptions="FillAndExpand"
-            TintColor="White"
-            TintOpacity="0.05"
+            TintColor="Transparent"
+            TintOpacity="0"
             VerticalOptions="FillAndExpand"
+            
             ZIndex="1">
-            <Grid Padding="10,15,15,15" BackgroundColor="Transparent">
+            <Grid Padding="10,15,15,15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
