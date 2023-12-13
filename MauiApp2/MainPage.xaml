@@ -7,26 +7,25 @@
     Title=""
     NavigationPage.HasNavigationBar="False">
 
-
-    <!--  Use AbsoluteLayout as the main container  -->
+    <!-- Use AbsoluteLayout as the main container -->
     <AbsoluteLayout
         x:Name="BackgroundView"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
 
-        <!--  Top Bar  -->
+        <!-- Top Bar -->
         <ui:AcrylicView
             x:Name="AcrilicView1"
             AbsoluteLayout.LayoutBounds="0,0,1,56"
             AbsoluteLayout.LayoutFlags="WidthProportional"
             BackgroundColor="Transparent"
-            EffectStyle="Custom"
             HorizontalOptions="FillAndExpand"
             TintColor="White"
             TintOpacity="0.1"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="FillAndExpand"
+            ZIndex="1"> <!-- Changed ZIndex to 0 -->
             <Grid BackgroundColor="Transparent" RowDefinitions="Auto">
-                <!--  Welcome Button  -->
+                <!-- Welcome Button -->
                 <Button
                     Grid.Row="0"
                     Margin="10,0,0,0"
@@ -36,9 +35,7 @@
                     HorizontalOptions="Start"
                     Text="Welcome Page"
                     VerticalOptions="Center" />
-                <!--  Settings ImageButton  -->
-                                <!--  Welcome Button  -->
-
+                <!-- Settings ImageButton -->
                 <ImageButton
                     x:Name="Settings"
                     Grid.Row="0"
@@ -60,27 +57,20 @@
             </Grid>
         </ui:AcrylicView>
 
-
-        <!--  Chat Scroll View that fills the entire page  -->
-        <!--  we use padding for top and bottom for a "margin" and for the glass to be diplayed (margin doesnt works)  -->
-        <!--  Add spacing?? (space between rows) -->
-
+        <!-- Chat Scroll View that fills the entire page -->
         <ScrollView
             x:Name="ChatScrollView"
             Margin="0"
             Padding="0,50,0,100"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
-            ZIndex="-1">
+            ZIndex="1"> <!-- Ensure ZIndex allows for interaction -->
             <VerticalStackLayout x:Name="ChatLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
-                <!--  Your chat content goes here  -->
+                <!-- Your chat content goes here -->
             </VerticalStackLayout>
         </ScrollView>
 
-
-
-        <!--  File Box Container (FlexLayout) positioned above the Bottom Bar  -->
-        <!--  135 is the bottom-margin  -->
+        <!-- File Box Container (FlexLayout) positioned above the Bottom Bar -->
         <FlexLayout
             x:Name="FileBoxContainer"
             Margin="0,0,10,0"
@@ -90,24 +80,21 @@
             BackgroundColor="#00000000"
             Direction="Row"
             JustifyContent="Start"
-            Wrap="Wrap">
-            <!--  Child elements  -->
+            Wrap="Wrap"
+            ZIndex="0"> <!-- Changed ZIndex to 0 -->
+            <!-- Child elements -->
         </FlexLayout>
 
-
-
-        <!--  Bottom Bar  -->
+        <!-- Bottom Bar -->
         <ui:AcrylicView
             x:Name="AcrilicView2"
             AbsoluteLayout.LayoutBounds="0,1,1,AutoSize"
             AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
-            EffectStyle="Custom"
             HorizontalOptions="FillAndExpand"
             TintColor="Transparent"
             TintOpacity="0"
             VerticalOptions="FillAndExpand"
-            
-            ZIndex="1">
+            ZIndex="2"> <!-- Changed ZIndex to 0 -->
             <Grid Padding="10,15,15,15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -115,7 +102,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <!--  + Button  -->
+                <!-- + Button -->
                 <Button
                     Grid.Column="0"
                     Padding="10"
@@ -136,9 +123,7 @@
                     BorderColor="#00E0DD"
                     CornerRadius="30"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    ZIndex="2">
-
+                    VerticalOptions="FillAndExpand"> <!-- Changed ZIndex to 0 -->
                     <Grid HorizontalOptions="FillAndExpand">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -163,7 +148,6 @@
                             BackgroundColor="Transparent"
                             HeightRequest="50"
                             WidthRequest="50">
-
                             <ImageButton
                                 Padding="12"
                                 BackgroundColor="Transparent"
@@ -178,10 +162,5 @@
                 </Frame>
             </Grid>
         </ui:AcrylicView>
-
-
-
-
-
     </AbsoluteLayout>
 </ContentPage>

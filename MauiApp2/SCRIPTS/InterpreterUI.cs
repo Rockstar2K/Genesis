@@ -114,7 +114,7 @@ namespace MauiApp2.SCRIPTS
                     StartPoint = new Point(0, 0.5),
                     EndPoint = new Point(1, 0.5)
                 };
-                gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#337DFFCF"), Offset = 0 });
+                gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#807DFFCF"), Offset = 0 });
                 gradientBrush.GradientStops.Add(new GradientStop { Color = Color.FromArgb("#7F00E0DD"), Offset = 1 });
 
                 return gradientBrush;

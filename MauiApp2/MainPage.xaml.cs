@@ -16,7 +16,7 @@ namespace MauiApp2
     {
 
         public static string apiKey     { get; set; }   = Preferences.Get("api_key", "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");
-        public bool is_night_mode_on    { get; set; }   = Preferences.Get("night_mode", true);
+        public bool is_night_mode_on    { get; set; }   = Preferences.Get("theme_dark", true);
         public bool is_code_visible     { get; set; }   = Preferences.Get("see_code", false);
         public static string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "openai/gpt-4-vision-preview");
         private Frame interpreterCodeFrame; // Declare a class-level variable to hold the frame
@@ -54,23 +54,26 @@ namespace MauiApp2
         }
         public async void ApplyTheme()
         {
-            is_night_mode_on = Preferences.Get("night_mode", true);
+            is_night_mode_on = Preferences.Get("theme_dark", true);
 
-            if (true)
+            if (is_night_mode_on)
             {
                 // Apply dark mode
-                await AnimationUtilities.ApplyDarkMode(BackgroundView);
+                await AnimationUtilities.ApplyDarkMode(BackgroundView, false);
                 AcrilicView1.TintColor = new Color(0, 0, 0, 0); // RGB set to 0 with 0 opacity
                 AcrilicView2.TintColor = new Color(0, 0, 0, 0); // RGB set to 0 with 0 opacity
+                AcrilicView1.EffectStyle = Xe.AcrylicView.Controls.EffectStyle.Dark;
+                AcrilicView2.EffectStyle = Xe.AcrylicView.Controls.EffectStyle.Dark;
 
             }
             else
             {
                 // Apply light mode or other logic
-                await AnimationUtilities.ApplyLightMode(BackgroundView);
+                await AnimationUtilities.ApplyLightMode(BackgroundView, false);
                 AcrilicView1.TintColor = Color.FromArgb("#FF");
                 AcrilicView2.TintColor = Color.FromArgb("#FF");
-
+                AcrilicView1.EffectStyle = Xe.AcrylicView.Controls.EffectStyle.Light;
+                AcrilicView2.EffectStyle = Xe.AcrylicView.Controls.EffectStyle.Light;
             }
         }
 

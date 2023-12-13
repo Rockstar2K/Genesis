@@ -105,8 +105,6 @@
                     <Switch
                         x:Name="Code_Switch"
                         HorizontalOptions="Start"
-                        OnColor="#00E0DD"
-                        ThumbColor="#00E0DD"
                         Toggled="Code_Switch_Toggled"/>
                 </VerticalStackLayout>
 
@@ -123,9 +121,8 @@
                     <Switch
                         x:Name="Nigh_Mode_Switch"
                         HorizontalOptions="Start"
-                        OnColor="#A49FF9"
-                        ThumbColor="#00E0DD"
-                        Toggled="Night_Mode_Toggled" />
+                        Toggled="Night_Mode_Toggled"
+                        />
                 </VerticalStackLayout>
 
 
@@ -148,6 +145,7 @@
                             <Button
                                 x:Name="GPT3btn"
                                 BorderColor="#00E0DD"
+                                BorderWidth="1"
                                 CornerRadius="22"
                                 FontFamily="Montserrat-ExtraLight"
                                 HorizontalOptions="Center"

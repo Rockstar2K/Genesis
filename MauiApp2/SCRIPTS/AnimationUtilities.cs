@@ -3,7 +3,7 @@
 public static class AnimationUtilities
 {
     // Method to apply dark mode gradient and fade-in effect
-    public static async Task ApplyDarkMode(VisualElement element, uint fadeDuration = 1000)
+    public static async Task ApplyDarkMode(VisualElement element, bool animation = false, uint fadeDuration = 1000)
     {
         Console.WriteLine("Applying DarkMode");
 
@@ -25,14 +25,17 @@ public static class AnimationUtilities
         {
             view.Background = darkModeGradient;
         }
+        if (animation)
+        {
+            // Apply the fade-in animation
+            element.Opacity = 0;
+            await element.FadeTo(1, fadeDuration); // Fades to full opacity over the specified duration
+        }
 
-        // Apply the fade-in animation
-        element.Opacity = 0;
-        await element.FadeTo(1, fadeDuration); // Fades to full opacity over the specified duration
     }
 
     // Method to apply dark mode gradient and fade-in effect
-    public static async Task ApplyLightMode(VisualElement element, uint fadeDuration = 1000)
+    public static async Task ApplyLightMode(VisualElement element, bool animation = true, uint fadeDuration = 1000)
     {
         Console.WriteLine("Applying Light Mode");
 
@@ -47,8 +50,11 @@ public static class AnimationUtilities
             view.Background = Color.FromArgb("#F9F9F9");
         }
 
-        // Apply the fade-in animation
-        element.Opacity = 0;
-        await element.FadeTo(1, fadeDuration); // Fades to full opacity over the specified duration
+        if (animation)
+        {
+            // Apply the fade-in animation
+            element.Opacity = 0;
+            await element.FadeTo(1, fadeDuration); // Fades to full opacity over the specified duration
+        }
     }
 }

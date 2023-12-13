@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Messaging;
 using MauiApp2.SCRIPTS;
 using Microsoft.Maui.ApplicationModel;
-
 namespace MauiApp2;
 
 public partial class Settings : ContentPage
@@ -18,7 +17,7 @@ public partial class Settings : ContentPage
         Shell.SetNavBarIsVisible(this, false);
         LanguagePicker.ItemsSource = new List<string> { "English", "Spanish" };
         SetSettings();
-        night_mode = Preferences.Get("dark_mode", true);
+        night_mode = Preferences.Get("theme_dark", true);
 
         ApplyTheme(night_mode);
 
@@ -28,7 +27,7 @@ public partial class Settings : ContentPage
     void SetSettings()
     {
         see_code = Preferences.Get("see_code", false);
-        night_mode = Preferences.Get("dark_mode", true);
+        night_mode = Preferences.Get("theme_dark", true);
         interpreter_model = Preferences.Get("interpreter_model", "openai/gpt-4-vision-preview");
 
         Code_Switch.IsToggled = see_code;
@@ -38,10 +37,10 @@ public partial class Settings : ContentPage
         {
             //change GPT 3
             GPT3btn.BackgroundColor = Color.FromArgb("#00E0DD");
-            GPT3btn.TextColor = Color.FromArgb("#fff");
+            GPT3btn.TextColor = Color.FromArgb("#000000");
 
             //change GPT 4
-            GPT4btn.BackgroundColor = Color.FromArgb("#fff");
+            GPT4btn.BackgroundColor = Color.FromArgb("#00000000");
             GPT4btn.TextColor = Color.FromArgb("#00E0DD");
         }
 
@@ -49,10 +48,10 @@ public partial class Settings : ContentPage
         {
             //change GPT 4
             GPT4btn.BackgroundColor = Color.FromArgb("#00E0DD");
-            GPT4btn.TextColor = Color.FromArgb("#fff");
+            GPT4btn.TextColor = Color.FromArgb("#000000");
 
             //change GPT 4
-            GPT3btn.BackgroundColor = Color.FromArgb("#fff");
+            GPT3btn.BackgroundColor = Color.FromArgb("#00000000");
             GPT3btn.TextColor = Color.FromArgb("#00E0DD");
         }
     }
@@ -92,19 +91,34 @@ public partial class Settings : ContentPage
     void Code_Switch_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
     {
         see_code = e.Value;
-
         Preferences.Set("see_code", see_code);
+
+        if (see_code)
+        {
+            Code_Switch.ThumbColor = Color.FromArgb("#A49FF9");
+        }
+        else
+        {
+            Code_Switch.ThumbColor = Colors.LightGray;
+        }
     }
 
     void Night_Mode_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
     {
 
         night_mode = e.Value;
-        Preferences.Set("dark_mode", night_mode);
+        Preferences.Set("theme_dark", night_mode);
 
         ApplyTheme(night_mode);
 
-
+        if (night_mode)
+        {
+            Nigh_Mode_Switch.ThumbColor = Color.FromArgb("#A49FF9");
+        }
+        else
+        {
+            Nigh_Mode_Switch.ThumbColor = Colors.LightGray;
+        }
     }
 
     void GPT3_Pressed(System.Object sender, System.EventArgs e)
