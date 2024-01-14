@@ -5,7 +5,6 @@ using CommunityToolkit.Maui;
 using Xe.AcrylicView;
 
 
-
 namespace MauiApp2
 {
     public static class MauiProgram
@@ -48,6 +47,8 @@ namespace MauiApp2
                     fonts.AddFont("Montserrat-Regular.ttf", "Montserrat-Regular");
                     
                 });
+
+
 
 #if DEBUG
             builder.Logging.AddDebug();

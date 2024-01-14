@@ -2,7 +2,7 @@
 # -- coding: utf-8 --
 import sys
 import io
-import interpreter
+from interpreter import interpreter
 import os
 import json
 import traceback  # Import traceback module for error details
@@ -15,8 +15,7 @@ root_dir = os.path.dirname(os.path.abspath(__file__))
 #...
 
 def Set_API_Key(key):
-    interpreter.api_key = key
-
+    interpreter.llm.api_key = key
 # ...
 
 
@@ -93,7 +92,7 @@ def run_interpreter(userPrompt, api_key=None, interpreter_model='openai/gpt-4-vi
         messages = load_chat_history()
         interpreter.messages.extend(messages)
         #interpreter.system_message = read_prompt()
-        #interpreter.system_message += "*Your name is aimee*"
+        interpreter.system_message += "*Your name is aimee*"
         interpreter.model =interpreter_model
         interpreter.max_output = 2000
         interpreter.max_tokens = 1000
@@ -108,8 +107,6 @@ def run_interpreter(userPrompt, api_key=None, interpreter_model='openai/gpt-4-vi
         
     except Exception as e:
         log_error(f"Error: {e}\n{traceback.format_exc()}")
-
-    
 #...
 
 if __name__ == "__main__":

@@ -51,7 +51,7 @@ namespace MauiApp2.SCRIPTS
                 Padding = 0,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                CornerRadius = 25,
+                CornerRadius = 22,
                 BorderWidth = 3,
                 BorderColor = Color.FromArgb("#00E0DD"),
             };
@@ -81,11 +81,21 @@ namespace MauiApp2.SCRIPTS
 
         private void InitializeFrame()
         {
+
+            var customShadow = new Shadow
+            {
+                Radius = 10,
+                Opacity = 0.6f,
+                Brush = new SolidColorBrush(Color.FromArgb("#00E0DD")),
+                Offset = new Point(5, 5)
+            };
+
             frame = new Frame
             {
                 Content = grid,
-                CornerRadius = 25,
-                HasShadow = false,
+                CornerRadius = 22,
+                Shadow = customShadow,
+                HasShadow = true,
                 Padding = 0,
                 Margin = new Thickness(5, 0, 5, 0), // left, top, right, bottom
                 BackgroundColor = Color.FromArgb("#00E0DD"),

@@ -30,6 +30,7 @@ public class AnimatedGif : SKCanvasView
         using var stream = assembly.GetManifestResourceStream(resourceId);
         if (stream == null)
         {
+            Console.WriteLine($"Resource with ID {resourceId} not found.");
             throw new InvalidOperationException($"Resource with ID {resourceId} not found.");
         }
         using var codec = SKCodec.Create(stream);

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Cloud.Speech.V1;
 using Google.Protobuf;
-using Foundation;
+//using Foundation;
 
 namespace MauiApp2
 {

@@ -98,7 +98,7 @@
                         FontFamily="Montserrat-Medium"
                         FontSize="18"
                         HorizontalOptions="Start"
-                        Text="See Generated Code"
+                        Text="See Code"
                         TextColor="#5FB5FF"
                         Margin="0,0,0,20"/>
 
@@ -107,6 +107,24 @@
                         HorizontalOptions="Start"
                         Toggled="Code_Switch_Toggled"/>
                 </VerticalStackLayout>
+
+
+                <!--  OS control code  -->
+                <VerticalStackLayout HorizontalOptions="Start">
+                    <Label
+                        FontFamily="Montserrat-Medium"
+                        FontSize="18"
+                        HorizontalOptions="Start"
+                        Text="OS Control"
+                        TextColor="#5FB5FF"
+                        Margin="0,0,0,20"/>
+
+                    <Switch
+                        x:Name="OS_Switch"
+                        HorizontalOptions="Start"
+                        Toggled="Code_Switch_Toggled"/>
+                </VerticalStackLayout>
+
 
                 <!--  Dark Mode  -->
                 <VerticalStackLayout HorizontalOptions="Start">
@@ -151,7 +169,7 @@
                                 HorizontalOptions="Center"
                                 MinimumWidthRequest="130"
                                 Pressed="GPT3_Pressed"
-                                Text="GPT-3"
+                                Text="GPT-3.5"
                                 TextColor="#00E0DD" />
 
                             <Label

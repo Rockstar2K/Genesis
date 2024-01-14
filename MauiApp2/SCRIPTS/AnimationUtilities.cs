@@ -10,11 +10,11 @@ public static class AnimationUtilities
         // Set up the dark mode gradient background
         var darkModeGradient = new LinearGradientBrush
         {
-            StartPoint = new Point(0, 0),
+            StartPoint = new Point(-0.25, -0.25),
             EndPoint = new Point(1, 1)
         };
-        darkModeGradient.GradientStops.Add(new GradientStop(Color.FromArgb("#121B3F"), 0.252093f));
-        darkModeGradient.GradientStops.Add(new GradientStop(Color.FromArgb("#A49FF9"), 1.0f));
+        darkModeGradient.GradientStops.Add(new GradientStop(Color.FromArgb("#A49FF9"), -0.1f));
+        darkModeGradient.GradientStops.Add(new GradientStop(Color.FromArgb("#121B3F"), 0.75f));
 
         // Apply the gradient background
         if (element is Page page)

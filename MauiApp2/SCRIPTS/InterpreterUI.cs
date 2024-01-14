@@ -33,7 +33,7 @@ namespace MauiApp2.SCRIPTS
 
             private void InitializeAnimatedGif()
             {
-                AnimatedGif = new AnimatedGif("MauiApp2.Resources.Images.image001.gif");
+                AnimatedGif = new AnimatedGif("aimee.Resources.Images.image001.gif");
 
                 
 
