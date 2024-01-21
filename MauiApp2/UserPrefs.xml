@@ -1,0 +1,45 @@
+﻿<Properties StartupConfiguration="{8E0A1F74-EB09-4888-BC5B-150EEB71498A}|Default" BuildWithMSBuildOnMono="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MauiApp2/MainPage.xaml.cs">
+    <Files>
+      <File FileName="MauiApp2/SCRIPTS/AnimationUtilities.cs" Line="30" Column="43" />
+      <File FileName="MauiApp2/MainPage.xaml.cs" Line="552" Column="29" />
+      <File FileName="MauiApp2/SCRIPTS/ProcessChunksAndJson.cs" />
+      <File FileName="MauiApp2/CustomControls/AnimatedGIF.cs" Line="14" Column="30" />
+      <File FileName="MauiApp2/MainPage.xaml" Line="116" Column="54" />
+      <File FileName="../../../../usr/local/share/dotnet/packs/Microsoft.Maui.Resizetizer.Sdk/7.0.101/targets/Microsoft.Maui.Resizetizer.targets" Line="523" Column="40" />
+      <File FileName="MauiApp2/Welcome_Page.xaml" Line="11" Column="29" />
+      <File FileName="../../../../usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.4.7132/tools/msbuild/iOS/Xamarin.Shared.targets" Line="460" Column="3" />
+      <File FileName="MauiApp2/aimee.csproj" Line="81" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MauiApp2" expanded="True">
+            <Node name="aimee">
+              <Node name="Resources" expanded="True">
+                <Node name="Images" expanded="True" />
+              </Node>
+              <Node name="SCRIPTS" expanded="True" />
+              <Node name="MainPage.xaml" expanded="True">
+                <Node name="MainPage.xaml.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <Debugger.DebugSourceFolders />
+  <MonoDevelop.Ide.ItemProperties.aimee PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/n/Documents/Genesis/MauiApp2/TTS SST/GoogleSTTPlayer.cs" relfile="MauiApp2/TTS SST/GoogleSTTPlayer.cs" line="23" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../MauiApp2/SETTINGS/Settings.xaml.cs" line="20" column="8" endLine="20" endColumn="18" offsetX="-1" offsetY="-1" expression="night_mode" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

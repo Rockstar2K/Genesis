@@ -611,7 +611,7 @@ namespace MauiApp2
                 Offset = new Point(5, 5)  // Offset of 5 pixels to the right and down
             };
             //Gif Animation
-    
+    /*
             var animatedGif2 = new AnimatedGif("MauiApp2.Resources.Images.genesis_loading.gif");
             animatedGif2.WidthRequest = 100;
             animatedGif2.HeightRequest = 100;
@@ -628,6 +628,7 @@ namespace MauiApp2
             {
                 Children = { animatedGif2 }
             };
+    */
             stackLayout.Children.Add(interpreterCodeFrame);
         }
 
