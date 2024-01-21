@@ -477,66 +477,72 @@ namespace MauiApp2
                     var end = json["end"]?.ToObject<bool>();     // End if the block (end of the code part, for instance)
 
 
+                //--------CODE OUTPUT LAYOUT----------------
 
-                    // start code
-                    if (start == true && type == "code")
+                // start code
+                if (start == true && type == "code")
+                {
+                    is_code_visible = Preferences.Get("see_code", false);
+                    //If the code visibility is off...
+                    if (!is_code_visible)
                     {
-                        is_code_visible = Preferences.Get("see_code", false);
-                        //If the code visibility is off...
-                        if (!is_code_visible)
+                        AddInterpreterCodeBoxToUI();
+                    }
+                    else
+                    {
+                        currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
+                        isCodeFirstUpdate = true;
+                    }
+
+
+                }
+
+                else if (content != null && type == "code")
+                {
+                    is_code_visible = Preferences.Get("see_code", false);
+                    //If the code visibility is off...
+                    if (!is_code_visible)
+                    {
+                        //What to do if visibility is off
+                    }
+                    else
+                    {
+                        if (isCodeFirstUpdate)
                         {
-                            AddInterpreterCodeBoxToUI();
+                            currentCodeLabel.Text = content;  // Set the text to the first message received
+                            isCodeFirstUpdate = false;
+                            scrollToLastChatBox();
+
                         }
                         else
                         {
-                            currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
-                            isCodeFirstUpdate = true;
+                            currentCodeLabel.Text += content;  // Append subsequent messages
                         }
 
-
-                    }
-
-                    else if(content != null && type == "code")
-                    {
-                        is_code_visible = Preferences.Get("see_code", false);
-                        //If the code visibility is off...
-                        if (!is_code_visible)
+                        if (content.Contains("\n"))
                         {
-                            //What to do if visibility is off
+                            //scrollToLastChatBox();
                         }
-                        else
-                        {
-                            if (isCodeFirstUpdate)
-                            {
-                                currentCodeLabel.Text = content;  // Set the text to the first message received
-                                isCodeFirstUpdate = false;
-                                scrollToLastChatBox();
-
-                            }
-                            else
-                            {
-                                currentCodeLabel.Text += content;  // Append subsequent messages
-                            }
-
-                            if (content.Contains("\n"))
-                            {
-                                //scrollToLastChatBox();
-                            }
-                        }
-
                     }
 
-                    // end code
-                    else if(end == true && type == "code")
-                    {
-                        scrollToLastChatBox();
-                        currentCodeFrame = null;
-                        currentCodeLabel = null;
+                }
 
-                    }
+                // end code
+                else if (end == true && type == "code")
+                {
+                    scrollToLastChatBox();
+                    currentCodeFrame = null;
+                    currentCodeLabel = null;
 
-                    else if(start == true && type == "message")
-                    {
+                }
+
+
+
+                //--------MESSAGE OUTPUT LAYOUT----------------
+
+                else if (start == true && type == "message")
+                {
+
                         AddLabelToInterpreterOutputFrame(currentInterpreterUI);
                         //  isFirstUpdate = false; ??
                         //isOutputFirstUpdate = true;
@@ -571,18 +577,52 @@ namespace MauiApp2
 
                     else if (end == true && type == "console")
                     {
-                        currentCodeFrame = null;
-                        //If the code visibility is off...
-                        if (!is_code_visible)
-                        {
-                           DeactivateInterpreterCodeBox();
-                        }
 
-     
+                    is_code_visible = Preferences.Get("see_code", false);
+
+                    //If the code visibility is off...
+                    if (!is_code_visible)
+                    {
+                        AddInterpreterCodeBoxToUI();
+                    }
+                    else
+                    {
+                        currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
+                        isCodeFirstUpdate = true;
+                    }
+                }
+
+
+
+
+                //--------CONSOLE OUTPUT LAYOUT----------------
+                else if (start == true && type == "console")
+                    {
+                    //currentInterpreterUI.InterpreterFrame.BackgroundColor = Color.FromArgb("#00000000");
+                    //currentInterpreterUI.ResultLabel.TextColor = Color.FromArgb("#FFFFA07A");
+                    AddLabelToInterpreterOutputFrame(currentInterpreterUI);
                     }
 
+                else if (content != null && type == "console")
+                {
+                    if (isFirstUpdate)
+                    {
+                        currentInterpreterUI.ResultLabel.Text = content;  // Use currentChatBubble.ResultLabel here
+                        isFirstUpdate = false;
+                    }
+                    else
+                    {
 
+                        currentInterpreterUI.ResultLabel.Text += content;  // Use currentChatBubble.ResultLabel here
+                    }
+
+                    if (content.Contains("\n"))
+                    {
+                        //scrollToLastChatBox();
+
+                    }
                 }
+            }
                 catch (JsonReaderException ex)
                 {
                     Debug.WriteLine("Json parser exception" + ex.Message);
