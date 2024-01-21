@@ -210,7 +210,7 @@
 
 
             <!--  Save Button and advanced settings  -->
-            <HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,30">
                 <Button
                     x:Name="Save_Button"
                     BackgroundColor="#00E0DD"

@@ -72,7 +72,7 @@
             Padding="0,50,0,100"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
-            ZIndex="0"> <!-- Ensure ZIndex allows for interaction -->
+            ZIndex="1"> <!-- Ensure ZIndex allows for interaction -->
             <VerticalStackLayout x:Name="ChatLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
                 <!-- Your chat content goes here -->
             </VerticalStackLayout>
@@ -85,11 +85,10 @@
             AbsoluteLayout.LayoutBounds="0,1,1,135"
             AbsoluteLayout.LayoutFlags="WidthProportional, XProportional, YProportional"
             AlignItems="Start"
-            BackgroundColor="#00000000"
+            BackgroundColor="AliceBlue"
             Direction="Row"
             JustifyContent="Start"
-            Wrap="Wrap"
-            ZIndex="0"> <!-- Changed ZIndex to 0 -->
+            Wrap="Wrap"> <!-- Changed ZIndex to 0 -->
             <!-- Child elements -->
         </FlexLayout>
 
@@ -109,8 +108,9 @@
             <Grid 
                 AbsoluteLayout.LayoutBounds="0,1,1,AutoSize"
                 Padding="10"
+                ZIndex="2"
                 AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional">
-           
+          
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -154,7 +154,8 @@
                             IsTextPredictionEnabled="True"
                             IsVisible="True"
                             Placeholder="¿Que quieres que haga?"
-                            TextColor="#121B3F" />
+                            TextColor="#121B3F"
+                            ZIndex="2"/>
 
                         <ContentView
                             Grid.Column="1"
