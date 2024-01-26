@@ -93,7 +93,7 @@ def run_interpreter(userPrompt, api_key=None, interpreter_model='openai/gpt-4-vi
         interpreter.messages.extend(messages)
         #interpreter.system_message = read_prompt()
         interpreter.system_message += "*Your name is aimee*"
-        interpreter.model =interpreter_model
+        interpreter.llm.model = interpreter_model
         interpreter.max_output = 2000
         interpreter.max_tokens = 1000
         interpreter.auto_run = True
