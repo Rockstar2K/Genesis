@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -32,9 +33,10 @@ namespace MauiApp2.SCRIPTS
             else if (System.OperatingSystem.IsWindows())
             {
                 //paths for Windows
-                projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\"));
+                projectDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\"));
                 projectDirectory = projectDirectory.TrimEnd('\\');
                 scriptPath = Path.Combine(projectDirectory, "interpreter_wrapper.py");
+                Debug.WriteLine(scriptPath + "scripttttttttttttt");
             }
             else
             {
