@@ -38,6 +38,7 @@ def read_prompt(filename='lyris_Prompt.txt'):
 
 # ...
 
+#Guarda la conversación en AppData o Library (Win/MacOS)
 def create_file_in_appdata(filename):
     # Determine the operating system
     if os.name == 'nt':  # Windows
@@ -46,7 +47,7 @@ def create_file_in_appdata(filename):
         root_dir = os.path.join(os.path.expanduser('~'), 'Library', 'Application Support')
 
     # Create the directory path
-    directory_path = os.path.join(root_dir, "pMEMORY")
+    directory_path = os.path.join(root_dir, "aimee","pMEMORY")
 
     # Create the directory if it doesn't exist
     if not os.path.exists(directory_path):
@@ -94,8 +95,8 @@ def run_interpreter(userPrompt, api_key=None, interpreter_model='openai/gpt-4-vi
         #interpreter.system_message = read_prompt()
         interpreter.system_message += "*Your name is aimee*"
         interpreter.llm.model = interpreter_model
-        interpreter.max_output = 2000
-        interpreter.max_tokens = 1000
+        interpreter.llm.max_output = 2000
+        interpreter.llm.max_tokens = 1000
         interpreter.auto_run = True
         interpreter.vision = True
         output = interpreter.chat(userPrompt, stream=True, display=False)

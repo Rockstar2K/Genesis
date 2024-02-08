@@ -10,7 +10,7 @@ namespace MauiApp2
     public static class TrimMemoryCS
     {
 
-        public static int MaxCharacters = 5000;
+        public static int MaxCharacters = 4000;
 
         public static async Task TrimMemoryFile()
         {
@@ -87,7 +87,7 @@ namespace MauiApp2
             Debug.WriteLine("Old entries have been removed and the file has been updated.");
         }
 
-        private static string GetMemoryFilePath()
+        private static string GetMemoryFilePath(string filename = "chat_history.txt")
         {
             string appDataPath;
 
@@ -97,23 +97,27 @@ namespace MauiApp2
             }
             else if (OperatingSystem.IsMacCatalyst())
             {
-                appDataPath = FileSystem.AppDataDirectory;
+                // For macOS, directly navigating to the 'Library/Application Support' directory
+                string homePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                appDataPath = Path.Combine(homePath, "Library", "Application Support");
             }
             else
             {
                 throw new NotSupportedException("Unsupported platform");
             }
 
-            string pMemoryPath = Path.Combine(appDataPath, "pMEMORY");
+            // Ensure to use the correct subdirectory as used in your Python function ('aimee/pMEMORY')
+            string pMemoryPath = Path.Combine(appDataPath, "aimee", "pMEMORY");
 
+            // Check if the directory exists, create if not
             if (!Directory.Exists(pMemoryPath))
             {
                 Directory.CreateDirectory(pMemoryPath);
             }
 
-            return Path.Combine(pMemoryPath, "chat_history.txt");
+            // Return the full path to the file
+            return Path.Combine(pMemoryPath, filename);
         }
-
 
         public class Entry
         {

@@ -9,6 +9,7 @@ using static MauiApp2.MainPage;
 using CommunityToolkit;
 using Microsoft.Maui.Storage;
 using CommunityToolkit.Mvvm.Messaging;
+using UIKit;
 
 namespace MauiApp2
 {
@@ -51,7 +52,9 @@ namespace MauiApp2
                 ApplyTheme();
             });
 
+
         }
+
         public async void ApplyTheme()
         {
             is_night_mode_on = Preferences.Get("theme_dark", true);

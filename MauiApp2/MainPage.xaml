@@ -18,7 +18,7 @@
                 AbsoluteLayout.LayoutFlags="All"
                 ZIndex="2">
                           
-            <!-- Welcome Button -->
+            <!-- Welcome Button 
             <Button
                 Grid.Row="0"
                 Margin="10,0,0,0"
@@ -28,6 +28,7 @@
                 HorizontalOptions="Start"
                 Text="Welcome Page"
                 VerticalOptions="Center" />
+            -->
             <!-- Settings ImageButton -->
             <ImageButton
                 x:Name="Settings"
