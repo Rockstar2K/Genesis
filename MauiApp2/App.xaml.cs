@@ -1,8 +1,14 @@
-﻿using Microsoft.Maui;
+﻿using System.Diagnostics;
+using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
 using UIKit;
 using Application = Microsoft.Maui.Controls.Application;
+using System;
+using System.Threading.Tasks;
+using aimee.Managers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Runtime.InteropServices;
 
 namespace MauiApp2;
 
@@ -15,11 +21,62 @@ public partial class App : Application
         //Shell.Current.Navigated += OnShellNavigated;
     }
 
-    protected override void OnStart()
+    protected override async void OnStart()
     {
         base.OnStart();
-        // Now it's safer to subscribe to Shell.Current events.
+
+        // Check if it's the first time the app is opened
+        bool isFirstTime = Preferences.Get("IsFirstTimeOpened", true);
+
         Shell.Current.Navigated += OnShellNavigated;
+        NetworkAccess accessType = Connectivity.Current.NetworkAccess;
+
+
+        if (isFirstTime)
+        {
+
+            if (accessType == NetworkAccess.Internet)
+            {
+                // Navigate to the specific page for first-time users
+                MainPage = new Welcome_Page();
+
+                // Set the flag to false so this page won't be shown again on next launch
+                Preferences.Set("IsFirstTimeOpened", false);
+
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Network Error",
+                    $"You are not " + $"connected and we don't (yet) support " +
+                    $"offline models. Connect and re-open the app.", "Ok");
+
+                Application.Current.Quit();
+            }
+        }
+        else
+        {
+            // Normal app launch
+            MainPage = new MainPage();
+
+            if (accessType == NetworkAccess.Internet)
+            {
+                // Connection to internet is available
+                bool isUpToDate = await open_interpreter_manager.IsLibraryUpToDateAsync("open-interpreter");
+                if (!isUpToDate)
+                {
+                    await open_interpreter_manager.UpdateLibraryAsync("open-interpreter");
+                }
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Network Error",
+                    $"You are not connected and we don't (yet) support offline " +
+                    $"models. Connect and re-open the app.", "Ok");
+
+            }
+        }
+
+
     }
 
 
@@ -50,4 +107,5 @@ public partial class App : Application
             mainPage.ApplyTheme();
         }
     }
+
 }

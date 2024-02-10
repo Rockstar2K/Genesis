@@ -22,7 +22,7 @@ namespace MauiApp2.SCRIPTS
             public Label ResultLabel { get; set; }
             public Label OutputLabel { get; set; }
 
-             public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
+            public List<Label> CodeLabels { get; set; } = new List<Label>();  // This is a list to hold multiple labels
 
             public void InitializeUIComponents()
             {
