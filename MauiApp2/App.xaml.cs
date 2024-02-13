@@ -18,6 +18,10 @@ public partial class App : Application
     {
         InitializeComponent();
         Routing.RegisterRoute("Settings", typeof(Settings));
+        Routing.RegisterRoute("Welcome", typeof(Welcome_Page));
+        Routing.RegisterRoute("Chat", typeof(MainPage));
+
+
         //Shell.Current.Navigated += OnShellNavigated;
     }
 
@@ -38,7 +42,7 @@ public partial class App : Application
             if (accessType == NetworkAccess.Internet)
             {
                 // Navigate to the specific page for first-time users
-                MainPage = new Welcome_Page();
+                await Shell.Current.GoToAsync("Welcome");
 
                 // Set the flag to false so this page won't be shown again on next launch
                 Preferences.Set("IsFirstTimeOpened", false);
@@ -56,7 +60,7 @@ public partial class App : Application
         else
         {
             // Normal app launch
-            MainPage = new MainPage();
+            await Shell.Current.GoToAsync("Chat");
 
             if (accessType == NetworkAccess.Internet)
             {

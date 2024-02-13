@@ -64,6 +64,7 @@ namespace MauiApp2
                 // Apply dark mode
                 await AnimationUtilities.ApplyDarkMode(BackgroundView, false);
                 UserInput.TextColor = Color.FromArgb("#FFFFFFFF");
+
                 /*
                 AcrilicView1.TintColor = new Color(0, 0, 0, 0); // RGB set to 0 with 0 opacity
                 AcrilicView2.TintColor = new Color(0, 0, 0, 0); // RGB set to 0 with 0 opacity
@@ -76,7 +77,8 @@ namespace MauiApp2
             {
                 // Apply light mode or other logic
                 await AnimationUtilities.ApplyLightMode(BackgroundView, false);
-                UserInput.TextColor = Color.FromArgb("#00000000");
+                UserInput.TextColor = Color.FromArgb("#000000");
+
                 /*
                 AcrilicView1.TintColor = Color.FromArgb("#FF");
                 AcrilicView2.TintColor = Color.FromArgb("#FF");
