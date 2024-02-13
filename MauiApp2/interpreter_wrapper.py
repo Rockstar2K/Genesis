@@ -91,9 +91,10 @@ def run_interpreter(userPrompt, api_key=None, interpreter_model='openai/gpt-4-vi
     try:
         # It would be better to manage the chat history state outside this function
         messages = load_chat_history()
-        interpreter.messages.extend(messages)
+        #interpreter.messages.extend(messages)
         #interpreter.system_message = read_prompt()
-        interpreter.system_message += "*Your name is aimee*"
+        interpreter.system_message += "*Your name is aimee, not Open Interpreter.*"
+        interpreter.llm.context_window = 15000
         interpreter.llm.model = interpreter_model
         interpreter.llm.max_output = 2000
         interpreter.llm.max_tokens = 1000

@@ -10,7 +10,7 @@ namespace MauiApp2
     public static class TrimMemoryCS
     {
 
-        public static int MaxCharacters = 4000;
+        public static int MaxCharacters = 2500;
 
         public static async Task TrimMemoryFile()
         {

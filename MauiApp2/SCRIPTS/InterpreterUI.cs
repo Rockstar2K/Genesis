@@ -61,7 +61,7 @@ namespace MauiApp2.SCRIPTS
                     Shadow = customShadow,
                     Background = gradientBrush,
                     BorderColor = Color.FromRgba("#00000000"),
-                    Margin = new Thickness(20, 0, screenWidth * 0.05, 0), // Calculate responsive margin
+                    Margin = new Thickness(20, 20, screenWidth * 0.05, 0), // Calculate responsive margin
                     Content = new StackLayout
                     {
                         //HorizontalOptions = LayoutOptions.Start,
