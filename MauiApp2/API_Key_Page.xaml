@@ -5,131 +5,145 @@
              x:Class="MauiApp2.API_Key_Page"
              NavigationPage.HasNavigationBar="False"
              Title="API_Key_Page">
-    <AbsoluteLayout>
+    <StackLayout>
+        <HorizontalStackLayout >
             <skia:SKLottieView 
                 Source="https://lottie.host/ea593009-4e38-4074-8a10-ecb72aa83c50/RafT6dYlKG.json"
                 HeightRequest="130"
                 WidthRequest="130"
                 RepeatCount="-1"
                 HorizontalOptions="Start"
+                VerticalOptions="Start"
                 Margin="100,60">
             </skia:SKLottieView>
             <Picker
                 x:Name="Language_Picker"
                 Title="Select a language"
+                TextColor="White"
+                TitleColor="White"
                 Margin="40,40"
                 SelectedIndexChanged="Language_Picker_SelectedIndexChanged"
-                AbsoluteLayout.LayoutBounds="1,0"
-                AbsoluteLayout.LayoutFlags="PositionProportional">
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="Center">
                 <Picker.Items>
                     <x:String>English</x:String>
                     <x:String>Spanish</x:String>
                 </Picker.Items>
             </Picker>
-        <VerticalStackLayout
-            AbsoluteLayout.LayoutFlags="PositionProportional"
-             AbsoluteLayout.LayoutBounds="1,0.4"
-                 Margin="120,300">
-            <Label
-                Text="Soon"
-                Margin="0,10"
-                FontSize="25"
-                TextColor="#B3B3B3"
-                FontFamily="Montserrat-Light"
+        </HorizontalStackLayout>
+        <FlexLayout
+            Direction="Row"
+            Margin="40,40"
+            
+            Wrap="Wrap">
+ 
+            <VerticalStackLayout
                 VerticalOptions="Center"
-                HorizontalOptions="Center"/>
-            <Label
-                Text="Download a local model"
-                Margin="0,10"
-                FontSize="60"
-                TextColor="#B3B3B3"
-                FontFamily="Montserrat-Light"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
-            <Label
-                Text="It’s completly free and private but requires good hardware"
-                FontSize="25"
-                Margin="0,20"
-                TextColor="#B3B3B3"
-                FontFamily="Montserrat-Light"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
-        </VerticalStackLayout>
-        <VerticalStackLayout
-            AbsoluteLayout.LayoutFlags="PositionProportional"
-             AbsoluteLayout.LayoutBounds="0,0.4"
-            Margin="80,0">
+                Margin="80,20">
 
-            <Label 
-                Text="Insert your OpenAI API Key"
-                VerticalOptions="Center"
-                FontSize="60"
-                FontFamily="Montserrat-Light"
-                HorizontalOptions="Start"
-                TextColor="#00E0DD"
-                Margin="40,100,10,10"/>
-            <Label
-                Text="Don’t worry, it won’t leave your device."
-                Margin="40,10,0,30"
-                FontSize="25"
-                TextColor="#00E0DD"
-                FontFamily="Montserrat-extralight"/>
-            <Frame
-                Margin="40,20,40,20"
-                Padding="0"
-                BorderColor="#00E0DD"
-                BackgroundColor="Transparent"
-                CornerRadius="25"
-                Opacity="0.5">
-                <Entry
-                    x:Name="API_Input_Box"
-                    BackgroundColor="Transparent"
-                    Placeholder="   API Key"
-                    PlaceholderColor="White"
+                <Label 
+                    Text="Insert your OpenAI API Key"
+                    VerticalOptions="Center"
+                    FontSize="60"
                     FontFamily="Montserrat-Light"
-                    TextColor="#121B3F"
-                    HorizontalOptions="FillAndExpand">
-                    <Entry.Shadow>
-                        <Shadow
-                            Brush="#121B3F"
-                            Opacity="0.4"
-                            Radius="30"
-                            Offset="0,20" />
-                    </Entry.Shadow>
-                </Entry>
-            </Frame>
-            <HorizontalStackLayout>
-            <Button
-                Text="Continue"
-                Clicked="Continue_Button_Clicked"
-                MaximumWidthRequest="100"
+                    HorizontalOptions="Start"
+                    TextColor="#00E0DD"
+                    Margin="40,100,10,10"/>
+                <Label
+                    Text="Don’t worry, it won’t leave your device."
+                    Margin="40,10,0,30"
+                    FontSize="25"
+                    TextColor="#00E0DD"
+                    FontFamily="Montserrat-extralight"/>
+                <Frame
+                    Margin="40,20,40,20"
+                    Padding="0"
+                    BorderColor="#00E0DD"
+                    BackgroundColor="Transparent"
+                    CornerRadius="25"
+                    Opacity="0.5">
+                    <Entry
+                        x:Name="API_Input_Box"
+                        BackgroundColor="Transparent"
+                        Placeholder="   API Key"
+                        PlaceholderColor="White"
+                        FontFamily="Montserrat-Light"
+                        TextColor="White"
+                        HorizontalOptions="FillAndExpand">
+                        <Entry.Shadow>
+                            <Shadow
+                                Brush="#121B3F"
+                                Opacity="0.4"
+                                Radius="30"
+                                Offset="0,20" />
+                        </Entry.Shadow>
+                    </Entry>
+                </Frame>
+                
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                VerticalOptions="Center"
+                Margin="80,40">
+                <Label
+                    Text="Soon"
+                    Margin="0,10"
+                    FontSize="25"
+                    TextColor="#B3B3B3"
+                    FontFamily="Montserrat-Light"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+                <Label
+                    Text="Download a local model"
+                    Margin="0,10"
+                    FontSize="60"
+                    TextColor="#B3B3B3"
+                    FontFamily="Montserrat-Light"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+                <Label
+                    Text="It’s completly free and private but requires good hardware"
+                    FontSize="25"
+                    Margin="0,20"
+                    TextColor="#B3B3B3"
+                    FontFamily="Montserrat-Light"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+            <HorizontalStackLayout
+                HeightRequest="100"
                 HorizontalOptions="Start"
-                Margin="40,50,0,0"
-                BackgroundColor="#00E0DD"
-                TextColor="#121A3F"
-                MinimumWidthRequest="150"
-                MinimumHeightRequest="50"
-                CornerRadius="22"
-                FontSize="20"
-                FontFamily="Montserrat-ExtraLight"/>
-            <Button
-                Text="Where can I find API Key"
-                Margin="0,50,0,0"
-                FontSize="20"
-                TextColor="#00E0DD"
-                BackgroundColor="Transparent"
-                FontFamily="Montserrat-ExtraLightItalic"
-                VerticalOptions="FillAndExpand"
-                Clicked="Button_Clicked"/>
-            </HorizontalStackLayout>
+                VerticalOptions="CenterAndExpand"
+                Margin="80,40">
+                <Button
+                    Text="Continue"
+                    Clicked="Continue_Button_Clicked"
+                    MaximumWidthRequest="100"
+                    HorizontalOptions="Start"
+                    Margin="40,50,0,0"
+                    BackgroundColor="#00E0DD"
+                    TextColor="#121A3F"
+                    MinimumWidthRequest="150"
+                    MinimumHeightRequest="50"
+                    CornerRadius="22"
+                    FontSize="20"
+                    FontFamily="Montserrat-ExtraLight"/>
+                <Button
+                    Text="Where can I find API Key"
+                    Margin="0,50,0,0"
+                    FontSize="20"
+                    TextColor="#00E0DD"
+                    BackgroundColor="Transparent"
+                    FontFamily="Montserrat-ExtraLightItalic"
+                    VerticalOptions="FillAndExpand"
+                    Clicked="Button_Clicked"/>
+                </HorizontalStackLayout>
+        </FlexLayout>
+        <StackLayout.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                    <GradientStop Color="#121A3F" Offset="0.35" />
+                    <GradientStop Color="#68A497" Offset="1.8" />
+                </LinearGradientBrush>
+         </StackLayout.Background>
+    </StackLayout>
 
-
-        </VerticalStackLayout>
-         <AbsoluteLayout.Background>
-            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
-                <GradientStop Color="#121A3F" Offset="0.35" />
-                <GradientStop Color="#68A497" Offset="1.8" />
-            </LinearGradientBrush>
-        </AbsoluteLayout.Background>
-    </AbsoluteLayout>
 </ContentPage>

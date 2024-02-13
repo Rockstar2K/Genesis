@@ -40,6 +40,9 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\genesis_loading.gif" />
 	</ItemGroup>
@@ -75,7 +78,6 @@
 		<MauiImage Update="Resources\Images\chat_option.svg">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</MauiImage>
-		<MauiImage Include="Resources\genesis_loading.gif" />
 		<None Remove="Resources\Credentials\high-invest-4da5afee15f3.json" />
 		<None Remove="Properties\launchSettings.json" />
 		<MauiAsset Include="Properties\launchSettings.json" />
@@ -83,6 +85,7 @@
 		<None Remove="Resources\AppIcon\background2.svg" />
 		<None Remove="pPROMPTS\" />
 		<None Remove="Microsoft\Maui\Platform\" />
+		<None Remove="Managers\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -127,7 +130,6 @@
 	  <None Remove="Resources\Images\wave1.png" />
 	  <None Remove="Resources\Images\test.gif" />
 	  <None Remove="CustomControls\" />
-	  <None Remove="Resources\genesis_loading.gif" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -157,6 +159,7 @@
 	  <Folder Include="CustomControls\" />
 	  <Folder Include="pPROMPTS\" />
 	  <Folder Include="Microsoft\Maui\Platform\" />
+	  <Folder Include="Managers\" />
 	</ItemGroup>
 
 	<ItemGroup>
