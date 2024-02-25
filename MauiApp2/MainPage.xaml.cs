@@ -29,6 +29,8 @@ namespace MauiApp2
         //interpreter Chatbox
         private bool isFirstUpdate = true;
 
+        string CurrentTextColor = "#000000";
+
 
         //CODE
         bool isCodeFirstUpdate = true;
@@ -64,7 +66,7 @@ namespace MauiApp2
                 // Apply dark mode
                 await AnimationUtilities.ApplyDarkMode(BackgroundView, false);
                 UserInput.TextColor = Color.FromArgb("#FFFFFFFF");
-
+                CurrentTextColor = "#FFFFFFFF";
                 /*
                 AcrilicView1.TintColor = new Color(0, 0, 0, 0); // RGB set to 0 with 0 opacity
                 AcrilicView2.TintColor = new Color(0, 0, 0, 0); // RGB set to 0 with 0 opacity
@@ -78,6 +80,7 @@ namespace MauiApp2
                 // Apply light mode or other logic
                 await AnimationUtilities.ApplyLightMode(BackgroundView, false);
                 UserInput.TextColor = Color.FromArgb("#000000");
+                CurrentTextColor = "#000000";
 
                 /*
                 AcrilicView1.TintColor = Color.FromArgb("#FF");
@@ -132,7 +135,7 @@ namespace MauiApp2
                 else
                 {
                     // NoInternetFrame.IsVisible = true;
-                    await Task.Delay(3000).ConfigureAwait(false);
+                    //await Task.Delay(3000).ConfigureAwait(false);
                     // NoInternetFrame.IsVisible = false;
                 }
             }
@@ -144,7 +147,7 @@ namespace MauiApp2
         }
 
 
-        private async void AddChatBoxes() //calls the main functions in order
+        private void AddChatBoxes() //calls the main functions in order
         {
             try
             {
@@ -284,9 +287,11 @@ namespace MauiApp2
         //INTERPRETER CHAT UI
         private async Task AddInterpreterChatBoxToUI()
         {
-            await this.Dispatcher.DispatchAsync(() =>
-            {
-                currentInterpreterUI.InterpreterFrame.IsVisible = true;
+            Debug.WriteLine("AddInterpreterChatBoxToUI");
+            // currentInterpreterUI.InterpreterFrame.IsVisible = true;
+
+   //         this.Dispatcher.Dispatch( () =>
+   //         {
 
                 var interpreterUI = new InterpreterUI();
                 currentInterpreterUI = interpreterUI;
@@ -296,7 +301,7 @@ namespace MauiApp2
 
                 verticalStackLayout.Children.Add(interpreterUI.InterpreterFrame);
 
-            });
+     //       });
 
         }
 
@@ -332,8 +337,8 @@ namespace MauiApp2
 
             Label codeLabel = interpreterUI.CreateCodeLabel();
             Frame codeFrame = interpreterUI.CreateCodeFrameWithLabel(codeLabel);
-            this.Dispatcher.Dispatch(() =>
-            {
+    //         this.Dispatcher.Dispatch(() =>
+    //        {
                 currentCodeFrame = codeFrame;
 
                 var interpreterOutput = (StackLayout)interpreterUI.InterpreterFrame.Content;
@@ -342,7 +347,7 @@ namespace MauiApp2
                 //var stackLayout = (VerticalStackLayout)FindByName("ChatLayout"); // Change to VerticalStackLayout
 
                 //scrollToLastChatBox();
-            });
+     //       });
 
             return codeLabel;
         }
@@ -414,11 +419,8 @@ namespace MauiApp2
                             foreach (var validJson in validJsonList)
                             {
                                 //Debug.WriteLine("validJson inside for each: " + validJson);
-                                this.Dispatcher.Dispatch(() =>
-                                {
-                                    UpdateInterpreterUI(validJson);
-
-                                });
+                                //                     
+                                this.Dispatcher.Dispatch(() =>   UpdateInterpreterUI(validJson));
                             }
                         }
 
@@ -458,7 +460,7 @@ namespace MauiApp2
 
 
 
-        public async void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
+        public void UpdateInterpreterUI(string jsonObject) //this function is inside a loop, so we need to be careful to not load it with too much stuff (preferably almost nothing)
         {
 
             Debug.WriteLine(jsonObject);
@@ -488,6 +490,7 @@ namespace MauiApp2
                 // start code
                 if (start == true && type == "code")
                 {
+                    currentInterpreterUI.InterpreterFrame.IsVisible = false;
                     is_code_visible = Preferences.Get("see_code", false);
                     //If the code visibility is off...
                     if (!is_code_visible)
@@ -506,6 +509,7 @@ namespace MauiApp2
                 else if (content != null && type == "code")
                 {
                     is_code_visible = Preferences.Get("see_code", false);
+
                     //If the code visibility is off...
                     if (!is_code_visible)
                     {
@@ -548,11 +552,10 @@ namespace MauiApp2
 
                 else if (start == true && type == "message")
                 {
-                    await AddInterpreterChatBoxToUI();
+                    currentInterpreterUI.InterpreterFrame.IsVisible = false;
 
-                    
-
-                    await AddLabelToInterpreterOutputFrame(currentInterpreterUI);
+                    AddInterpreterChatBoxToUI();
+                    AddLabelToInterpreterOutputFrame(currentInterpreterUI);
                         //  isFirstUpdate = false; ??
                         //isOutputFirstUpdate = true;
                 }
@@ -581,26 +584,26 @@ namespace MauiApp2
                     else if (end == true && content == "message")
                     {
                         scrollToLastChatBox();
-
                     }
 
                     else if (end == true && type == "console")
                     {
 
-                    is_code_visible = Preferences.Get("see_code", false);
+                        is_code_visible = Preferences.Get("see_code", false);
 
-                    //If the code visibility is off...
-                    if (!is_code_visible)
-                    {
-                        AddInterpreterCodeBoxToUI();
+                        //If the code visibility is off...
+                        if (!is_code_visible)
+                        {
+                            AddInterpreterCodeBoxToUI();
+                        }
+
+                        else
+                        {
+                            AddInterpreterChatBoxToUI();
+                            currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
+                            isCodeFirstUpdate = true;
+                        }
                     }
-                    else
-                    {
-                        await AddInterpreterChatBoxToUI();
-                        currentCodeLabel = AddInterpreterCodeBoxToInterpreterOutputFrame(currentInterpreterUI);
-                        isCodeFirstUpdate = true;
-                    }
-                }
 
 
 
@@ -608,39 +611,43 @@ namespace MauiApp2
                 //--------CONSOLE OUTPUT LAYOUT----------------
                 else if (start == true && type == "console")
                 {
-                    //currentInterpreterUI.InterpreterFrame.BackgroundColor = Color.FromArgb("#00000000");
-                    //currentInterpreterUI.ResultLabel.TextColor = Color.FromArgb("#FFFFA07A");
-                    await AddInterpreterChatBoxToUI();
-                    await AddLabelToInterpreterOutputFrame(currentInterpreterUI);
-                    }
+                    //Make the Outputframe
+                    currentInterpreterUI.InterpreterFrame.IsVisible = false;
 
-                    else if (content != null && type == "console")
-                    {
-                        if (isFirstUpdate)
-                        {
-                            currentInterpreterUI.ResultLabel.Text = content;  // Use currentChatBubble.ResultLabel here
-                            isFirstUpdate = false;
-                        }
-                        else
-                        {
-
-                            currentInterpreterUI.ResultLabel.Text += content;  // Use currentChatBubble.ResultLabel here
-                        }
-
-                        if (content.Contains("\n"))
-                        {
-                            //scrollToLastChatBox();
-
-                        }
-                    }
+                    AddInterpreterChatBoxToUI();
+                    AddLabelToInterpreterOutputFrame(currentInterpreterUI);
+                    currentInterpreterUI.InterpreterFrame.Background = Color.FromArgb("#00000000");
+                    currentInterpreterUI.ResultLabel.TextColor = Color.FromArgb(CurrentTextColor);
+                    currentInterpreterUI.InterpreterFrame.Margin = new Thickness(40,40,40,0);
                 }
 
-                catch (JsonReaderException ex)
+                else if (content != null && type == "console")
                 {
-                    Debug.WriteLine("Json parser exception" + ex.Message);
-                    Debug.WriteLine("JSON object: " + jsonObject);
+                    if (isFirstUpdate)
+                    {
+                        currentInterpreterUI.ResultLabel.Text = content;  // Use currentChatBubble.ResultLabel here
+                        isFirstUpdate = false;
+                    }
 
+                    else
+                    {
+                        currentInterpreterUI.ResultLabel.Text += content;  // Use currentChatBubble.ResultLabel here
+                    }
+
+                    if (content.Contains("\n"))
+                    {
+                        //scrollToLastChatBox();
+
+                    }
                 }
+            }
+
+            catch (JsonReaderException ex)
+            {
+                Debug.WriteLine("Json parser exception" + ex.Message);
+                Debug.WriteLine("JSON object: " + jsonObject);
+
+            }
 
         }
 
