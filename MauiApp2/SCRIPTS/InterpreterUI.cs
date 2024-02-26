@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MauiApp2.CustomControls;
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Layouts;
 
 
@@ -29,6 +30,7 @@ namespace MauiApp2.SCRIPTS
                 InitializeAnimatedGif();
                 InitializeInterpreterFrame();
                 InitializeResultTextFrame();
+                InitializeLoadingFrame();
             }
 
             private void InitializeAnimatedGif()
@@ -37,18 +39,18 @@ namespace MauiApp2.SCRIPTS
 
                 
 
-            if (OperatingSystem.IsWindows())
-                {
-                AnimatedGif.WidthRequest = 80;
-                AnimatedGif.HeightRequest = 80;
+                if (OperatingSystem.IsWindows())
+                    {
+                    AnimatedGif.WidthRequest = 80;
+                    AnimatedGif.HeightRequest = 80;
+                    }
+                    else if (OperatingSystem.IsMacCatalyst())
+                    {
+                    AnimatedGif.WidthRequest = 120;
+                    AnimatedGif.HeightRequest = 120;
                 }
-                else if (OperatingSystem.IsMacCatalyst())
-                {
-                AnimatedGif.WidthRequest = 120;
-                AnimatedGif.HeightRequest = 120;
-            }
 
-        }
+            }
 
             private void InitializeInterpreterFrame()
             {
@@ -68,7 +70,7 @@ namespace MauiApp2.SCRIPTS
                         VerticalOptions = LayoutOptions.StartAndExpand,
                         Spacing = 4,
 
-                        Children = {AnimatedGif, ResultTextFrame}
+                        Children = {ResultTextFrame}
                     }
                 };
 
@@ -83,6 +85,29 @@ namespace MauiApp2.SCRIPTS
 
             }
 
+            public void InitializeLoadingFrame()
+            {
+                var gradientBrush = GetGradientBrush();
+                var customShadow = GetCustomShadow();
+
+                InterpreterFrame = new Frame
+                {
+                    HasShadow = true,
+                    Shadow = customShadow,
+                    Background = gradientBrush,
+                    BorderColor = Color.FromRgba("#00000000"),
+                    Margin = new Thickness(20, 20, screenWidth * 0.05, 0), // Calculate responsive margin
+                    Content = new StackLayout
+                    {
+                        //HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.StartAndExpand,
+                        Spacing = 4,
+
+                        Children = { AnimatedGif }
+                    }
+                };
+            }
+        
             public Frame InitializeResultTextFrame()
             {
                 ResultLabel = new Label
@@ -177,7 +202,9 @@ namespace MauiApp2.SCRIPTS
                 }
             };
 
+            
+
         }
 
-    
+
 }

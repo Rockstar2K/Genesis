@@ -20,6 +20,7 @@ namespace MauiApp2
         public bool is_night_mode_on    { get; set; }   = Preferences.Get("theme_dark", true);
         public bool is_code_visible     { get; set; }   = Preferences.Get("see_code", false);
         public static string interpreter_model { get; set; } = Preferences.Get("interpreter_model", "openai/gpt-4-vision-preview");
+        public bool IsJustALoadingFrame;
         private Frame interpreterCodeFrame; // Declare a class-level variable to hold the frame
         //memory
         public long memory_count { get; set; } = Preferences.Get("memory_character_count", (long)0);
@@ -158,15 +159,15 @@ namespace MauiApp2
                     var stackLayout = (Microsoft.Maui.Controls.VerticalStackLayout)FindByName("ChatLayout");
                     ScrollView chatScrollView = (ScrollView)FindByName("ChatScrollView");
 
-                    await UserChatBoxLogic.AddUserChatBoxToUI(stackLayout, chatScrollView, userPrompt);
+                    UserChatBoxLogic.AddUserChatBoxToUI(stackLayout, chatScrollView, userPrompt);
 
                     //CLOSE path UI frames this function is erasing the filePath
                     //from the prompt before is sended to the API in AddInterpreterChatBoxToUI
-                    await CloseAllOpenFileFrames();
+                    CloseAllOpenFileFrames();
 
                     await AddInterpreterChatBoxToUI();
 
-                    await ExecuteScriptAsync();
+                    ExecuteScriptAsync();
 
                     //TTSPlayAudioFromText(decodedJson);
 
@@ -490,7 +491,17 @@ namespace MauiApp2
                 // start code
                 if (start == true && type == "code")
                 {
-                    currentInterpreterUI.InterpreterFrame.IsVisible = false;
+                    //currentInterpreterUI.InterpreterFrame.IsVisible = false;
+
+                    bool IsPreviousFrameEmpty = IsInterpreterFrameEffectivelyEmpty(currentInterpreterUI);
+                    if (IsPreviousFrameEmpty) { currentInterpreterUI.InterpreterFrame.IsVisible = false; }
+
+                    AddInterpreterChatBoxToUI();
+                    AddLabelToInterpreterOutputFrame(currentInterpreterUI);
+                    currentInterpreterUI.InterpreterFrame.Background = Color.FromArgb("#FFC0CB");
+                    currentInterpreterUI.ResultLabel.TextColor = Color.FromArgb(CurrentTextColor);
+                    currentInterpreterUI.InterpreterFrame.Margin = new Thickness(40, 40, 40, 0);
+
                     is_code_visible = Preferences.Get("see_code", false);
                     //If the code visibility is off...
                     if (!is_code_visible)
@@ -552,8 +563,9 @@ namespace MauiApp2
 
                 else if (start == true && type == "message")
                 {
-                    currentInterpreterUI.InterpreterFrame.IsVisible = false;
-
+                    //currentInterpreterUI.InterpreterFrame.IsVisible = false;
+                    bool IsPreviousFrameEmpty = IsInterpreterFrameEffectivelyEmpty(currentInterpreterUI);
+                    if (IsPreviousFrameEmpty) { currentInterpreterUI.InterpreterFrame.IsVisible = false; }
                     AddInterpreterChatBoxToUI();
                     AddLabelToInterpreterOutputFrame(currentInterpreterUI);
                         //  isFirstUpdate = false; ??
@@ -612,8 +624,9 @@ namespace MauiApp2
                 else if (start == true && type == "console")
                 {
                     //Make the Outputframe
-                    currentInterpreterUI.InterpreterFrame.IsVisible = false;
-
+                    //currentInterpreterUI.InterpreterFrame.IsVisible = false;
+                    bool IsPreviousFrameEmpty = IsInterpreterFrameEffectivelyEmpty(currentInterpreterUI);
+                    if (IsPreviousFrameEmpty) { currentInterpreterUI.InterpreterFrame.IsVisible = false; }
                     AddInterpreterChatBoxToUI();
                     AddLabelToInterpreterOutputFrame(currentInterpreterUI);
                     currentInterpreterUI.InterpreterFrame.Background = Color.FromArgb("#00000000");
@@ -621,7 +634,7 @@ namespace MauiApp2
                     currentInterpreterUI.InterpreterFrame.Margin = new Thickness(40,40,40,0);
                 }
 
-                else if (content != null && type == "console")
+                else if (content != null && type == "console" && format != "active_line")
                 {
                     if (isFirstUpdate)
                     {
@@ -639,6 +652,10 @@ namespace MauiApp2
                         //scrollToLastChatBox();
 
                     }
+                }
+                else if (format == "active_line")
+                {
+                    //Do nothing. "active_line" just tells you what line is being run.
                 }
             }
 
@@ -691,6 +708,47 @@ namespace MauiApp2
     */
             stackLayout.Children.Add(interpreterCodeFrame);
         }
+
+        public bool IsInterpreterFrameEffectivelyEmpty(InterpreterUI interpreterUI)
+        {
+            // Check if the AnimatedGif is visible or essential (assuming it's always considered non-empty if present)
+            if (interpreterUI.AnimatedGif != null /* && interpreterUI.AnimatedGif.IsVisible can be added if visibility is a factor */)
+            {
+                return false;
+            }
+
+            // Check if CodeLabels collection is not empty
+            if (interpreterUI.CodeLabels != null && interpreterUI.CodeLabels.Count > 0)
+            {
+                return false;
+            }
+
+            // Check if OutputLabel is not null (and possibly if it's visible)
+            if (interpreterUI.OutputLabel != null /* && interpreterUI.OutputLabel.IsVisible can be added if visibility is a factor */)
+            {
+                return false;
+            }
+
+            // Check if ResultLabel is not null and visible
+            if (interpreterUI.ResultLabel != null && interpreterUI.ResultLabel.IsVisible)
+            {
+                return false;
+            }
+
+            // Check if ResultTextFrame is not empty by your definition (e.g., contains visible content)
+            // This requires a similar check as IsFrameEffectivelyEmpty, considering the content of ResultTextFrame
+
+            // Assuming a simplified version here, but you might need to recursively check as before
+            if (interpreterUI.ResultTextFrame != null && interpreterUI.ResultTextFrame.Content != null /* && visibility checks */)
+            {
+                return false;
+            }
+
+            // If none of the conditions above are met, the frame is considered effectively empty
+            return true;
+        }
+
+
 
 
         private void DeactivateInterpreterCodeBox()

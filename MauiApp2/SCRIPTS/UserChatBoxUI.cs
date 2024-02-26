@@ -74,8 +74,6 @@ namespace MauiApp2.SCRIPTS
                 stackLayout.Children.Add(userChatBoxUI.frame);
             });
 
-            await Task.Delay(0); // Give time for UI to update
-
             // Scroll to the bottom of the chat on the main thread
             MainThread.BeginInvokeOnMainThread(() =>
             {
