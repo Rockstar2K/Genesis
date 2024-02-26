@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MauiApp2.CustomControls;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Layouts;
 
 
@@ -19,6 +18,7 @@ namespace MauiApp2.SCRIPTS
 
             public AnimatedGif AnimatedGif { get; set; }
             public Frame InterpreterFrame { get; set; }
+            public Frame LoadingFrame { get; set; }
             public Frame ResultTextFrame { get; set; }
             public Label ResultLabel { get; set; }
             public Label OutputLabel { get; set; }
@@ -77,7 +77,9 @@ namespace MauiApp2.SCRIPTS
                 if(OperatingSystem.IsWindows())
                 {
                     //InterpreterFrame.HorizontalOptions = LayoutOptions.FillAndExpand;
-                } else
+                }
+
+                else
                 {
                     InterpreterFrame.HorizontalOptions = LayoutOptions.StartAndExpand;
                 }
@@ -90,12 +92,12 @@ namespace MauiApp2.SCRIPTS
                 var gradientBrush = GetGradientBrush();
                 var customShadow = GetCustomShadow();
 
-                InterpreterFrame = new Frame
+                LoadingFrame = new Frame
                 {
                     HasShadow = true,
                     Shadow = customShadow,
                     Background = gradientBrush,
-                    BorderColor = Color.FromRgba("#00000000"),
+                    BorderColor = Color.FromRgba("#FFFFC0CB"),
                     Margin = new Thickness(20, 20, screenWidth * 0.05, 0), // Calculate responsive margin
                     Content = new StackLayout
                     {
@@ -106,6 +108,17 @@ namespace MauiApp2.SCRIPTS
                         Children = { AnimatedGif }
                     }
                 };
+
+                if (OperatingSystem.IsWindows())
+                {
+                    //InterpreterFrame.HorizontalOptions = LayoutOptions.FillAndExpand;
+                }
+
+                else
+                {
+                    InterpreterFrame.HorizontalOptions = LayoutOptions.StartAndExpand;
+                }
+
             }
         
             public Frame InitializeResultTextFrame()
